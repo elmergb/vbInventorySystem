@@ -1,0 +1,25 @@
+C:\Users\edwar\AppData\Local\Temporary Projects\main\bin\Debug\main.exe
+C:\Users\edwar\AppData\Local\Temporary Projects\main\bin\Debug\main.pdb
+C:\Users\edwar\AppData\Local\Temporary Projects\main\bin\Debug\main.xml
+C:\Users\edwar\AppData\Local\Temporary Projects\main\obj\x86\Debug\main.Form1.resources
+C:\Users\edwar\AppData\Local\Temporary Projects\main\obj\x86\Debug\main.Resources.resources
+C:\Users\edwar\AppData\Local\Temporary Projects\main\obj\x86\Debug\main.vbproj.GenerateResource.Cache
+C:\Users\edwar\AppData\Local\Temporary Projects\main\obj\x86\Debug\main.exe
+C:\Users\edwar\AppData\Local\Temporary Projects\main\obj\x86\Debug\main.xml
+C:\Users\edwar\AppData\Local\Temporary Projects\main\obj\x86\Debug\main.pdb
+C:\Users\edwar\AppData\Local\Temporary Projects\main\obj\x86\Debug\main.LoginForm1.resources
+C:\Users\edwar\AppData\Local\Temporary Projects\main\obj\x86\Debug\main.Login.resources
+C:\Users\edwar\Documents\Visual Studio 2010\Projects\main\main\obj\x86\Debug\main.Homepage.resources
+C:\Users\edwar\Documents\Visual Studio 2010\Projects\main\main\obj\x86\Debug\main.Login.resources
+C:\Users\edwar\Documents\Visual Studio 2010\Projects\main\main\obj\x86\Debug\main.Resources.resources
+C:\Users\edwar\Documents\Visual Studio 2010\Projects\main\main\obj\x86\Debug\main.vbproj.GenerateResource.Cache
+C:\Users\edwar\Documents\Visual Studio 2010\Projects\main\main\bin\Debug\main.exe
+C:\Users\edwar\Documents\Visual Studio 2010\Projects\main\main\bin\Debug\main.pdb
+C:\Users\edwar\Documents\Visual Studio 2010\Projects\main\main\bin\Debug\main.xml
+C:\Users\edwar\Documents\Visual Studio 2010\Projects\main\main\obj\x86\Debug\main.exe
+C:\Users\edwar\Documents\Visual Studio 2010\Projects\main\main\obj\x86\Debug\main.xml
+C:\Users\edwar\Documents\Visual Studio 2010\Projects\main\main\obj\x86\Debug\main.pdb
+C:\Users\edwar\Documents\Visual Studio 2010\Projects\main\main\obj\x86\Debug\main.frmAddItem.resources
+C:\Users\edwar\Documents\Visual Studio 2010\Projects\main\main\obj\x86\Debug\main.frmListItem.resources
+C:\Users\edwar\Documents\Visual Studio 2010\Projects\main\main\obj\x86\Debug\main.frmUserList.resources
+C:\Users\edwar\Documents\Visual Studio 2010\Projects\main\main\obj\x86\Debug\main.frmUserAdd.resources

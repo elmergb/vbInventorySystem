@@ -1,0 +1,21 @@
+﻿.body
+{
+    background-image: cover;
+}
+
+
+#txtPword
+{
+ text-align: center   
+}
+
+#btnLogin
+{
+    border-bottom-color:Green;
+}
+
+.Button1
+{
+    background-color: aqua;
+    background-color: Green;
+}
