@@ -31,7 +31,7 @@ Partial Class frmUserList
         Me.Column5 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.btnAdd = New System.Windows.Forms.Button()
         Me.btnEdit = New System.Windows.Forms.Button()
-        Me.Button2 = New System.Windows.Forms.Button()
+        Me.btnDelete = New System.Windows.Forms.Button()
         CType(Me.dgvUserList, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
@@ -42,12 +42,12 @@ Partial Class frmUserList
         Me.dgvUserList.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill
         Me.dgvUserList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.dgvUserList.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.Column6, Me.Column1, Me.Column2, Me.Column3, Me.Column4, Me.Column5})
-        Me.dgvUserList.Location = New System.Drawing.Point(12, 33)
+        Me.dgvUserList.Location = New System.Drawing.Point(12, 104)
         Me.dgvUserList.Name = "dgvUserList"
         Me.dgvUserList.ReadOnly = True
         Me.dgvUserList.RowHeadersVisible = False
         Me.dgvUserList.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
-        Me.dgvUserList.Size = New System.Drawing.Size(670, 488)
+        Me.dgvUserList.Size = New System.Drawing.Size(670, 424)
         Me.dgvUserList.TabIndex = 0
         '
         'Column6
@@ -113,22 +113,22 @@ Partial Class frmUserList
         Me.btnEdit.Text = "Edit"
         Me.btnEdit.UseVisualStyleBackColor = True
         '
-        'Button2
+        'btnDelete
         '
-        Me.Button2.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Button2.Location = New System.Drawing.Point(703, 234)
-        Me.Button2.Name = "Button2"
-        Me.Button2.Size = New System.Drawing.Size(87, 43)
-        Me.Button2.TabIndex = 3
-        Me.Button2.Text = "Delete"
-        Me.Button2.UseVisualStyleBackColor = True
+        Me.btnDelete.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnDelete.Location = New System.Drawing.Point(703, 234)
+        Me.btnDelete.Name = "btnDelete"
+        Me.btnDelete.Size = New System.Drawing.Size(87, 43)
+        Me.btnDelete.TabIndex = 3
+        Me.btnDelete.Text = "Delete"
+        Me.btnDelete.UseVisualStyleBackColor = True
         '
         'frmUserList
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(829, 540)
-        Me.Controls.Add(Me.Button2)
+        Me.ClientSize = New System.Drawing.Size(948, 540)
+        Me.Controls.Add(Me.btnDelete)
         Me.Controls.Add(Me.btnEdit)
         Me.Controls.Add(Me.btnAdd)
         Me.Controls.Add(Me.dgvUserList)
@@ -141,7 +141,7 @@ Partial Class frmUserList
     Friend WithEvents dgvUserList As System.Windows.Forms.DataGridView
     Friend WithEvents btnAdd As System.Windows.Forms.Button
     Friend WithEvents btnEdit As System.Windows.Forms.Button
-    Friend WithEvents Button2 As System.Windows.Forms.Button
+    Friend WithEvents btnDelete As System.Windows.Forms.Button
     Friend WithEvents Column6 As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents Column1 As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents Column2 As System.Windows.Forms.DataGridViewTextBoxColumn

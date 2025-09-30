@@ -1,4 +1,5 @@
 ﻿Public Class frmUserAdd
+    Public Property UserID As Integer = 0
 
 
     Private Function ValidateAllTextboxes() As Boolean
@@ -19,8 +20,7 @@
         If ValidateAllTextboxes() = False Then
             Return
         End If
-
-        If Val(frmUserList.dgvUserList.Tag) = 0 Then
+        If UserID = 0 Then
             Try
                 cmd = New Odbc.OdbcCommand("INSERT INTO tbluser (fname,mi,lname,username,pword) VALUES (?,?,?,?,?)", con)
                 With cmd.Parameters
@@ -40,7 +40,7 @@
             End Try
         Else
             Try
-                cmd = New Odbc.OdbcCommand("UPDATE tbluser SET fname=?, mi=?, lname=?, username=?, pword=? WHERE UserID=" & Val(frmUserList.dgvUserList.Tag), con)
+                cmd = New Odbc.OdbcCommand("UPDATE tbluser SET fname=?, mi=?, lname=?, username=?, pword=? WHERE UserID=" & UserID, con)
                 With cmd.Parameters
                     .AddWithValue("?", Trim(txtfname.Text))
                     .AddWithValue("?", Trim(txtmi.Text))
@@ -57,9 +57,6 @@
                 GC.Collect()
             End Try
         End If
-
-
-
         'If Val(frmUserList.dgvUserList.Tag) = 0 Then
 
         'End If
