@@ -2,7 +2,7 @@
     Public Property UserID As Integer = 0
 
 
-    Private Function ValidateAllTextboxes() As Boolean
+    Public Function ValidateAllTextboxes() As Boolean
         For Each text As Control In Me.Controls
             If TypeOf text Is TextBox Then
                 Dim txt As TextBox = CType(text, TextBox)

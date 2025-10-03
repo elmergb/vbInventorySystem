@@ -32,6 +32,7 @@ Partial Class frmUserList
         Me.btnAdd = New System.Windows.Forms.Button()
         Me.btnEdit = New System.Windows.Forms.Button()
         Me.btnDelete = New System.Windows.Forms.Button()
+        Me.btnBorrow = New System.Windows.Forms.Button()
         CType(Me.dgvUserList, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
@@ -40,19 +41,22 @@ Partial Class frmUserList
         Me.dgvUserList.AllowUserToAddRows = False
         Me.dgvUserList.AllowUserToDeleteRows = False
         Me.dgvUserList.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill
+        Me.dgvUserList.BackgroundColor = System.Drawing.Color.Gainsboro
         Me.dgvUserList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.dgvUserList.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.Column6, Me.Column1, Me.Column2, Me.Column3, Me.Column4, Me.Column5})
-        Me.dgvUserList.Location = New System.Drawing.Point(12, 104)
+        Me.dgvUserList.GridColor = System.Drawing.Color.Gainsboro
+        Me.dgvUserList.Location = New System.Drawing.Point(12, 88)
         Me.dgvUserList.Name = "dgvUserList"
         Me.dgvUserList.ReadOnly = True
         Me.dgvUserList.RowHeadersVisible = False
         Me.dgvUserList.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
-        Me.dgvUserList.Size = New System.Drawing.Size(670, 424)
+        Me.dgvUserList.Size = New System.Drawing.Size(670, 440)
         Me.dgvUserList.TabIndex = 0
         '
         'Column6
         '
         Me.Column6.DataPropertyName = "UserID"
+        Me.Column6.FillWeight = 30.0!
         Me.Column6.HeaderText = "User ID"
         Me.Column6.Name = "Column6"
         Me.Column6.ReadOnly = True
@@ -67,7 +71,9 @@ Partial Class frmUserList
         'Column2
         '
         Me.Column2.DataPropertyName = "mi"
+        Me.Column2.FillWeight = 60.0!
         Me.Column2.HeaderText = "middle name"
+        Me.Column2.MinimumWidth = 60
         Me.Column2.Name = "Column2"
         Me.Column2.ReadOnly = True
         '
@@ -123,11 +129,22 @@ Partial Class frmUserList
         Me.btnDelete.Text = "Delete"
         Me.btnDelete.UseVisualStyleBackColor = True
         '
+        'btnBorrow
+        '
+        Me.btnBorrow.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnBorrow.Location = New System.Drawing.Point(703, 283)
+        Me.btnBorrow.Name = "btnBorrow"
+        Me.btnBorrow.Size = New System.Drawing.Size(87, 43)
+        Me.btnBorrow.TabIndex = 4
+        Me.btnBorrow.Text = "Borrow"
+        Me.btnBorrow.UseVisualStyleBackColor = True
+        '
         'frmUserList
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(948, 540)
+        Me.ClientSize = New System.Drawing.Size(989, 540)
+        Me.Controls.Add(Me.btnBorrow)
         Me.Controls.Add(Me.btnDelete)
         Me.Controls.Add(Me.btnEdit)
         Me.Controls.Add(Me.btnAdd)
@@ -148,4 +165,5 @@ Partial Class frmUserList
     Friend WithEvents Column3 As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents Column4 As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents Column5 As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents btnBorrow As System.Windows.Forms.Button
 End Class

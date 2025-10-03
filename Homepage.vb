@@ -17,4 +17,17 @@
         LoadForm(New frmUserList())
 
     End Sub
+
+    Private Sub pnlItem_Paint(sender As System.Object, e As System.Windows.Forms.PaintEventArgs) Handles pnlItem.Paint
+
+    End Sub
+
+    Private Sub Homepage_Load(sender As System.Object, e As System.EventArgs) Handles MyBase.Load
+        Call vbConnection()
+
+    End Sub
+
+    Private Sub btnBorrowPage_Click(sender As System.Object, e As System.EventArgs) Handles btnBorrowPage.Click
+        LoadForm(New frmBorrowerList)
+    End Sub
 End Class

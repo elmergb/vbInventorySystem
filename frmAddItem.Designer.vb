@@ -23,82 +23,84 @@ Partial Class frmAddItem
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         Me.GroupBox1 = New System.Windows.Forms.GroupBox()
-        Me.TextBox1 = New System.Windows.Forms.TextBox()
-        Me.ComboBox1 = New System.Windows.Forms.ComboBox()
-        Me.Button1 = New System.Windows.Forms.Button()
-        Me.Label1 = New System.Windows.Forms.Label()
-        Me.Label2 = New System.Windows.Forms.Label()
-        Me.Label3 = New System.Windows.Forms.Label()
-        Me.ComboBox2 = New System.Windows.Forms.ComboBox()
+        Me.txtRemarks = New System.Windows.Forms.TextBox()
+        Me.Label5 = New System.Windows.Forms.Label()
+        Me.nupQuantity = New System.Windows.Forms.NumericUpDown()
         Me.Label4 = New System.Windows.Forms.Label()
-        Me.NumericUpDown1 = New System.Windows.Forms.NumericUpDown()
+        Me.cbLocation = New System.Windows.Forms.ComboBox()
+        Me.Label3 = New System.Windows.Forms.Label()
+        Me.Label2 = New System.Windows.Forms.Label()
+        Me.Label1 = New System.Windows.Forms.Label()
+        Me.cbCategory = New System.Windows.Forms.ComboBox()
+        Me.txtNameOFItem = New System.Windows.Forms.TextBox()
+        Me.btnSave = New System.Windows.Forms.Button()
         Me.Button2 = New System.Windows.Forms.Button()
         Me.Button3 = New System.Windows.Forms.Button()
         Me.GroupBox1.SuspendLayout()
-        CType(Me.NumericUpDown1, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.nupQuantity, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'GroupBox1
         '
-        Me.GroupBox1.Controls.Add(Me.NumericUpDown1)
+        Me.GroupBox1.Controls.Add(Me.txtRemarks)
+        Me.GroupBox1.Controls.Add(Me.Label5)
+        Me.GroupBox1.Controls.Add(Me.nupQuantity)
         Me.GroupBox1.Controls.Add(Me.Label4)
-        Me.GroupBox1.Controls.Add(Me.ComboBox2)
+        Me.GroupBox1.Controls.Add(Me.cbLocation)
         Me.GroupBox1.Controls.Add(Me.Label3)
         Me.GroupBox1.Controls.Add(Me.Label2)
         Me.GroupBox1.Controls.Add(Me.Label1)
-        Me.GroupBox1.Controls.Add(Me.ComboBox1)
-        Me.GroupBox1.Controls.Add(Me.TextBox1)
+        Me.GroupBox1.Controls.Add(Me.cbCategory)
+        Me.GroupBox1.Controls.Add(Me.txtNameOFItem)
         Me.GroupBox1.Location = New System.Drawing.Point(12, 35)
         Me.GroupBox1.Name = "GroupBox1"
-        Me.GroupBox1.Size = New System.Drawing.Size(387, 355)
+        Me.GroupBox1.Size = New System.Drawing.Size(590, 275)
         Me.GroupBox1.TabIndex = 0
         Me.GroupBox1.TabStop = False
         Me.GroupBox1.Text = "GroupBox1"
         '
-        'TextBox1
+        'txtRemarks
         '
-        Me.TextBox1.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.TextBox1.Location = New System.Drawing.Point(10, 59)
-        Me.TextBox1.Multiline = True
-        Me.TextBox1.Name = "TextBox1"
-        Me.TextBox1.Size = New System.Drawing.Size(223, 31)
-        Me.TextBox1.TabIndex = 1
+        Me.txtRemarks.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtRemarks.Location = New System.Drawing.Point(308, 59)
+        Me.txtRemarks.Multiline = True
+        Me.txtRemarks.Name = "txtRemarks"
+        Me.txtRemarks.Size = New System.Drawing.Size(223, 31)
+        Me.txtRemarks.TabIndex = 12
         '
-        'ComboBox1
+        'Label5
         '
-        Me.ComboBox1.FormattingEnabled = True
-        Me.ComboBox1.Location = New System.Drawing.Point(10, 137)
-        Me.ComboBox1.Name = "ComboBox1"
-        Me.ComboBox1.Size = New System.Drawing.Size(223, 21)
-        Me.ComboBox1.TabIndex = 2
+        Me.Label5.Font = New System.Drawing.Font("Segoe Fluent Icons", 15.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label5.Location = New System.Drawing.Point(304, 28)
+        Me.Label5.Name = "Label5"
+        Me.Label5.Size = New System.Drawing.Size(112, 28)
+        Me.Label5.TabIndex = 11
+        Me.Label5.Text = "Remarks"
         '
-        'Button1
+        'nupQuantity
         '
-        Me.Button1.Font = New System.Drawing.Font("Constantia", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Button1.Location = New System.Drawing.Point(12, 415)
-        Me.Button1.Name = "Button1"
-        Me.Button1.Size = New System.Drawing.Size(84, 44)
-        Me.Button1.TabIndex = 3
-        Me.Button1.Text = "Save"
-        Me.Button1.UseVisualStyleBackColor = True
+        Me.nupQuantity.Location = New System.Drawing.Point(308, 137)
+        Me.nupQuantity.Name = "nupQuantity"
+        Me.nupQuantity.Size = New System.Drawing.Size(176, 20)
+        Me.nupQuantity.TabIndex = 10
         '
-        'Label1
+        'Label4
         '
-        Me.Label1.Font = New System.Drawing.Font("Segoe Fluent Icons", 15.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label1.Location = New System.Drawing.Point(6, 28)
-        Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(112, 28)
-        Me.Label1.TabIndex = 5
-        Me.Label1.Text = "Name of Item"
+        Me.Label4.Font = New System.Drawing.Font("Segoe Fluent Icons", 15.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label4.Location = New System.Drawing.Point(304, 107)
+        Me.Label4.Name = "Label4"
+        Me.Label4.Size = New System.Drawing.Size(112, 28)
+        Me.Label4.TabIndex = 9
+        Me.Label4.Text = "Quantity"
         '
-        'Label2
+        'cbLocation
         '
-        Me.Label2.Font = New System.Drawing.Font("Segoe Fluent Icons", 15.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label2.Location = New System.Drawing.Point(6, 106)
-        Me.Label2.Name = "Label2"
-        Me.Label2.Size = New System.Drawing.Size(112, 28)
-        Me.Label2.TabIndex = 6
-        Me.Label2.Text = "Category"
+        Me.cbLocation.FormattingEnabled = True
+        Me.cbLocation.Items.AddRange(New Object() {"PB101", "Bar", "Bakery"})
+        Me.cbLocation.Location = New System.Drawing.Point(10, 206)
+        Me.cbLocation.Name = "cbLocation"
+        Me.cbLocation.Size = New System.Drawing.Size(223, 21)
+        Me.cbLocation.TabIndex = 8
         '
         'Label3
         '
@@ -109,34 +111,56 @@ Partial Class frmAddItem
         Me.Label3.TabIndex = 7
         Me.Label3.Text = "Location"
         '
-        'ComboBox2
+        'Label2
         '
-        Me.ComboBox2.FormattingEnabled = True
-        Me.ComboBox2.Location = New System.Drawing.Point(10, 206)
-        Me.ComboBox2.Name = "ComboBox2"
-        Me.ComboBox2.Size = New System.Drawing.Size(223, 21)
-        Me.ComboBox2.TabIndex = 8
+        Me.Label2.Font = New System.Drawing.Font("Segoe Fluent Icons", 15.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label2.Location = New System.Drawing.Point(6, 106)
+        Me.Label2.Name = "Label2"
+        Me.Label2.Size = New System.Drawing.Size(112, 28)
+        Me.Label2.TabIndex = 6
+        Me.Label2.Text = "Category"
         '
-        'Label4
+        'Label1
         '
-        Me.Label4.Font = New System.Drawing.Font("Segoe Fluent Icons", 15.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label4.Location = New System.Drawing.Point(6, 252)
-        Me.Label4.Name = "Label4"
-        Me.Label4.Size = New System.Drawing.Size(112, 28)
-        Me.Label4.TabIndex = 9
-        Me.Label4.Text = "Quantity"
+        Me.Label1.Font = New System.Drawing.Font("Segoe Fluent Icons", 15.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label1.Location = New System.Drawing.Point(6, 28)
+        Me.Label1.Name = "Label1"
+        Me.Label1.Size = New System.Drawing.Size(112, 28)
+        Me.Label1.TabIndex = 5
+        Me.Label1.Text = "Name of Item"
         '
-        'NumericUpDown1
+        'cbCategory
         '
-        Me.NumericUpDown1.Location = New System.Drawing.Point(10, 283)
-        Me.NumericUpDown1.Name = "NumericUpDown1"
-        Me.NumericUpDown1.Size = New System.Drawing.Size(158, 20)
-        Me.NumericUpDown1.TabIndex = 10
+        Me.cbCategory.FormattingEnabled = True
+        Me.cbCategory.Items.AddRange(New Object() {"Kitchen", "Baking", "Liquor"})
+        Me.cbCategory.Location = New System.Drawing.Point(10, 137)
+        Me.cbCategory.Name = "cbCategory"
+        Me.cbCategory.Size = New System.Drawing.Size(223, 21)
+        Me.cbCategory.TabIndex = 2
+        '
+        'txtNameOFItem
+        '
+        Me.txtNameOFItem.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtNameOFItem.Location = New System.Drawing.Point(10, 59)
+        Me.txtNameOFItem.Multiline = True
+        Me.txtNameOFItem.Name = "txtNameOFItem"
+        Me.txtNameOFItem.Size = New System.Drawing.Size(223, 31)
+        Me.txtNameOFItem.TabIndex = 1
+        '
+        'btnSave
+        '
+        Me.btnSave.Font = New System.Drawing.Font("Constantia", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnSave.Location = New System.Drawing.Point(62, 339)
+        Me.btnSave.Name = "btnSave"
+        Me.btnSave.Size = New System.Drawing.Size(84, 44)
+        Me.btnSave.TabIndex = 3
+        Me.btnSave.Text = "Save"
+        Me.btnSave.UseVisualStyleBackColor = True
         '
         'Button2
         '
         Me.Button2.Font = New System.Drawing.Font("Constantia", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Button2.Location = New System.Drawing.Point(102, 415)
+        Me.Button2.Location = New System.Drawing.Point(161, 339)
         Me.Button2.Name = "Button2"
         Me.Button2.Size = New System.Drawing.Size(84, 44)
         Me.Button2.TabIndex = 4
@@ -146,40 +170,42 @@ Partial Class frmAddItem
         'Button3
         '
         Me.Button3.Font = New System.Drawing.Font("Constantia", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Button3.Location = New System.Drawing.Point(344, 415)
+        Me.Button3.Location = New System.Drawing.Point(476, 339)
         Me.Button3.Name = "Button3"
         Me.Button3.Size = New System.Drawing.Size(84, 44)
         Me.Button3.TabIndex = 5
         Me.Button3.Text = "Exit"
         Me.Button3.UseVisualStyleBackColor = True
         '
-        'frmAddEquipment
+        'frmAddItem
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(440, 470)
+        Me.ClientSize = New System.Drawing.Size(623, 470)
         Me.Controls.Add(Me.Button3)
         Me.Controls.Add(Me.Button2)
         Me.Controls.Add(Me.GroupBox1)
-        Me.Controls.Add(Me.Button1)
-        Me.Name = "frmAddEquipment"
+        Me.Controls.Add(Me.btnSave)
+        Me.Name = "frmAddItem"
         Me.Text = "frmAddEquipment"
         Me.GroupBox1.ResumeLayout(False)
         Me.GroupBox1.PerformLayout()
-        CType(Me.NumericUpDown1, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.nupQuantity, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
 
     End Sub
     Friend WithEvents GroupBox1 As System.Windows.Forms.GroupBox
-    Friend WithEvents NumericUpDown1 As System.Windows.Forms.NumericUpDown
+    Friend WithEvents nupQuantity As System.Windows.Forms.NumericUpDown
     Friend WithEvents Label4 As System.Windows.Forms.Label
-    Friend WithEvents ComboBox2 As System.Windows.Forms.ComboBox
+    Friend WithEvents cbLocation As System.Windows.Forms.ComboBox
     Friend WithEvents Label3 As System.Windows.Forms.Label
     Friend WithEvents Label2 As System.Windows.Forms.Label
     Friend WithEvents Label1 As System.Windows.Forms.Label
-    Friend WithEvents ComboBox1 As System.Windows.Forms.ComboBox
-    Friend WithEvents TextBox1 As System.Windows.Forms.TextBox
-    Friend WithEvents Button1 As System.Windows.Forms.Button
+    Friend WithEvents cbCategory As System.Windows.Forms.ComboBox
+    Friend WithEvents txtNameOFItem As System.Windows.Forms.TextBox
+    Friend WithEvents btnSave As System.Windows.Forms.Button
     Friend WithEvents Button2 As System.Windows.Forms.Button
     Friend WithEvents Button3 As System.Windows.Forms.Button
+    Friend WithEvents txtRemarks As TextBox
+    Friend WithEvents Label5 As Label
 End Class

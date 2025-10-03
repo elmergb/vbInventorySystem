@@ -78,6 +78,18 @@
     <Compile Include="frmAddItem.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="frmBorrow.Designer.vb">
+      <DependentUpon>frmBorrow.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmBorrow.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmBorrowerList.Designer.vb">
+      <DependentUpon>frmBorrowerList.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmBorrowerList.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="frmListItem.Designer.vb">
       <DependentUpon>frmListItem.vb</DependentUpon>
     </Compile>
@@ -130,6 +142,12 @@
     <EmbeddedResource Include="frmAddItem.resx">
       <DependentUpon>frmAddItem.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="frmBorrow.resx">
+      <DependentUpon>frmBorrow.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmBorrowerList.resx">
+      <DependentUpon>frmBorrowerList.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmListItem.resx">
       <DependentUpon>frmListItem.vb</DependentUpon>
     </EmbeddedResource>
@@ -168,6 +186,8 @@
     <None Include="Resources\380543768_699505935537282_871741826798799703_n-removebg-preview.png" />
     <None Include="Resources\images-removebg-preview.png" />
     <None Include="Resources\next %281%29.png" />
+    <None Include="Resources\profile.png" />
+    <None Include="Resources\packaging.png" />
     <Content Include="StyleSheetLogin.css" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />

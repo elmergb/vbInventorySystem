@@ -54,4 +54,8 @@
 
         End If
     End Sub
+
+    Private Sub btnBorrow_Click(sender As System.Object, e As System.EventArgs) Handles btnBorrow.Click
+        frmBorrow.Show()
+    End Sub
 End Class

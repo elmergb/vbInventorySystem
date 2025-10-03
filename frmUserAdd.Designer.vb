@@ -24,7 +24,6 @@ Partial Class frmUserAdd
     Private Sub InitializeComponent()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.btnSave = New System.Windows.Forms.Button()
-        Me.txtfname = New System.Windows.Forms.TextBox()
         Me.txtmi = New System.Windows.Forms.TextBox()
         Me.Label2 = New System.Windows.Forms.Label()
         Me.txtlname = New System.Windows.Forms.TextBox()
@@ -33,6 +32,8 @@ Partial Class frmUserAdd
         Me.Label4 = New System.Windows.Forms.Label()
         Me.txtpword = New System.Windows.Forms.TextBox()
         Me.Label5 = New System.Windows.Forms.Label()
+        Me.BackgroundWorker1 = New System.ComponentModel.BackgroundWorker()
+        Me.txtfname = New System.Windows.Forms.TextBox()
         Me.SuspendLayout()
         '
         'Label1
@@ -47,21 +48,12 @@ Partial Class frmUserAdd
         'btnSave
         '
         Me.btnSave.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnSave.Location = New System.Drawing.Point(290, 297)
+        Me.btnSave.Location = New System.Drawing.Point(275, 296)
         Me.btnSave.Name = "btnSave"
         Me.btnSave.Size = New System.Drawing.Size(87, 43)
         Me.btnSave.TabIndex = 1
         Me.btnSave.Text = "Save"
         Me.btnSave.UseVisualStyleBackColor = True
-        '
-        'txtfname
-        '
-        Me.txtfname.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtfname.Location = New System.Drawing.Point(118, 48)
-        Me.txtfname.Multiline = True
-        Me.txtfname.Name = "txtfname"
-        Me.txtfname.Size = New System.Drawing.Size(216, 30)
-        Me.txtfname.TabIndex = 2
         '
         'txtmi
         '
@@ -135,11 +127,22 @@ Partial Class frmUserAdd
         Me.Label5.TabIndex = 9
         Me.Label5.Text = "Password:"
         '
+        'txtfname
+        '
+        Me.txtfname.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtfname.Location = New System.Drawing.Point(118, 48)
+        Me.txtfname.Multiline = True
+        Me.txtfname.Name = "txtfname"
+        Me.txtfname.Size = New System.Drawing.Size(216, 30)
+        Me.txtfname.TabIndex = 2
+        '
         'frmUserAdd
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
+        Me.BackColor = System.Drawing.Color.FromArgb(CType(CType(150, Byte), Integer), CType(CType(130, Byte), Integer), CType(CType(100, Byte), Integer))
         Me.ClientSize = New System.Drawing.Size(422, 366)
+        Me.Controls.Add(Me.txtfname)
         Me.Controls.Add(Me.txtpword)
         Me.Controls.Add(Me.Label5)
         Me.Controls.Add(Me.txtusername)
@@ -148,7 +151,6 @@ Partial Class frmUserAdd
         Me.Controls.Add(Me.Label3)
         Me.Controls.Add(Me.txtmi)
         Me.Controls.Add(Me.Label2)
-        Me.Controls.Add(Me.txtfname)
         Me.Controls.Add(Me.btnSave)
         Me.Controls.Add(Me.Label1)
         Me.Name = "frmUserAdd"
@@ -159,7 +161,6 @@ Partial Class frmUserAdd
     End Sub
     Friend WithEvents Label1 As System.Windows.Forms.Label
     Friend WithEvents btnSave As System.Windows.Forms.Button
-    Friend WithEvents txtfname As System.Windows.Forms.TextBox
     Friend WithEvents txtmi As System.Windows.Forms.TextBox
     Friend WithEvents Label2 As System.Windows.Forms.Label
     Friend WithEvents txtlname As System.Windows.Forms.TextBox
@@ -168,4 +169,6 @@ Partial Class frmUserAdd
     Friend WithEvents Label4 As System.Windows.Forms.Label
     Friend WithEvents txtpword As System.Windows.Forms.TextBox
     Friend WithEvents Label5 As System.Windows.Forms.Label
+    Friend WithEvents BackgroundWorker1 As System.ComponentModel.BackgroundWorker
+    Friend WithEvents txtfname As TextBox
 End Class

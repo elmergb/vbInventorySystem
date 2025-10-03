@@ -25,8 +25,9 @@ Partial Class Homepage
         Me.pnlMain = New System.Windows.Forms.Panel()
         Me.btnUser = New System.Windows.Forms.Button()
         Me.btnAddItem = New System.Windows.Forms.Button()
-        Me.PictureBox1 = New System.Windows.Forms.PictureBox()
         Me.pnlItem = New System.Windows.Forms.Panel()
+        Me.PictureBox1 = New System.Windows.Forms.PictureBox()
+        Me.btnBorrowPage = New System.Windows.Forms.Button()
         Me.pnlMain.SuspendLayout()
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
@@ -34,6 +35,7 @@ Partial Class Homepage
         'pnlMain
         '
         Me.pnlMain.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.pnlMain.Controls.Add(Me.btnBorrowPage)
         Me.pnlMain.Controls.Add(Me.btnUser)
         Me.pnlMain.Controls.Add(Me.btnAddItem)
         Me.pnlMain.Controls.Add(Me.PictureBox1)
@@ -63,6 +65,15 @@ Partial Class Homepage
         Me.btnAddItem.Text = "Item"
         Me.btnAddItem.UseVisualStyleBackColor = True
         '
+        'pnlItem
+        '
+        Me.pnlItem.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.pnlItem.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.pnlItem.Location = New System.Drawing.Point(187, 0)
+        Me.pnlItem.Name = "pnlItem"
+        Me.pnlItem.Size = New System.Drawing.Size(959, 590)
+        Me.pnlItem.TabIndex = 1
+        '
         'PictureBox1
         '
         Me.PictureBox1.Image = Global.main.My.Resources.Resources._380543768_699505935537282_871741826798799703_n_removebg_preview
@@ -73,14 +84,15 @@ Partial Class Homepage
         Me.PictureBox1.TabIndex = 1
         Me.PictureBox1.TabStop = False
         '
-        'pnlItem
+        'btnBorrowPage
         '
-        Me.pnlItem.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.pnlItem.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.pnlItem.Location = New System.Drawing.Point(187, 0)
-        Me.pnlItem.Name = "pnlItem"
-        Me.pnlItem.Size = New System.Drawing.Size(959, 590)
-        Me.pnlItem.TabIndex = 1
+        Me.btnBorrowPage.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnBorrowPage.Location = New System.Drawing.Point(33, 283)
+        Me.btnBorrowPage.Name = "btnBorrowPage"
+        Me.btnBorrowPage.Size = New System.Drawing.Size(153, 54)
+        Me.btnBorrowPage.TabIndex = 4
+        Me.btnBorrowPage.Text = "Borrowed"
+        Me.btnBorrowPage.UseVisualStyleBackColor = True
         '
         'Homepage
         '
@@ -101,4 +113,5 @@ Partial Class Homepage
     Friend WithEvents PictureBox1 As System.Windows.Forms.PictureBox
     Friend WithEvents pnlItem As System.Windows.Forms.Panel
     Friend WithEvents btnUser As System.Windows.Forms.Button
+    Friend WithEvents btnBorrowPage As System.Windows.Forms.Button
 End Class
