@@ -6,6 +6,7 @@
     Private Sub btnAdd_Click(sender As Object, e As EventArgs) Handles btnAdd.Click
         dgvItemList.Tag = 0
         frmAddItem.ShowDialog()
+        frmAddItem.ItemID = 0
         'If Val(dgvItemList.Tag) = 0 Then
         '    MsgBox("Select a record ")
         'End If
@@ -23,4 +24,16 @@
     End Sub
 
 
+    Private Sub btnBorrow_Click(sender As System.Object, e As System.EventArgs) Handles btnBorrow.Click
+        frmBorrow.ShowDialog()
+    End Sub
+
+    Private Sub btnEdit_Click(sender As System.Object, e As System.EventArgs) Handles btnEdit.Click
+        If (dgvItemList.Tag) = 0 Then
+            MsgBox("Select a record to edit!", vbInformation)
+        Else
+            frmAddItem.ItemID = Val(dgvItemList.Tag)
+            frmAddItem.ShowDialog()
+        End If
+    End Sub
 End Class

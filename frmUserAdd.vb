@@ -1,23 +1,9 @@
 ﻿Public Class frmUserAdd
     Public Property UserID As Integer = 0
 
-
-    Public Function ValidateAllTextboxes() As Boolean
-        For Each text As Control In Me.Controls
-            If TypeOf text Is TextBox Then
-                Dim txt As TextBox = CType(text, TextBox)
-                If String.IsNullOrWhiteSpace(txt.Text) Then
-                    MessageBox.Show("Please fill out all fields.", "Missing Input", MessageBoxButtons.OK, MessageBoxIcon.Warning)
-                    txt.Focus()
-                    Return False '
-                End If
-            End If
-        Next
-        Return True
-    End Function
     Private Sub btnSave_Click(sender As System.Object, e As System.EventArgs) Handles btnSave.Click
         Dim cmd As Odbc.OdbcCommand
-        If ValidateAllTextboxes() = False Then
+        If ValidateAllTextboxes(Me) = False Then
             Return
         End If
         If UserID = 0 Then

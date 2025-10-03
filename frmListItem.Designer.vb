@@ -33,6 +33,7 @@ Partial Class frmListItem
         Me.btnEdit = New System.Windows.Forms.Button()
         Me.Panel1 = New System.Windows.Forms.Panel()
         Me.Label1 = New System.Windows.Forms.Label()
+        Me.btnBorrow = New System.Windows.Forms.Button()
         CType(Me.dgvItemList, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.Panel1.SuspendLayout()
         Me.SuspendLayout()
@@ -135,12 +136,23 @@ Partial Class frmListItem
         Me.Label1.TabIndex = 4
         Me.Label1.Text = "Item List"
         '
+        'btnBorrow
+        '
+        Me.btnBorrow.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnBorrow.Location = New System.Drawing.Point(800, 357)
+        Me.btnBorrow.Name = "btnBorrow"
+        Me.btnBorrow.Size = New System.Drawing.Size(94, 43)
+        Me.btnBorrow.TabIndex = 5
+        Me.btnBorrow.Text = "Borrow"
+        Me.btnBorrow.UseVisualStyleBackColor = True
+        '
         'frmListItem
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.AutoScroll = True
         Me.ClientSize = New System.Drawing.Size(951, 759)
+        Me.Controls.Add(Me.btnBorrow)
         Me.Controls.Add(Me.Panel1)
         Me.Controls.Add(Me.btnEdit)
         Me.Controls.Add(Me.btnAdd)
@@ -163,4 +175,5 @@ Partial Class frmListItem
     Friend WithEvents Column7 As DataGridViewTextBoxColumn
     Friend WithEvents Panel1 As Panel
     Friend WithEvents Label1 As Label
+    Friend WithEvents btnBorrow As System.Windows.Forms.Button
 End Class

@@ -158,6 +158,7 @@ Partial Class frmBorrow
         Me.dtpBorrowed.Name = "dtpBorrowed"
         Me.dtpBorrowed.Size = New System.Drawing.Size(200, 20)
         Me.dtpBorrowed.TabIndex = 13
+        Me.dtpBorrowed.Value = New Date(2025, 10, 3, 14, 59, 32, 0)
         '
         'txtRemarks
         '

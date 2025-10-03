@@ -32,7 +32,6 @@ Partial Class frmUserList
         Me.btnAdd = New System.Windows.Forms.Button()
         Me.btnEdit = New System.Windows.Forms.Button()
         Me.btnDelete = New System.Windows.Forms.Button()
-        Me.btnBorrow = New System.Windows.Forms.Button()
         CType(Me.dgvUserList, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
@@ -129,22 +128,11 @@ Partial Class frmUserList
         Me.btnDelete.Text = "Delete"
         Me.btnDelete.UseVisualStyleBackColor = True
         '
-        'btnBorrow
-        '
-        Me.btnBorrow.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnBorrow.Location = New System.Drawing.Point(703, 283)
-        Me.btnBorrow.Name = "btnBorrow"
-        Me.btnBorrow.Size = New System.Drawing.Size(87, 43)
-        Me.btnBorrow.TabIndex = 4
-        Me.btnBorrow.Text = "Borrow"
-        Me.btnBorrow.UseVisualStyleBackColor = True
-        '
         'frmUserList
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(989, 540)
-        Me.Controls.Add(Me.btnBorrow)
         Me.Controls.Add(Me.btnDelete)
         Me.Controls.Add(Me.btnEdit)
         Me.Controls.Add(Me.btnAdd)
@@ -165,5 +153,4 @@ Partial Class frmUserList
     Friend WithEvents Column3 As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents Column4 As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents Column5 As System.Windows.Forms.DataGridViewTextBoxColumn
-    Friend WithEvents btnBorrow As System.Windows.Forms.Button
 End Class

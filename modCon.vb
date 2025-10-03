@@ -32,4 +32,18 @@ Module modCon
         cb.ValueMember = val
         adapter.Dispose()
     End Sub
+
+Public Function ValidateAllTextboxes(frm As Form) As Boolean
+        For Each ctrl As Control In frm.Controls
+            If TypeOf ctrl Is TextBox Then
+                Dim txt As TextBox = CType(ctrl, TextBox)
+                If String.IsNullOrWhiteSpace(txt.Text) Then
+                    MessageBox.Show("Please fill out all fields.", "Missing Input", MessageBoxButtons.OK, MessageBoxIcon.Warning)
+                    txt.Focus()
+                    Return False
+                End If
+            End If
+        Next
+        Return True
+    End Function
 End Module
