@@ -29,7 +29,7 @@
             Else
                 cmd = New Odbc.OdbcCommand("INSERT INTO tblborrow (ItemID, BorrowerName, QuantityBorrowed, Contact, Purpose, DateBorrowed, Remarks) VALUES (?,?,?,?,?,?,?)", con)
                 With cmd.Parameters
-                    .AddWithValue("?", CInt(cbItemList.SelectedValue))
+                    .AddWithValue("?",(cbItemList.SelectedValue))
                     .AddWithValue("?", Trim(txtBorrowerName.Text))
                     .AddWithValue("?", CInt(nupQuantity.Value))
                     .AddWithValue("?", Trim(txtContact.Text))
