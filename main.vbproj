@@ -96,6 +96,12 @@
     <Compile Include="frmListItem.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="frmReturnEntry.Designer.vb">
+      <DependentUpon>frmReturnEntry.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmReturnEntry.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="frmUserAdd.Designer.vb">
       <DependentUpon>frmUserAdd.vb</DependentUpon>
     </Compile>
@@ -150,6 +156,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmListItem.resx">
       <DependentUpon>frmListItem.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmReturnEntry.resx">
+      <DependentUpon>frmReturnEntry.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmUserAdd.resx">
       <DependentUpon>frmUserAdd.vb</DependentUpon>

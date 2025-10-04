@@ -1,6 +1,7 @@
 ﻿Public Class frmListItem
     Private Sub frmListItem_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         Call data_loader("SELECT * FROM tblitemlist", dgvItemList)
+        dgvItemList.AutoGenerateColumns = False
     End Sub
 
     Private Sub btnAdd_Click(sender As Object, e As EventArgs) Handles btnAdd.Click
@@ -19,7 +20,7 @@
             frmAddItem.cbCategory.Text = dgvItemList.Item(2, e.RowIndex).Value
             frmAddItem.cbLocation.Text = dgvItemList.Item(3, e.RowIndex).Value
             frmAddItem.nupQuantity.Value = dgvItemList.Item(4, e.RowIndex).Value
-            frmAddItem.txtRemarks.Text = dgvItemList.Item(5, e.RowIndex).Value
+            frmAddItem.txtRemarks.Text = dgvItemList.Item(6, e.RowIndex).Value
         End If
     End Sub
 
@@ -37,4 +38,7 @@
         End If
     End Sub
 
+    Private Sub dgvItemList_CellContentClick(sender As System.Object, e As System.Windows.Forms.DataGridViewCellEventArgs) Handles dgvItemList.CellContentClick
+
+    End Sub
 End Class

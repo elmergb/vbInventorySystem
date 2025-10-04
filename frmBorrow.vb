@@ -20,6 +20,7 @@
             If result IsNot Nothing Then
                 availableQuantity = CInt(result)
             End If
+
             Dim reqQuantity As Integer = nupQuantity.Value
             Dim isValid As Boolean = True
 

@@ -42,7 +42,7 @@ Partial Class Homepage
         Me.pnlMain.Dock = System.Windows.Forms.DockStyle.Left
         Me.pnlMain.Location = New System.Drawing.Point(0, 0)
         Me.pnlMain.Name = "pnlMain"
-        Me.pnlMain.Size = New System.Drawing.Size(187, 590)
+        Me.pnlMain.Size = New System.Drawing.Size(187, 673)
         Me.pnlMain.TabIndex = 0
         '
         'btnBorrowPage
@@ -91,14 +91,14 @@ Partial Class Homepage
         Me.pnlItem.Dock = System.Windows.Forms.DockStyle.Fill
         Me.pnlItem.Location = New System.Drawing.Point(187, 0)
         Me.pnlItem.Name = "pnlItem"
-        Me.pnlItem.Size = New System.Drawing.Size(959, 590)
+        Me.pnlItem.Size = New System.Drawing.Size(1182, 673)
         Me.pnlItem.TabIndex = 1
         '
         'Homepage
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(1146, 590)
+        Me.ClientSize = New System.Drawing.Size(1369, 673)
         Me.Controls.Add(Me.pnlItem)
         Me.Controls.Add(Me.pnlMain)
         Me.Name = "Homepage"
