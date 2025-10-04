@@ -171,6 +171,7 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
+    <None Include="ClassDiagram1.cd" />
     <None Include="My Project\Application.myapp">
       <Generator>MyApplicationCodeGenerator</Generator>
       <LastGenOutput>Application.Designer.vb</LastGenOutput>
@@ -188,6 +189,11 @@
     <None Include="Resources\next %281%29.png" />
     <None Include="Resources\profile.png" />
     <None Include="Resources\packaging.png" />
+    <None Include="Resources\CSTA.jpg" />
+    <None Include="Resources\CSTA-removebg-preview.png" />
+    <None Include="Resources\person_24dp_8C1A10_FILL0_wght400_GRAD0_opsz24.png" />
+    <None Include="Resources\lock_24dp_8C1A10_FILL0_wght400_GRAD0_opsz24.png" />
+    <None Include="Resources\hide.png" />
     <Content Include="StyleSheetLogin.css" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />

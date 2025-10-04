@@ -34,6 +34,7 @@ Partial Class frmBorrowerList
         Me.dgvBorrowerList.Location = New System.Drawing.Point(24, 37)
         Me.dgvBorrowerList.Name = "dgvBorrowerList"
         Me.dgvBorrowerList.ReadOnly = True
+        Me.dgvBorrowerList.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
         Me.dgvBorrowerList.Size = New System.Drawing.Size(866, 483)
         Me.dgvBorrowerList.TabIndex = 0
         '

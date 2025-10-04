@@ -23,7 +23,23 @@ main
 	<summary>
   Looks up a localized resource of type System.Drawing.Bitmap.
 </summary>
+</member><member name="P:main.My.Resources.Resources.CSTA">
+	<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member><member name="P:main.My.Resources.Resources.CSTA_removebg_preview">
+	<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member><member name="P:main.My.Resources.Resources.hide">
+	<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
 </member><member name="P:main.My.Resources.Resources.images_removebg_preview">
+	<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member><member name="P:main.My.Resources.Resources.lock_24dp_8C1A10_FILL0_wght400_GRAD0_opsz24">
 	<summary>
   Looks up a localized resource of type System.Drawing.Bitmap.
 </summary>
@@ -32,6 +48,10 @@ main
   Looks up a localized resource of type System.Drawing.Bitmap.
 </summary>
 </member><member name="P:main.My.Resources.Resources.packaging">
+	<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member><member name="P:main.My.Resources.Resources.person_24dp_8C1A10_FILL0_wght400_GRAD0_opsz24">
 	<summary>
   Looks up a localized resource of type System.Drawing.Bitmap.
 </summary>

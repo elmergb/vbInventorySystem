@@ -21,7 +21,6 @@ Module modCon
         dgv.DataSource = dtable
         adapter.Dispose()
     End Sub
-
     Public Sub cb_loader(sql As String, cb As ComboBox, mem As String, val As String)
         Dim adapter As OdbcDataAdapter
         Dim dtable As New DataTable
@@ -33,7 +32,8 @@ Module modCon
         adapter.Dispose()
     End Sub
 
-Public Function ValidateAllTextboxes(frm As Form) As Boolean
+    Public Function ValidateAllTextboxes(frm As Form) As Boolean
+
         For Each ctrl As Control In frm.Controls
             If TypeOf ctrl Is TextBox Then
                 Dim txt As TextBox = CType(ctrl, TextBox)

@@ -22,6 +22,8 @@ Partial Class frmListItem
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
+        Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Me.dgvItemList = New System.Windows.Forms.DataGridView()
         Me.Column1 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Column2 = New System.Windows.Forms.DataGridViewTextBoxColumn()
@@ -42,17 +44,31 @@ Partial Class frmListItem
         '
         Me.dgvItemList.AllowUserToAddRows = False
         Me.dgvItemList.AllowUserToDeleteRows = False
+        Me.dgvItemList.AllowUserToResizeColumns = False
+        DataGridViewCellStyle1.BackColor = System.Drawing.Color.White
+        DataGridViewCellStyle1.ForeColor = System.Drawing.Color.Black
+        Me.dgvItemList.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle1
         Me.dgvItemList.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill
+        Me.dgvItemList.BorderStyle = System.Windows.Forms.BorderStyle.None
+        Me.dgvItemList.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.[Single]
+        DataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Control
+        DataGridViewCellStyle2.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText
+        DataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight
+        DataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.dgvItemList.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle2
         Me.dgvItemList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.dgvItemList.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.Column1, Me.Column2, Me.Column3, Me.Column4, Me.Column5, Me.Column7})
         Me.dgvItemList.ImeMode = System.Windows.Forms.ImeMode.NoControl
-        Me.dgvItemList.Location = New System.Drawing.Point(12, 148)
+        Me.dgvItemList.Location = New System.Drawing.Point(22, 137)
         Me.dgvItemList.Name = "dgvItemList"
         Me.dgvItemList.ReadOnly = True
         Me.dgvItemList.RowHeadersVisible = False
         Me.dgvItemList.RowHeadersWidth = 50
         Me.dgvItemList.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
-        Me.dgvItemList.Size = New System.Drawing.Size(760, 471)
+        Me.dgvItemList.Size = New System.Drawing.Size(820, 406)
         Me.dgvItemList.TabIndex = 0
         '
         'Column1
@@ -101,7 +117,7 @@ Partial Class frmListItem
         '
         'btnAdd
         '
-        Me.btnAdd.Location = New System.Drawing.Point(800, 240)
+        Me.btnAdd.Location = New System.Drawing.Point(871, 257)
         Me.btnAdd.Name = "btnAdd"
         Me.btnAdd.Size = New System.Drawing.Size(94, 44)
         Me.btnAdd.TabIndex = 1
@@ -110,7 +126,7 @@ Partial Class frmListItem
         '
         'btnEdit
         '
-        Me.btnEdit.Location = New System.Drawing.Point(800, 307)
+        Me.btnEdit.Location = New System.Drawing.Point(871, 307)
         Me.btnEdit.Name = "btnEdit"
         Me.btnEdit.Size = New System.Drawing.Size(94, 44)
         Me.btnEdit.TabIndex = 2
@@ -119,12 +135,14 @@ Partial Class frmListItem
         '
         'Panel1
         '
-        Me.Panel1.BackColor = System.Drawing.Color.SeaShell
+        Me.Panel1.BackColor = System.Drawing.Color.Maroon
         Me.Panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
         Me.Panel1.Controls.Add(Me.Label1)
-        Me.Panel1.Location = New System.Drawing.Point(12, 12)
+        Me.Panel1.Dock = System.Windows.Forms.DockStyle.Top
+        Me.Panel1.ForeColor = System.Drawing.SystemColors.ControlLightLight
+        Me.Panel1.Location = New System.Drawing.Point(0, 0)
         Me.Panel1.Name = "Panel1"
-        Me.Panel1.Size = New System.Drawing.Size(760, 62)
+        Me.Panel1.Size = New System.Drawing.Size(1002, 62)
         Me.Panel1.TabIndex = 3
         '
         'Label1
@@ -139,7 +157,7 @@ Partial Class frmListItem
         'btnBorrow
         '
         Me.btnBorrow.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnBorrow.Location = New System.Drawing.Point(800, 357)
+        Me.btnBorrow.Location = New System.Drawing.Point(871, 357)
         Me.btnBorrow.Name = "btnBorrow"
         Me.btnBorrow.Size = New System.Drawing.Size(94, 43)
         Me.btnBorrow.TabIndex = 5
@@ -151,7 +169,7 @@ Partial Class frmListItem
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.AutoScroll = True
-        Me.ClientSize = New System.Drawing.Size(951, 759)
+        Me.ClientSize = New System.Drawing.Size(1002, 591)
         Me.Controls.Add(Me.btnBorrow)
         Me.Controls.Add(Me.Panel1)
         Me.Controls.Add(Me.btnEdit)

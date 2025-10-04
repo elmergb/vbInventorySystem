@@ -35,8 +35,8 @@ Partial Class frmBorrow
         Me.cbItemList = New System.Windows.Forms.ComboBox()
         Me.txtBorrowerName = New System.Windows.Forms.TextBox()
         Me.txtPurpose = New System.Windows.Forms.TextBox()
-        Me.dtpBorrowed = New System.Windows.Forms.DateTimePicker()
         Me.txtRemarks = New System.Windows.Forms.TextBox()
+        Me.dtpBorrowed = New System.Windows.Forms.DateTimePicker()
         CType(Me.nupQuantity, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
@@ -152,14 +152,6 @@ Partial Class frmBorrow
         Me.txtPurpose.Size = New System.Drawing.Size(174, 30)
         Me.txtPurpose.TabIndex = 12
         '
-        'dtpBorrowed
-        '
-        Me.dtpBorrowed.Location = New System.Drawing.Point(308, 159)
-        Me.dtpBorrowed.Name = "dtpBorrowed"
-        Me.dtpBorrowed.Size = New System.Drawing.Size(200, 20)
-        Me.dtpBorrowed.TabIndex = 13
-        Me.dtpBorrowed.Value = New Date(2025, 10, 3, 14, 59, 32, 0)
-        '
         'txtRemarks
         '
         Me.txtRemarks.Location = New System.Drawing.Point(308, 240)
@@ -168,13 +160,22 @@ Partial Class frmBorrow
         Me.txtRemarks.Size = New System.Drawing.Size(187, 30)
         Me.txtRemarks.TabIndex = 14
         '
+        'dtpBorrowed
+        '
+        Me.dtpBorrowed.CustomFormat = "MM/dd/yyyy hh:mm tt"
+        Me.dtpBorrowed.Format = System.Windows.Forms.DateTimePickerFormat.Custom
+        Me.dtpBorrowed.Location = New System.Drawing.Point(308, 169)
+        Me.dtpBorrowed.Name = "dtpBorrowed"
+        Me.dtpBorrowed.Size = New System.Drawing.Size(200, 20)
+        Me.dtpBorrowed.TabIndex = 15
+        '
         'frmBorrow
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(524, 510)
-        Me.Controls.Add(Me.txtRemarks)
         Me.Controls.Add(Me.dtpBorrowed)
+        Me.Controls.Add(Me.txtRemarks)
         Me.Controls.Add(Me.txtPurpose)
         Me.Controls.Add(Me.txtBorrowerName)
         Me.Controls.Add(Me.cbItemList)
@@ -208,6 +209,6 @@ Partial Class frmBorrow
     Friend WithEvents cbItemList As System.Windows.Forms.ComboBox
     Friend WithEvents txtBorrowerName As System.Windows.Forms.TextBox
     Friend WithEvents txtPurpose As System.Windows.Forms.TextBox
-    Friend WithEvents dtpBorrowed As System.Windows.Forms.DateTimePicker
     Friend WithEvents txtRemarks As System.Windows.Forms.TextBox
+    Friend WithEvents dtpBorrowed As System.Windows.Forms.DateTimePicker
 End Class

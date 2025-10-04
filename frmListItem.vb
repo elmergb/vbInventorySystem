@@ -36,4 +36,5 @@
             frmAddItem.ShowDialog()
         End If
     End Sub
+
 End Class

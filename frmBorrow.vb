@@ -1,7 +1,7 @@
 ﻿Public Class frmBorrow
 
 
-    Private Sub DateTimePicker1_ValueChanged(sender As System.Object, e As System.EventArgs) Handles dtpBorrowed.ValueChanged
+    Private Sub DateTimePicker1_ValueChanged(sender As System.Object, e As System.EventArgs)
 
     End Sub
 
@@ -20,36 +20,44 @@
             If result IsNot Nothing Then
                 availableQuantity = CInt(result)
             End If
-
             Dim reqQuantity As Integer = nupQuantity.Value
+            Dim isValid As Boolean = True
+
             If reqQuantity > availableQuantity Then
-                MsgBox("Not enough available stock! Only" & availableQuantity & "left", vbInformation)
+                MsgBox("Not enough available stock! Only " & availableQuantity & " left", vbInformation)
+                isValid = False
+            Else
+                cmd = New Odbc.OdbcCommand("INSERT INTO tblborrow (ItemID, BorrowerName, QuantityBorrowed, Contact, Purpose, DateBorrowed, Remarks) VALUES (?,?,?,?,?,?,?)", con)
+                With cmd.Parameters
+                    .AddWithValue("?", CInt(cbItemList.SelectedValue))
+                    .AddWithValue("?", Trim(txtBorrowerName.Text))
+                    .AddWithValue("?", CInt(nupQuantity.Value))
+                    .AddWithValue("?", Trim(txtContact.Text))
+                    .AddWithValue("?", Trim(txtPurpose.Text))
+                    .AddWithValue("?", dtpBorrowed.Value.ToString("yyyy-MM-dd HH:mm:ss"))
+                    .AddWithValue("?", Trim(txtRemarks.Text))
+                End With
+                cmd.ExecuteNonQuery()
+
+                cmd = New Odbc.OdbcCommand("UPDATE tblitemlist SET ItemQuantity = ItemQuantity - ? WHERE ItemID = ?", con)
+                With cmd.Parameters
+                    .AddWithValue("?", CInt(nupQuantity.Value))
+                    .AddWithValue("?", cbItemList.SelectedValue)
+                End With
+                cmd.ExecuteNonQuery()
+
+                Call data_loader("SELECT * FROM vw_borrowing", frmBorrowerList.dgvBorrowerList)
+                MsgBox("Borrowed successfully!")
             End If
-
-            cmd = New Odbc.OdbcCommand("INSERT INTO tblborrow (ItemID, BorrowerName, QuantityBorrowed, Contact, Purpose, DateBorrowed, Remarks) VALUES (?,?,?,?,?,?,?)", con)
-            With cmd.Parameters
-                .AddWithValue("?", CInt(cbItemList.SelectedValue))
-                .AddWithValue("?", Trim(txtBorrowerName.Text))
-                .AddWithValue("?", CInt(nupQuantity.Value))
-                .AddWithValue("?", Trim(txtContact.Text))
-                .AddWithValue("?", Trim(txtPurpose.Text))
-                .AddWithValue("?", Trim(dtpBorrowed.Value))
-                .AddWithValue("?", Trim(txtRemarks.Text))
-            End With
-            cmd.ExecuteNonQuery()
-
-            cmd = New Odbc.OdbcCommand("UPDATE tblitemlist SET itemQuantity = ItemQuantity - ? WHERE itemID =?", con)
-            With cmd.Parameters
-                .AddWithValue("?", CInt(nupQuantity.Value))
-                .AddWithValue("?", CInt(cbItemList.SelectedValue))
-            End With
-            cmd.ExecuteNonQuery()
-            Call data_loader("SELECT * FROM vw_borrowing", frmBorrowerList.dgvBorrowerList)
-            MsgBox("Borrowed")
         Catch ex As Exception
             MsgBox(ex.Message.ToString)
         Finally
             GC.Collect()
         End Try
+
+    End Sub
+
+    Private Sub dtpBorrowed_ValueChanged(sender As System.Object, e As System.EventArgs) Handles dtpBorrowed.ValueChanged
+
     End Sub
 End Class
