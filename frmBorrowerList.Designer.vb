@@ -43,17 +43,17 @@ Partial Class frmBorrowerList
         Me.dgvBorrowerList.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill
         Me.dgvBorrowerList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.dgvBorrowerList.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.Column1, Me.Column2, Me.Column3, Me.BorrowerName, Me.Column4, Me.Column5, Me.Column6, Me.Column7, Me.Column8})
-        Me.dgvBorrowerList.Location = New System.Drawing.Point(12, 114)
+        Me.dgvBorrowerList.Location = New System.Drawing.Point(79, 162)
         Me.dgvBorrowerList.Name = "dgvBorrowerList"
         Me.dgvBorrowerList.ReadOnly = True
         Me.dgvBorrowerList.RowHeadersVisible = False
         Me.dgvBorrowerList.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
-        Me.dgvBorrowerList.Size = New System.Drawing.Size(697, 414)
+        Me.dgvBorrowerList.Size = New System.Drawing.Size(747, 414)
         Me.dgvBorrowerList.TabIndex = 0
         '
         'btnReturn
         '
-        Me.btnReturn.Location = New System.Drawing.Point(757, 379)
+        Me.btnReturn.Location = New System.Drawing.Point(920, 433)
         Me.btnReturn.Name = "btnReturn"
         Me.btnReturn.Size = New System.Drawing.Size(98, 55)
         Me.btnReturn.TabIndex = 1
