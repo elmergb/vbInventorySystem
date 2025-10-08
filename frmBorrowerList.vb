@@ -10,6 +10,7 @@
         If dgvBorrowerList.Columns.Count = 0 Then
             MsgBox("Columns count = 0 (no columns yet)")
         Else
+
             For Each col As DataGridViewColumn In dgvBorrowerList.Columns
                 sb.AppendLine(col.Index & " - " & col.HeaderText & " (Name: " & col.Name & ")")
             Next
