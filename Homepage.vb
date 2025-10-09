@@ -28,6 +28,10 @@
     End Sub
 
     Private Sub btnBorrowPage_Click(sender As System.Object, e As System.EventArgs) Handles btnBorrowPage.Click
-        LoadForm(New frmBorrowerList)
+        LoadForm(New frmBorrowerList())
+    End Sub
+
+    Private Sub btnReturnList_Click(sender As System.Object, e As System.EventArgs) Handles btnReturnList.Click
+        LoadForm(New frmReturnList())
     End Sub
 End Class
