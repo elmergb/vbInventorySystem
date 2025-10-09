@@ -57,7 +57,7 @@ Partial Class frmDashboard
         '
         'TextBox1
         '
-        Me.TextBox1.Location = New System.Drawing.Point(1151, 163)
+        Me.TextBox1.Location = New System.Drawing.Point(1147, 164)
         Me.TextBox1.Multiline = True
         Me.TextBox1.Name = "TextBox1"
         Me.TextBox1.Size = New System.Drawing.Size(100, 20)
@@ -187,10 +187,10 @@ Partial Class frmDashboard
         Me.AutoScroll = True
         Me.ClientSize = New System.Drawing.Size(1317, 589)
         Me.Controls.Add(Me.Label2)
+        Me.Controls.Add(Me.TextBox1)
         Me.Controls.Add(Me.Panel4)
         Me.Controls.Add(Me.Panel3)
         Me.Controls.Add(Me.Panel2)
-        Me.Controls.Add(Me.TextBox1)
         Me.Controls.Add(Me.Panel1)
         Me.Controls.Add(Me.GroupBox1)
         Me.Name = "frmDashboard"

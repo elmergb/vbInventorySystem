@@ -70,7 +70,7 @@ Partial Class Homepage
         Me.btnAddItem.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btnAddItem.Location = New System.Drawing.Point(33, 175)
         Me.btnAddItem.Name = "btnAddItem"
-        Me.btnAddItem.Size = New System.Drawing.Size(153, 54)
+        Me.btnAddItem.Size = New System.Drawing.Size(132, 42)
         Me.btnAddItem.TabIndex = 2
         Me.btnAddItem.Text = "Item"
         Me.btnAddItem.UseVisualStyleBackColor = True
