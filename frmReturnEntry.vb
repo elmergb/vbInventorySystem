@@ -27,9 +27,9 @@
 
             ' Add returned quantity to current stock
             Dim newQty = currentQty + qtyReturned
-
+            newQty = nupQuantityR.Value
             ' Update item quantity in stock
-            cmd = New Odbc.OdbcCommand("UPDATE tblitemlist SET ItemQuantity = ? WHERE ItemID = ?", con)
+            cmd = New Odbc.OdbcCommand("UPDATE tblitemlist SET ItemQuantity = ?  WHERE ItemID = ?", con)
             With cmd.Parameters
                 .AddWithValue("?", newQty)
                 .AddWithValue("?", itemID)

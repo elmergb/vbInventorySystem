@@ -6,75 +6,62 @@ main
 </name>
 </assembly>
 <members>
-<member name="T:main.My.Resources.Resources">
-<summary>
-  A strongly-typed resource class, for looking up localized strings, etc.
-</summary>
-</member>
 <member name="P:main.My.Resources.Resources.ResourceManager">
-<summary>
+	<summary>
   Returns the cached ResourceManager instance used by this class.
 </summary>
-</member>
-<member name="P:main.My.Resources.Resources.Culture">
-<summary>
+</member><member name="P:main.My.Resources.Resources.Culture">
+	<summary>
   Overrides the current thread's CurrentUICulture property for all
   resource lookups using this strongly typed resource class.
 </summary>
-</member>
-<member name="P:main.My.Resources.Resources._380543768_699505935537282_871741826798799703_n_removebg_preview">
-<summary>
+</member><member name="P:main.My.Resources.Resources._380543768_699505935537282_871741826798799703_n_removebg_preview">
+	<summary>
   Looks up a localized resource of type System.Drawing.Bitmap.
 </summary>
-</member>
-<member name="P:main.My.Resources.Resources._83275946_134612088267215_4138817785140828083_n_removebg_preview">
-<summary>
+</member><member name="P:main.My.Resources.Resources._83275946_134612088267215_4138817785140828083_n_removebg_preview">
+	<summary>
   Looks up a localized resource of type System.Drawing.Bitmap.
 </summary>
-</member>
-<member name="P:main.My.Resources.Resources.CSTA">
-<summary>
+</member><member name="P:main.My.Resources.Resources.CSTA">
+	<summary>
   Looks up a localized resource of type System.Drawing.Bitmap.
 </summary>
-</member>
-<member name="P:main.My.Resources.Resources.CSTA_removebg_preview">
-<summary>
+</member><member name="P:main.My.Resources.Resources.CSTA_removebg_preview">
+	<summary>
   Looks up a localized resource of type System.Drawing.Bitmap.
 </summary>
-</member>
-<member name="P:main.My.Resources.Resources.hide">
-<summary>
+</member><member name="P:main.My.Resources.Resources.hide">
+	<summary>
   Looks up a localized resource of type System.Drawing.Bitmap.
 </summary>
-</member>
-<member name="P:main.My.Resources.Resources.images_removebg_preview">
-<summary>
+</member><member name="P:main.My.Resources.Resources.images_removebg_preview">
+	<summary>
   Looks up a localized resource of type System.Drawing.Bitmap.
 </summary>
-</member>
-<member name="P:main.My.Resources.Resources.lock_24dp_8C1A10_FILL0_wght400_GRAD0_opsz24">
-<summary>
+</member><member name="P:main.My.Resources.Resources.lock_24dp_8C1A10_FILL0_wght400_GRAD0_opsz24">
+	<summary>
   Looks up a localized resource of type System.Drawing.Bitmap.
 </summary>
-</member>
-<member name="P:main.My.Resources.Resources.next__1_">
-<summary>
+</member><member name="P:main.My.Resources.Resources.next__1_">
+	<summary>
   Looks up a localized resource of type System.Drawing.Bitmap.
 </summary>
-</member>
-<member name="P:main.My.Resources.Resources.packaging">
-<summary>
+</member><member name="P:main.My.Resources.Resources.packaging">
+	<summary>
   Looks up a localized resource of type System.Drawing.Bitmap.
 </summary>
-</member>
-<member name="P:main.My.Resources.Resources.person_24dp_8C1A10_FILL0_wght400_GRAD0_opsz24">
-<summary>
+</member><member name="P:main.My.Resources.Resources.person_24dp_8C1A10_FILL0_wght400_GRAD0_opsz24">
+	<summary>
   Looks up a localized resource of type System.Drawing.Bitmap.
 </summary>
-</member>
-<member name="P:main.My.Resources.Resources.profile">
-<summary>
+</member><member name="P:main.My.Resources.Resources.profile">
+	<summary>
   Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member><member name="T:main.My.Resources.Resources">
+	<summary>
+  A strongly-typed resource class, for looking up localized strings, etc.
 </summary>
 </member>
 </members>
