@@ -85,11 +85,11 @@ Partial Class frmReturnEntry
         'Label6
         '
         Me.Label6.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label6.Location = New System.Drawing.Point(349, 143)
+        Me.Label6.Location = New System.Drawing.Point(349, 153)
         Me.Label6.Name = "Label6"
         Me.Label6.Size = New System.Drawing.Size(149, 23)
         Me.Label6.TabIndex = 23
-        Me.Label6.Text = "Time Borrowed"
+        Me.Label6.Text = "Time Returned"
         '
         'Label5
         '
