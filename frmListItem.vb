@@ -29,14 +29,7 @@
 
 
     Private Sub btnBorrow_Click(sender As System.Object, e As System.EventArgs) Handles btnBorrow.Click
-        If frmBorrowerList.dgvBorrowerList.CurrentRow IsNot Nothing Then
-            Dim f As New frmReturnEntry
-            f.BorrowID = CInt(frmBorrowerList.dgvBorrowerList.Item("BorrowID", frmBorrowerList.dgvBorrowerList.CurrentRow.Index).Value)
-            f.ItemID = CInt(frmBorrowerList.dgvBorrowerList.Item("ItemID", frmBorrowerList.dgvBorrowerList.CurrentRow.Index).Value)
-            f.ShowDialog()
-        Else
-            MsgBox("Please select a record first!", vbInformation)
-        End If
+        frmBorrow.ShowDialog()
     End Sub
 
     Private Sub btnEdit_Click(sender As System.Object, e As System.EventArgs) Handles btnEdit.Click

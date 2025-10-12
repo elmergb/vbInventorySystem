@@ -38,23 +38,14 @@
     End Sub
 
     Private Sub btnReturn_Click(sender As System.Object, e As System.EventArgs) Handles btnReturn.Click
-        'If Val(dgvBorrowerList.Tag) = 0 Then
-        '    MsgBox("Select a record to return!")
-        'Else
-        '    frmReturnEntry.ShowDialog()
-        'End If
-        If dgvBorrowerList.CurrentRow Is Nothing Then
-            MsgBox("Please select a record to return.", vbInformation)
-            Exit Sub
+        If (dgvBorrowerList.Tag) = 0 Then
+            MsgBox("Select a record to edit!", vbInformation)
+        Else
+            frmReturnEntry.ItemID = Val(dgvBorrowerList.Item(0, dgvBorrowerList.CurrentRow.Index).Value)
+            frmReturnEntry.BorrowID = Val(dgvBorrowerList.Item(1, dgvBorrowerList.CurrentRow.Index).Value)
+            frmReturnEntry.ShowDialog()
         End If
 
-        Dim borrowID As Integer = Val(dgvBorrowerList.Item(1, dgvBorrowerList.CurrentRow.Index).Value)
-        Dim itemID As Integer = Val(dgvBorrowerList.Item(0, dgvBorrowerList.CurrentRow.Index).Value)
-        Dim qtyBorrowed As Integer = Val(dgvBorrowerList.Item(4, dgvBorrowerList.CurrentRow.Index).Value)
-
-        Dim frm As New frmReturnEntry()
-
-        frm.ShowDialog()
     End Sub
 
     Private Sub dgvBorrowerList_CellContentClick(sender As System.Object, e As System.Windows.Forms.DataGridViewCellEventArgs) Handles dgvBorrowerList.CellContentClick
