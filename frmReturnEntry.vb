@@ -13,63 +13,57 @@
         Dim cmd As Odbc.OdbcCommand
 
         Try
-            ' Validate ComboBox selection
+            ' 1️⃣ Validate selection
             If cbItemListR.SelectedValue Is Nothing Then
-                    MsgBox("Please select an item first.", vbExclamation)
-                    Exit Sub
-                End If
-
-            ' Validate BorrowerList and selection
-            'If frmBorrowerList Is Nothing OrElse frmBorrowerList.dgvBorrowerList.CurrentRow Is Nothing Then
-            '    MsgBox("No borrower record selected.", vbExclamation)
-            '    Exit Sub
-            'End If
+                MsgBox("Please select an item first.", vbExclamation)
+                Exit Sub
+            End If
 
             Dim qtyReturned As Integer = CInt(nupQuantityR.Value)
             Dim currentQty As Integer = 0
 
-            ' Update item quantity in stock
-            Dim newQty As Integer = currentQty + qtyReturned
-            cmd = New Odbc.OdbcCommand("SELECT ItemQuantity FROM tblItemList WHERE ItemID = ?", con)
-            cmd.Parameters.AddWithValue("?", ItemID)
+            ' 2️⃣ Get current stock
+            cmd = New Odbc.OdbcCommand("SELECT ItemQuantity FROM tblitemlist WHERE ItemID = ?", con)
+            cmd.Parameters.AddWithValue("?", cbItemListR.SelectedValue)
             Dim result = cmd.ExecuteScalar()
 
-            If result IsNot Nothing Then
+            If result IsNot Nothing AndAlso Not IsDBNull(result) Then
                 currentQty = CInt(result)
             End If
 
-            cmd = New Odbc.OdbcCommand("UPDATE tblitemlist SET ItemQuantity = ? WHERE ItemID =?", con)
+            ' 3️⃣ Compute new quantity
+            Dim newQty As Integer = currentQty + qtyReturned
+
+            ' 4️⃣ Update item stock
+            cmd = New Odbc.OdbcCommand("UPDATE tblitemlist SET ItemQuantity = ? WHERE ItemID = ?", con)
             With cmd.Parameters
-                .AddWithValue("?", CInt(newQty))
-                .AddWithValue("?", CInt(cbItemListR.SelectedValue))
+                .AddWithValue("?", newQty)
+                .AddWithValue("?", cbItemListR.SelectedValue)
             End With
             cmd.ExecuteNonQuery()
 
-            ' Insert return record
-            cmd = New Odbc.OdbcCommand("INSERT INTO tblreturn (BorrowID,QuantityReturned,DateReturned,Remarks) VALUES (?,?,?,?)", con)
-                With cmd.Parameters
-                    .AddWithValue("?", CInt(BorrowID))
-                    .AddWithValue("?", qtyReturned)
-                    .AddWithValue("?", dtpBorrowedR.Value.ToString("yyyy-MM-dd HH:mm:ss"))
-                    .AddWithValue("?", Trim(txtRemarksR.Text))
-                End With
-                cmd.ExecuteNonQuery()
+            ' 5️⃣ Insert return record
+            cmd = New Odbc.OdbcCommand("INSERT INTO tblreturn (BorrowID, QuantityReturned, DateReturned, Remarks) VALUES (?,?,?,?)", con)
+            With cmd.Parameters
+                .AddWithValue("?", CInt(BorrowID))
+                .AddWithValue("?", qtyReturned)
+                .AddWithValue("?", dtpBorrowedR.Value.ToString("yyyy-MM-dd HH:mm:ss"))
+                .AddWithValue("?", Trim(txtRemarksR.Text))
+            End With
+            cmd.ExecuteNonQuery()
 
-
-
-
-            ' Optionally update borrow status as "Returned"
+            ' 6️⃣ Optional: update borrow status
             'cmd = New Odbc.OdbcCommand("UPDATE tblborrow SET Status = 'Returned' WHERE BorrowID = ?", con)
             'cmd.Parameters.AddWithValue("?", BorrowID)
             'cmd.ExecuteNonQuery()
 
+            ' 7️⃣ Notify and refresh
             MsgBox("Item successfully returned!", vbInformation)
-
-                ' Reload DataGridView
-                data_loader("SELECT * FROM vw_transaction", frmReturnList.dgvReturnList)
+            data_loader("SELECT * FROM vw_transaction", frmReturnList.dgvReturnList)
 
         Catch ex As Exception
             MsgBox("Error: " & ex.Message, vbCritical)
         End Try
+
     End Sub
 End Class

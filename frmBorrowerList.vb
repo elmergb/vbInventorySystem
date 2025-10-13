@@ -38,8 +38,8 @@
             MsgBox("Select a record to return", vbInformation)
         Else
             ' Adjust column indexes as needed:
-            frmReturnEntry.ItemID = Val(dgvBorrowerList.Item(0, dgvBorrowerList.CurrentRow.Index).Value) ' ItemID
             frmReturnEntry.BorrowID = Val(dgvBorrowerList.Item(1, dgvBorrowerList.CurrentRow.Index).Value) ' BorrowID
+            frmReturnEntry.ItemID = Val(dgvBorrowerList.Item(2, dgvBorrowerList.CurrentRow.Index).Value) ' ItemID
             frmReturnEntry.ShowDialog()
         End If
     End Sub
