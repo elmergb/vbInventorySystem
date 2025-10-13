@@ -10,54 +10,46 @@
     End Sub
 
     Private Sub btnReturnLog_Click(sender As System.Object, e As System.EventArgs) Handles btnReturnLog.Click
-        Dim cmd As Odbc.OdbcCommand
-
         Try
-            ' 1️⃣ Validate selection
             If cbItemListR.SelectedValue Is Nothing Then
                 MsgBox("Please select an item first.", vbExclamation)
                 Exit Sub
             End If
 
             Dim qtyReturned As Integer = CInt(nupQuantityR.Value)
+            Dim itemID As Integer = CInt(cbItemListR.SelectedValue)
             Dim currentQty As Integer = 0
 
-            ' 2️⃣ Get current stock
-            cmd = New Odbc.OdbcCommand("SELECT ItemQuantity FROM tblitemlist WHERE ItemID = ?", con)
-            cmd.Parameters.AddWithValue("?", cbItemListR.SelectedValue)
+            ' 🔹 Get current quantity from database
+            Dim cmd As New Odbc.OdbcCommand("SELECT ItemQuantity FROM tblitemlist WHERE ItemID = ?", con)
+            cmd.Parameters.AddWithValue("?", itemID)
             Dim result = cmd.ExecuteScalar()
 
             If result IsNot Nothing AndAlso Not IsDBNull(result) Then
                 currentQty = CInt(result)
             End If
 
-            ' 3️⃣ Compute new quantity
+            ' 🔹 Add back returned quantity
             Dim newQty As Integer = currentQty + qtyReturned
-
-            ' 4️⃣ Update item stock
             cmd = New Odbc.OdbcCommand("UPDATE tblitemlist SET ItemQuantity = ? WHERE ItemID = ?", con)
-            With cmd.Parameters
-                .AddWithValue("?", newQty)
-                .AddWithValue("?", cbItemListR.SelectedValue)
-            End With
+            cmd.Parameters.AddWithValue("?", newQty)
+            cmd.Parameters.AddWithValue("?", itemID)
             cmd.ExecuteNonQuery()
 
-            ' 5️⃣ Insert return record
+            ' 🔹 Insert into return table
             cmd = New Odbc.OdbcCommand("INSERT INTO tblreturn (BorrowID, QuantityReturned, DateReturned, Remarks) VALUES (?,?,?,?)", con)
-            With cmd.Parameters
-                .AddWithValue("?", CInt(BorrowID))
-                .AddWithValue("?", qtyReturned)
-                .AddWithValue("?", dtpBorrowedR.Value.ToString("yyyy-MM-dd HH:mm:ss"))
-                .AddWithValue("?", Trim(txtRemarksR.Text))
-            End With
+            cmd.Parameters.AddWithValue("?", CInt(BorrowID))
+            cmd.Parameters.AddWithValue("?", qtyReturned)
+            cmd.Parameters.AddWithValue("?", dtpBorrowedR.Value.ToString("yyyy-MM-dd HH:mm:ss"))
+            cmd.Parameters.AddWithValue("?", Trim(txtRemarksR.Text))
             cmd.ExecuteNonQuery()
 
-            ' 6️⃣ Optional: update borrow status
-            'cmd = New Odbc.OdbcCommand("UPDATE tblborrow SET Status = 'Returned' WHERE BorrowID = ?", con)
-            'cmd.Parameters.AddWithValue("?", BorrowID)
-            'cmd.ExecuteNonQuery()
+            ' 🔹 Optional: update borrow status
+            'Dim updateBorrow As New Odbc.OdbcCommand("UPDATE tblborrow SET Status = 'Returned' WHERE BorrowID = ?", con)
+            'updateBorrow.Parameters.AddWithValue("?", BorrowID)
+            'updateBorrow.ExecuteNonQuery()
 
-            ' 7️⃣ Notify and refresh
+            ' 🔹 Confirm success and reload the DataGridView
             MsgBox("Item successfully returned!", vbInformation)
             data_loader("SELECT * FROM vw_transaction", frmReturnList.dgvReturnList)
 

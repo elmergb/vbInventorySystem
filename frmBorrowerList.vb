@@ -37,10 +37,28 @@
         If dgvBorrowerList.CurrentRow Is Nothing Then
             MsgBox("Select a record to return", vbInformation)
         Else
-            ' Adjust column indexes as needed:
-            frmReturnEntry.BorrowID = Val(dgvBorrowerList.Item(1, dgvBorrowerList.CurrentRow.Index).Value) ' BorrowID
-            frmReturnEntry.ItemID = Val(dgvBorrowerList.Item(2, dgvBorrowerList.CurrentRow.Index).Value) ' ItemID
+            ' Use the correct column indexes based on your DataGridView:
+            ' 0 - BorrowID
+            ' 1 - ItemID
+            ' 2 - Borrower Name
+            ' 3 - Item Name
+            ' 4 - Quantity Borrowed
+            ' 5 - Contact
+            ' 6 - Purpose
+            ' 7 - Date Borrowed
+            ' 8 - Remarks
+
+            frmReturnEntry.BorrowID = CInt(dgvBorrowerList.Item(0, dgvBorrowerList.CurrentRow.Index).Value) ' BorrowID
+            frmReturnEntry.ItemID = CInt(dgvBorrowerList.Item(1, dgvBorrowerList.CurrentRow.Index).Value)   ' ItemID
+
+            frmReturnEntry.cbItemListR.SelectedValue = frmReturnEntry.ItemID
+            frmReturnEntry.txtBorrowerNameR.Text = dgvBorrowerList.Item(2, dgvBorrowerList.CurrentRow.Index).Value.ToString()
+            frmReturnEntry.txtPurposeR.Text = dgvBorrowerList.Item(6, dgvBorrowerList.CurrentRow.Index).Value.ToString()
+            frmReturnEntry.nupQuantityR.Value = If(IsNumeric(dgvBorrowerList.Item(4, dgvBorrowerList.CurrentRow.Index).Value), CInt(dgvBorrowerList.Item(4, dgvBorrowerList.CurrentRow.Index).Value), 0)
+            frmReturnEntry.txtRemarksR.Text = dgvBorrowerList.Item(8, dgvBorrowerList.CurrentRow.Index).Value.ToString()
+
             frmReturnEntry.ShowDialog()
+
         End If
     End Sub
 
