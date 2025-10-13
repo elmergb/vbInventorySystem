@@ -34,4 +34,16 @@
     Private Sub btnReturnList_Click(sender As System.Object, e As System.EventArgs) Handles btnReturnList.Click
         LoadForm(New frmReturnList())
     End Sub
+
+    Private Sub btnDashBoard_Click(sender As Object, e As EventArgs) Handles btnDashBoard.Click
+        LoadForm(New frmDashboard())
+    End Sub
+
+    Private Sub btnDashBoard_MouseEnter(sender As Object, e As EventArgs) Handles btnDashBoard.MouseEnter
+        btnDashBoard.ForeColor = Color.FromArgb(128, 64, 0)
+    End Sub
+
+    Private Sub btnDashBoard_MouseLeave(sender As Object, e As EventArgs) Handles btnDashBoard.MouseLeave
+        btnDashBoard.ForeColor = Color.Black
+    End Sub
 End Class

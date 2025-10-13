@@ -3,7 +3,7 @@
     Private Sub frmBorrowerList_Load(sender As System.Object, e As System.EventArgs) Handles MyBase.Load
 
         Call vbConnection()
-        Call data_loader("SELECT * FROM vw_borrowing", dgvBorrowerList)
+        Call data_loader("SELECT * FROM vw_borrowing WHERE Status <> 'Returned'", dgvBorrowerList)
         cb_loader("SELECT * FROM tblitemlist", frmReturnEntry.cbItemListR, "ItemName", "ItemID")
         Dim sb As New System.Text.StringBuilder()
         If dgvBorrowerList.Columns.Count = 0 Then
