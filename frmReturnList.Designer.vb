@@ -22,23 +22,39 @@ Partial Class frmReturnList
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
+        Me.btnReturn = New System.Windows.Forms.Button()
         Me.dgvReturnList = New System.Windows.Forms.DataGridView()
         CType(Me.dgvReturnList, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
+        'btnReturn
+        '
+        Me.btnReturn.Location = New System.Drawing.Point(928, 160)
+        Me.btnReturn.Name = "btnReturn"
+        Me.btnReturn.Size = New System.Drawing.Size(86, 51)
+        Me.btnReturn.TabIndex = 1
+        Me.btnReturn.Text = "Return"
+        Me.btnReturn.UseVisualStyleBackColor = True
+        '
         'dgvReturnList
         '
+        Me.dgvReturnList.AllowUserToAddRows = False
+        Me.dgvReturnList.AllowUserToDeleteRows = False
         Me.dgvReturnList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.dgvReturnList.Location = New System.Drawing.Point(30, 40)
         Me.dgvReturnList.Name = "dgvReturnList"
-        Me.dgvReturnList.Size = New System.Drawing.Size(794, 489)
+        Me.dgvReturnList.ReadOnly = True
+        Me.dgvReturnList.RowHeadersVisible = False
+        Me.dgvReturnList.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
+        Me.dgvReturnList.Size = New System.Drawing.Size(877, 489)
         Me.dgvReturnList.TabIndex = 0
         '
         'frmReturnList
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(906, 591)
+        Me.ClientSize = New System.Drawing.Size(1047, 591)
+        Me.Controls.Add(Me.btnReturn)
         Me.Controls.Add(Me.dgvReturnList)
         Me.Name = "frmReturnList"
         Me.Text = "frmReturnList"
@@ -46,5 +62,6 @@ Partial Class frmReturnList
         Me.ResumeLayout(False)
 
     End Sub
-    Friend WithEvents dgvReturnList As System.Windows.Forms.DataGridView
+    Friend WithEvents btnReturn As Button
+    Friend WithEvents dgvReturnList As DataGridView
 End Class

@@ -13,40 +13,40 @@
         Dim cmd As Odbc.OdbcCommand
 
         Try
-            ' Validate IDs
-            If ItemID = 0 OrElse BorrowID = 0 Then
-                MsgBox("Select a record to return!", vbInformation)
-                Exit Sub
-            Else
-                ' ... (all return logic here)
-            End If
-
             ' Validate ComboBox selection
             If cbItemListR.SelectedValue Is Nothing Then
                     MsgBox("Please select an item first.", vbExclamation)
                     Exit Sub
                 End If
 
-                ' Validate BorrowerList and selection
-                If frmBorrowerList Is Nothing OrElse frmBorrowerList.dgvBorrowerList.CurrentRow Is Nothing Then
-                    MsgBox("No borrower record selected.", vbExclamation)
-                    Exit Sub
-                End If
+            ' Validate BorrowerList and selection
+            'If frmBorrowerList Is Nothing OrElse frmBorrowerList.dgvBorrowerList.CurrentRow Is Nothing Then
+            '    MsgBox("No borrower record selected.", vbExclamation)
+            '    Exit Sub
+            'End If
 
-                Dim qtyReturned As Integer = CInt(nupQuantityR.Value)
-                Dim currentQty As Integer = 0
+            Dim qtyReturned As Integer = CInt(nupQuantityR.Value)
+            Dim currentQty As Integer = 0
 
-                ' Get current stock quantity
-                cmd = New Odbc.OdbcCommand("SELECT ItemQuantity FROM tblItemList WHERE ItemID = ?", con)
-                cmd.Parameters.AddWithValue("?", ItemID)
-                Dim result = cmd.ExecuteScalar()
+            ' Update item quantity in stock
+            Dim newQty As Integer = currentQty + qtyReturned
+            cmd = New Odbc.OdbcCommand("SELECT ItemQuantity FROM tblItemList WHERE ItemID = ?", con)
+            cmd.Parameters.AddWithValue("?", ItemID)
+            Dim result = cmd.ExecuteScalar()
 
-                If result IsNot Nothing Then
-                    currentQty = CInt(result)
-                End If
+            If result IsNot Nothing Then
+                currentQty = CInt(result)
+            End If
 
-                ' Insert return record
-                cmd = New Odbc.OdbcCommand("INSERT INTO tblreturn (BorrowID,QuantityReturned,DateReturned,Remarks) VALUES (?,?,?,?)", con)
+            cmd = New Odbc.OdbcCommand("UPDATE tblitemlist SET ItemQuantity = ? WHERE ItemID =?", con)
+            With cmd.Parameters
+                .AddWithValue("?", CInt(newQty))
+                .AddWithValue("?", CInt(cbItemListR.SelectedValue))
+            End With
+            cmd.ExecuteNonQuery()
+
+            ' Insert return record
+            cmd = New Odbc.OdbcCommand("INSERT INTO tblreturn (BorrowID,QuantityReturned,DateReturned,Remarks) VALUES (?,?,?,?)", con)
                 With cmd.Parameters
                     .AddWithValue("?", CInt(BorrowID))
                     .AddWithValue("?", qtyReturned)
@@ -55,21 +55,15 @@
                 End With
                 cmd.ExecuteNonQuery()
 
-                ' Update item quantity in stock
-                Dim newQty As Integer = currentQty + qtyReturned
-                cmd = New Odbc.OdbcCommand("UPDATE tblitemlist SET ItemQuantity = ? WHERE ItemID = ?", con)
-                With cmd.Parameters
-                    .AddWithValue("?", newQty)
-                    .AddWithValue("?", ItemID)
-                End With
-                cmd.ExecuteNonQuery()
 
-                ' Optionally update borrow status as "Returned"
-                'cmd = New Odbc.OdbcCommand("UPDATE tblborrow SET Status = 'Returned' WHERE BorrowID = ?", con)
-                'cmd.Parameters.AddWithValue("?", BorrowID)
-                'cmd.ExecuteNonQuery()
 
-                MsgBox("Item successfully returned!", vbInformation)
+
+            ' Optionally update borrow status as "Returned"
+            'cmd = New Odbc.OdbcCommand("UPDATE tblborrow SET Status = 'Returned' WHERE BorrowID = ?", con)
+            'cmd.Parameters.AddWithValue("?", BorrowID)
+            'cmd.ExecuteNonQuery()
+
+            MsgBox("Item successfully returned!", vbInformation)
 
                 ' Reload DataGridView
                 data_loader("SELECT * FROM vw_transaction", frmReturnList.dgvReturnList)

@@ -29,12 +29,10 @@ Partial Class frmReturnEntry
         Me.Label7 = New System.Windows.Forms.Label()
         Me.Label6 = New System.Windows.Forms.Label()
         Me.Label5 = New System.Windows.Forms.Label()
-        Me.Label4 = New System.Windows.Forms.Label()
         Me.Label3 = New System.Windows.Forms.Label()
         Me.Label2 = New System.Windows.Forms.Label()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.nupQuantityR = New System.Windows.Forms.NumericUpDown()
-        Me.txtContactR = New System.Windows.Forms.TextBox()
         Me.txtPurposeR = New System.Windows.Forms.TextBox()
         Me.btnReturnLog = New System.Windows.Forms.Button()
         CType(Me.nupQuantityR, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -100,15 +98,6 @@ Partial Class frmReturnEntry
         Me.Label5.TabIndex = 22
         Me.Label5.Text = "Purpose"
         '
-        'Label4
-        '
-        Me.Label4.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label4.Location = New System.Drawing.Point(57, 276)
-        Me.Label4.Name = "Label4"
-        Me.Label4.Size = New System.Drawing.Size(82, 23)
-        Me.Label4.TabIndex = 21
-        Me.Label4.Text = "Contact"
-        '
         'Label3
         '
         Me.Label3.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
@@ -143,14 +132,6 @@ Partial Class frmReturnEntry
         Me.nupQuantityR.Size = New System.Drawing.Size(137, 20)
         Me.nupQuantityR.TabIndex = 17
         '
-        'txtContactR
-        '
-        Me.txtContactR.Location = New System.Drawing.Point(61, 302)
-        Me.txtContactR.Multiline = True
-        Me.txtContactR.Name = "txtContactR"
-        Me.txtContactR.Size = New System.Drawing.Size(174, 30)
-        Me.txtContactR.TabIndex = 16
-        '
         'txtPurposeR
         '
         Me.txtPurposeR.Location = New System.Drawing.Point(353, 110)
@@ -182,12 +163,10 @@ Partial Class frmReturnEntry
         Me.Controls.Add(Me.Label7)
         Me.Controls.Add(Me.Label6)
         Me.Controls.Add(Me.Label5)
-        Me.Controls.Add(Me.Label4)
         Me.Controls.Add(Me.Label3)
         Me.Controls.Add(Me.Label2)
         Me.Controls.Add(Me.Label1)
         Me.Controls.Add(Me.nupQuantityR)
-        Me.Controls.Add(Me.txtContactR)
         Me.Name = "frmReturnEntry"
         Me.Text = "frmReturnEntry"
         CType(Me.nupQuantityR, System.ComponentModel.ISupportInitialize).EndInit()
@@ -202,12 +181,10 @@ Partial Class frmReturnEntry
     Friend WithEvents Label7 As System.Windows.Forms.Label
     Friend WithEvents Label6 As System.Windows.Forms.Label
     Friend WithEvents Label5 As System.Windows.Forms.Label
-    Friend WithEvents Label4 As System.Windows.Forms.Label
     Friend WithEvents Label3 As System.Windows.Forms.Label
     Friend WithEvents Label2 As System.Windows.Forms.Label
     Friend WithEvents Label1 As System.Windows.Forms.Label
     Friend WithEvents nupQuantityR As System.Windows.Forms.NumericUpDown
-    Friend WithEvents txtContactR As System.Windows.Forms.TextBox
     Friend WithEvents txtPurposeR As System.Windows.Forms.TextBox
     Friend WithEvents btnReturnLog As System.Windows.Forms.Button
 End Class

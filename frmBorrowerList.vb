@@ -4,9 +4,8 @@
 
         Call vbConnection()
         Call data_loader("SELECT * FROM vw_borrowing", dgvBorrowerList)
+        cb_loader("SELECT * FROM tblitemlist", frmReturnEntry.cbItemListR, "ItemName", "ItemID")
         Dim sb As New System.Text.StringBuilder()
-
-
         If dgvBorrowerList.Columns.Count = 0 Then
             MsgBox("Columns count = 0 (no columns yet)")
         Else
@@ -22,31 +21,29 @@
 
     Private Sub dgvBorrowerList_CellClick(sender As Object, e As System.Windows.Forms.DataGridViewCellEventArgs) Handles dgvBorrowerList.CellClick
 
-
         If e.RowIndex >= 0 Then
-            dgvBorrowerList.Tag = dgvBorrowerList.Item(1, e.RowIndex).Value
-            frmBorrow.cbItemList.SelectedValue = dgvBorrowerList.Item(0, e.RowIndex).Value
+            dgvBorrowerList.Tag = dgvBorrowerList.Item(0, e.RowIndex).Value
+            frmBorrow.cbItemList.SelectedValue = dgvBorrowerList.Item(1, e.RowIndex).Value
             frmBorrow.txtBorrowerName.Text = dgvBorrowerList.Item(2, e.RowIndex).Value
             frmBorrow.nupQuantity.Value = dgvBorrowerList.Item(4, e.RowIndex).Value
             frmBorrow.txtContact.Text = dgvBorrowerList.Item(5, e.RowIndex).Value
             frmBorrow.txtPurpose.Text = dgvBorrowerList.Item(6, e.RowIndex).Value
             frmBorrow.dtpBorrowed.Value = CDate(dgvBorrowerList.Item(7, e.RowIndex).Value)
             frmBorrow.txtRemarks.Text = dgvBorrowerList.Item(8, e.RowIndex).Value
-
-
         End If
-    End Sub
 
+    End Sub
     Private Sub btnReturn_Click(sender As System.Object, e As System.EventArgs) Handles btnReturn.Click
-        If (dgvBorrowerList.Tag) = 0 Then
-            MsgBox("Select a record to edit!", vbInformation)
+        If dgvBorrowerList.CurrentRow Is Nothing Then
+            MsgBox("Select a record to return", vbInformation)
         Else
-            frmReturnEntry.ItemID = Val(dgvBorrowerList.Item(0, dgvBorrowerList.CurrentRow.Index).Value)
-            frmReturnEntry.BorrowID = Val(dgvBorrowerList.Item(1, dgvBorrowerList.CurrentRow.Index).Value)
+            ' Adjust column indexes as needed:
+            frmReturnEntry.ItemID = Val(dgvBorrowerList.Item(0, dgvBorrowerList.CurrentRow.Index).Value) ' ItemID
+            frmReturnEntry.BorrowID = Val(dgvBorrowerList.Item(1, dgvBorrowerList.CurrentRow.Index).Value) ' BorrowID
             frmReturnEntry.ShowDialog()
         End If
-
     End Sub
+
 
     Private Sub dgvBorrowerList_CellContentClick(sender As System.Object, e As System.Windows.Forms.DataGridViewCellEventArgs) Handles dgvBorrowerList.CellContentClick
 

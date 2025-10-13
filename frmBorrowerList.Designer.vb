@@ -27,12 +27,12 @@ Partial Class frmBorrowerList
         Me.Column1 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Column2 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Column3 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.BorrowerName = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Column4 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Column5 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Column6 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Column7 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Column8 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Column9 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Column10 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         CType(Me.dgvBorrowerList, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
@@ -42,7 +42,7 @@ Partial Class frmBorrowerList
         Me.dgvBorrowerList.AllowUserToDeleteRows = False
         Me.dgvBorrowerList.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill
         Me.dgvBorrowerList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.dgvBorrowerList.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.Column1, Me.Column2, Me.Column3, Me.BorrowerName, Me.Column4, Me.Column5, Me.Column6, Me.Column7, Me.Column8})
+        Me.dgvBorrowerList.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.Column1, Me.Column2, Me.Column3, Me.Column4, Me.Column5, Me.Column6, Me.Column8, Me.Column9, Me.Column10})
         Me.dgvBorrowerList.Location = New System.Drawing.Point(79, 162)
         Me.dgvBorrowerList.Name = "dgvBorrowerList"
         Me.dgvBorrowerList.ReadOnly = True
@@ -83,47 +83,47 @@ Partial Class frmBorrowerList
         Me.Column3.Name = "Column3"
         Me.Column3.ReadOnly = True
         '
-        'BorrowerName
-        '
-        Me.BorrowerName.DataPropertyName = "BorrowerName"
-        Me.BorrowerName.HeaderText = "Borrower Name"
-        Me.BorrowerName.Name = "BorrowerName"
-        Me.BorrowerName.ReadOnly = True
-        '
         'Column4
         '
-        Me.Column4.DataPropertyName = "QuantityBorrowed"
-        Me.Column4.HeaderText = "Quantity Borrowed"
+        Me.Column4.DataPropertyName = "BorrowerName"
+        Me.Column4.HeaderText = "Borrower Name"
         Me.Column4.Name = "Column4"
         Me.Column4.ReadOnly = True
         '
         'Column5
         '
-        Me.Column5.DataPropertyName = "Contact"
-        Me.Column5.HeaderText = "Contact"
+        Me.Column5.DataPropertyName = "QuantityBorrowed"
+        Me.Column5.HeaderText = "Quantity Borrowed"
         Me.Column5.Name = "Column5"
         Me.Column5.ReadOnly = True
         '
         'Column6
         '
-        Me.Column6.DataPropertyName = "Purpose"
-        Me.Column6.HeaderText = "Purpose"
+        Me.Column6.DataPropertyName = "Contact"
+        Me.Column6.HeaderText = "Contact"
         Me.Column6.Name = "Column6"
         Me.Column6.ReadOnly = True
         '
-        'Column7
-        '
-        Me.Column7.DataPropertyName = "DateBorrowed"
-        Me.Column7.HeaderText = "Date Borrowed"
-        Me.Column7.Name = "Column7"
-        Me.Column7.ReadOnly = True
-        '
         'Column8
         '
-        Me.Column8.DataPropertyName = "Remarks"
-        Me.Column8.HeaderText = "Remarks"
+        Me.Column8.DataPropertyName = "Purpose"
+        Me.Column8.HeaderText = "Purpose"
         Me.Column8.Name = "Column8"
         Me.Column8.ReadOnly = True
+        '
+        'Column9
+        '
+        Me.Column9.DataPropertyName = "DateBorrowed"
+        Me.Column9.HeaderText = "Date Borrowed"
+        Me.Column9.Name = "Column9"
+        Me.Column9.ReadOnly = True
+        '
+        'Column10
+        '
+        Me.Column10.DataPropertyName = "Remarks"
+        Me.Column10.HeaderText = "Remarks"
+        Me.Column10.Name = "Column10"
+        Me.Column10.ReadOnly = True
         '
         'frmBorrowerList
         '
@@ -140,13 +140,13 @@ Partial Class frmBorrowerList
     End Sub
     Friend WithEvents dgvBorrowerList As System.Windows.Forms.DataGridView
     Friend WithEvents btnReturn As System.Windows.Forms.Button
-    Friend WithEvents Column1 As System.Windows.Forms.DataGridViewTextBoxColumn
-    Friend WithEvents Column2 As System.Windows.Forms.DataGridViewTextBoxColumn
-    Friend WithEvents Column3 As System.Windows.Forms.DataGridViewTextBoxColumn
-    Friend WithEvents BorrowerName As System.Windows.Forms.DataGridViewTextBoxColumn
-    Friend WithEvents Column4 As System.Windows.Forms.DataGridViewTextBoxColumn
-    Friend WithEvents Column5 As System.Windows.Forms.DataGridViewTextBoxColumn
-    Friend WithEvents Column6 As System.Windows.Forms.DataGridViewTextBoxColumn
-    Friend WithEvents Column7 As System.Windows.Forms.DataGridViewTextBoxColumn
-    Friend WithEvents Column8 As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents Column1 As DataGridViewTextBoxColumn
+    Friend WithEvents Column2 As DataGridViewTextBoxColumn
+    Friend WithEvents Column3 As DataGridViewTextBoxColumn
+    Friend WithEvents Column4 As DataGridViewTextBoxColumn
+    Friend WithEvents Column5 As DataGridViewTextBoxColumn
+    Friend WithEvents Column6 As DataGridViewTextBoxColumn
+    Friend WithEvents Column8 As DataGridViewTextBoxColumn
+    Friend WithEvents Column9 As DataGridViewTextBoxColumn
+    Friend WithEvents Column10 As DataGridViewTextBoxColumn
 End Class
