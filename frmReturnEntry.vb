@@ -51,7 +51,7 @@
 
             ' 🔹 Confirm success and reload the DataGridView
             MsgBox("Item successfully returned!", vbInformation)
-            data_loader("SELECT * FROM vw_transaction", frmReturnList.dgvReturnList)
+            data_loader("SELECT * FROM vw_transaction WHERE QuantityBorrowed > QuantityReturned", frmReturnList.dgvReturnList)
 
         Catch ex As Exception
             MsgBox("Error: " & ex.Message, vbCritical)

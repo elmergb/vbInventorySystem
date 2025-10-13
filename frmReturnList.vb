@@ -1,7 +1,7 @@
 ﻿Public Class frmReturnList
 
     Private Sub frmReturnList_Load(sender As System.Object, e As System.EventArgs) Handles MyBase.Load
-        Call data_loader("SELECT * FROM vw_transaction", dgvReturnList)
+        Call data_loader("SELECT * FROM vw_transaction ", dgvReturnList)
         Dim sb As New System.Text.StringBuilder()
         If dgvReturnList.Columns.Count = 0 Then
             MsgBox("Columns count = 0 (no columns yet)")
