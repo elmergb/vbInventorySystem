@@ -2,18 +2,18 @@
 
     Private Sub frmReturnList_Load(sender As System.Object, e As System.EventArgs) Handles MyBase.Load
         Call data_loader("SELECT * FROM vw_transaction ", dgvReturnList)
-        Dim sb As New System.Text.StringBuilder()
-        If dgvReturnList.Columns.Count = 0 Then
-            MsgBox("Columns count = 0 (no columns yet)")
-        Else
+        'Dim sb As New System.Text.StringBuilder()
+        'If dgvReturnList.Columns.Count = 0 Then
+        '    MsgBox("Columns count = 0 (no columns yet)")
+        'Else
 
-            For Each col As DataGridViewColumn In dgvReturnList.Columns
-                sb.AppendLine(col.Index & " - " & col.HeaderText & " (Name: " & col.Name & ")")
-            Next
+        '    For Each col As DataGridViewColumn In dgvReturnList.Columns
+        '        sb.AppendLine(col.Index & " - " & col.HeaderText & " (Name: " & col.Name & ")")
+        '    Next
 
-            ' ✅ Correct MsgBox syntax: first argument = text, second (optional) = style, third = caption
-            MsgBox(sb.ToString(), MsgBoxStyle.Information, "DataGridView Columns")
-        End If
+        '    
+        '    MsgBox(sb.ToString(), MsgBoxStyle.Information, "DataGridView Columns")
+        'End If
     End Sub
 
 

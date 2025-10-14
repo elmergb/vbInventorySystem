@@ -5,18 +5,18 @@
         Call vbConnection()
         Call data_loader("SELECT * FROM vw_borrowing WHERE Status <> 'Returned'", dgvBorrowerList)
         cb_loader("SELECT * FROM tblitemlist", frmReturnEntry.cbItemListR, "ItemName", "ItemID")
-        Dim sb As New System.Text.StringBuilder()
-        If dgvBorrowerList.Columns.Count = 0 Then
-            MsgBox("Columns count = 0 (no columns yet)")
-        Else
+        'Dim sb As New System.Text.StringBuilder()
+        'If dgvBorrowerList.Columns.Count = 0 Then
+        '    MsgBox("Columns count = 0 (no columns yet)")
+        'Else
 
-            For Each col As DataGridViewColumn In dgvBorrowerList.Columns
-                sb.AppendLine(col.Index & " - " & col.HeaderText & " (Name: " & col.Name & ")")
-            Next
+        '    For Each col As DataGridViewColumn In dgvBorrowerList.Columns
+        '        sb.AppendLine(col.Index & " - " & col.HeaderText & " (Name: " & col.Name & ")")
+        '    Next
 
-            ' ✅ Correct MsgBox syntax: first argument = text, second (optional) = style, third = caption
-            MsgBox(sb.ToString(), MsgBoxStyle.Information, "DataGridView Columns")
-        End If
+        '     ✅ Correct MsgBox syntax: first argument = text, second (optional) = style, third = caption
+        '    MsgBox(sb.ToString(), MsgBoxStyle.Information, "DataGridView Columns")
+        'End If
     End Sub
 
     Private Sub dgvBorrowerList_CellClick(sender As Object, e As System.Windows.Forms.DataGridViewCellEventArgs) Handles dgvBorrowerList.CellClick

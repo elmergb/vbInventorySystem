@@ -1,6 +1,6 @@
 ﻿
 Public Class Login
-
+    Public Shared LoggedInUser As String
     Private Sub txtUsername_GotFocus(sender As Object, e As System.EventArgs) Handles txtUsername.GotFocus
         If txtUsername.Text = "Username" Then
             txtUsername.Text = ""
@@ -64,6 +64,7 @@ Public Class Login
                     MsgBox("Sucessfully Login! " & dtable.Rows(0)("username"), vbInformation)
                     Homepage.Show()
                     Me.Hide()
+                    LoggedInUser = txtUsername.Text
                 Else
                     MsgBox("Invalid username and password!", vbCritical)
                     txtUsername.Focus()
