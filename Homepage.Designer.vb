@@ -23,13 +23,13 @@ Partial Class Homepage
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         Me.pnlMain = New System.Windows.Forms.Panel()
+        Me.btnDashBoard = New System.Windows.Forms.Button()
+        Me.PictureBox1 = New System.Windows.Forms.PictureBox()
         Me.btnReturnList = New System.Windows.Forms.Button()
         Me.btnBorrowPage = New System.Windows.Forms.Button()
         Me.btnUser = New System.Windows.Forms.Button()
-        Me.pnlItem = New System.Windows.Forms.Panel()
         Me.btnAddItem = New System.Windows.Forms.Button()
-        Me.btnDashBoard = New System.Windows.Forms.Button()
-        Me.PictureBox1 = New System.Windows.Forms.PictureBox()
+        Me.pnlItem = New System.Windows.Forms.Panel()
         Me.pnlMain.SuspendLayout()
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
@@ -49,79 +49,6 @@ Partial Class Homepage
         Me.pnlMain.Name = "pnlMain"
         Me.pnlMain.Size = New System.Drawing.Size(187, 673)
         Me.pnlMain.TabIndex = 0
-        '
-        'btnReturnList
-        '
-        Me.btnReturnList.BackColor = System.Drawing.Color.FromArgb(CType(CType(196, Byte), Integer), CType(CType(173, Byte), Integer), CType(CType(143, Byte), Integer))
-        Me.btnReturnList.FlatAppearance.BorderSize = 0
-        Me.btnReturnList.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(CType(CType(217, Byte), Integer), CType(CType(193, Byte), Integer), CType(CType(178, Byte), Integer))
-        Me.btnReturnList.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(CType(CType(153, Byte), Integer), CType(CType(113, Byte), Integer), CType(CType(87, Byte), Integer))
-        Me.btnReturnList.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.btnReturnList.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnReturnList.Location = New System.Drawing.Point(-1, 235)
-        Me.btnReturnList.Name = "btnReturnList"
-        Me.btnReturnList.Padding = New System.Windows.Forms.Padding(5)
-        Me.btnReturnList.Size = New System.Drawing.Size(187, 42)
-        Me.btnReturnList.TabIndex = 5
-        Me.btnReturnList.Text = "Return"
-        Me.btnReturnList.UseVisualStyleBackColor = False
-        '
-        'btnBorrowPage
-        '
-        Me.btnBorrowPage.BackColor = System.Drawing.Color.FromArgb(CType(CType(196, Byte), Integer), CType(CType(173, Byte), Integer), CType(CType(143, Byte), Integer))
-        Me.btnBorrowPage.FlatAppearance.BorderSize = 0
-        Me.btnBorrowPage.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(CType(CType(217, Byte), Integer), CType(CType(193, Byte), Integer), CType(CType(178, Byte), Integer))
-        Me.btnBorrowPage.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(CType(CType(153, Byte), Integer), CType(CType(113, Byte), Integer), CType(CType(87, Byte), Integer))
-        Me.btnBorrowPage.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.btnBorrowPage.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnBorrowPage.Location = New System.Drawing.Point(-1, 283)
-        Me.btnBorrowPage.Name = "btnBorrowPage"
-        Me.btnBorrowPage.Padding = New System.Windows.Forms.Padding(5)
-        Me.btnBorrowPage.Size = New System.Drawing.Size(187, 42)
-        Me.btnBorrowPage.TabIndex = 4
-        Me.btnBorrowPage.Text = "Borrowed"
-        Me.btnBorrowPage.UseVisualStyleBackColor = False
-        '
-        'btnUser
-        '
-        Me.btnUser.BackColor = System.Drawing.Color.FromArgb(CType(CType(196, Byte), Integer), CType(CType(173, Byte), Integer), CType(CType(143, Byte), Integer))
-        Me.btnUser.FlatAppearance.BorderSize = 0
-        Me.btnUser.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(CType(CType(217, Byte), Integer), CType(CType(193, Byte), Integer), CType(CType(178, Byte), Integer))
-        Me.btnUser.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(CType(CType(153, Byte), Integer), CType(CType(113, Byte), Integer), CType(CType(87, Byte), Integer))
-        Me.btnUser.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.btnUser.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnUser.Location = New System.Drawing.Point(-1, 331)
-        Me.btnUser.Name = "btnUser"
-        Me.btnUser.Padding = New System.Windows.Forms.Padding(5)
-        Me.btnUser.Size = New System.Drawing.Size(187, 42)
-        Me.btnUser.TabIndex = 3
-        Me.btnUser.Text = "User"
-        Me.btnUser.UseVisualStyleBackColor = False
-        '
-        'pnlItem
-        '
-        Me.pnlItem.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.pnlItem.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.pnlItem.Location = New System.Drawing.Point(187, 0)
-        Me.pnlItem.Name = "pnlItem"
-        Me.pnlItem.Size = New System.Drawing.Size(1151, 673)
-        Me.pnlItem.TabIndex = 1
-        '
-        'btnAddItem
-        '
-        Me.btnAddItem.BackColor = System.Drawing.Color.FromArgb(CType(CType(196, Byte), Integer), CType(CType(173, Byte), Integer), CType(CType(143, Byte), Integer))
-        Me.btnAddItem.FlatAppearance.BorderSize = 0
-        Me.btnAddItem.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(CType(CType(217, Byte), Integer), CType(CType(193, Byte), Integer), CType(CType(178, Byte), Integer))
-        Me.btnAddItem.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(CType(CType(153, Byte), Integer), CType(CType(113, Byte), Integer), CType(CType(87, Byte), Integer))
-        Me.btnAddItem.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.btnAddItem.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnAddItem.Location = New System.Drawing.Point(-95, 163)
-        Me.btnAddItem.Name = "btnAddItem"
-        Me.btnAddItem.Padding = New System.Windows.Forms.Padding(5)
-        Me.btnAddItem.Size = New System.Drawing.Size(281, 42)
-        Me.btnAddItem.TabIndex = 2
-        Me.btnAddItem.Text = "Item"
-        Me.btnAddItem.UseVisualStyleBackColor = False
         '
         'btnDashBoard
         '
@@ -151,6 +78,79 @@ Partial Class Homepage
         Me.PictureBox1.TabIndex = 1
         Me.PictureBox1.TabStop = False
         '
+        'btnReturnList
+        '
+        Me.btnReturnList.BackColor = System.Drawing.Color.FromArgb(CType(CType(196, Byte), Integer), CType(CType(173, Byte), Integer), CType(CType(143, Byte), Integer))
+        Me.btnReturnList.FlatAppearance.BorderSize = 0
+        Me.btnReturnList.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(CType(CType(217, Byte), Integer), CType(CType(193, Byte), Integer), CType(CType(178, Byte), Integer))
+        Me.btnReturnList.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(CType(CType(153, Byte), Integer), CType(CType(113, Byte), Integer), CType(CType(87, Byte), Integer))
+        Me.btnReturnList.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.btnReturnList.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnReturnList.Location = New System.Drawing.Point(-76, 211)
+        Me.btnReturnList.Name = "btnReturnList"
+        Me.btnReturnList.Padding = New System.Windows.Forms.Padding(5)
+        Me.btnReturnList.Size = New System.Drawing.Size(262, 42)
+        Me.btnReturnList.TabIndex = 5
+        Me.btnReturnList.Text = "Return"
+        Me.btnReturnList.UseVisualStyleBackColor = False
+        '
+        'btnBorrowPage
+        '
+        Me.btnBorrowPage.BackColor = System.Drawing.Color.FromArgb(CType(CType(196, Byte), Integer), CType(CType(173, Byte), Integer), CType(CType(143, Byte), Integer))
+        Me.btnBorrowPage.FlatAppearance.BorderSize = 0
+        Me.btnBorrowPage.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(CType(CType(217, Byte), Integer), CType(CType(193, Byte), Integer), CType(CType(178, Byte), Integer))
+        Me.btnBorrowPage.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(CType(CType(153, Byte), Integer), CType(CType(113, Byte), Integer), CType(CType(87, Byte), Integer))
+        Me.btnBorrowPage.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.btnBorrowPage.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnBorrowPage.Location = New System.Drawing.Point(-45, 259)
+        Me.btnBorrowPage.Name = "btnBorrowPage"
+        Me.btnBorrowPage.Padding = New System.Windows.Forms.Padding(5)
+        Me.btnBorrowPage.Size = New System.Drawing.Size(231, 42)
+        Me.btnBorrowPage.TabIndex = 4
+        Me.btnBorrowPage.Text = "Borrowed"
+        Me.btnBorrowPage.UseVisualStyleBackColor = False
+        '
+        'btnUser
+        '
+        Me.btnUser.BackColor = System.Drawing.Color.FromArgb(CType(CType(196, Byte), Integer), CType(CType(173, Byte), Integer), CType(CType(143, Byte), Integer))
+        Me.btnUser.FlatAppearance.BorderSize = 0
+        Me.btnUser.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(CType(CType(217, Byte), Integer), CType(CType(193, Byte), Integer), CType(CType(178, Byte), Integer))
+        Me.btnUser.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(CType(CType(153, Byte), Integer), CType(CType(113, Byte), Integer), CType(CType(87, Byte), Integer))
+        Me.btnUser.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.btnUser.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnUser.Location = New System.Drawing.Point(-95, 307)
+        Me.btnUser.Name = "btnUser"
+        Me.btnUser.Padding = New System.Windows.Forms.Padding(5)
+        Me.btnUser.Size = New System.Drawing.Size(281, 42)
+        Me.btnUser.TabIndex = 3
+        Me.btnUser.Text = "User"
+        Me.btnUser.UseVisualStyleBackColor = False
+        '
+        'btnAddItem
+        '
+        Me.btnAddItem.BackColor = System.Drawing.Color.FromArgb(CType(CType(196, Byte), Integer), CType(CType(173, Byte), Integer), CType(CType(143, Byte), Integer))
+        Me.btnAddItem.FlatAppearance.BorderSize = 0
+        Me.btnAddItem.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(CType(CType(217, Byte), Integer), CType(CType(193, Byte), Integer), CType(CType(178, Byte), Integer))
+        Me.btnAddItem.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(CType(CType(153, Byte), Integer), CType(CType(113, Byte), Integer), CType(CType(87, Byte), Integer))
+        Me.btnAddItem.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.btnAddItem.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnAddItem.Location = New System.Drawing.Point(-95, 163)
+        Me.btnAddItem.Name = "btnAddItem"
+        Me.btnAddItem.Padding = New System.Windows.Forms.Padding(5)
+        Me.btnAddItem.Size = New System.Drawing.Size(281, 42)
+        Me.btnAddItem.TabIndex = 2
+        Me.btnAddItem.Text = "Item"
+        Me.btnAddItem.UseVisualStyleBackColor = False
+        '
+        'pnlItem
+        '
+        Me.pnlItem.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.pnlItem.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.pnlItem.Location = New System.Drawing.Point(187, 0)
+        Me.pnlItem.Name = "pnlItem"
+        Me.pnlItem.Size = New System.Drawing.Size(1151, 673)
+        Me.pnlItem.TabIndex = 1
+        '
         'Homepage
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -159,6 +159,7 @@ Partial Class Homepage
         Me.Controls.Add(Me.pnlItem)
         Me.Controls.Add(Me.pnlMain)
         Me.Name = "Homepage"
+        Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent
         Me.Text = "Homepage"
         Me.pnlMain.ResumeLayout(False)
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).EndInit()

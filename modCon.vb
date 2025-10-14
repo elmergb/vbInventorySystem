@@ -46,4 +46,28 @@ Module modCon
         Next
         Return True
     End Function
+
+    Public Function getTotalItems() As Integer
+        Dim cmd As Odbc.OdbcCommand
+        Dim total As Integer = 0
+        Try
+            cmd = New Odbc.OdbcCommand("SELECT COUNT(ItemID) FROM tblitemlist", con)
+            total = CInt(cmd.ExecuteScalar)
+        Catch ex As Exception
+            MsgBox(ex.Message.ToString)
+        End Try
+        Return total
+    End Function
+
+    Public Function getTotalBorrowed() As Integer
+        Dim cmd As Odbc.OdbcCommand
+        Dim total As Integer = 0
+        Try
+            cmd = New Odbc.OdbcCommand("SELECT COUNT(BorrowID) FROM tblborrow", con)
+            total = CInt(cmd.ExecuteScalar)
+        Catch ex As Exception
+            MsgBox(ex.Message.ToString)
+        End Try
+        Return total
+    End Function
 End Module
