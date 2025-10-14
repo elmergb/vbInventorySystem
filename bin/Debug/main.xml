@@ -47,6 +47,11 @@ main
   Looks up a localized resource of type System.Drawing.Bitmap.
 </summary>
 </member>
+<member name="P:main.My.Resources.Resources.home">
+<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member>
 <member name="P:main.My.Resources.Resources.images_removebg_preview">
 <summary>
   Looks up a localized resource of type System.Drawing.Bitmap.

@@ -193,9 +193,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="My Project\Resources.resx">
       <Generator>VbMyResourcesResXFileCodeGenerator</Generator>
-      <LastGenOutput>Resources.Designer.vb</LastGenOutput>
       <CustomToolNamespace>My.Resources</CustomToolNamespace>
       <SubType>Designer</SubType>
+      <LastGenOutput>Resources.Designer.vb</LastGenOutput>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
@@ -222,6 +222,7 @@
     <None Include="Resources\person_24dp_8C1A10_FILL0_wght400_GRAD0_opsz24.png" />
     <None Include="Resources\lock_24dp_8C1A10_FILL0_wght400_GRAD0_opsz24.png" />
     <None Include="Resources\hide.png" />
+    <None Include="Resources\home.png" />
     <Content Include="StyleSheetLogin.css" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
