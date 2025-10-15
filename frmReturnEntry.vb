@@ -10,6 +10,7 @@
     End Sub
 
     Private Sub btnReturnLog_Click(sender As System.Object, e As System.EventArgs) Handles btnReturnLog.Click
+        Dim Remarks As String = Trim(txtRemarksR.Text).ToLower()
         Try
             If cbItemListR.SelectedValue Is Nothing Then
                 MsgBox("Please select an item first.", vbExclamation)
@@ -36,12 +37,18 @@
             cmd.Parameters.AddWithValue("?", itemID)
             cmd.ExecuteNonQuery()
 
+            If Remarks = "damage" Or Remarks = "critical" Then
+                Remarks = "Damage"
+            Else
+                Remarks = Remarks
+            End If
+
             ' 🔹 Insert into return table
             cmd = New Odbc.OdbcCommand("INSERT INTO tblreturn (BorrowID, QuantityReturned, DateReturned, Remarks) VALUES (?,?,?,?)", con)
             cmd.Parameters.AddWithValue("?", CInt(BorrowID))
             cmd.Parameters.AddWithValue("?", qtyReturned)
             cmd.Parameters.AddWithValue("?", dtpBorrowedR.Value.ToString("yyyy-MM-dd HH:mm:ss"))
-            cmd.Parameters.AddWithValue("?", Trim(txtRemarksR.Text))
+            cmd.Parameters.AddWithValue("?", Remarks)
             cmd.ExecuteNonQuery()
 
             ' 🔹 Optional: update borrow status

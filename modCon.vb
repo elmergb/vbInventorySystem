@@ -70,4 +70,27 @@ Module modCon
         End Try
         Return total
     End Function
+
+    Public Function getTotalReturned() As Integer
+        Dim cmd As Odbc.OdbcCommand
+        Dim total As Integer = 0
+        Try
+            cmd = New Odbc.OdbcCommand("SELECT COUNT(ReturnID) FROM tblreturn", con)
+            total = CInt(cmd.ExecuteScalar)
+        Catch ex As Exception
+            MsgBox(ex.Message.ToString)
+        End Try
+        Return total
+    End Function
+    Public Function getTotalDamaged() As Integer
+        Dim cmd As Odbc.OdbcCommand
+        Dim total As Integer = 0
+        Try
+            cmd = New Odbc.OdbcCommand("SELECT COUNT(ReturnID) FROM tblreturn WHERE Lower(Remarks) = 'Damage' OR Lower(Remarks) = 'Critical'  ", con)
+            total = CInt(cmd.ExecuteScalar)
+        Catch ex As Exception
+            MsgBox(ex.Message.ToString)
+        End Try
+        Return total
+    End Function
 End Module

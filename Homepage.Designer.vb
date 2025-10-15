@@ -30,6 +30,7 @@ Partial Class Homepage
         Me.btnUser = New System.Windows.Forms.Button()
         Me.btnAddItem = New System.Windows.Forms.Button()
         Me.pnlItem = New System.Windows.Forms.Panel()
+        Me.Button1 = New System.Windows.Forms.Button()
         Me.pnlMain.SuspendLayout()
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
@@ -38,6 +39,7 @@ Partial Class Homepage
         '
         Me.pnlMain.BackColor = System.Drawing.Color.FromArgb(CType(CType(196, Byte), Integer), CType(CType(173, Byte), Integer), CType(CType(143, Byte), Integer))
         Me.pnlMain.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.pnlMain.Controls.Add(Me.Button1)
         Me.pnlMain.Controls.Add(Me.btnDashBoard)
         Me.pnlMain.Controls.Add(Me.PictureBox1)
         Me.pnlMain.Controls.Add(Me.btnReturnList)
@@ -151,6 +153,22 @@ Partial Class Homepage
         Me.pnlItem.Size = New System.Drawing.Size(1151, 673)
         Me.pnlItem.TabIndex = 1
         '
+        'Button1
+        '
+        Me.Button1.BackColor = System.Drawing.Color.FromArgb(CType(CType(196, Byte), Integer), CType(CType(173, Byte), Integer), CType(CType(143, Byte), Integer))
+        Me.Button1.FlatAppearance.BorderSize = 0
+        Me.Button1.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(CType(CType(217, Byte), Integer), CType(CType(193, Byte), Integer), CType(CType(178, Byte), Integer))
+        Me.Button1.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(CType(CType(153, Byte), Integer), CType(CType(113, Byte), Integer), CType(CType(87, Byte), Integer))
+        Me.Button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.Button1.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Button1.Location = New System.Drawing.Point(-95, 618)
+        Me.Button1.Name = "Button1"
+        Me.Button1.Padding = New System.Windows.Forms.Padding(5)
+        Me.Button1.Size = New System.Drawing.Size(281, 42)
+        Me.Button1.TabIndex = 4
+        Me.Button1.Text = "Setting"
+        Me.Button1.UseVisualStyleBackColor = False
+        '
         'Homepage
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -174,4 +192,5 @@ Partial Class Homepage
     Friend WithEvents btnBorrowPage As System.Windows.Forms.Button
     Friend WithEvents btnReturnList As System.Windows.Forms.Button
     Friend WithEvents btnDashBoard As Button
+    Friend WithEvents Button1 As Button
 End Class

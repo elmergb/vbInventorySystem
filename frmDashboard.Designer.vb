@@ -23,23 +23,15 @@ Partial Class frmDashboard
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
-        Dim DataGridViewCellStyle4 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle5 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle6 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle7 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle8 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle9 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmDashboard))
         Me.GroupBox1 = New System.Windows.Forms.GroupBox()
-        Me.Button7 = New System.Windows.Forms.Button()
-        Me.Button6 = New System.Windows.Forms.Button()
-        Me.Button5 = New System.Windows.Forms.Button()
-        Me.Button4 = New System.Windows.Forms.Button()
-        Me.Panel1 = New System.Windows.Forms.Panel()
-        Me.Label3 = New System.Windows.Forms.Label()
+        Me.Label4 = New System.Windows.Forms.Label()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.ToolTip1 = New System.Windows.Forms.ToolTip(Me.components)
-        Me.Panel2 = New System.Windows.Forms.Panel()
-        Me.Label4 = New System.Windows.Forms.Label()
-        Me.Panel3 = New System.Windows.Forms.Panel()
-        Me.Label5 = New System.Windows.Forms.Label()
-        Me.Button3 = New System.Windows.Forms.Button()
+        Me.lbl1 = New System.Windows.Forms.Label()
         Me.Panel4 = New System.Windows.Forms.Panel()
         Me.Label9 = New System.Windows.Forms.Label()
         Me.Label8 = New System.Windows.Forms.Label()
@@ -53,6 +45,11 @@ Partial Class frmDashboard
         Me.Column16 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Column17 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.frmDBdgvReturn = New System.Windows.Forms.DataGridView()
+        Me.Column6 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Column7 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Column8 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Column9 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Column10 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.frmDBdgvBorrow = New System.Windows.Forms.DataGridView()
         Me.Column1 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Column2 = New System.Windows.Forms.DataGridViewTextBoxColumn()
@@ -68,97 +65,47 @@ Partial Class frmDashboard
         Me.ToolStripStatusLabel3 = New System.Windows.Forms.ToolStripStatusLabel()
         Me.tsDate = New System.Windows.Forms.ToolStripStatusLabel()
         Me.ToolStripStatusLabel4 = New System.Windows.Forms.ToolStripStatusLabel()
+        Me.FileSystemWatcher1 = New System.IO.FileSystemWatcher()
+        Me.lbl2 = New System.Windows.Forms.Label()
         Me.Panel5 = New System.Windows.Forms.Panel()
-        Me.Label6 = New System.Windows.Forms.Label()
-        Me.Button9 = New System.Windows.Forms.Button()
-        Me.Column6 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Column7 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Column8 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Column9 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Column10 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.lblItemTotal = New System.Windows.Forms.Label()
+        Me.Label5 = New System.Windows.Forms.Label()
+        Me.Label3 = New System.Windows.Forms.Label()
         Me.lblTotalBorrowed = New System.Windows.Forms.Label()
+        Me.lblTotalReturned = New System.Windows.Forms.Label()
+        Me.lblTotalDamaged = New System.Windows.Forms.Label()
+        Me.ToolStripStatusLabel5 = New System.Windows.Forms.ToolStripStatusLabel()
+        Me.ToolStripSplitButton1 = New System.Windows.Forms.ToolStripSplitButton()
+        Me.UserToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.LogOutToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.GroupBox1.SuspendLayout()
-        Me.Panel1.SuspendLayout()
-        Me.Panel2.SuspendLayout()
-        Me.Panel3.SuspendLayout()
         Me.Panel4.SuspendLayout()
         CType(Me.frmDBdgvItem, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.frmDBdgvReturn, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.frmDBdgvBorrow, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.StatusStrip1.SuspendLayout()
+        CType(Me.FileSystemWatcher1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.Panel5.SuspendLayout()
         Me.SuspendLayout()
         '
         'GroupBox1
         '
-        Me.GroupBox1.Controls.Add(Me.Button7)
-        Me.GroupBox1.Controls.Add(Me.Button6)
-        Me.GroupBox1.Controls.Add(Me.Button5)
-        Me.GroupBox1.Controls.Add(Me.Button4)
-        Me.GroupBox1.Location = New System.Drawing.Point(39, 250)
+        Me.GroupBox1.Controls.Add(Me.Label4)
+        Me.GroupBox1.Location = New System.Drawing.Point(39, 358)
         Me.GroupBox1.Name = "GroupBox1"
-        Me.GroupBox1.Size = New System.Drawing.Size(443, 361)
+        Me.GroupBox1.Size = New System.Drawing.Size(443, 359)
         Me.GroupBox1.TabIndex = 2
         Me.GroupBox1.TabStop = False
-        Me.GroupBox1.Text = "Quick Action"
+        Me.GroupBox1.Text = " "
         '
-        'Button7
+        'Label4
         '
-        Me.Button7.Location = New System.Drawing.Point(16, 234)
-        Me.Button7.Name = "Button7"
-        Me.Button7.Size = New System.Drawing.Size(131, 45)
-        Me.Button7.TabIndex = 10
-        Me.Button7.Text = "Button7"
-        Me.Button7.UseVisualStyleBackColor = True
-        '
-        'Button6
-        '
-        Me.Button6.Location = New System.Drawing.Point(16, 166)
-        Me.Button6.Name = "Button6"
-        Me.Button6.Size = New System.Drawing.Size(131, 45)
-        Me.Button6.TabIndex = 9
-        Me.Button6.Text = "Button6"
-        Me.Button6.UseVisualStyleBackColor = True
-        '
-        'Button5
-        '
-        Me.Button5.Location = New System.Drawing.Point(16, 100)
-        Me.Button5.Name = "Button5"
-        Me.Button5.Size = New System.Drawing.Size(131, 45)
-        Me.Button5.TabIndex = 8
-        Me.Button5.Text = "Button5"
-        Me.Button5.UseVisualStyleBackColor = True
-        '
-        'Button4
-        '
-        Me.Button4.Location = New System.Drawing.Point(16, 34)
-        Me.Button4.Name = "Button4"
-        Me.Button4.Size = New System.Drawing.Size(131, 45)
-        Me.Button4.TabIndex = 7
-        Me.Button4.Text = "Button4"
-        Me.Button4.UseVisualStyleBackColor = True
-        '
-        'Panel1
-        '
-        Me.Panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.Panel1.Controls.Add(Me.lblItemTotal)
-        Me.Panel1.Controls.Add(Me.Label3)
-        Me.Panel1.Location = New System.Drawing.Point(71, 100)
-        Me.Panel1.Name = "Panel1"
-        Me.Panel1.Size = New System.Drawing.Size(178, 117)
-        Me.Panel1.TabIndex = 0
-        '
-        'Label3
-        '
-        Me.Label3.AutoSize = True
-        Me.Label3.Font = New System.Drawing.Font("Myanmar Text", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label3.Location = New System.Drawing.Point(3, 4)
-        Me.Label3.Name = "Label3"
-        Me.Label3.Padding = New System.Windows.Forms.Padding(5)
-        Me.Label3.Size = New System.Drawing.Size(99, 39)
-        Me.Label3.TabIndex = 15
-        Me.Label3.Text = "Total Items"
+        Me.Label4.AutoSize = True
+        Me.Label4.Location = New System.Drawing.Point(6, 16)
+        Me.Label4.Name = "Label4"
+        Me.Label4.Size = New System.Drawing.Size(78, 13)
+        Me.Label4.TabIndex = 0
+        Me.Label4.Text = "Damage Items "
         '
         'Label1
         '
@@ -172,57 +119,19 @@ Partial Class frmDashboard
         'ToolTip1
         '
         '
-        'Panel2
+        'lbl1
         '
-        Me.Panel2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.Panel2.Controls.Add(Me.lblTotalBorrowed)
-        Me.Panel2.Controls.Add(Me.Label4)
-        Me.Panel2.Location = New System.Drawing.Point(304, 100)
-        Me.Panel2.Name = "Panel2"
-        Me.Panel2.Size = New System.Drawing.Size(178, 117)
-        Me.Panel2.TabIndex = 4
-        '
-        'Label4
-        '
-        Me.Label4.AutoSize = True
-        Me.Label4.Font = New System.Drawing.Font("Myanmar Text", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label4.Location = New System.Drawing.Point(3, 4)
-        Me.Label4.Name = "Label4"
-        Me.Label4.Padding = New System.Windows.Forms.Padding(5)
-        Me.Label4.Size = New System.Drawing.Size(129, 39)
-        Me.Label4.TabIndex = 16
-        Me.Label4.Text = "Total Borrowed"
-        '
-        'Panel3
-        '
-        Me.Panel3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.Panel3.Controls.Add(Me.Label5)
-        Me.Panel3.Controls.Add(Me.Button3)
-        Me.Panel3.Location = New System.Drawing.Point(553, 100)
-        Me.Panel3.Name = "Panel3"
-        Me.Panel3.Size = New System.Drawing.Size(178, 117)
-        Me.Panel3.TabIndex = 5
-        '
-        'Label5
-        '
-        Me.Label5.AutoSize = True
-        Me.Label5.Font = New System.Drawing.Font("Myanmar Text", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label5.Location = New System.Drawing.Point(3, 4)
-        Me.Label5.Name = "Label5"
-        Me.Label5.Padding = New System.Windows.Forms.Padding(5)
-        Me.Label5.Size = New System.Drawing.Size(125, 39)
-        Me.Label5.TabIndex = 16
-        Me.Label5.Text = "Total Returned"
-        '
-        'Button3
-        '
-        Me.Button3.FlatAppearance.BorderSize = 0
-        Me.Button3.Location = New System.Drawing.Point(-1, 50)
-        Me.Button3.Name = "Button3"
-        Me.Button3.Size = New System.Drawing.Size(165, 63)
-        Me.Button3.TabIndex = 0
-        Me.Button3.Text = "Button3"
-        Me.Button3.UseVisualStyleBackColor = True
+        Me.lbl1.BackColor = System.Drawing.Color.Transparent
+        Me.lbl1.Font = New System.Drawing.Font("Myanmar Text", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lbl1.Image = Global.main.My.Resources.Resources.borrowing
+        Me.lbl1.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
+        Me.lbl1.Location = New System.Drawing.Point(3, 11)
+        Me.lbl1.Name = "lbl1"
+        Me.lbl1.Padding = New System.Windows.Forms.Padding(5)
+        Me.lbl1.Size = New System.Drawing.Size(129, 42)
+        Me.lbl1.TabIndex = 17
+        Me.lbl1.Text = "     Total Items:"
+        Me.lbl1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
         '
         'Panel4
         '
@@ -234,7 +143,7 @@ Partial Class frmDashboard
         Me.Panel4.Controls.Add(Me.frmDBdgvItem)
         Me.Panel4.Controls.Add(Me.frmDBdgvReturn)
         Me.Panel4.Controls.Add(Me.frmDBdgvBorrow)
-        Me.Panel4.Location = New System.Drawing.Point(517, 250)
+        Me.Panel4.Location = New System.Drawing.Point(539, 342)
         Me.Panel4.Name = "Panel4"
         Me.Panel4.Size = New System.Drawing.Size(619, 546)
         Me.Panel4.TabIndex = 6
@@ -272,8 +181,8 @@ Partial Class frmDashboard
         Me.frmDBdgvItem.AllowUserToDeleteRows = False
         Me.frmDBdgvItem.AllowUserToResizeColumns = False
         Me.frmDBdgvItem.AllowUserToResizeRows = False
-        DataGridViewCellStyle4.SelectionForeColor = System.Drawing.Color.White
-        Me.frmDBdgvItem.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle4
+        DataGridViewCellStyle7.SelectionForeColor = System.Drawing.Color.White
+        Me.frmDBdgvItem.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle7
         Me.frmDBdgvItem.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill
         Me.frmDBdgvItem.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing
         Me.frmDBdgvItem.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.Column12, Me.Column11, Me.Column13, Me.Column14, Me.Column15, Me.Column16, Me.Column17})
@@ -285,7 +194,7 @@ Partial Class frmDashboard
         Me.frmDBdgvItem.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing
         Me.frmDBdgvItem.ScrollBars = System.Windows.Forms.ScrollBars.None
         Me.frmDBdgvItem.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
-        Me.frmDBdgvItem.Size = New System.Drawing.Size(586, 110)
+        Me.frmDBdgvItem.Size = New System.Drawing.Size(586, 131)
         Me.frmDBdgvItem.TabIndex = 6
         '
         'Column12
@@ -344,8 +253,8 @@ Partial Class frmDashboard
         Me.frmDBdgvReturn.AllowUserToDeleteRows = False
         Me.frmDBdgvReturn.AllowUserToResizeColumns = False
         Me.frmDBdgvReturn.AllowUserToResizeRows = False
-        DataGridViewCellStyle5.SelectionForeColor = System.Drawing.Color.White
-        Me.frmDBdgvReturn.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle5
+        DataGridViewCellStyle8.SelectionForeColor = System.Drawing.Color.White
+        Me.frmDBdgvReturn.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle8
         Me.frmDBdgvReturn.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill
         Me.frmDBdgvReturn.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing
         Me.frmDBdgvReturn.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.Column6, Me.Column7, Me.Column8, Me.Column9, Me.Column10})
@@ -357,8 +266,46 @@ Partial Class frmDashboard
         Me.frmDBdgvReturn.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing
         Me.frmDBdgvReturn.ScrollBars = System.Windows.Forms.ScrollBars.None
         Me.frmDBdgvReturn.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
-        Me.frmDBdgvReturn.Size = New System.Drawing.Size(590, 110)
+        Me.frmDBdgvReturn.Size = New System.Drawing.Size(590, 131)
         Me.frmDBdgvReturn.TabIndex = 5
+        '
+        'Column6
+        '
+        Me.Column6.DataPropertyName = "ItemName"
+        Me.Column6.FillWeight = 70.0!
+        Me.Column6.HeaderText = "Item"
+        Me.Column6.Name = "Column6"
+        Me.Column6.ReadOnly = True
+        '
+        'Column7
+        '
+        Me.Column7.DataPropertyName = "BorrowerName"
+        Me.Column7.FillWeight = 80.0!
+        Me.Column7.HeaderText = "Borrower"
+        Me.Column7.Name = "Column7"
+        Me.Column7.ReadOnly = True
+        '
+        'Column8
+        '
+        Me.Column8.DataPropertyName = "QuantityBorrowed"
+        Me.Column8.HeaderText = "Quantity Borrowed"
+        Me.Column8.Name = "Column8"
+        Me.Column8.ReadOnly = True
+        '
+        'Column9
+        '
+        Me.Column9.DataPropertyName = "QuantityReturned"
+        Me.Column9.HeaderText = "Quantity Return"
+        Me.Column9.Name = "Column9"
+        Me.Column9.ReadOnly = True
+        '
+        'Column10
+        '
+        Me.Column10.DataPropertyName = "DateReturned"
+        Me.Column10.FillWeight = 120.0!
+        Me.Column10.HeaderText = "Date Return"
+        Me.Column10.Name = "Column10"
+        Me.Column10.ReadOnly = True
         '
         'frmDBdgvBorrow
         '
@@ -366,8 +313,8 @@ Partial Class frmDashboard
         Me.frmDBdgvBorrow.AllowUserToDeleteRows = False
         Me.frmDBdgvBorrow.AllowUserToResizeColumns = False
         Me.frmDBdgvBorrow.AllowUserToResizeRows = False
-        DataGridViewCellStyle6.SelectionForeColor = System.Drawing.Color.White
-        Me.frmDBdgvBorrow.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle6
+        DataGridViewCellStyle9.SelectionForeColor = System.Drawing.Color.White
+        Me.frmDBdgvBorrow.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle9
         Me.frmDBdgvBorrow.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill
         Me.frmDBdgvBorrow.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing
         Me.frmDBdgvBorrow.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.Column1, Me.Column2, Me.Column3, Me.Column4, Me.Column5})
@@ -379,7 +326,7 @@ Partial Class frmDashboard
         Me.frmDBdgvBorrow.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing
         Me.frmDBdgvBorrow.ScrollBars = System.Windows.Forms.ScrollBars.None
         Me.frmDBdgvBorrow.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
-        Me.frmDBdgvBorrow.Size = New System.Drawing.Size(590, 110)
+        Me.frmDBdgvBorrow.Size = New System.Drawing.Size(590, 131)
         Me.frmDBdgvBorrow.TabIndex = 4
         '
         'Column1
@@ -423,11 +370,13 @@ Partial Class frmDashboard
         'Label2
         '
         Me.Label2.BackColor = System.Drawing.Color.FromArgb(CType(CType(135, Byte), Integer), CType(CType(95, Byte), Integer), CType(CType(49, Byte), Integer))
-        Me.Label2.Location = New System.Drawing.Point(-1, -7)
+        Me.Label2.Font = New System.Drawing.Font("Yu Gothic UI", 20.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label2.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
+        Me.Label2.Location = New System.Drawing.Point(3, 34)
         Me.Label2.Name = "Label2"
-        Me.Label2.Size = New System.Drawing.Size(1156, 85)
+        Me.Label2.Size = New System.Drawing.Size(1190, 56)
         Me.Label2.TabIndex = 7
-        Me.Label2.Text = "Label2"
+        Me.Label2.Text = "     Dashboard"
         Me.Label2.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
         '
         'Timer1
@@ -435,7 +384,7 @@ Partial Class frmDashboard
         '
         'Button8
         '
-        Me.Button8.Location = New System.Drawing.Point(351, 675)
+        Me.Button8.Location = New System.Drawing.Point(351, 779)
         Me.Button8.Name = "Button8"
         Me.Button8.Size = New System.Drawing.Size(131, 45)
         Me.Button8.TabIndex = 11
@@ -444,19 +393,20 @@ Partial Class frmDashboard
         '
         'StatusStrip1
         '
-        Me.StatusStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ToolStripStatusLabel1, Me.ToolStripStatusLabel2, Me.ToolStripStatusLabel3, Me.tsDate, Me.ToolStripStatusLabel4})
-        Me.StatusStrip1.Location = New System.Drawing.Point(5, 791)
+        Me.StatusStrip1.Dock = System.Windows.Forms.DockStyle.Top
+        Me.StatusStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ToolStripStatusLabel5, Me.ToolStripSplitButton1, Me.ToolStripStatusLabel1, Me.ToolStripStatusLabel2, Me.ToolStripStatusLabel3, Me.tsDate, Me.ToolStripStatusLabel4})
+        Me.StatusStrip1.Location = New System.Drawing.Point(5, 5)
         Me.StatusStrip1.Name = "StatusStrip1"
         Me.StatusStrip1.RenderMode = System.Windows.Forms.ToolStripRenderMode.Professional
-        Me.StatusStrip1.Size = New System.Drawing.Size(1145, 22)
+        Me.StatusStrip1.Size = New System.Drawing.Size(1188, 22)
         Me.StatusStrip1.TabIndex = 12
         Me.StatusStrip1.Text = "StatusStrip1"
         '
         'ToolStripStatusLabel1
         '
         Me.ToolStripStatusLabel1.Name = "ToolStripStatusLabel1"
-        Me.ToolStripStatusLabel1.Size = New System.Drawing.Size(59, 17)
-        Me.ToolStripStatusLabel1.Text = "Log in As:"
+        Me.ToolStripStatusLabel1.Size = New System.Drawing.Size(65, 17)
+        Me.ToolStripStatusLabel1.Text = "  Log in As:"
         '
         'ToolStripStatusLabel2
         '
@@ -481,120 +431,162 @@ Partial Class frmDashboard
         Me.ToolStripStatusLabel4.Size = New System.Drawing.Size(146, 17)
         Me.ToolStripStatusLabel4.Text = "         ToolStripStatusLabel4"
         '
+        'FileSystemWatcher1
+        '
+        Me.FileSystemWatcher1.EnableRaisingEvents = True
+        Me.FileSystemWatcher1.SynchronizingObject = Me
+        '
+        'lbl2
+        '
+        Me.lbl2.BackColor = System.Drawing.Color.Transparent
+        Me.lbl2.Font = New System.Drawing.Font("Myanmar Text", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lbl2.ForeColor = System.Drawing.SystemColors.ActiveCaptionText
+        Me.lbl2.Image = Global.main.My.Resources.Resources.inventory
+        Me.lbl2.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
+        Me.lbl2.Location = New System.Drawing.Point(3, 53)
+        Me.lbl2.Margin = New System.Windows.Forms.Padding(0)
+        Me.lbl2.Name = "lbl2"
+        Me.lbl2.Padding = New System.Windows.Forms.Padding(7)
+        Me.lbl2.Size = New System.Drawing.Size(176, 40)
+        Me.lbl2.TabIndex = 16
+        Me.lbl2.Text = "       Total Borrowed:"
+        Me.lbl2.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
+        '
         'Panel5
         '
         Me.Panel5.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.Panel5.Controls.Add(Me.Label6)
-        Me.Panel5.Controls.Add(Me.Button9)
-        Me.Panel5.Location = New System.Drawing.Point(791, 100)
+        Me.Panel5.Controls.Add(Me.lblTotalDamaged)
+        Me.Panel5.Controls.Add(Me.lblTotalReturned)
+        Me.Panel5.Controls.Add(Me.lblTotalBorrowed)
+        Me.Panel5.Controls.Add(Me.lblItemTotal)
+        Me.Panel5.Controls.Add(Me.Label5)
+        Me.Panel5.Controls.Add(Me.Label3)
+        Me.Panel5.Controls.Add(Me.lbl1)
+        Me.Panel5.Controls.Add(Me.lbl2)
+        Me.Panel5.Location = New System.Drawing.Point(26, 112)
         Me.Panel5.Name = "Panel5"
-        Me.Panel5.Size = New System.Drawing.Size(178, 117)
+        Me.Panel5.Size = New System.Drawing.Size(238, 216)
         Me.Panel5.TabIndex = 13
-        '
-        'Label6
-        '
-        Me.Label6.AutoSize = True
-        Me.Label6.Font = New System.Drawing.Font("Myanmar Text", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label6.Location = New System.Drawing.Point(3, 8)
-        Me.Label6.Name = "Label6"
-        Me.Label6.Padding = New System.Windows.Forms.Padding(5)
-        Me.Label6.Size = New System.Drawing.Size(100, 39)
-        Me.Label6.TabIndex = 16
-        Me.Label6.Text = "Total Users"
-        '
-        'Button9
-        '
-        Me.Button9.FlatAppearance.BorderSize = 0
-        Me.Button9.Location = New System.Drawing.Point(-1, 50)
-        Me.Button9.Name = "Button9"
-        Me.Button9.Size = New System.Drawing.Size(165, 64)
-        Me.Button9.TabIndex = 0
-        Me.Button9.Text = "Button9"
-        Me.Button9.UseVisualStyleBackColor = True
-        '
-        'Column6
-        '
-        Me.Column6.DataPropertyName = "ItemName"
-        Me.Column6.FillWeight = 70.0!
-        Me.Column6.HeaderText = "Item"
-        Me.Column6.Name = "Column6"
-        Me.Column6.ReadOnly = True
-        '
-        'Column7
-        '
-        Me.Column7.DataPropertyName = "BorrowerName"
-        Me.Column7.FillWeight = 80.0!
-        Me.Column7.HeaderText = "Borrower"
-        Me.Column7.Name = "Column7"
-        Me.Column7.ReadOnly = True
-        '
-        'Column8
-        '
-        Me.Column8.DataPropertyName = "QuantityBorrowed"
-        Me.Column8.HeaderText = "Quantity Borrowed"
-        Me.Column8.Name = "Column8"
-        Me.Column8.ReadOnly = True
-        '
-        'Column9
-        '
-        Me.Column9.DataPropertyName = "QuantityReturned"
-        Me.Column9.HeaderText = "Quantity Return"
-        Me.Column9.Name = "Column9"
-        Me.Column9.ReadOnly = True
-        '
-        'Column10
-        '
-        Me.Column10.DataPropertyName = "DateReturned"
-        Me.Column10.FillWeight = 120.0!
-        Me.Column10.HeaderText = "Date Return"
-        Me.Column10.Name = "Column10"
-        Me.Column10.ReadOnly = True
         '
         'lblItemTotal
         '
-        Me.lblItemTotal.Font = New System.Drawing.Font("Myanmar Text", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblItemTotal.Location = New System.Drawing.Point(3, 50)
+        Me.lblItemTotal.AutoSize = True
+        Me.lblItemTotal.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblItemTotal.Location = New System.Drawing.Point(117, 18)
         Me.lblItemTotal.Name = "lblItemTotal"
-        Me.lblItemTotal.Padding = New System.Windows.Forms.Padding(5)
-        Me.lblItemTotal.Size = New System.Drawing.Size(111, 35)
-        Me.lblItemTotal.TabIndex = 16
-        Me.lblItemTotal.Text = "Total Items"
+        Me.lblItemTotal.Size = New System.Drawing.Size(20, 24)
+        Me.lblItemTotal.TabIndex = 15
+        Me.lblItemTotal.Text = "0"
+        '
+        'Label5
+        '
+        Me.Label5.BackColor = System.Drawing.Color.Transparent
+        Me.Label5.Font = New System.Drawing.Font("Myanmar Text", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label5.ForeColor = System.Drawing.SystemColors.ActiveCaptionText
+        Me.Label5.Image = Global.main.My.Resources.Resources.inventory
+        Me.Label5.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
+        Me.Label5.Location = New System.Drawing.Point(7, 102)
+        Me.Label5.Margin = New System.Windows.Forms.Padding(0)
+        Me.Label5.Name = "Label5"
+        Me.Label5.Padding = New System.Windows.Forms.Padding(7)
+        Me.Label5.Size = New System.Drawing.Size(176, 40)
+        Me.Label5.TabIndex = 19
+        Me.Label5.Text = "       Total Returned:"
+        Me.Label5.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
+        '
+        'Label3
+        '
+        Me.Label3.BackColor = System.Drawing.Color.Transparent
+        Me.Label3.Font = New System.Drawing.Font("Myanmar Text", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label3.ForeColor = System.Drawing.SystemColors.ActiveCaptionText
+        Me.Label3.Image = Global.main.My.Resources.Resources.inventory
+        Me.Label3.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
+        Me.Label3.Location = New System.Drawing.Point(7, 153)
+        Me.Label3.Margin = New System.Windows.Forms.Padding(0)
+        Me.Label3.Name = "Label3"
+        Me.Label3.Padding = New System.Windows.Forms.Padding(7)
+        Me.Label3.Size = New System.Drawing.Size(176, 40)
+        Me.Label3.TabIndex = 18
+        Me.Label3.Text = "       Total Damage:"
+        Me.Label3.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
         '
         'lblTotalBorrowed
         '
-        Me.lblTotalBorrowed.Font = New System.Drawing.Font("Myanmar Text", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblTotalBorrowed.Location = New System.Drawing.Point(3, 50)
+        Me.lblTotalBorrowed.AutoSize = True
+        Me.lblTotalBorrowed.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblTotalBorrowed.Location = New System.Drawing.Point(157, 59)
         Me.lblTotalBorrowed.Name = "lblTotalBorrowed"
-        Me.lblTotalBorrowed.Padding = New System.Windows.Forms.Padding(5)
-        Me.lblTotalBorrowed.Size = New System.Drawing.Size(111, 35)
-        Me.lblTotalBorrowed.TabIndex = 17
-        Me.lblTotalBorrowed.Text = "Total Items"
+        Me.lblTotalBorrowed.Size = New System.Drawing.Size(20, 24)
+        Me.lblTotalBorrowed.TabIndex = 20
+        Me.lblTotalBorrowed.Text = "0"
+        '
+        'lblTotalReturned
+        '
+        Me.lblTotalReturned.AutoSize = True
+        Me.lblTotalReturned.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblTotalReturned.Location = New System.Drawing.Point(157, 108)
+        Me.lblTotalReturned.Name = "lblTotalReturned"
+        Me.lblTotalReturned.Size = New System.Drawing.Size(20, 24)
+        Me.lblTotalReturned.TabIndex = 21
+        Me.lblTotalReturned.Text = "0"
+        '
+        'lblTotalDamaged
+        '
+        Me.lblTotalDamaged.AutoSize = True
+        Me.lblTotalDamaged.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblTotalDamaged.Location = New System.Drawing.Point(157, 161)
+        Me.lblTotalDamaged.Name = "lblTotalDamaged"
+        Me.lblTotalDamaged.Size = New System.Drawing.Size(20, 24)
+        Me.lblTotalDamaged.TabIndex = 22
+        Me.lblTotalDamaged.Text = "0"
+        '
+        'ToolStripStatusLabel5
+        '
+        Me.ToolStripStatusLabel5.Name = "ToolStripStatusLabel5"
+        Me.ToolStripStatusLabel5.Size = New System.Drawing.Size(38, 17)
+        Me.ToolStripStatusLabel5.Text = "Menu"
+        '
+        'ToolStripSplitButton1
+        '
+        Me.ToolStripSplitButton1.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
+        Me.ToolStripSplitButton1.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.UserToolStripMenuItem})
+        Me.ToolStripSplitButton1.Image = CType(resources.GetObject("ToolStripSplitButton1.Image"), System.Drawing.Image)
+        Me.ToolStripSplitButton1.ImageTransparentColor = System.Drawing.Color.Magenta
+        Me.ToolStripSplitButton1.Name = "ToolStripSplitButton1"
+        Me.ToolStripSplitButton1.Size = New System.Drawing.Size(32, 20)
+        Me.ToolStripSplitButton1.Text = "ToolStripSplitButton1"
+        '
+        'UserToolStripMenuItem
+        '
+        Me.UserToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.LogOutToolStripMenuItem})
+        Me.UserToolStripMenuItem.Name = "UserToolStripMenuItem"
+        Me.UserToolStripMenuItem.Size = New System.Drawing.Size(180, 22)
+        Me.UserToolStripMenuItem.Text = "User"
+        '
+        'LogOutToolStripMenuItem
+        '
+        Me.LogOutToolStripMenuItem.Name = "LogOutToolStripMenuItem"
+        Me.LogOutToolStripMenuItem.Size = New System.Drawing.Size(180, 22)
+        Me.LogOutToolStripMenuItem.Text = "Log out"
         '
         'frmDashboard
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.AutoScroll = True
-        Me.ClientSize = New System.Drawing.Size(1172, 552)
+        Me.BackColor = System.Drawing.SystemColors.ButtonFace
+        Me.ClientSize = New System.Drawing.Size(1201, 552)
         Me.Controls.Add(Me.Panel5)
         Me.Controls.Add(Me.StatusStrip1)
         Me.Controls.Add(Me.Button8)
         Me.Controls.Add(Me.Label2)
         Me.Controls.Add(Me.Panel4)
-        Me.Controls.Add(Me.Panel3)
-        Me.Controls.Add(Me.Panel2)
-        Me.Controls.Add(Me.Panel1)
         Me.Controls.Add(Me.GroupBox1)
         Me.Name = "frmDashboard"
         Me.Padding = New System.Windows.Forms.Padding(5)
         Me.Text = "frmDashboard"
         Me.GroupBox1.ResumeLayout(False)
-        Me.Panel1.ResumeLayout(False)
-        Me.Panel1.PerformLayout()
-        Me.Panel2.ResumeLayout(False)
-        Me.Panel2.PerformLayout()
-        Me.Panel3.ResumeLayout(False)
-        Me.Panel3.PerformLayout()
+        Me.GroupBox1.PerformLayout()
         Me.Panel4.ResumeLayout(False)
         Me.Panel4.PerformLayout()
         CType(Me.frmDBdgvItem, System.ComponentModel.ISupportInitialize).EndInit()
@@ -602,6 +594,7 @@ Partial Class frmDashboard
         CType(Me.frmDBdgvBorrow, System.ComponentModel.ISupportInitialize).EndInit()
         Me.StatusStrip1.ResumeLayout(False)
         Me.StatusStrip1.PerformLayout()
+        CType(Me.FileSystemWatcher1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.Panel5.ResumeLayout(False)
         Me.Panel5.PerformLayout()
         Me.ResumeLayout(False)
@@ -609,16 +602,8 @@ Partial Class frmDashboard
 
     End Sub
     Friend WithEvents GroupBox1 As System.Windows.Forms.GroupBox
-    Friend WithEvents Button7 As System.Windows.Forms.Button
-    Friend WithEvents Button6 As System.Windows.Forms.Button
-    Friend WithEvents Button5 As System.Windows.Forms.Button
-    Friend WithEvents Button4 As System.Windows.Forms.Button
-    Friend WithEvents Panel1 As System.Windows.Forms.Panel
     Friend WithEvents Label1 As System.Windows.Forms.Label
     Friend WithEvents ToolTip1 As System.Windows.Forms.ToolTip
-    Friend WithEvents Panel2 As System.Windows.Forms.Panel
-    Friend WithEvents Panel3 As System.Windows.Forms.Panel
-    Friend WithEvents Button3 As System.Windows.Forms.Button
     Friend WithEvents Panel4 As System.Windows.Forms.Panel
     Friend WithEvents Label2 As System.Windows.Forms.Label
     Friend WithEvents frmDBdgvReturn As DataGridView
@@ -631,13 +616,7 @@ Partial Class frmDashboard
     Friend WithEvents ToolStripStatusLabel3 As ToolStripStatusLabel
     Friend WithEvents tsDate As ToolStripStatusLabel
     Friend WithEvents ToolStripStatusLabel4 As ToolStripStatusLabel
-    Friend WithEvents Label3 As Label
-    Friend WithEvents Label4 As Label
-    Friend WithEvents Label5 As Label
     Friend WithEvents frmDBdgvItem As DataGridView
-    Friend WithEvents Panel5 As Panel
-    Friend WithEvents Label6 As Label
-    Friend WithEvents Button9 As Button
     Friend WithEvents Label9 As Label
     Friend WithEvents Label8 As Label
     Friend WithEvents Label7 As Label
@@ -658,6 +637,19 @@ Partial Class frmDashboard
     Friend WithEvents Column8 As DataGridViewTextBoxColumn
     Friend WithEvents Column9 As DataGridViewTextBoxColumn
     Friend WithEvents Column10 As DataGridViewTextBoxColumn
+    Friend WithEvents lbl1 As Label
+    Friend WithEvents FileSystemWatcher1 As IO.FileSystemWatcher
+    Friend WithEvents lbl2 As Label
+    Friend WithEvents Panel5 As Panel
+    Friend WithEvents Label4 As Label
+    Friend WithEvents Label3 As Label
+    Friend WithEvents Label5 As Label
     Friend WithEvents lblItemTotal As Label
+    Friend WithEvents lblTotalReturned As Label
     Friend WithEvents lblTotalBorrowed As Label
+    Friend WithEvents lblTotalDamaged As Label
+    Friend WithEvents ToolStripStatusLabel5 As ToolStripStatusLabel
+    Friend WithEvents ToolStripSplitButton1 As ToolStripSplitButton
+    Friend WithEvents UserToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents LogOutToolStripMenuItem As ToolStripMenuItem
 End Class

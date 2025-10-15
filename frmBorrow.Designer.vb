@@ -37,6 +37,7 @@ Partial Class frmBorrow
         Me.txtPurpose = New System.Windows.Forms.TextBox()
         Me.txtRemarks = New System.Windows.Forms.TextBox()
         Me.dtpBorrowed = New System.Windows.Forms.DateTimePicker()
+        Me.btnAddItem = New System.Windows.Forms.Button()
         CType(Me.nupQuantity, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
@@ -58,7 +59,7 @@ Partial Class frmBorrow
         'btnLogSave
         '
         Me.btnLogSave.Font = New System.Drawing.Font("Microsoft YaHei", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnLogSave.Location = New System.Drawing.Point(380, 430)
+        Me.btnLogSave.Location = New System.Drawing.Point(370, 346)
         Me.btnLogSave.Name = "btnLogSave"
         Me.btnLogSave.Size = New System.Drawing.Size(102, 51)
         Me.btnLogSave.TabIndex = 2
@@ -169,11 +170,22 @@ Partial Class frmBorrow
         Me.dtpBorrowed.Size = New System.Drawing.Size(200, 20)
         Me.dtpBorrowed.TabIndex = 15
         '
+        'btnAddItem
+        '
+        Me.btnAddItem.Font = New System.Drawing.Font("Microsoft YaHei", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnAddItem.Location = New System.Drawing.Point(248, 346)
+        Me.btnAddItem.Name = "btnAddItem"
+        Me.btnAddItem.Size = New System.Drawing.Size(102, 51)
+        Me.btnAddItem.TabIndex = 16
+        Me.btnAddItem.Text = "Add"
+        Me.btnAddItem.UseVisualStyleBackColor = True
+        '
         'frmBorrow
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(524, 510)
+        Me.Controls.Add(Me.btnAddItem)
         Me.Controls.Add(Me.dtpBorrowed)
         Me.Controls.Add(Me.txtRemarks)
         Me.Controls.Add(Me.txtPurpose)
@@ -211,4 +223,5 @@ Partial Class frmBorrow
     Friend WithEvents txtPurpose As System.Windows.Forms.TextBox
     Friend WithEvents txtRemarks As System.Windows.Forms.TextBox
     Friend WithEvents dtpBorrowed As System.Windows.Forms.DateTimePicker
+    Friend WithEvents btnAddItem As Button
 End Class

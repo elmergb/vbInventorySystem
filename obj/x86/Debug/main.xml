@@ -32,6 +32,11 @@ main
   Looks up a localized resource of type System.Drawing.Bitmap.
 </summary>
 </member>
+<member name="P:main.My.Resources.Resources.borrowing">
+<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member>
 <member name="P:main.My.Resources.Resources.CSTA">
 <summary>
   Looks up a localized resource of type System.Drawing.Bitmap.
@@ -53,6 +58,11 @@ main
 </summary>
 </member>
 <member name="P:main.My.Resources.Resources.images_removebg_preview">
+<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member>
+<member name="P:main.My.Resources.Resources.inventory">
 <summary>
   Looks up a localized resource of type System.Drawing.Bitmap.
 </summary>

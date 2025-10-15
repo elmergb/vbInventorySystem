@@ -3,7 +3,7 @@
     Public ItemID As Integer
     Private Sub frmListItem_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         Call data_loader("SELECT * FROM tblitemlist", dgvItemList)
-
+        frmAddItem.nupQuantity.Maximum = 1000
         dgvItemList.AutoGenerateColumns = False
         dgvItemList.Tag = 0
     End Sub

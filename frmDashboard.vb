@@ -34,6 +34,8 @@
 
         lblTotalBorrowed.Text = getTotalBorrowed()
         lblItemTotal.Text = getTotalItems()
+        lblTotalReturned.Text = getTotalReturned()
+        lblTotalDamaged.Text = getTotalDamaged().ToString
         ToolStripStatusLabel2.Text = Login.txtUsername.Text
         tsDate.Text = Date.Now.ToString(("yyyy-MM-dd HH:mm:ss"))
     End Sub

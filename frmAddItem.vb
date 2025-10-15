@@ -21,6 +21,9 @@
                 End With
                 cmd.ExecuteNonQuery()
                 MsgBox("Inserted Successfully", vbInformation)
+                If MsgBox("Do you want add more Item?", vbYesNo + vbQuestion) = vbNo Then
+                    Me.Close()
+                End If
                 Call data_loader("SELECT * FROM tblitemlist", frmListItem.dgvItemList)
             Catch ex As Exception
                 MsgBox(ex.Message.ToString)
@@ -40,6 +43,8 @@
                 cmd.ExecuteNonQuery()
                 MsgBox("Edited Successfully!", vbInformation)
                 Call data_loader("SELECT * FROM tblitemlist", frmListItem.dgvItemList)
+
+
             Catch ex As Exception
                 MsgBox(ex.Message.ToString)
             Finally
