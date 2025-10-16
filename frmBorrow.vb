@@ -61,4 +61,8 @@
     Private Sub dtpBorrowed_ValueChanged(sender As System.Object, e As System.EventArgs) Handles dtpBorrowed.ValueChanged
 
     End Sub
+
+    Private Sub btnAddItem_Click(sender As Object, e As EventArgs) Handles btnAddItem.Click
+
+    End Sub
 End Class
