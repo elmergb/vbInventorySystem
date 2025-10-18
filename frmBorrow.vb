@@ -10,64 +10,56 @@
     End Sub
 
     Private Sub btnLogSave_Click(sender As System.Object, e As System.EventArgs) Handles btnLogSave.Click
-        Dim cmd As Odbc.OdbcCommand
         Try
-            For Each row As DataGridViewRow In frmBorrowerCartList.dgvBorrowerCart.Rows
-                If row.IsNewRow Then Continue For
+            Dim cmdSelect As New Odbc.OdbcCommand("SELECT * FROM tblcartlist", con)
+            Dim reader As Odbc.OdbcDataReader = cmdSelect.ExecuteReader()
 
+            While reader.Read()
+                Dim insertCmd As New Odbc.OdbcCommand("INSERT INTO tblborrow (ItemID, BorrowerName, QuantityBorrowed, Contact, Purpose, DateBorrowed, Remarks) VALUES (?, ?, ?, ?, ?, ?, ?)", con)
+                insertCmd.Parameters.AddWithValue("?", reader("ItemID"))
+                insertCmd.Parameters.AddWithValue("?", reader("BorrowerName"))
+                insertCmd.Parameters.AddWithValue("?", reader("QuantityBorrowed"))
+                insertCmd.Parameters.AddWithValue("?", reader("Contact"))
+                insertCmd.Parameters.AddWithValue("?", reader("Purpose"))
+                insertCmd.Parameters.AddWithValue("?", reader("DateBorrowed"))
+                insertCmd.Parameters.AddWithValue("?", reader("Remarks"))
+                insertCmd.ExecuteNonQuery()
 
-            Next
+                ' 2. Update the item quantity in tblitemlist
+                Dim updateCmd As New Odbc.OdbcCommand("UPDATE tblitemlist SET ItemQuantity = ItemQuantity - ? WHERE ItemID = ?", con)
+                updateCmd.Parameters.AddWithValue("?", reader("QuantityBorrowed"))
+                updateCmd.Parameters.AddWithValue("?", reader("ItemID"))
+                updateCmd.ExecuteNonQuery()
+            End While
+
+            reader.Close()
+
+            ' 3. Clear the cart
+            Dim clearCmd As New Odbc.OdbcCommand("DELETE FROM tblcartlist", con)
+            clearCmd.ExecuteNonQuery()
+
+            MessageBox.Show("Borrowing finalized successfully!")
         Catch ex As Exception
-
+            MsgBox(ex.Message.ToString)
+        Finally
+            GC.Collect()
         End Try
 
 
     End Sub
     Private Sub btnAddItem_Click(sender As Object, e As EventArgs) Handles btnAddItem.Click
-        Dim cmd As Odbc.OdbcCommand
-        Try
-            Dim availableQuantity As Integer = 0
-            Dim checkval As String = "SELECT ItemQuantity FROM tblitemlist WHERE ItemID = ?"
-            cmd = New Odbc.OdbcCommand(checkval, con)
-            cmd.Parameters.AddWithValue("?", cbItemList.SelectedValue)
-            Dim result = cmd.ExecuteScalar()
-            If result IsNot Nothing Then
-                availableQuantity = CInt(result)
-            End If
+        Dim cmd As New Odbc.OdbcCommand("INSERT INTO tblcartlist (ItemID, BorrowerName, QuantityBorrowed, Contact, Purpose, DateBorrowed, Remarks) VALUES (?, ?, ?, ?, ?, ?, ?)", con)
 
-            Dim reqQuantity As Integer = nupQuantity.Value
-            Dim isValid As Boolean = True
+        cmd.Parameters.AddWithValue("?", CInt(cbItemList.SelectedValue))  ' ItemID from combo box
+        cmd.Parameters.AddWithValue("?", txtBorrowerName.Text)
+        cmd.Parameters.AddWithValue("?", CInt(nupQuantity.Value))
+        cmd.Parameters.AddWithValue("?", txtContact.Text)
+        cmd.Parameters.AddWithValue("?", txtPurpose.Text)
+        cmd.Parameters.AddWithValue("?", DateTime.Now)
+        cmd.Parameters.AddWithValue("?", "Good")
 
-            If reqQuantity > availableQuantity Then
-                MsgBox("Not enough available stock! Only " & availableQuantity & " left", vbInformation)
-                isValid = False
-            Else
-                cmd = New Odbc.OdbcCommand("INSERT INTO tblcartlist (ItemID, BorrowerName, QuantityBorrowed, Contact, Purpose, DateBorrowed, Remarks) VALUES (?,?,?,?,?,?,?)", con)
-                With cmd.Parameters
-                    .AddWithValue("?", (cbItemList.SelectedValue))
-                    .AddWithValue("?", Trim(txtBorrowerName.Text))
-                    .AddWithValue("?", CInt(nupQuantity.Value))
-                    .AddWithValue("?", Trim(txtContact.Text))
-                    .AddWithValue("?", Trim(txtPurpose.Text))
-                    .AddWithValue("?", dtpBorrowed.Value.ToString("yyyy-MM-dd HH:mm:ss"))
-                    .AddWithValue("?", Trim(txtRemarks.Text))
-                End With
-                cmd.ExecuteNonQuery()
-
-                cmd = New Odbc.OdbcCommand("UPDATE tblitemlist SET ItemQuantity = ItemQuantity - ? WHERE ItemID = ?", con)
-                With cmd.Parameters
-                    .AddWithValue("?", CInt(nupQuantity.Value))
-                    .AddWithValue("?", cbItemList.SelectedValue)
-                End With
-                cmd.ExecuteNonQuery()
-
-                Call data_loader("SELECT * FROM vw_cartlist", frmBorrowerCartList.dgvBorrowerCart)
-            End If
-        Catch ex As Exception
-            MsgBox("Error adding item: " & ex.Message, vbCritical)
-        Finally
-            GC.Collect()
-        End Try
+        cmd.ExecuteNonQuery()
+        MessageBox.Show("Item added to temporary list.")
 
     End Sub
 End Class

@@ -53,7 +53,7 @@ Public Class Login
 
             If result Is Nothing Then
                 MsgBox("User not found!")
-            ElseIf String.Equals(txtPword.Text, result) Then
+            ElseIf String.Equals(txtPword.Text, result.ToString()) Then
                 MsgBox("Login sucessfull")
                 LoggedInUser = Trim(txtUsername.Text)
                 Homepage.Show()
