@@ -44,38 +44,29 @@ Public Class Login
     End Sub
 
     Private Sub btnLogin_Click(sender As System.Object, e As System.EventArgs) Handles btnLogin.Click
-        Dim adapter As Odbc.OdbcDataAdapter
-        Dim dtable As New DataTable
-        Dim sql As String = "SELECT * FROM tbluser WHERE username='" & Trim(txtUsername.Text) & "' and pword='" & Trim(txtPword.Text) & "'"
-        If txtUsername.Text = "" And txtPword.Text = "" Then
-            MsgBox("Insufeccient data!", vbCritical)
-            txtUsername.Focus()
-        ElseIf txtUsername.Text = "" Then
-            MsgBox("Input Username!", vbCritical)
-            txtUsername.Focus()
-        ElseIf txtPword.Text = "" Then
-            MsgBox("Input Password!", vbCritical)
-            txtPword.Focus()
-        Else
-            Try
-                adapter = New Odbc.OdbcDataAdapter(sql, con)
-                adapter.Fill(dtable)
-                If dtable.Rows.Count > 0 Then
-                    MsgBox("Sucessfully Login! " & dtable.Rows(0)("username"), vbInformation)
-                    Homepage.Show()
-                    Me.Hide()
-                    LoggedInUser = txtUsername.Text
-                Else
-                    MsgBox("Invalid username and password!", vbCritical)
-                    txtUsername.Focus()
-                End If
-                adapter.Dispose()
-            Catch ex As Exception
+        Dim cmd As Odbc.OdbcCommand
+
+        Try
+            cmd = New Odbc.OdbcCommand("SELECT pword FROM tbluser WHERE username=? ", con)
+            cmd.Parameters.AddWithValue("?", Trim(txtUsername.Text))
+            Dim result As Object = cmd.ExecuteScalar()
+
+            If result Is Nothing Then
+                MsgBox("User not found!")
+            ElseIf String.Equals(txtPword.Text, result) Then
+                MsgBox("Login sucessfull")
+                LoggedInUser = Trim(txtUsername.Text)
+                Homepage.Show()
+                Me.Hide()
+            Else
+                MsgBox("Incorrect Password!")
+            End If
+        Catch ex As Exception
                 MsgBox(ex.Message.ToString)
             Finally
                 GC.Collect()
             End Try
-        End If
+
     End Sub
 
 End Class
