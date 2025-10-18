@@ -30,3 +30,4 @@ C:\Users\edwar\Documents\Visual Studio 2010\Projects\main\main\obj\x86\Debug\mai
 C:\Users\edwar\Documents\Visual Studio 2010\Projects\main\main\obj\x86\Debug\main.frmReturnList.resources
 C:\Users\edwar\Documents\Visual Studio 2010\Projects\main\main\obj\x86\Debug\main.vbproj.AssemblyReference.cache
 C:\Users\edwar\Documents\Visual Studio 2010\Projects\main\main\obj\x86\Debug\main.vbproj.CoreCompileInputs.cache
+C:\Users\edwar\Documents\Visual Studio 2010\Projects\main\main\obj\x86\Debug\main.frmBorrowerCartList.resources

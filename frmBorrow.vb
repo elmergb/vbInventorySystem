@@ -12,6 +12,20 @@
     Private Sub btnLogSave_Click(sender As System.Object, e As System.EventArgs) Handles btnLogSave.Click
         Dim cmd As Odbc.OdbcCommand
         Try
+            For Each row As DataGridViewRow In frmBorrowerCartList.dgvBorrowerCart.Rows
+                If row.IsNewRow Then Continue For
+
+
+            Next
+        Catch ex As Exception
+
+        End Try
+
+
+    End Sub
+    Private Sub btnAddItem_Click(sender As Object, e As EventArgs) Handles btnAddItem.Click
+        Dim cmd As Odbc.OdbcCommand
+        Try
             Dim availableQuantity As Integer = 0
             Dim checkval As String = "SELECT ItemQuantity FROM tblitemlist WHERE ItemID = ?"
             cmd = New Odbc.OdbcCommand(checkval, con)
@@ -28,9 +42,9 @@
                 MsgBox("Not enough available stock! Only " & availableQuantity & " left", vbInformation)
                 isValid = False
             Else
-                cmd = New Odbc.OdbcCommand("INSERT INTO tblborrow (ItemID, BorrowerName, QuantityBorrowed, Contact, Purpose, DateBorrowed, Remarks) VALUES (?,?,?,?,?,?,?)", con)
+                cmd = New Odbc.OdbcCommand("INSERT INTO tblcartlist (ItemID, BorrowerName, QuantityBorrowed, Contact, Purpose, DateBorrowed, Remarks) VALUES (?,?,?,?,?,?,?)", con)
                 With cmd.Parameters
-                    .AddWithValue("?",(cbItemList.SelectedValue))
+                    .AddWithValue("?", (cbItemList.SelectedValue))
                     .AddWithValue("?", Trim(txtBorrowerName.Text))
                     .AddWithValue("?", CInt(nupQuantity.Value))
                     .AddWithValue("?", Trim(txtContact.Text))
@@ -47,22 +61,13 @@
                 End With
                 cmd.ExecuteNonQuery()
 
-                Call data_loader("SELECT * FROM vw_borrowing", frmBorrowerList.dgvBorrowerList)
-                MsgBox("Borrowed successfully!")
+                Call data_loader("SELECT * FROM vw_cartlist", frmBorrowerCartList.dgvBorrowerCart)
             End If
         Catch ex As Exception
-            MsgBox(ex.Message.ToString)
+            MsgBox("Error adding item: " & ex.Message, vbCritical)
         Finally
             GC.Collect()
         End Try
-
-    End Sub
-
-    Private Sub dtpBorrowed_ValueChanged(sender As System.Object, e As System.EventArgs) Handles dtpBorrowed.ValueChanged
-
-    End Sub
-
-    Private Sub btnAddItem_Click(sender As Object, e As EventArgs) Handles btnAddItem.Click
 
     End Sub
 End Class

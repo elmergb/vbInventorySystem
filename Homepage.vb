@@ -78,4 +78,8 @@
     Private Sub btnUser_MouseLeave(sender As Object, e As EventArgs) Handles btnUser.MouseLeave
         btnUser.ForeColor = Color.Black
     End Sub
+
+    Private Sub Button2_Click(sender As Object, e As EventArgs) Handles Button2.Click
+        frmBorrowerCartList.ShowDialog()
+    End Sub
 End Class
