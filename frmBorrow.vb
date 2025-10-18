@@ -10,9 +10,10 @@
     End Sub
 
     Private Sub btnLogSave_Click(sender As System.Object, e As System.EventArgs) Handles btnLogSave.Click
+        Dim cmd As Odbc.OdbcCommand
         Try
-            Dim cmdSelect As New Odbc.OdbcCommand("SELECT * FROM tblcartlist", con)
-            Dim reader As Odbc.OdbcDataReader = cmdSelect.ExecuteReader()
+            cmd = New Odbc.OdbcCommand("SELECT * FROM tblcartlist", con)
+            Dim reader As Odbc.OdbcDataReader = cmd.ExecuteReader()
 
             While reader.Read()
                 Dim insertCmd As New Odbc.OdbcCommand("INSERT INTO tblborrow (ItemID, BorrowerName, QuantityBorrowed, Contact, Purpose, DateBorrowed, Remarks) VALUES (?, ?, ?, ?, ?, ?, ?)", con)
@@ -56,7 +57,7 @@
         cmd.Parameters.AddWithValue("?", txtContact.Text)
         cmd.Parameters.AddWithValue("?", txtPurpose.Text)
         cmd.Parameters.AddWithValue("?", DateTime.Now)
-        cmd.Parameters.AddWithValue("?", "Good")
+        cmd.Parameters.AddWithValue("?", txtRemarks.Text)
 
         cmd.ExecuteNonQuery()
         MessageBox.Show("Item added to temporary list.")
