@@ -61,6 +61,7 @@
         If Val(dgvReturnList.Tag) = 0 Then
             MsgBox("Select a record to return", vbInformation)
         Else
+
             frmReturnEntry.ItemID = Val(dgvReturnList.Tag)
             frmReturnEntry.BorrowID = Val(dgvReturnList.Tag)
             frmReturnEntry.ShowDialog()
