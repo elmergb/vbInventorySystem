@@ -6,7 +6,17 @@
     End Sub
 
     Private Sub frmBorrow_Load(sender As System.Object, e As System.EventArgs) Handles MyBase.Load
+        Dim qty As Integer = CInt(nupQuantity.Value)
         Call cb_loader("SELECT * FROM tblitemlist", cbItemList, "ItemName", "ItemID")
+
+        With lvCart
+            .View = View.Details
+            .FullRowSelect = True
+            .Columns.Clear()
+            .Columns.Add("Item", 150)
+            .Columns.Add("Quantity", 80)
+        End With
+        Call listLoader()
     End Sub
 
     Private Sub btnLogSave_Click(sender As System.Object, e As System.EventArgs) Handles btnLogSave.Click
@@ -49,6 +59,28 @@
 
     End Sub
     Private Sub btnAddItem_Click(sender As Object, e As EventArgs) Handles btnAddItem.Click
+
+        'Dim itemName As String = cbItemList.Text
+        'Dim qty As Integer = CInt(nupQuantity.Value)
+
+        '' 🧠 Check if item already exists in ListView
+        'Dim found As Boolean = False
+        'For Each lvItem As ListViewItem In lvCart.Items
+        '    If lvItem.SubItems(0).Text = itemName Then
+        '        ' If item already exists, just update quantity
+        '        lvItem.SubItems(1).Text = (CInt(lvItem.SubItems(1).Text) + qty).ToString()
+        '        found = True
+        '        Exit For
+        '    End If
+        'Next
+
+        '' If not found, add new row
+        'If Not found Then
+        '    Dim newItem As New ListViewItem(itemName)
+        '    newItem.SubItems.Add(qty.ToString())
+        '    lvCart.Items.Add(newItem)
+        'End If
+
         Dim cmd As New Odbc.OdbcCommand("INSERT INTO tblcartlist (ItemID, BorrowerName, QuantityBorrowed, Contact, Purpose, DateBorrowed, Remarks) VALUES (?, ?, ?, ?, ?, ?, ?)", con)
 
         cmd.Parameters.AddWithValue("?", CInt(cbItemList.SelectedValue))  ' ItemID from combo box
@@ -58,9 +90,22 @@
         cmd.Parameters.AddWithValue("?", txtPurpose.Text)
         cmd.Parameters.AddWithValue("?", DateTime.Now)
         cmd.Parameters.AddWithValue("?", txtRemarks.Text)
-
         cmd.ExecuteNonQuery()
-        MessageBox.Show("Item added to temporary list.")
 
+        MessageBox.Show("Item '" & cbItemList.Text & "' added to cart successfully!", "Cart Updated", MessageBoxButtons.OK, MessageBoxIcon.Information)
+        Call listLoader()
+
+    End Sub
+
+    Private Sub lvCart_SelectedIndexChanged(sender As Object, e As EventArgs) Handles lvCart.SelectedIndexChanged
+        '    If lvCart.SelectedItems.Count > 0 Then
+        '        Dim selectedItem As ListViewItem = lvCart.SelectedItems(0)
+        '        Dim itemName As String = selectedItem.SubItems(0).Text
+        '        Dim qty As String = selectedItem.SubItems(1).Text
+
+        '       
+        '        cbItemList.Text = itemName
+        '        nupQuantity.Value = CInt(qty)
+        '    End If
     End Sub
 End Class

@@ -38,6 +38,8 @@ Partial Class frmBorrow
         Me.txtRemarks = New System.Windows.Forms.TextBox()
         Me.dtpBorrowed = New System.Windows.Forms.DateTimePicker()
         Me.btnAddItem = New System.Windows.Forms.Button()
+        Me.Label8 = New System.Windows.Forms.Label()
+        Me.lvCart = New System.Windows.Forms.ListView()
         CType(Me.nupQuantity, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
@@ -59,7 +61,7 @@ Partial Class frmBorrow
         'btnLogSave
         '
         Me.btnLogSave.Font = New System.Drawing.Font("Microsoft YaHei", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnLogSave.Location = New System.Drawing.Point(370, 346)
+        Me.btnLogSave.Location = New System.Drawing.Point(396, 385)
         Me.btnLogSave.Name = "btnLogSave"
         Me.btnLogSave.Size = New System.Drawing.Size(102, 51)
         Me.btnLogSave.TabIndex = 2
@@ -105,7 +107,7 @@ Partial Class frmBorrow
         'Label5
         '
         Me.Label5.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label5.Location = New System.Drawing.Point(304, 71)
+        Me.Label5.Location = New System.Drawing.Point(254, 78)
         Me.Label5.Name = "Label5"
         Me.Label5.Size = New System.Drawing.Size(82, 23)
         Me.Label5.TabIndex = 7
@@ -114,7 +116,7 @@ Partial Class frmBorrow
         'Label6
         '
         Me.Label6.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label6.Location = New System.Drawing.Point(304, 133)
+        Me.Label6.Location = New System.Drawing.Point(254, 140)
         Me.Label6.Name = "Label6"
         Me.Label6.Size = New System.Drawing.Size(149, 23)
         Me.Label6.TabIndex = 8
@@ -123,7 +125,7 @@ Partial Class frmBorrow
         'Label7
         '
         Me.Label7.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label7.Location = New System.Drawing.Point(304, 204)
+        Me.Label7.Location = New System.Drawing.Point(254, 211)
         Me.Label7.Name = "Label7"
         Me.Label7.Size = New System.Drawing.Size(149, 23)
         Me.Label7.TabIndex = 9
@@ -147,7 +149,7 @@ Partial Class frmBorrow
         '
         'txtPurpose
         '
-        Me.txtPurpose.Location = New System.Drawing.Point(308, 97)
+        Me.txtPurpose.Location = New System.Drawing.Point(258, 104)
         Me.txtPurpose.Multiline = True
         Me.txtPurpose.Name = "txtPurpose"
         Me.txtPurpose.Size = New System.Drawing.Size(174, 30)
@@ -155,7 +157,7 @@ Partial Class frmBorrow
         '
         'txtRemarks
         '
-        Me.txtRemarks.Location = New System.Drawing.Point(308, 240)
+        Me.txtRemarks.Location = New System.Drawing.Point(258, 247)
         Me.txtRemarks.Multiline = True
         Me.txtRemarks.Name = "txtRemarks"
         Me.txtRemarks.Size = New System.Drawing.Size(187, 30)
@@ -165,7 +167,7 @@ Partial Class frmBorrow
         '
         Me.dtpBorrowed.CustomFormat = "MM/dd/yyyy hh:mm tt"
         Me.dtpBorrowed.Format = System.Windows.Forms.DateTimePickerFormat.Custom
-        Me.dtpBorrowed.Location = New System.Drawing.Point(308, 169)
+        Me.dtpBorrowed.Location = New System.Drawing.Point(258, 176)
         Me.dtpBorrowed.Name = "dtpBorrowed"
         Me.dtpBorrowed.Size = New System.Drawing.Size(200, 20)
         Me.dtpBorrowed.TabIndex = 15
@@ -173,18 +175,38 @@ Partial Class frmBorrow
         'btnAddItem
         '
         Me.btnAddItem.Font = New System.Drawing.Font("Microsoft YaHei", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnAddItem.Location = New System.Drawing.Point(248, 346)
+        Me.btnAddItem.Location = New System.Drawing.Point(396, 292)
         Me.btnAddItem.Name = "btnAddItem"
         Me.btnAddItem.Size = New System.Drawing.Size(102, 51)
         Me.btnAddItem.TabIndex = 16
         Me.btnAddItem.Text = "Add"
         Me.btnAddItem.UseVisualStyleBackColor = True
         '
+        'Label8
+        '
+        Me.Label8.AutoSize = True
+        Me.Label8.Location = New System.Drawing.Point(0, 0)
+        Me.Label8.Name = "Label8"
+        Me.Label8.Size = New System.Drawing.Size(39, 13)
+        Me.Label8.TabIndex = 17
+        Me.Label8.Text = "Label8"
+        '
+        'lvCart
+        '
+        Me.lvCart.HideSelection = False
+        Me.lvCart.Location = New System.Drawing.Point(504, 38)
+        Me.lvCart.Name = "lvCart"
+        Me.lvCart.Size = New System.Drawing.Size(259, 251)
+        Me.lvCart.TabIndex = 18
+        Me.lvCart.UseCompatibleStateImageBehavior = False
+        '
         'frmBorrow
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(524, 510)
+        Me.ClientSize = New System.Drawing.Size(768, 510)
+        Me.Controls.Add(Me.lvCart)
+        Me.Controls.Add(Me.Label8)
         Me.Controls.Add(Me.btnAddItem)
         Me.Controls.Add(Me.dtpBorrowed)
         Me.Controls.Add(Me.txtRemarks)
@@ -224,4 +246,6 @@ Partial Class frmBorrow
     Friend WithEvents txtRemarks As System.Windows.Forms.TextBox
     Friend WithEvents dtpBorrowed As System.Windows.Forms.DateTimePicker
     Friend WithEvents btnAddItem As Button
+    Friend WithEvents Label8 As Label
+    Friend WithEvents lvCart As ListView
 End Class
