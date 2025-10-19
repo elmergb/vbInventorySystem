@@ -9,14 +9,6 @@
         Dim qty As Integer = CInt(nupQuantity.Value)
         Call cb_loader("SELECT * FROM tblitemlist", cbItemList, "ItemName", "ItemID")
 
-        With lvCart
-            .View = View.Details
-            .FullRowSelect = True
-            .Columns.Clear()
-            .Columns.Add("Item", 150)
-            .Columns.Add("Quantity", 80)
-        End With
-        Call listLoader()
     End Sub
 
     Private Sub btnLogSave_Click(sender As System.Object, e As System.EventArgs) Handles btnLogSave.Click
@@ -97,15 +89,11 @@
 
     End Sub
 
-    Private Sub lvCart_SelectedIndexChanged(sender As Object, e As EventArgs) Handles lvCart.SelectedIndexChanged
-        '    If lvCart.SelectedItems.Count > 0 Then
-        '        Dim selectedItem As ListViewItem = lvCart.SelectedItems(0)
-        '        Dim itemName As String = selectedItem.SubItems(0).Text
-        '        Dim qty As String = selectedItem.SubItems(1).Text
+    Private Sub lvCart_SelectedIndexChanged(sender As Object, e As EventArgs)
 
-        '       
-        '        cbItemList.Text = itemName
-        '        nupQuantity.Value = CInt(qty)
-        '    End If
+    End Sub
+
+    Private Sub btnCart_Click(sender As Object, e As EventArgs) Handles btnCart.Click
+        frmCartListView.ShowDialog()
     End Sub
 End Class

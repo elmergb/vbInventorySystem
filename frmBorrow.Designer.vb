@@ -39,7 +39,7 @@ Partial Class frmBorrow
         Me.dtpBorrowed = New System.Windows.Forms.DateTimePicker()
         Me.btnAddItem = New System.Windows.Forms.Button()
         Me.Label8 = New System.Windows.Forms.Label()
-        Me.lvCart = New System.Windows.Forms.ListView()
+        Me.btnCart = New System.Windows.Forms.Button()
         CType(Me.nupQuantity, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
@@ -175,7 +175,7 @@ Partial Class frmBorrow
         'btnAddItem
         '
         Me.btnAddItem.Font = New System.Drawing.Font("Microsoft YaHei", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnAddItem.Location = New System.Drawing.Point(396, 292)
+        Me.btnAddItem.Location = New System.Drawing.Point(278, 334)
         Me.btnAddItem.Name = "btnAddItem"
         Me.btnAddItem.Size = New System.Drawing.Size(102, 51)
         Me.btnAddItem.TabIndex = 16
@@ -184,28 +184,32 @@ Partial Class frmBorrow
         '
         'Label8
         '
-        Me.Label8.AutoSize = True
+        Me.Label8.AllowDrop = True
+        Me.Label8.BackColor = System.Drawing.Color.FromArgb(CType(CType(135, Byte), Integer), CType(CType(95, Byte), Integer), CType(CType(49, Byte), Integer))
+        Me.Label8.Font = New System.Drawing.Font("Microsoft YaHei", 18.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label8.Location = New System.Drawing.Point(0, 0)
         Me.Label8.Name = "Label8"
-        Me.Label8.Size = New System.Drawing.Size(39, 13)
+        Me.Label8.Size = New System.Drawing.Size(766, 55)
         Me.Label8.TabIndex = 17
-        Me.Label8.Text = "Label8"
+        Me.Label8.Text = " Borrow"
+        Me.Label8.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
         '
-        'lvCart
+        'btnCart
         '
-        Me.lvCart.HideSelection = False
-        Me.lvCart.Location = New System.Drawing.Point(504, 38)
-        Me.lvCart.Name = "lvCart"
-        Me.lvCart.Size = New System.Drawing.Size(259, 251)
-        Me.lvCart.TabIndex = 18
-        Me.lvCart.UseCompatibleStateImageBehavior = False
+        Me.btnCart.Font = New System.Drawing.Font("Microsoft YaHei", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnCart.Location = New System.Drawing.Point(593, 428)
+        Me.btnCart.Name = "btnCart"
+        Me.btnCart.Size = New System.Drawing.Size(102, 51)
+        Me.btnCart.TabIndex = 19
+        Me.btnCart.Text = "Cart"
+        Me.btnCart.UseVisualStyleBackColor = True
         '
         'frmBorrow
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(768, 510)
-        Me.Controls.Add(Me.lvCart)
+        Me.Controls.Add(Me.btnCart)
         Me.Controls.Add(Me.Label8)
         Me.Controls.Add(Me.btnAddItem)
         Me.Controls.Add(Me.dtpBorrowed)
@@ -247,5 +251,5 @@ Partial Class frmBorrow
     Friend WithEvents dtpBorrowed As System.Windows.Forms.DateTimePicker
     Friend WithEvents btnAddItem As Button
     Friend WithEvents Label8 As Label
-    Friend WithEvents lvCart As ListView
+    Friend WithEvents btnCart As Button
 End Class

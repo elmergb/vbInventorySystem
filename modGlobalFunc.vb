@@ -75,7 +75,7 @@
 
     Public Sub listLoader()
         Dim cmd As Odbc.OdbcCommand
-        frmBorrow.lvCart.Items.Clear()
+        frmCartListView.lvCart.Items.Clear()
 
         cmd = New Odbc.OdbcCommand("SELECT ItemName, QuantityBorrowed FROM vw_cartlist", con)
         Dim result As Odbc.OdbcDataReader = cmd.ExecuteReader()
@@ -86,7 +86,7 @@
 
             Dim listItem As New ListViewItem(itemName)
             listItem.SubItems.Add(qty)
-            frmBorrow.lvCart.Items.Add(listItem)
+            frmCartListView.lvCart.Items.Add(listItem)
         End While
         result.Close()
     End Sub

@@ -96,6 +96,12 @@
     <Compile Include="frmBorrowerList.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="frmCartListView.Designer.vb">
+      <DependentUpon>frmCartListView.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmCartListView.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="frmDashboard.Designer.vb">
       <DependentUpon>frmDashboard.vb</DependentUpon>
     </Compile>
@@ -175,6 +181,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmBorrowerList.resx">
       <DependentUpon>frmBorrowerList.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmCartListView.resx">
+      <DependentUpon>frmCartListView.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmDashboard.resx">
       <DependentUpon>frmDashboard.vb</DependentUpon>
