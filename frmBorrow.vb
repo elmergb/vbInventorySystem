@@ -86,7 +86,12 @@
 
         MessageBox.Show("Item '" & cbItemList.Text & "' added to cart successfully!", "Cart Updated", MessageBoxButtons.OK, MessageBoxIcon.Information)
         Call listLoader()
-
+        cbItemList.SelectedIndex = -1
+        txtBorrowerName.Clear()
+        nupQuantity.Value = 0
+        txtContact.Clear()
+        txtPurpose.Clear()
+        txtRemarks.Clear()
     End Sub
 
     Private Sub lvCart_SelectedIndexChanged(sender As Object, e As EventArgs)

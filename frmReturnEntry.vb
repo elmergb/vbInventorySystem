@@ -11,11 +11,26 @@
 
     Private Sub btnReturnLog_Click(sender As System.Object, e As System.EventArgs) Handles btnReturnLog.Click
         Dim Remarks As String = Trim(txtRemarksR.Text).ToLower()
+        Dim cmd As Odbc.OdbcCommand
+
+        '    Try
+        '        cmd = New Odbc.OdbcCommand("SELECT BorrowerName FROM tblborrow WHERE ItemID=?", con)
+        '        cmd.Parameters.AddWithValue("?", CInt(cbItemListR.SelectedValue))
+        '        Dim borrowerResult = cmd.ExecuteScalar()
+
+        '        If borrowerResult Is Nothing Then
+        '            MsgBox("User not found!")
+        '        End If
+        '    Catch ex As Exception
+        '        MsgBox(ex.Message.ToString)
+        '    Finally
+        '        GC.Collect()
+        '    End Try
         Try
-            Dim cmd As Odbc.OdbcCommand
             Dim Borrowedqty As Integer = 0
-            cmd = New Odbc.OdbcCommand("SELECT QuantityBorrowed FROM tblborrow WHERE BorrowID =?", con)
-            cmd.Parameters.AddWithValue("?", CInt(BorrowID))
+            cmd = New Odbc.OdbcCommand("SELECT QuantityBorrowed FROM tblborrow WHERE ItemID = ? AND BorrowerName = ?", con)
+            cmd.Parameters.AddWithValue("?", CInt(cbItemListR.SelectedValue))
+            cmd.Parameters.AddWithValue("?", txtBorrowerNameR.Text)
             Dim borrowResult = cmd.ExecuteScalar()
 
             If borrowResult IsNot Nothing AndAlso Not IsDBNull(borrowResult) Then
@@ -23,14 +38,13 @@
             End If
 
             Dim qtyReturnedTotal As Integer = 0
-            cmd = New Odbc.OdbcCommand("SELECT IFNULL(SUM(QuantityReturned), 0) FROM tblreturn WHERE BorrowID=?", con)
-            cmd.Parameters.AddWithValue("?", CInt(BorrowID))
+            cmd = New Odbc.OdbcCommand("SELECT IFNULL(SUM(QuantityReturned), 0) FROM tblreturn WHERE BorrowID = ?", con)
+            cmd.Parameters.AddWithValue("?", BorrowID)
             Dim returnResult = cmd.ExecuteScalar()
 
             If returnResult IsNot Nothing AndAlso Not IsDBNull(returnResult) Then
                 qtyReturnedTotal = CInt(returnResult)
             End If
-
 
             If cbItemListR.SelectedValue Is Nothing Then
                 MsgBox("Please select an item first.", vbExclamation)
@@ -41,10 +55,12 @@
             Dim itemID As Integer = CInt(cbItemListR.SelectedValue)
             Dim currentQty As Integer = 0
 
-            If qtyReturned + qtyReturnedTotal > borrowResult Then
+            ' ✅ Use Borrowedqty here
+            If qtyReturned + qtyReturnedTotal > Borrowedqty Then
                 MsgBox("Returned quantity exceeds total borrowed amount.", vbExclamation)
                 Exit Sub
             End If
+
             ' 🔹 Get current quantity from database
             cmd = New Odbc.OdbcCommand("SELECT ItemQuantity FROM tblitemlist WHERE ItemID = ?", con)
             cmd.Parameters.AddWithValue("?", itemID)
@@ -54,7 +70,7 @@
                 currentQty = CInt(result)
             End If
 
-            If qtyReturned > currentQty Then
+            If qtyReturned > Borrowedqty Then
                 MsgBox("Returned quantity exceeds borrowed quantity.", vbExclamation)
                 Exit Sub
             End If
