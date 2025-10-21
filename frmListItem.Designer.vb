@@ -25,11 +25,6 @@ Partial Class frmListItem
         Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Me.dgvItemList = New System.Windows.Forms.DataGridView()
-        Me.btnAdd = New System.Windows.Forms.Button()
-        Me.btnEdit = New System.Windows.Forms.Button()
-        Me.Panel1 = New System.Windows.Forms.Panel()
-        Me.Label1 = New System.Windows.Forms.Label()
-        Me.btnBorrow = New System.Windows.Forms.Button()
         Me.ItemName = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Column2 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Column3 = New System.Windows.Forms.DataGridViewTextBoxColumn()
@@ -37,6 +32,12 @@ Partial Class frmListItem
         Me.Column5 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Column6 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Column7 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.btnAdd = New System.Windows.Forms.Button()
+        Me.btnEdit = New System.Windows.Forms.Button()
+        Me.Panel1 = New System.Windows.Forms.Panel()
+        Me.Label1 = New System.Windows.Forms.Label()
+        Me.btnBorrow = New System.Windows.Forms.Button()
+        Me.TextBox1 = New System.Windows.Forms.TextBox()
         CType(Me.dgvItemList, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.Panel1.SuspendLayout()
         Me.SuspendLayout()
@@ -71,55 +72,6 @@ Partial Class frmListItem
         Me.dgvItemList.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
         Me.dgvItemList.Size = New System.Drawing.Size(820, 406)
         Me.dgvItemList.TabIndex = 0
-        '
-        'btnAdd
-        '
-        Me.btnAdd.Location = New System.Drawing.Point(871, 257)
-        Me.btnAdd.Name = "btnAdd"
-        Me.btnAdd.Size = New System.Drawing.Size(94, 44)
-        Me.btnAdd.TabIndex = 1
-        Me.btnAdd.Text = "Add"
-        Me.btnAdd.UseVisualStyleBackColor = True
-        '
-        'btnEdit
-        '
-        Me.btnEdit.Location = New System.Drawing.Point(871, 307)
-        Me.btnEdit.Name = "btnEdit"
-        Me.btnEdit.Size = New System.Drawing.Size(94, 44)
-        Me.btnEdit.TabIndex = 2
-        Me.btnEdit.Text = "Edit"
-        Me.btnEdit.UseVisualStyleBackColor = True
-        '
-        'Panel1
-        '
-        Me.Panel1.BackColor = System.Drawing.Color.Maroon
-        Me.Panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.Panel1.Controls.Add(Me.Label1)
-        Me.Panel1.Dock = System.Windows.Forms.DockStyle.Top
-        Me.Panel1.ForeColor = System.Drawing.SystemColors.ControlLightLight
-        Me.Panel1.Location = New System.Drawing.Point(0, 0)
-        Me.Panel1.Name = "Panel1"
-        Me.Panel1.Size = New System.Drawing.Size(1002, 62)
-        Me.Panel1.TabIndex = 3
-        '
-        'Label1
-        '
-        Me.Label1.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label1.Location = New System.Drawing.Point(25, 17)
-        Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(98, 23)
-        Me.Label1.TabIndex = 4
-        Me.Label1.Text = "Item List"
-        '
-        'btnBorrow
-        '
-        Me.btnBorrow.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnBorrow.Location = New System.Drawing.Point(871, 357)
-        Me.btnBorrow.Name = "btnBorrow"
-        Me.btnBorrow.Size = New System.Drawing.Size(94, 43)
-        Me.btnBorrow.TabIndex = 5
-        Me.btnBorrow.Text = "Borrow"
-        Me.btnBorrow.UseVisualStyleBackColor = True
         '
         'ItemName
         '
@@ -172,12 +124,70 @@ Partial Class frmListItem
         Me.Column7.Name = "Column7"
         Me.Column7.ReadOnly = True
         '
+        'btnAdd
+        '
+        Me.btnAdd.Location = New System.Drawing.Point(871, 257)
+        Me.btnAdd.Name = "btnAdd"
+        Me.btnAdd.Size = New System.Drawing.Size(94, 44)
+        Me.btnAdd.TabIndex = 1
+        Me.btnAdd.Text = "Add"
+        Me.btnAdd.UseVisualStyleBackColor = True
+        '
+        'btnEdit
+        '
+        Me.btnEdit.Location = New System.Drawing.Point(871, 307)
+        Me.btnEdit.Name = "btnEdit"
+        Me.btnEdit.Size = New System.Drawing.Size(94, 44)
+        Me.btnEdit.TabIndex = 2
+        Me.btnEdit.Text = "Edit"
+        Me.btnEdit.UseVisualStyleBackColor = True
+        '
+        'Panel1
+        '
+        Me.Panel1.BackColor = System.Drawing.Color.Maroon
+        Me.Panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.Panel1.Controls.Add(Me.Label1)
+        Me.Panel1.Dock = System.Windows.Forms.DockStyle.Top
+        Me.Panel1.ForeColor = System.Drawing.SystemColors.ControlLightLight
+        Me.Panel1.Location = New System.Drawing.Point(0, 0)
+        Me.Panel1.Name = "Panel1"
+        Me.Panel1.Size = New System.Drawing.Size(1002, 62)
+        Me.Panel1.TabIndex = 3
+        '
+        'Label1
+        '
+        Me.Label1.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label1.Location = New System.Drawing.Point(25, 17)
+        Me.Label1.Name = "Label1"
+        Me.Label1.Size = New System.Drawing.Size(98, 23)
+        Me.Label1.TabIndex = 4
+        Me.Label1.Text = "Item List"
+        '
+        'btnBorrow
+        '
+        Me.btnBorrow.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnBorrow.Location = New System.Drawing.Point(871, 357)
+        Me.btnBorrow.Name = "btnBorrow"
+        Me.btnBorrow.Size = New System.Drawing.Size(94, 43)
+        Me.btnBorrow.TabIndex = 5
+        Me.btnBorrow.Text = "Borrow"
+        Me.btnBorrow.UseVisualStyleBackColor = True
+        '
+        'TextBox1
+        '
+        Me.TextBox1.Location = New System.Drawing.Point(94, 94)
+        Me.TextBox1.Multiline = True
+        Me.TextBox1.Name = "TextBox1"
+        Me.TextBox1.Size = New System.Drawing.Size(369, 27)
+        Me.TextBox1.TabIndex = 6
+        '
         'frmListItem
         '
-        Me.AutoScaleDimensions = New System.Drawing.SizeF(6!, 13!)
+        Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.AutoScroll = true
+        Me.AutoScroll = True
         Me.ClientSize = New System.Drawing.Size(1002, 591)
+        Me.Controls.Add(Me.TextBox1)
         Me.Controls.Add(Me.btnBorrow)
         Me.Controls.Add(Me.Panel1)
         Me.Controls.Add(Me.btnEdit)
@@ -185,11 +195,12 @@ Partial Class frmListItem
         Me.Controls.Add(Me.dgvItemList)
         Me.Name = "frmListItem"
         Me.Text = "frmListItem"
-        CType(Me.dgvItemList,System.ComponentModel.ISupportInitialize).EndInit
-        Me.Panel1.ResumeLayout(false)
-        Me.ResumeLayout(false)
+        CType(Me.dgvItemList, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.Panel1.ResumeLayout(False)
+        Me.ResumeLayout(False)
+        Me.PerformLayout()
 
-End Sub
+    End Sub
     Friend WithEvents btnAdd As System.Windows.Forms.Button
     Friend WithEvents btnEdit As System.Windows.Forms.Button
     Friend WithEvents Panel1 As Panel
@@ -203,4 +214,5 @@ End Sub
     Friend WithEvents Column5 As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents Column6 As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents Column7 As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents TextBox1 As TextBox
 End Class

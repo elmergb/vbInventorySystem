@@ -30,7 +30,13 @@
 
 
     Private Sub btnBorrow_Click(sender As System.Object, e As System.EventArgs) Handles btnBorrow.Click
-        frmBorrow.ShowDialog()
+        If (dgvItemList.Tag) = 0 Then
+            MsgBox("Select a record to edit!", vbInformation)
+        Else
+            frmBorrow.SelectedItemID = Val(dgvItemList.Tag)
+            frmBorrow.ShowDialog()
+        End If
+
     End Sub
 
     Private Sub btnEdit_Click(sender As System.Object, e As System.EventArgs) Handles btnEdit.Click
@@ -44,5 +50,9 @@
 
     Private Sub dgvItemList_CellContentClick(sender As System.Object, e As System.Windows.Forms.DataGridViewCellEventArgs) Handles dgvItemList.CellContentClick
 
+    End Sub
+
+    Private Sub TextBox1_TextChanged(sender As Object, e As EventArgs) Handles TextBox1.TextChanged
+        Call data_loader("SELECT * FROM tblitemlist WHERE ItemName LIKE '%" & Trim(TextBox1.Text) & "%' ", dgvItemList)
     End Sub
 End Class

@@ -24,6 +24,7 @@ Partial Class frmReturnList
     Private Sub InitializeComponent()
         Me.btnReturn = New System.Windows.Forms.Button()
         Me.dgvReturnList = New System.Windows.Forms.DataGridView()
+        Me.Label1 = New System.Windows.Forms.Label()
         CType(Me.dgvReturnList, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
@@ -41,19 +42,32 @@ Partial Class frmReturnList
         Me.dgvReturnList.AllowUserToAddRows = False
         Me.dgvReturnList.AllowUserToDeleteRows = False
         Me.dgvReturnList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.dgvReturnList.Location = New System.Drawing.Point(30, 40)
+        Me.dgvReturnList.Location = New System.Drawing.Point(31, 144)
         Me.dgvReturnList.Name = "dgvReturnList"
         Me.dgvReturnList.ReadOnly = True
         Me.dgvReturnList.RowHeadersVisible = False
         Me.dgvReturnList.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
-        Me.dgvReturnList.Size = New System.Drawing.Size(877, 489)
+        Me.dgvReturnList.Size = New System.Drawing.Size(843, 402)
         Me.dgvReturnList.TabIndex = 0
+        '
+        'Label1
+        '
+        Me.Label1.BackColor = System.Drawing.Color.FromArgb(CType(CType(133, Byte), Integer), CType(CType(50, Byte), Integer), CType(CType(57, Byte), Integer))
+        Me.Label1.Font = New System.Drawing.Font("Microsoft YaHei", 18.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label1.ForeColor = System.Drawing.SystemColors.ButtonHighlight
+        Me.Label1.Location = New System.Drawing.Point(0, 0)
+        Me.Label1.Name = "Label1"
+        Me.Label1.Size = New System.Drawing.Size(1048, 59)
+        Me.Label1.TabIndex = 2
+        Me.Label1.Text = "   Return"
+        Me.Label1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
         '
         'frmReturnList
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(1047, 591)
+        Me.Controls.Add(Me.Label1)
         Me.Controls.Add(Me.btnReturn)
         Me.Controls.Add(Me.dgvReturnList)
         Me.Name = "frmReturnList"
@@ -64,4 +78,5 @@ Partial Class frmReturnList
     End Sub
     Friend WithEvents btnReturn As Button
     Friend WithEvents dgvReturnList As DataGridView
+    Friend WithEvents Label1 As Label
 End Class

@@ -17,11 +17,6 @@
         LoadForm(New frmUserList())
 
     End Sub
-
-    Private Sub pnlItem_Paint(sender As System.Object, e As System.Windows.Forms.PaintEventArgs) Handles pnlItem.Paint
-
-    End Sub
-
     Private Sub Homepage_Load(sender As System.Object, e As System.EventArgs) Handles MyBase.Load
         Call vbConnection()
         LoadForm(New frmDashboard())
@@ -41,7 +36,6 @@
 
     Private Sub btnDashBoard_MouseEnter(sender As Object, e As EventArgs) Handles btnDashBoard.MouseEnter
         btnDashBoard.ForeColor = Color.FromArgb(128, 64, 0)
-
     End Sub
 
     Private Sub btnDashBoard_MouseLeave(sender As Object, e As EventArgs) Handles btnDashBoard.MouseLeave
@@ -77,9 +71,5 @@
 
     Private Sub btnUser_MouseLeave(sender As Object, e As EventArgs) Handles btnUser.MouseLeave
         btnUser.ForeColor = Color.Black
-    End Sub
-
-    Private Sub Button2_Click(sender As Object, e As EventArgs) Handles Button2.Click
-        frmBorrowerCartList.ShowDialog()
     End Sub
 End Class

@@ -45,7 +45,7 @@ Partial Class frmBorrow
         '
         'txtContact
         '
-        Me.txtContact.Location = New System.Drawing.Point(16, 292)
+        Me.txtContact.Location = New System.Drawing.Point(17, 341)
         Me.txtContact.Multiline = True
         Me.txtContact.Name = "txtContact"
         Me.txtContact.Size = New System.Drawing.Size(174, 30)
@@ -53,7 +53,7 @@ Partial Class frmBorrow
         '
         'nupQuantity
         '
-        Me.nupQuantity.Location = New System.Drawing.Point(16, 230)
+        Me.nupQuantity.Location = New System.Drawing.Point(17, 279)
         Me.nupQuantity.Name = "nupQuantity"
         Me.nupQuantity.Size = New System.Drawing.Size(137, 20)
         Me.nupQuantity.TabIndex = 1
@@ -61,9 +61,9 @@ Partial Class frmBorrow
         'btnLogSave
         '
         Me.btnLogSave.Font = New System.Drawing.Font("Microsoft YaHei", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnLogSave.Location = New System.Drawing.Point(396, 385)
+        Me.btnLogSave.Location = New System.Drawing.Point(360, 426)
         Me.btnLogSave.Name = "btnLogSave"
-        Me.btnLogSave.Size = New System.Drawing.Size(102, 51)
+        Me.btnLogSave.Size = New System.Drawing.Size(115, 50)
         Me.btnLogSave.TabIndex = 2
         Me.btnLogSave.Text = "Log Borrow"
         Me.btnLogSave.UseVisualStyleBackColor = True
@@ -71,7 +71,7 @@ Partial Class frmBorrow
         'Label1
         '
         Me.Label1.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label1.Location = New System.Drawing.Point(12, 71)
+        Me.Label1.Location = New System.Drawing.Point(13, 120)
         Me.Label1.Name = "Label1"
         Me.Label1.Size = New System.Drawing.Size(55, 23)
         Me.Label1.TabIndex = 3
@@ -80,7 +80,7 @@ Partial Class frmBorrow
         'Label2
         '
         Me.Label2.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label2.Location = New System.Drawing.Point(12, 204)
+        Me.Label2.Location = New System.Drawing.Point(13, 253)
         Me.Label2.Name = "Label2"
         Me.Label2.Size = New System.Drawing.Size(89, 23)
         Me.Label2.TabIndex = 4
@@ -89,7 +89,7 @@ Partial Class frmBorrow
         'Label3
         '
         Me.Label3.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label3.Location = New System.Drawing.Point(12, 133)
+        Me.Label3.Location = New System.Drawing.Point(13, 182)
         Me.Label3.Name = "Label3"
         Me.Label3.Size = New System.Drawing.Size(151, 23)
         Me.Label3.TabIndex = 5
@@ -98,7 +98,7 @@ Partial Class frmBorrow
         'Label4
         '
         Me.Label4.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label4.Location = New System.Drawing.Point(12, 266)
+        Me.Label4.Location = New System.Drawing.Point(13, 315)
         Me.Label4.Name = "Label4"
         Me.Label4.Size = New System.Drawing.Size(82, 23)
         Me.Label4.TabIndex = 6
@@ -107,7 +107,7 @@ Partial Class frmBorrow
         'Label5
         '
         Me.Label5.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label5.Location = New System.Drawing.Point(254, 78)
+        Me.Label5.Location = New System.Drawing.Point(255, 127)
         Me.Label5.Name = "Label5"
         Me.Label5.Size = New System.Drawing.Size(82, 23)
         Me.Label5.TabIndex = 7
@@ -116,7 +116,7 @@ Partial Class frmBorrow
         'Label6
         '
         Me.Label6.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label6.Location = New System.Drawing.Point(254, 140)
+        Me.Label6.Location = New System.Drawing.Point(255, 189)
         Me.Label6.Name = "Label6"
         Me.Label6.Size = New System.Drawing.Size(149, 23)
         Me.Label6.TabIndex = 8
@@ -125,7 +125,7 @@ Partial Class frmBorrow
         'Label7
         '
         Me.Label7.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label7.Location = New System.Drawing.Point(254, 211)
+        Me.Label7.Location = New System.Drawing.Point(255, 260)
         Me.Label7.Name = "Label7"
         Me.Label7.Size = New System.Drawing.Size(149, 23)
         Me.Label7.TabIndex = 9
@@ -134,14 +134,14 @@ Partial Class frmBorrow
         'cbItemList
         '
         Me.cbItemList.FormattingEnabled = True
-        Me.cbItemList.Location = New System.Drawing.Point(16, 97)
+        Me.cbItemList.Location = New System.Drawing.Point(17, 146)
         Me.cbItemList.Name = "cbItemList"
         Me.cbItemList.Size = New System.Drawing.Size(161, 21)
         Me.cbItemList.TabIndex = 10
         '
         'txtBorrowerName
         '
-        Me.txtBorrowerName.Location = New System.Drawing.Point(16, 159)
+        Me.txtBorrowerName.Location = New System.Drawing.Point(17, 208)
         Me.txtBorrowerName.Multiline = True
         Me.txtBorrowerName.Name = "txtBorrowerName"
         Me.txtBorrowerName.Size = New System.Drawing.Size(174, 30)
@@ -149,7 +149,7 @@ Partial Class frmBorrow
         '
         'txtPurpose
         '
-        Me.txtPurpose.Location = New System.Drawing.Point(258, 104)
+        Me.txtPurpose.Location = New System.Drawing.Point(259, 153)
         Me.txtPurpose.Multiline = True
         Me.txtPurpose.Name = "txtPurpose"
         Me.txtPurpose.Size = New System.Drawing.Size(174, 30)
@@ -157,7 +157,7 @@ Partial Class frmBorrow
         '
         'txtRemarks
         '
-        Me.txtRemarks.Location = New System.Drawing.Point(258, 247)
+        Me.txtRemarks.Location = New System.Drawing.Point(259, 296)
         Me.txtRemarks.Multiline = True
         Me.txtRemarks.Name = "txtRemarks"
         Me.txtRemarks.Size = New System.Drawing.Size(187, 30)
@@ -167,7 +167,7 @@ Partial Class frmBorrow
         '
         Me.dtpBorrowed.CustomFormat = "MM/dd/yyyy hh:mm tt"
         Me.dtpBorrowed.Format = System.Windows.Forms.DateTimePickerFormat.Custom
-        Me.dtpBorrowed.Location = New System.Drawing.Point(258, 176)
+        Me.dtpBorrowed.Location = New System.Drawing.Point(259, 225)
         Me.dtpBorrowed.Name = "dtpBorrowed"
         Me.dtpBorrowed.Size = New System.Drawing.Size(200, 20)
         Me.dtpBorrowed.TabIndex = 15
@@ -175,9 +175,9 @@ Partial Class frmBorrow
         'btnAddItem
         '
         Me.btnAddItem.Font = New System.Drawing.Font("Microsoft YaHei", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnAddItem.Location = New System.Drawing.Point(278, 334)
+        Me.btnAddItem.Location = New System.Drawing.Point(259, 432)
         Me.btnAddItem.Name = "btnAddItem"
-        Me.btnAddItem.Size = New System.Drawing.Size(102, 51)
+        Me.btnAddItem.Size = New System.Drawing.Size(78, 38)
         Me.btnAddItem.TabIndex = 16
         Me.btnAddItem.Text = "Add"
         Me.btnAddItem.UseVisualStyleBackColor = True
@@ -197,9 +197,9 @@ Partial Class frmBorrow
         'btnCart
         '
         Me.btnCart.Font = New System.Drawing.Font("Microsoft YaHei", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnCart.Location = New System.Drawing.Point(593, 428)
+        Me.btnCart.Location = New System.Drawing.Point(407, 13)
         Me.btnCart.Name = "btnCart"
-        Me.btnCart.Size = New System.Drawing.Size(102, 51)
+        Me.btnCart.Size = New System.Drawing.Size(68, 34)
         Me.btnCart.TabIndex = 19
         Me.btnCart.Text = "Cart"
         Me.btnCart.UseVisualStyleBackColor = True
@@ -208,7 +208,7 @@ Partial Class frmBorrow
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(768, 510)
+        Me.ClientSize = New System.Drawing.Size(487, 510)
         Me.Controls.Add(Me.btnCart)
         Me.Controls.Add(Me.Label8)
         Me.Controls.Add(Me.btnAddItem)

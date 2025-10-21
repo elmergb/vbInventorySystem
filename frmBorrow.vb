@@ -1,19 +1,23 @@
 ﻿Public Class frmBorrow
-
-
-    Private Sub DateTimePicker1_ValueChanged(sender As System.Object, e As System.EventArgs)
-
-    End Sub
-
+    Public SelectedItemID As Integer
     Private Sub frmBorrow_Load(sender As System.Object, e As System.EventArgs) Handles MyBase.Load
         Dim qty As Integer = CInt(nupQuantity.Value)
         Call cb_loader("SELECT * FROM tblitemlist", cbItemList, "ItemName", "ItemID")
 
+        If SelectedItemID > 0 Then
+            cbItemList.SelectedValue = SelectedItemID
+        End If
     End Sub
 
     Private Sub btnLogSave_Click(sender As System.Object, e As System.EventArgs) Handles btnLogSave.Click
         Dim cmd As Odbc.OdbcCommand
         Try
+            cmd = New Odbc.OdbcCommand("SELECT COUNT(*) FROM tblcartlist", con)
+            If CInt(cmd.ExecuteScalar()) = 0 Then
+                MsgBox("Cart is empty. Add items first.", vbExclamation)
+                Exit Sub
+            End If
+
             cmd = New Odbc.OdbcCommand("SELECT * FROM tblcartlist", con)
             Dim reader As Odbc.OdbcDataReader = cmd.ExecuteReader()
 
@@ -52,27 +56,6 @@
     End Sub
     Private Sub btnAddItem_Click(sender As Object, e As EventArgs) Handles btnAddItem.Click
 
-        'Dim itemName As String = cbItemList.Text
-        'Dim qty As Integer = CInt(nupQuantity.Value)
-
-        '' 🧠 Check if item already exists in ListView
-        'Dim found As Boolean = False
-        'For Each lvItem As ListViewItem In lvCart.Items
-        '    If lvItem.SubItems(0).Text = itemName Then
-        '        ' If item already exists, just update quantity
-        '        lvItem.SubItems(1).Text = (CInt(lvItem.SubItems(1).Text) + qty).ToString()
-        '        found = True
-        '        Exit For
-        '    End If
-        'Next
-
-        '' If not found, add new row
-        'If Not found Then
-        '    Dim newItem As New ListViewItem(itemName)
-        '    newItem.SubItems.Add(qty.ToString())
-        '    lvCart.Items.Add(newItem)
-        'End If
-
         Dim cmd As New Odbc.OdbcCommand("INSERT INTO tblcartlist (ItemID, BorrowerName, QuantityBorrowed, Contact, Purpose, DateBorrowed, Remarks) VALUES (?, ?, ?, ?, ?, ?, ?)", con)
 
         cmd.Parameters.AddWithValue("?", CInt(cbItemList.SelectedValue))  ' ItemID from combo box
@@ -92,10 +75,6 @@
         txtContact.Clear()
         txtPurpose.Clear()
         txtRemarks.Clear()
-    End Sub
-
-    Private Sub lvCart_SelectedIndexChanged(sender As Object, e As EventArgs)
-
     End Sub
 
     Private Sub btnCart_Click(sender As Object, e As EventArgs) Handles btnCart.Click
