@@ -57,7 +57,7 @@ Partial Class frmReturnList
         Me.Label1.ForeColor = System.Drawing.SystemColors.ButtonHighlight
         Me.Label1.Location = New System.Drawing.Point(0, 0)
         Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(1048, 59)
+        Me.Label1.Size = New System.Drawing.Size(1355, 59)
         Me.Label1.TabIndex = 2
         Me.Label1.Text = "   Return"
         Me.Label1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
@@ -66,12 +66,13 @@ Partial Class frmReturnList
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(1047, 591)
+        Me.ClientSize = New System.Drawing.Size(1354, 636)
         Me.Controls.Add(Me.Label1)
         Me.Controls.Add(Me.btnReturn)
         Me.Controls.Add(Me.dgvReturnList)
         Me.Name = "frmReturnList"
         Me.Text = "frmReturnList"
+        Me.WindowState = System.Windows.Forms.FormWindowState.Maximized
         CType(Me.dgvReturnList, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
 

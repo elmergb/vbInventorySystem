@@ -23,7 +23,6 @@ Partial Class frmBorrowerList
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         Me.dgvBorrowerList = New System.Windows.Forms.DataGridView()
-        Me.btnReturn = New System.Windows.Forms.Button()
         Me.Column1 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Column2 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Column3 = New System.Windows.Forms.DataGridViewTextBoxColumn()
@@ -33,6 +32,7 @@ Partial Class frmBorrowerList
         Me.Column8 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Column9 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Column10 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.btnReturn = New System.Windows.Forms.Button()
         CType(Me.dgvBorrowerList, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
@@ -50,15 +50,6 @@ Partial Class frmBorrowerList
         Me.dgvBorrowerList.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
         Me.dgvBorrowerList.Size = New System.Drawing.Size(747, 414)
         Me.dgvBorrowerList.TabIndex = 0
-        '
-        'btnReturn
-        '
-        Me.btnReturn.Location = New System.Drawing.Point(920, 433)
-        Me.btnReturn.Name = "btnReturn"
-        Me.btnReturn.Size = New System.Drawing.Size(98, 55)
-        Me.btnReturn.TabIndex = 1
-        Me.btnReturn.Text = "Return"
-        Me.btnReturn.UseVisualStyleBackColor = True
         '
         'Column1
         '
@@ -125,6 +116,15 @@ Partial Class frmBorrowerList
         Me.Column10.Name = "Column10"
         Me.Column10.ReadOnly = True
         '
+        'btnReturn
+        '
+        Me.btnReturn.Location = New System.Drawing.Point(920, 433)
+        Me.btnReturn.Name = "btnReturn"
+        Me.btnReturn.Size = New System.Drawing.Size(98, 55)
+        Me.btnReturn.TabIndex = 1
+        Me.btnReturn.Text = "Return"
+        Me.btnReturn.UseVisualStyleBackColor = True
+        '
         'frmBorrowerList
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -134,6 +134,7 @@ Partial Class frmBorrowerList
         Me.Controls.Add(Me.dgvBorrowerList)
         Me.Name = "frmBorrowerList"
         Me.Text = "frmBorrowerList"
+        Me.WindowState = System.Windows.Forms.FormWindowState.Maximized
         CType(Me.dgvBorrowerList, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
 
