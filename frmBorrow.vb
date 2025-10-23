@@ -11,6 +11,8 @@
 
     Private Sub btnLogSave_Click(sender As System.Object, e As System.EventArgs) Handles btnLogSave.Click
         Dim cmd As Odbc.OdbcCommand
+
+
         Try
             cmd = New Odbc.OdbcCommand("SELECT COUNT(*) FROM tblcartlist", con)
             If CInt(cmd.ExecuteScalar()) = 0 Then
@@ -46,6 +48,7 @@
             clearCmd.ExecuteNonQuery()
 
             MessageBox.Show("Borrowing finalized successfully!")
+            Me.Close()
         Catch ex As Exception
             MsgBox(ex.Message.ToString)
         Finally
@@ -55,6 +58,21 @@
 
     End Sub
     Private Sub btnAddItem_Click(sender As Object, e As EventArgs) Handles btnAddItem.Click
+        Dim isValid As Boolean = True
+        Dim availableQty As Integer = 0
+        Dim totalqty As New Odbc.OdbcCommand("SELECT ItemQuantity FROM tblitemlist WHERE ItemID = ?", con)
+        totalqty.Parameters.AddWithValue("?", CInt(cbItemList.SelectedValue))
+        Dim availqty = totalqty.ExecuteScalar()
+
+        If availqty IsNot Nothing Then
+            availableQty = CInt(availqty)
+        End If
+
+        If nupQuantity.Value > availqty Then
+            MsgBox("Not enough available stock! Only " & availableQty & " left", vbInformation)
+            isValid = False
+            Exit Sub
+        End If
 
         Dim cmd As New Odbc.OdbcCommand("INSERT INTO tblcartlist (ItemID, BorrowerName, QuantityBorrowed, Contact, Purpose, DateBorrowed, Remarks) VALUES (?, ?, ?, ?, ?, ?, ?)", con)
 
@@ -79,5 +97,10 @@
 
     Private Sub btnCart_Click(sender As Object, e As EventArgs) Handles btnCart.Click
         frmCartListView.ShowDialog()
+
+    End Sub
+
+    Private Sub Label8_Click(sender As Object, e As EventArgs) Handles Label8.Click
+
     End Sub
 End Class

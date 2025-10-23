@@ -1,6 +1,5 @@
 ﻿Public Class frmCartListView
     Private Sub frmCartListView_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-
         With lvCart
             .View = View.Details
             .FullRowSelect = True
@@ -36,5 +35,14 @@
 
         MsgBox("Item removed successfully!")
         Call listLoader()
+    End Sub
+
+    Private Sub btnEdit_Click(sender As Object, e As EventArgs) Handles btnEdit.Click
+
+        If lvCart.SelectedItems.Count = 0 Then
+            MsgBox("Please select an item to edit.", MsgBoxStyle.Exclamation)
+        Else
+
+        End If
     End Sub
 End Class

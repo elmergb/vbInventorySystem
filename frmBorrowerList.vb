@@ -66,4 +66,14 @@
     Private Sub dgvBorrowerList_CellContentClick(sender As System.Object, e As System.Windows.Forms.DataGridViewCellEventArgs) Handles dgvBorrowerList.CellContentClick
 
     End Sub
+
+    Private Sub EToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles EToolStripMenuItem.Click
+        If MsgBox("Are you sure to exit?", vbYesNo + vbQuestion) = vbYes Then
+            Me.Close()
+        End If
+    End Sub
+
+    Private Sub UIToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles UIToolStripMenuItem.Click
+
+    End Sub
 End Class

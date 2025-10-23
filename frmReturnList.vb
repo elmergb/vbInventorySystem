@@ -2,6 +2,10 @@
 
     Private Sub frmReturnList_Load(sender As System.Object, e As System.EventArgs) Handles MyBase.Load
         Call data_loader("SELECT * FROM vw_transaction ", dgvReturnList)
+
+        For Each col As DataGridViewColumn In dgvReturnList.Columns
+            col.SortMode = DataGridViewColumnSortMode.NotSortable
+        Next
         'Dim sb As New System.Text.StringBuilder()
         'If dgvReturnList.Columns.Count = 0 Then
         '    MsgBox("Columns count = 0 (no columns yet)")
@@ -66,5 +70,9 @@
             frmReturnEntry.BorrowID = Val(dgvReturnList.Tag)
             frmReturnEntry.ShowDialog()
         End If
+    End Sub
+
+    Private Sub dgvReturnList_CellContentClick(sender As Object, e As DataGridViewCellEventArgs) Handles dgvReturnList.CellContentClick
+
     End Sub
 End Class

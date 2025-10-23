@@ -92,7 +92,7 @@ main
   Looks up a localized resource of type System.Drawing.Bitmap.
 </summary>
 </member>
-<member name="T:main.Dts1">
+<member name="T:main.dsMod">
 <summary>
 Represents a strongly typed in-memory cache of data.
 </summary>

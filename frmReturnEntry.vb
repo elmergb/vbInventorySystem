@@ -68,12 +68,23 @@
                 Remarks = Remarks
             End If
 
-            cmd = New Odbc.OdbcCommand("INSERT INTO tblreturn (BorrowID, QuantityReturned, DateReturned, Remarks) VALUES (?,?,?,?)", con)
-            cmd.Parameters.AddWithValue("?", CInt(BorrowID))
-            cmd.Parameters.AddWithValue("?", qtyReturned)
-            cmd.Parameters.AddWithValue("?", dtpBorrowedR.Value.ToString("yyyy-MM-dd HH:mm:ss"))
-            cmd.Parameters.AddWithValue("?", Remarks)
-            cmd.ExecuteNonQuery()
+
+            If Remarks = "Dagame" Then
+                cmd = New Odbc.OdbcCommand("INSERT INTO tblreturn (BorrowID, QuantityReturned, DateReturned, Remarks) VALUES (?,?,?,?)", con)
+                cmd.Parameters.AddWithValue("?", CInt(BorrowID))
+                cmd.Parameters.AddWithValue("?", qtyReturned)
+                cmd.Parameters.AddWithValue("?", dtpBorrowedR.Value.ToString("yyyy-MM-dd HH:mm:ss"))
+                cmd.Parameters.AddWithValue("?", Remarks)
+                cmd.ExecuteNonQuery()
+            Else
+                cmd = New Odbc.OdbcCommand("INSERT INTO tblreturn (BorrowID, QuantityReturned, DateReturned, Remarks) VALUES (?,?,?,?)", con)
+                cmd.Parameters.AddWithValue("?", CInt(BorrowID))
+                cmd.Parameters.AddWithValue("?", qtyReturned)
+                cmd.Parameters.AddWithValue("?", dtpBorrowedR.Value.ToString("yyyy-MM-dd HH:mm:ss"))
+                cmd.Parameters.AddWithValue("?", Remarks)
+                cmd.ExecuteNonQuery()
+            End If
+
 
             MsgBox("Item successfully returned!", vbInformation)
             data_loader("SELECT * FROM vw_transaction WHERE QuantityBorrowed > QuantityReturned", frmReturnList.dgvReturnList)
@@ -81,6 +92,10 @@
         Catch ex As Exception
             MsgBox("Error: " & ex.Message, vbCritical)
         End Try
+
+    End Sub
+
+    Private Sub nupDamageItem_ValueChanged(sender As Object, e As EventArgs)
 
     End Sub
 End Class

@@ -51,4 +51,8 @@
     Private Sub frmUserAdd_Load(sender As System.Object, e As System.EventArgs) Handles MyBase.Load
 
     End Sub
+
+    Private Sub Label6_Click(sender As Object, e As EventArgs) Handles Label6.Click
+
+    End Sub
 End Class

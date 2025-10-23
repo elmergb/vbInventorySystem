@@ -185,11 +185,12 @@ Partial Class frmBorrow
         'Label8
         '
         Me.Label8.AllowDrop = True
-        Me.Label8.BackColor = System.Drawing.Color.FromArgb(CType(CType(135, Byte), Integer), CType(CType(95, Byte), Integer), CType(CType(49, Byte), Integer))
+        Me.Label8.BackColor = System.Drawing.Color.Maroon
         Me.Label8.Font = New System.Drawing.Font("Microsoft YaHei", 18.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label8.ForeColor = System.Drawing.Color.White
         Me.Label8.Location = New System.Drawing.Point(0, 0)
         Me.Label8.Name = "Label8"
-        Me.Label8.Size = New System.Drawing.Size(766, 55)
+        Me.Label8.Size = New System.Drawing.Size(486, 55)
         Me.Label8.TabIndex = 17
         Me.Label8.Text = " Borrow"
         Me.Label8.TextAlign = System.Drawing.ContentAlignment.MiddleLeft

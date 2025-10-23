@@ -9,26 +9,26 @@ C:\Users\edwar\AppData\Local\Temporary Projects\main\obj\x86\Debug\main.xml
 C:\Users\edwar\AppData\Local\Temporary Projects\main\obj\x86\Debug\main.pdb
 C:\Users\edwar\AppData\Local\Temporary Projects\main\obj\x86\Debug\main.LoginForm1.resources
 C:\Users\edwar\AppData\Local\Temporary Projects\main\obj\x86\Debug\main.Login.resources
-C:\Users\edwar\Documents\Visual Studio 2010\Projects\main\main\obj\x86\Debug\main.Homepage.resources
-C:\Users\edwar\Documents\Visual Studio 2010\Projects\main\main\obj\x86\Debug\main.Login.resources
-C:\Users\edwar\Documents\Visual Studio 2010\Projects\main\main\obj\x86\Debug\main.Resources.resources
-C:\Users\edwar\Documents\Visual Studio 2010\Projects\main\main\obj\x86\Debug\main.vbproj.GenerateResource.Cache
 C:\Users\edwar\Documents\Visual Studio 2010\Projects\main\main\bin\Debug\main.exe
 C:\Users\edwar\Documents\Visual Studio 2010\Projects\main\main\bin\Debug\main.pdb
 C:\Users\edwar\Documents\Visual Studio 2010\Projects\main\main\bin\Debug\main.xml
+C:\Users\edwar\Documents\Visual Studio 2010\Projects\main\main\obj\x86\Debug\main.frmAddItem.resources
+C:\Users\edwar\Documents\Visual Studio 2010\Projects\main\main\obj\x86\Debug\main.frmBorrow.resources
+C:\Users\edwar\Documents\Visual Studio 2010\Projects\main\main\obj\x86\Debug\main.frmBorrowerCartList.resources
+C:\Users\edwar\Documents\Visual Studio 2010\Projects\main\main\obj\x86\Debug\main.frmBorrowerList.resources
+C:\Users\edwar\Documents\Visual Studio 2010\Projects\main\main\obj\x86\Debug\main.frmCartListView.resources
+C:\Users\edwar\Documents\Visual Studio 2010\Projects\main\main\obj\x86\Debug\main.frmDashboard.resources
+C:\Users\edwar\Documents\Visual Studio 2010\Projects\main\main\obj\x86\Debug\main.frmListItem.resources
+C:\Users\edwar\Documents\Visual Studio 2010\Projects\main\main\obj\x86\Debug\main.frmReturnEntry.resources
+C:\Users\edwar\Documents\Visual Studio 2010\Projects\main\main\obj\x86\Debug\main.frmReturnList.resources
+C:\Users\edwar\Documents\Visual Studio 2010\Projects\main\main\obj\x86\Debug\main.frmUserAdd.resources
+C:\Users\edwar\Documents\Visual Studio 2010\Projects\main\main\obj\x86\Debug\main.frmUserList.resources
+C:\Users\edwar\Documents\Visual Studio 2010\Projects\main\main\obj\x86\Debug\main.Homepage.resources
+C:\Users\edwar\Documents\Visual Studio 2010\Projects\main\main\obj\x86\Debug\main.Login.resources
+C:\Users\edwar\Documents\Visual Studio 2010\Projects\main\main\obj\x86\Debug\main.Resources.resources
+C:\Users\edwar\Documents\Visual Studio 2010\Projects\main\main\obj\x86\Debug\main.vbproj.GenerateResource.cache
 C:\Users\edwar\Documents\Visual Studio 2010\Projects\main\main\obj\x86\Debug\main.exe
 C:\Users\edwar\Documents\Visual Studio 2010\Projects\main\main\obj\x86\Debug\main.xml
 C:\Users\edwar\Documents\Visual Studio 2010\Projects\main\main\obj\x86\Debug\main.pdb
-C:\Users\edwar\Documents\Visual Studio 2010\Projects\main\main\obj\x86\Debug\main.frmAddItem.resources
-C:\Users\edwar\Documents\Visual Studio 2010\Projects\main\main\obj\x86\Debug\main.frmListItem.resources
-C:\Users\edwar\Documents\Visual Studio 2010\Projects\main\main\obj\x86\Debug\main.frmUserList.resources
-C:\Users\edwar\Documents\Visual Studio 2010\Projects\main\main\obj\x86\Debug\main.frmUserAdd.resources
-C:\Users\edwar\Documents\Visual Studio 2010\Projects\main\main\obj\x86\Debug\main.frmBorrow.resources
-C:\Users\edwar\Documents\Visual Studio 2010\Projects\main\main\obj\x86\Debug\main.frmBorrowerList.resources
-C:\Users\edwar\Documents\Visual Studio 2010\Projects\main\main\obj\x86\Debug\main.frmReturnEntry.resources
-C:\Users\edwar\Documents\Visual Studio 2010\Projects\main\main\obj\x86\Debug\main.frmDashboard.resources
-C:\Users\edwar\Documents\Visual Studio 2010\Projects\main\main\obj\x86\Debug\main.frmReturnList.resources
 C:\Users\edwar\Documents\Visual Studio 2010\Projects\main\main\obj\x86\Debug\main.vbproj.AssemblyReference.cache
 C:\Users\edwar\Documents\Visual Studio 2010\Projects\main\main\obj\x86\Debug\main.vbproj.CoreCompileInputs.cache
-C:\Users\edwar\Documents\Visual Studio 2010\Projects\main\main\obj\x86\Debug\main.frmBorrowerCartList.resources
-C:\Users\edwar\Documents\Visual Studio 2010\Projects\main\main\obj\x86\Debug\main.frmCartListView.resources

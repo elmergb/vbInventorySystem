@@ -22,6 +22,7 @@ Partial Class frmUserList
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
+        Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmUserList))
         Me.dgvUserList = New System.Windows.Forms.DataGridView()
         Me.btnAdd = New System.Windows.Forms.Button()
@@ -48,23 +49,34 @@ Partial Class frmUserList
         '
         Me.dgvUserList.AllowUserToAddRows = False
         Me.dgvUserList.AllowUserToDeleteRows = False
+        Me.dgvUserList.AllowUserToResizeColumns = False
+        Me.dgvUserList.AllowUserToResizeRows = False
         Me.dgvUserList.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill
         Me.dgvUserList.BackgroundColor = System.Drawing.Color.Gainsboro
+        DataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control
+        DataGridViewCellStyle1.Font = New System.Drawing.Font("Arial", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText
+        DataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight
+        DataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.dgvUserList.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle1
         Me.dgvUserList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.dgvUserList.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.Column6, Me.Column1, Me.Column2, Me.Column3, Me.Column4, Me.Column5})
+        Me.dgvUserList.EnableHeadersVisualStyles = False
         Me.dgvUserList.GridColor = System.Drawing.Color.Gainsboro
-        Me.dgvUserList.Location = New System.Drawing.Point(40, 120)
+        Me.dgvUserList.Location = New System.Drawing.Point(21, 103)
         Me.dgvUserList.Name = "dgvUserList"
         Me.dgvUserList.ReadOnly = True
         Me.dgvUserList.RowHeadersVisible = False
         Me.dgvUserList.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
-        Me.dgvUserList.Size = New System.Drawing.Size(803, 399)
+        Me.dgvUserList.Size = New System.Drawing.Size(886, 573)
         Me.dgvUserList.TabIndex = 0
         '
         'btnAdd
         '
         Me.btnAdd.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnAdd.Location = New System.Drawing.Point(913, 194)
+        Me.btnAdd.Location = New System.Drawing.Point(1057, 235)
         Me.btnAdd.Name = "btnAdd"
         Me.btnAdd.Size = New System.Drawing.Size(87, 43)
         Me.btnAdd.TabIndex = 1
@@ -74,7 +86,7 @@ Partial Class frmUserList
         'btnEdit
         '
         Me.btnEdit.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnEdit.Location = New System.Drawing.Point(913, 256)
+        Me.btnEdit.Location = New System.Drawing.Point(1057, 297)
         Me.btnEdit.Name = "btnEdit"
         Me.btnEdit.Size = New System.Drawing.Size(87, 43)
         Me.btnEdit.TabIndex = 2
@@ -84,7 +96,7 @@ Partial Class frmUserList
         'btnDelete
         '
         Me.btnDelete.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnDelete.Location = New System.Drawing.Point(913, 316)
+        Me.btnDelete.Location = New System.Drawing.Point(1057, 357)
         Me.btnDelete.Name = "btnDelete"
         Me.btnDelete.Size = New System.Drawing.Size(87, 43)
         Me.btnDelete.TabIndex = 3
@@ -160,7 +172,7 @@ Partial Class frmUserList
         'Column1
         '
         Me.Column1.DataPropertyName = "fname"
-        Me.Column1.HeaderText = "fname"
+        Me.Column1.HeaderText = "First Name"
         Me.Column1.Name = "Column1"
         Me.Column1.ReadOnly = True
         '
@@ -168,7 +180,7 @@ Partial Class frmUserList
         '
         Me.Column2.DataPropertyName = "mi"
         Me.Column2.FillWeight = 60.0!
-        Me.Column2.HeaderText = "middle name"
+        Me.Column2.HeaderText = "Middle Name"
         Me.Column2.MinimumWidth = 60
         Me.Column2.Name = "Column2"
         Me.Column2.ReadOnly = True
@@ -176,21 +188,21 @@ Partial Class frmUserList
         'Column3
         '
         Me.Column3.DataPropertyName = "lname"
-        Me.Column3.HeaderText = "last name"
+        Me.Column3.HeaderText = "Last Name"
         Me.Column3.Name = "Column3"
         Me.Column3.ReadOnly = True
         '
         'Column4
         '
         Me.Column4.DataPropertyName = "username"
-        Me.Column4.HeaderText = "username"
+        Me.Column4.HeaderText = "Username"
         Me.Column4.Name = "Column4"
         Me.Column4.ReadOnly = True
         '
         'Column5
         '
         Me.Column5.DataPropertyName = "pword"
-        Me.Column5.HeaderText = "password"
+        Me.Column5.HeaderText = "Password"
         Me.Column5.Name = "Column5"
         Me.Column5.ReadOnly = True
         Me.Column5.Visible = False
@@ -199,7 +211,7 @@ Partial Class frmUserList
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(1335, 566)
+        Me.ClientSize = New System.Drawing.Size(1335, 688)
         Me.Controls.Add(Me.Label1)
         Me.Controls.Add(Me.ToolStrip1)
         Me.Controls.Add(Me.btnDelete)

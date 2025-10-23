@@ -24,12 +24,13 @@ Partial Class frmCartListView
     Private Sub InitializeComponent()
         Me.lvCart = New System.Windows.Forms.ListView()
         Me.btnDelete = New System.Windows.Forms.Button()
+        Me.btnEdit = New System.Windows.Forms.Button()
         Me.SuspendLayout()
         '
         'lvCart
         '
         Me.lvCart.HideSelection = False
-        Me.lvCart.Location = New System.Drawing.Point(1, 1)
+        Me.lvCart.Location = New System.Drawing.Point(12, 12)
         Me.lvCart.Name = "lvCart"
         Me.lvCart.Size = New System.Drawing.Size(280, 348)
         Me.lvCart.TabIndex = 0
@@ -37,18 +38,28 @@ Partial Class frmCartListView
         '
         'btnDelete
         '
-        Me.btnDelete.Location = New System.Drawing.Point(246, 364)
+        Me.btnDelete.Location = New System.Drawing.Point(284, 366)
         Me.btnDelete.Name = "btnDelete"
         Me.btnDelete.Size = New System.Drawing.Size(91, 45)
         Me.btnDelete.TabIndex = 1
         Me.btnDelete.Text = "Delete"
         Me.btnDelete.UseVisualStyleBackColor = True
         '
+        'btnEdit
+        '
+        Me.btnEdit.Location = New System.Drawing.Point(187, 366)
+        Me.btnEdit.Name = "btnEdit"
+        Me.btnEdit.Size = New System.Drawing.Size(91, 45)
+        Me.btnEdit.TabIndex = 2
+        Me.btnEdit.Text = "Edit"
+        Me.btnEdit.UseVisualStyleBackColor = True
+        '
         'frmCartListView
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(467, 448)
+        Me.Controls.Add(Me.btnEdit)
         Me.Controls.Add(Me.btnDelete)
         Me.Controls.Add(Me.lvCart)
         Me.Name = "frmCartListView"
@@ -59,4 +70,5 @@ Partial Class frmCartListView
 
     Friend WithEvents lvCart As ListView
     Friend WithEvents btnDelete As Button
+    Friend WithEvents btnEdit As Button
 End Class

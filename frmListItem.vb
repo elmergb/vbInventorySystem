@@ -6,6 +6,11 @@
         frmAddItem.nupQuantity.Maximum = 1000
         dgvItemList.AutoGenerateColumns = False
         dgvItemList.Tag = 0
+
+        For Each col As DataGridViewColumn In dgvItemList.Columns
+            col.SortMode = DataGridViewColumnSortMode.NotSortable
+        Next
+
     End Sub
 
     Private Sub btnAdd_Click(sender As Object, e As EventArgs) Handles btnAdd.Click
