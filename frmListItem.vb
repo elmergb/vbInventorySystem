@@ -1,8 +1,10 @@
-﻿Public Class frmListItem
+﻿Imports System.Data.Odbc
+
+Public Class frmListItem
     Public BorrowID As Integer
     Public ItemID As Integer
     Private Sub frmListItem_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        Call data_loader("SELECT * FROM tblitemlist", dgvItemList)
+        Call data_loader("SELECT * FROM vw_Item", dgvItemList)
         frmAddItem.nupQuantity.Maximum = 1000
         dgvItemList.AutoGenerateColumns = False
         dgvItemList.Tag = 0
@@ -59,5 +61,19 @@
 
     Private Sub TextBox1_TextChanged(sender As Object, e As EventArgs) Handles TextBox1.TextChanged
         Call data_loader("SELECT * FROM tblitemlist WHERE ItemName LIKE '%" & Trim(TextBox1.Text) & "%' ", dgvItemList)
+    End Sub
+
+    Private Sub btnDelete_Click(sender As Object, e As EventArgs) Handles btnDelete.Click
+        Dim cmd As New Odbc.OdbcCommand
+        If dgvItemList.Tag = 0 Then
+            MsgBox("Please select a record to delete.", MsgBoxStyle.Exclamation)
+        ElseIf MsgBox("Are you sure to Delete this record?", vbYesNo + vbQuestion) = vbYes Then
+            cmd = New Odbc.OdbcCommand("DELETE FROM tbldamaged WHERE ItemID = " & Val(dgvItemList.Tag), con)
+            cmd.ExecuteNonQuery()
+            cmd = New Odbc.OdbcCommand("DELETE FROM tblitemlist WHERE ItemID = " & Val(dgvItemList.Tag), con)
+            cmd.ExecuteNonQuery()
+            MsgBox("Item deleted successfully!")
+            Call data_loader("SELECT * FROM vw_Item", dgvItemList)
+        End If
     End Sub
 End Class

@@ -5,7 +5,7 @@ Public Class frmDashboard
         Call data_loader("SELECT BorrowerName, ItemName, QuantityBorrowed, Purpose, DateBorrowed FROM vw_borrowing ORDER BY DateBorrowed DESC LIMIT 5 ", frmDBdgvBorrow)
         Call data_loader("SELECT  ItemName,BorrowerName, QuantityBorrowed, QuantityReturned, DateReturned FROM vw_transaction ORDER BY DateReturned DESC LIMIT 5 ", frmDBdgvReturn)
         Call data_loader("SELECT * FROM tblitemlist ORDER BY ItemID DESC LIMIT 5 ", frmDBdgvItem)
-        Call data_loader("SELECT ItemName, ItemQuantity FROM tblitemlist WHERE TRIM(ItemRemarks)='Damage' OR TRIM(ItemRemarks)='Critical'", dgvDamageItem)
+        Call data_loader("SELECT Name, ItemDamage FROM vw_item WHERE TRIM(ItemRemarks)='Damage' OR TRIM(ItemRemarks)='Damaged'", dgvDamageItem)
         frmDBdgvBorrow.ClearSelection()
         frmDBdgvReturn.ClearSelection()
         frmDBdgvItem.ClearSelection()
@@ -82,26 +82,23 @@ Public Class frmDashboard
         Timer1.Start()
     End Sub
 
-    Private Sub LoToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles LoToolStripMenuItem.Click
+
+
+    Private Sub ltsLogout_Click(sender As Object, e As EventArgs) Handles ltsLogout.Click
         If MsgBox("Are you sure to Logout?", vbYesNo + vbQuestion) = vbYes Then
             Me.Close()
             Homepage.Close()
         End If
     End Sub
 
-    Private Sub Chart1_Click(sender As Object, e As EventArgs)
-
-    End Sub
-
-    Private Sub dgvDamageItem_CellContentClick(sender As Object, e As DataGridViewCellEventArgs) Handles dgvDamageItem.CellContentClick
-
-    End Sub
-
-    Private Sub EToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles EToolStripMenuItem.Click
-        If MsgBox("Are you sure to exit?", vbYesNo + vbQuestion) = vbYes Then
+    Private Sub ltsExit_Click(sender As Object, e As EventArgs) Handles ltsExit.Click
+        If MsgBox("Are you sure to Exit?", vbYesNo + vbQuestion) = vbYes Then
             Me.Close()
             Homepage.Close()
         End If
     End Sub
 
+    Private Sub DamageToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles DamageToolStripMenuItem.Click
+
+    End Sub
 End Class

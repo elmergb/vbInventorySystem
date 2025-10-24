@@ -31,14 +31,14 @@
             ' qty being returned right now
             Dim qtyReturningNow As Integer = CInt(nupQuantityR.Value)
 
-            ' 1) get borrowed quantity for this BorrowID
+            ' get borrowed quantity for this BorrowID
             Dim borrowedQty As Integer = 0
             cmd = New Odbc.OdbcCommand("SELECT IFNULL(SUM(QuantityBorrowed), 0) FROM tblborrow WHERE BorrowID = ?", con)
             cmd.Parameters.AddWithValue("?", BorrowID)
             Dim br = cmd.ExecuteScalar()
             If br IsNot Nothing AndAlso Not IsDBNull(br) Then borrowedQty = CInt(br)
 
-            ' 2) get already returned total for this BorrowID
+            ' get already returned total for this BorrowID
             Dim returnedTotal As Integer = 0
             cmd = New Odbc.OdbcCommand("SELECT IFNULL(SUM(QuantityReturned), 0) FROM tblreturn WHERE BorrowID = ?", con)
             cmd.Parameters.AddWithValue("?", BorrowID)
@@ -46,7 +46,7 @@
             If rr IsNot Nothing AndAlso Not IsDBNull(rr) Then returnedTotal = CInt(rr)
 
 
-            ' 3) validate
+            ' validate
             If returnedTotal + qtyReturningNow > borrowedQty Then
                 MsgBox("Returned quantity exceeds total borrowed amount.", vbExclamation)
                 Exit Sub
@@ -65,35 +65,36 @@
                 currentQty = CInt(cq)
             End If
 
-            ' Update with correct math
-            Dim newQty As Integer = currentQty + qtyReturningNow
-            cmd = New Odbc.OdbcCommand("UPDATE tblitemlist SET ItemQuantity = ? WHERE ItemID = ?", con)
-            cmd.Parameters.AddWithValue("?", newQty)
-            cmd.Parameters.AddWithValue("?", itemID)
-            cmd.ExecuteNonQuery()
-
             If Remarks = "damage" Or Remarks = "critical" Then
                 Remarks = "Damage"
             Else
                 Remarks = Remarks
             End If
 
-
-            If Remarks = "Dagame" Then
-                cmd = New Odbc.OdbcCommand("INSERT INTO tblreturn (BorrowID, QuantityReturned, DateReturned, Remarks) VALUES (?,?,?,?)", con)
-                cmd.Parameters.AddWithValue("?", CInt(BorrowID))
+            If Remarks = "Damage" Or Remarks = "damaged" Then
+                ' Insert into damaged table, DO NOT add back to stock
+                cmd = New Odbc.OdbcCommand("INSERT INTO tbldamaged (ItemID, QuantityDamaged, DateReported, Remarks) VALUES (?, ?, NOW(), ?)", con)
+                cmd.Parameters.AddWithValue("?", itemID)
                 cmd.Parameters.AddWithValue("?", qtyReturningNow)
-                cmd.Parameters.AddWithValue("?", dtpBorrowedR.Value.ToString("yyyy-MM-dd HH:mm:ss"))
-                cmd.Parameters.AddWithValue("?", Remarks)
+                cmd.Parameters.AddWithValue("?", "Returned as damaged")
                 cmd.ExecuteNonQuery()
             Else
-                cmd = New Odbc.OdbcCommand("INSERT INTO tblreturn (BorrowID, QuantityReturned, DateReturned, Remarks) VALUES (?,?,?,?)", con)
-                cmd.Parameters.AddWithValue("?", CInt(BorrowID))
-                cmd.Parameters.AddWithValue("?", qtyReturningNow)
-                cmd.Parameters.AddWithValue("?", dtpBorrowedR.Value.ToString("yyyy-MM-dd HH:mm:ss"))
-                cmd.Parameters.AddWithValue("?", Remarks)
+                ' Update with correct math
+                Dim newQty As Integer = currentQty + qtyReturningNow
+                cmd = New Odbc.OdbcCommand("UPDATE tblitemlist SET ItemQuantity = ? WHERE ItemID = ?", con)
+                cmd.Parameters.AddWithValue("?", newQty)
+                cmd.Parameters.AddWithValue("?", itemID)
                 cmd.ExecuteNonQuery()
             End If
+
+
+
+            cmd = New Odbc.OdbcCommand(" INSERT INTO tblreturn (BorrowID, QuantityReturned, DateReturned, Remarks) VALUES (?, ?, ?, ?)", con)
+            cmd.Parameters.AddWithValue("?", CInt(BorrowID))
+            cmd.Parameters.AddWithValue("?", qtyReturningNow)
+            cmd.Parameters.AddWithValue("?", dtpBorrowedR.Value.ToString("yyyy-MM-dd HH:mm:ss"))
+            cmd.Parameters.AddWithValue("?", Remarks)
+            cmd.ExecuteNonQuery()
 
 
             MsgBox("Item successfully returned!", vbInformation)

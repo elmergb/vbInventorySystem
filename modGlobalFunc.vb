@@ -90,5 +90,19 @@
         End While
         result.Close()
     End Sub
+    Public Sub ClearAllText(ByVal parent As Control)
+        For Each ctrl As Control In parent.Controls
+            If TypeOf ctrl Is TextBox Then
+                CType(ctrl, TextBox).Clear()
 
+            ElseIf TypeOf ctrl Is ComboBox Then
+                CType(ctrl, ComboBox).SelectedIndex = -1
+                CType(ctrl, ComboBox).Text = String.Empty
+
+            ElseIf ctrl.HasChildren Then
+                ' Recursively clear inside panels, group boxes, etc.
+                ClearAllText(ctrl)
+            End If
+        Next
+    End Sub
 End Module

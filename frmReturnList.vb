@@ -25,10 +25,9 @@
     Private Sub dgvReturnList_CellClick(sender As Object, e As DataGridViewCellEventArgs) Handles dgvReturnList.CellClick
         Try
             If e.RowIndex >= 0 Then
-                ' Optional: store ReturnID
                 dgvReturnList.Tag = dgvReturnList.Item(0, e.RowIndex).Value
 
-                ' Match column order:
+
                 ' 0 ReturnID | 1 BorrowID | 2 ItemID | 3 ItemName | 4 BorrowerName |
                 ' 5 Purpose | 6 QuantityBorrowed | 7 QuantityReturned | 8 DateReturned | 9 Remarks
 

@@ -70,12 +70,12 @@ Partial Class frmBorrowerList
         Me.dgvBorrowerList.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill
         Me.dgvBorrowerList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.dgvBorrowerList.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.Column1, Me.Column2, Me.Column3, Me.Column4, Me.Column5, Me.Column6, Me.Column8, Me.Column9, Me.Column10})
-        Me.dgvBorrowerList.Location = New System.Drawing.Point(12, 93)
+        Me.dgvBorrowerList.Location = New System.Drawing.Point(12, 136)
         Me.dgvBorrowerList.Name = "dgvBorrowerList"
         Me.dgvBorrowerList.ReadOnly = True
         Me.dgvBorrowerList.RowHeadersVisible = False
         Me.dgvBorrowerList.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
-        Me.dgvBorrowerList.Size = New System.Drawing.Size(1398, 724)
+        Me.dgvBorrowerList.Size = New System.Drawing.Size(1398, 681)
         Me.dgvBorrowerList.TabIndex = 0
         '
         'Column1
@@ -181,13 +181,13 @@ Partial Class frmBorrowerList
         'LoToolStripMenuItem
         '
         Me.LoToolStripMenuItem.Name = "LoToolStripMenuItem"
-        Me.LoToolStripMenuItem.Size = New System.Drawing.Size(180, 22)
+        Me.LoToolStripMenuItem.Size = New System.Drawing.Size(115, 22)
         Me.LoToolStripMenuItem.Text = "Log out"
         '
         'EToolStripMenuItem
         '
         Me.EToolStripMenuItem.Name = "EToolStripMenuItem"
-        Me.EToolStripMenuItem.Size = New System.Drawing.Size(180, 22)
+        Me.EToolStripMenuItem.Size = New System.Drawing.Size(115, 22)
         Me.EToolStripMenuItem.Text = "Exit"
         '
         'lblTsManage
@@ -209,7 +209,7 @@ Partial Class frmBorrowerList
         'UIToolStripMenuItem
         '
         Me.UIToolStripMenuItem.Name = "UIToolStripMenuItem"
-        Me.UIToolStripMenuItem.Size = New System.Drawing.Size(180, 22)
+        Me.UIToolStripMenuItem.Size = New System.Drawing.Size(127, 22)
         Me.UIToolStripMenuItem.Text = "Items"
         '
         'BorrowesToolStripMenuItem

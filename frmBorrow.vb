@@ -7,6 +7,9 @@
         If SelectedItemID > 0 Then
             cbItemList.SelectedValue = SelectedItemID
         End If
+        cbBorrowRemarks.Items.Clear()
+        cbBorrowRemarks.Items.Add("Good")
+        cbBorrowRemarks.Items.Add("Damage")
     End Sub
 
     Private Sub btnLogSave_Click(sender As System.Object, e As System.EventArgs) Handles btnLogSave.Click
@@ -100,11 +103,5 @@
 
     End Sub
 
-    Private Sub Label8_Click(sender As Object, e As EventArgs) Handles Label8.Click
 
-    End Sub
-
-    Private Sub cbBorrowRemarks_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cbBorrowRemarks.SelectedIndexChanged
-
-    End Sub
 End Class
