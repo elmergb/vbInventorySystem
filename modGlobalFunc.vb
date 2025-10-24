@@ -105,4 +105,12 @@
             End If
         Next
     End Sub
+
+    Public Sub DisableForm(ByVal frm As Form)
+        frm.FormBorderStyle = FormBorderStyle.None
+        frm.ControlBox = False
+        frm.Text = ""          ' Removes title text
+        frm.MinimizeBox = False
+        frm.MaximizeBox = False
+    End Sub
 End Module

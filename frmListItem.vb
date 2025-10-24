@@ -38,7 +38,7 @@ Public Class frmListItem
 
     Private Sub btnBorrow_Click(sender As System.Object, e As System.EventArgs) Handles btnBorrow.Click
         If (dgvItemList.Tag) = 0 Then
-            MsgBox("Select a record to edit!", vbInformation)
+            MsgBox("Select an item to borrow!", vbInformation, "Select Item")
         Else
             frmBorrow.SelectedItemID = Val(dgvItemList.Tag)
             frmBorrow.ShowDialog()
@@ -48,7 +48,7 @@ Public Class frmListItem
 
     Private Sub btnEdit_Click(sender As System.Object, e As System.EventArgs) Handles btnEdit.Click
         If (dgvItemList.Tag) = 0 Then
-            MsgBox("Select a record to edit!", vbInformation)
+            MsgBox("Select an Item to edit!", vbInformation, "Select Item")
         Else
             frmAddItem.ItemID = Val(dgvItemList.Tag)
             frmAddItem.ShowDialog()
@@ -67,7 +67,7 @@ Public Class frmListItem
         Dim cmd As New Odbc.OdbcCommand
         If dgvItemList.Tag = 0 Then
             MsgBox("Please select a record to delete.", MsgBoxStyle.Exclamation)
-        ElseIf MsgBox("Are you sure to Delete this record?", vbYesNo + vbQuestion) = vbYes Then
+        ElseIf MsgBox("Are you sure to Delete this record?", vbYesNo + vbQuestion + MsgBoxStyle.Question, "Confirm Delete") = vbYes Then
             cmd = New Odbc.OdbcCommand("DELETE FROM tbldamaged WHERE ItemID = " & Val(dgvItemList.Tag), con)
             cmd.ExecuteNonQuery()
             cmd = New Odbc.OdbcCommand("DELETE FROM tblitemlist WHERE ItemID = " & Val(dgvItemList.Tag), con)

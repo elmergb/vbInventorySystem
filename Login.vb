@@ -41,6 +41,7 @@ Public Class Login
         txtPword.ForeColor = Color.Gray
         txtUsername.ForeColor = Color.Gray
         PictureBox1.Select()
+        DisableForm(Me)
     End Sub
 
     Private Sub btnLogin_Click(sender As System.Object, e As System.EventArgs) Handles btnLogin.Click

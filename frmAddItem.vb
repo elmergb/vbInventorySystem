@@ -25,7 +25,7 @@
                     .AddWithValue("?", Trim(cbRemarks.Text))
                 End With
                 cmd.ExecuteNonQuery()
-                MsgBox("Inserted Successfully", vbInformation)
+                MsgBox("Item saved successfully!", MsgBoxStyle.Information, "Success")
                 If MsgBox("Do you want add more Item?", vbYesNo + vbQuestion) = vbNo Then
                     Me.Close()
                 End If
@@ -79,7 +79,8 @@
                         .AddWithValue("?", ItemID)
                     End With
                     cmd.ExecuteNonQuery()
-                    MsgBox("Edited Successfully!", vbInformation)
+                    MsgBox("Item edited successfully!", MsgBoxStyle.Information, "Success")
+
                 End If
 
                 ClearAllText(Me)

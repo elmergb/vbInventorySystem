@@ -20,6 +20,7 @@
     Private Sub Homepage_Load(sender As System.Object, e As System.EventArgs) Handles MyBase.Load
         Call vbConnection()
         LoadForm(New frmDashboard())
+        DisableForm(Me)
     End Sub
 
     Private Sub btnBorrowPage_Click(sender As System.Object, e As System.EventArgs) Handles btnBorrowPage.Click

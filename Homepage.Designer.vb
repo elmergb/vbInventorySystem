@@ -76,7 +76,7 @@ Partial Class Homepage
         Me.btnDashBoard.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(CType(CType(153, Byte), Integer), CType(CType(113, Byte), Integer), CType(CType(87, Byte), Integer))
         Me.btnDashBoard.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.btnDashBoard.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnDashBoard.Location = New System.Drawing.Point(-39, 106)
+        Me.btnDashBoard.Location = New System.Drawing.Point(-39, 155)
         Me.btnDashBoard.Name = "btnDashBoard"
         Me.btnDashBoard.Padding = New System.Windows.Forms.Padding(5)
         Me.btnDashBoard.Size = New System.Drawing.Size(225, 42)
@@ -91,7 +91,7 @@ Partial Class Homepage
         Me.PictureBox1.Image = Global.main.My.Resources.Resources._380543768_699505935537282_871741826798799703_n_removebg_preview
         Me.PictureBox1.Location = New System.Drawing.Point(-1, -1)
         Me.PictureBox1.Name = "PictureBox1"
-        Me.PictureBox1.Size = New System.Drawing.Size(187, 110)
+        Me.PictureBox1.Size = New System.Drawing.Size(187, 150)
         Me.PictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
         Me.PictureBox1.TabIndex = 1
         Me.PictureBox1.TabStop = False
@@ -104,7 +104,7 @@ Partial Class Homepage
         Me.btnReturnList.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(CType(CType(153, Byte), Integer), CType(CType(113, Byte), Integer), CType(CType(87, Byte), Integer))
         Me.btnReturnList.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.btnReturnList.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnReturnList.Location = New System.Drawing.Point(-76, 202)
+        Me.btnReturnList.Location = New System.Drawing.Point(-76, 251)
         Me.btnReturnList.Name = "btnReturnList"
         Me.btnReturnList.Padding = New System.Windows.Forms.Padding(5)
         Me.btnReturnList.Size = New System.Drawing.Size(262, 42)
@@ -120,10 +120,10 @@ Partial Class Homepage
         Me.btnBorrowPage.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(CType(CType(153, Byte), Integer), CType(CType(113, Byte), Integer), CType(CType(87, Byte), Integer))
         Me.btnBorrowPage.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.btnBorrowPage.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnBorrowPage.Location = New System.Drawing.Point(-45, 250)
+        Me.btnBorrowPage.Location = New System.Drawing.Point(-49, 299)
         Me.btnBorrowPage.Name = "btnBorrowPage"
         Me.btnBorrowPage.Padding = New System.Windows.Forms.Padding(5)
-        Me.btnBorrowPage.Size = New System.Drawing.Size(231, 42)
+        Me.btnBorrowPage.Size = New System.Drawing.Size(235, 42)
         Me.btnBorrowPage.TabIndex = 4
         Me.btnBorrowPage.Text = "Borrowed"
         Me.btnBorrowPage.UseVisualStyleBackColor = False
@@ -136,7 +136,7 @@ Partial Class Homepage
         Me.btnUser.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(CType(CType(153, Byte), Integer), CType(CType(113, Byte), Integer), CType(CType(87, Byte), Integer))
         Me.btnUser.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.btnUser.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnUser.Location = New System.Drawing.Point(-95, 298)
+        Me.btnUser.Location = New System.Drawing.Point(-95, 347)
         Me.btnUser.Name = "btnUser"
         Me.btnUser.Padding = New System.Windows.Forms.Padding(5)
         Me.btnUser.Size = New System.Drawing.Size(281, 42)
@@ -152,7 +152,7 @@ Partial Class Homepage
         Me.btnAddItem.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(CType(CType(153, Byte), Integer), CType(CType(113, Byte), Integer), CType(CType(87, Byte), Integer))
         Me.btnAddItem.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.btnAddItem.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnAddItem.Location = New System.Drawing.Point(-95, 154)
+        Me.btnAddItem.Location = New System.Drawing.Point(-95, 203)
         Me.btnAddItem.Name = "btnAddItem"
         Me.btnAddItem.Padding = New System.Windows.Forms.Padding(5)
         Me.btnAddItem.Size = New System.Drawing.Size(281, 42)
