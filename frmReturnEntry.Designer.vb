@@ -23,7 +23,6 @@ Partial Class frmReturnEntry
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
         Me.dtpBorrowedR = New System.Windows.Forms.DateTimePicker()
-        Me.txtRemarksR = New System.Windows.Forms.TextBox()
         Me.txtBorrowerNameR = New System.Windows.Forms.TextBox()
         Me.cbItemListR = New System.Windows.Forms.ComboBox()
         Me.Label7 = New System.Windows.Forms.Label()
@@ -35,6 +34,7 @@ Partial Class frmReturnEntry
         Me.nupQuantityR = New System.Windows.Forms.NumericUpDown()
         Me.txtPurposeR = New System.Windows.Forms.TextBox()
         Me.btnReturnLog = New System.Windows.Forms.Button()
+        Me.cbReturnRemarks = New System.Windows.Forms.ComboBox()
         CType(Me.nupQuantityR, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
@@ -47,15 +47,6 @@ Partial Class frmReturnEntry
         Me.dtpBorrowedR.Name = "dtpBorrowedR"
         Me.dtpBorrowedR.Size = New System.Drawing.Size(233, 20)
         Me.dtpBorrowedR.TabIndex = 28
-        '
-        'txtRemarksR
-        '
-        Me.txtRemarksR.Location = New System.Drawing.Point(376, 192)
-        Me.txtRemarksR.Margin = New System.Windows.Forms.Padding(4, 3, 4, 3)
-        Me.txtRemarksR.Multiline = True
-        Me.txtRemarksR.Name = "txtRemarksR"
-        Me.txtRemarksR.Size = New System.Drawing.Size(218, 32)
-        Me.txtRemarksR.TabIndex = 27
         '
         'txtBorrowerNameR
         '
@@ -162,15 +153,24 @@ Partial Class frmReturnEntry
         Me.btnReturnLog.Text = "Return"
         Me.btnReturnLog.UseVisualStyleBackColor = True
         '
+        'cbReturnRemarks
+        '
+        Me.cbReturnRemarks.FormattingEnabled = True
+        Me.cbReturnRemarks.Location = New System.Drawing.Point(376, 212)
+        Me.cbReturnRemarks.Margin = New System.Windows.Forms.Padding(4, 3, 4, 3)
+        Me.cbReturnRemarks.Name = "cbReturnRemarks"
+        Me.cbReturnRemarks.Size = New System.Drawing.Size(187, 22)
+        Me.cbReturnRemarks.TabIndex = 31
+        '
         'frmReturnEntry
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(7.0!, 14.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(646, 472)
+        Me.Controls.Add(Me.cbReturnRemarks)
         Me.Controls.Add(Me.btnReturnLog)
         Me.Controls.Add(Me.txtPurposeR)
         Me.Controls.Add(Me.dtpBorrowedR)
-        Me.Controls.Add(Me.txtRemarksR)
         Me.Controls.Add(Me.txtBorrowerNameR)
         Me.Controls.Add(Me.cbItemListR)
         Me.Controls.Add(Me.Label7)
@@ -190,7 +190,6 @@ Partial Class frmReturnEntry
 
     End Sub
     Friend WithEvents dtpBorrowedR As System.Windows.Forms.DateTimePicker
-    Friend WithEvents txtRemarksR As System.Windows.Forms.TextBox
     Friend WithEvents txtBorrowerNameR As System.Windows.Forms.TextBox
     Friend WithEvents cbItemListR As System.Windows.Forms.ComboBox
     Friend WithEvents Label7 As System.Windows.Forms.Label
@@ -202,4 +201,5 @@ Partial Class frmReturnEntry
     Friend WithEvents nupQuantityR As System.Windows.Forms.NumericUpDown
     Friend WithEvents txtPurposeR As System.Windows.Forms.TextBox
     Friend WithEvents btnReturnLog As System.Windows.Forms.Button
+    Friend WithEvents cbReturnRemarks As ComboBox
 End Class

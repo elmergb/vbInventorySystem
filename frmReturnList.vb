@@ -50,7 +50,7 @@
                     frmReturnEntry.dtpBorrowedR.Value = CDate(dateVal)
                 End If
 
-                frmReturnEntry.txtRemarksR.Text = dgvReturnList.Item(9, e.RowIndex).Value.ToString()
+                frmReturnEntry.cbItemListR.Text = dgvReturnList.Item(9, e.RowIndex).Value.ToString()
 
                 ' Store IDs
                 frmReturnEntry.ItemID = CInt(dgvReturnList.Item(2, e.RowIndex).Value)

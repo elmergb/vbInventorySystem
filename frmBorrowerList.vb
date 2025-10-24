@@ -5,6 +5,7 @@
         Call vbConnection()
         Call data_loader("SELECT * FROM vw_borrowing WHERE Status <> 'Returned'", dgvBorrowerList)
         cb_loader("SELECT * FROM tblitemlist", frmReturnEntry.cbItemListR, "ItemName", "ItemID")
+
         'Dim sb As New System.Text.StringBuilder()
         'If dgvBorrowerList.Columns.Count = 0 Then
         '    MsgBox("Columns count = 0 (no columns yet)")
@@ -29,7 +30,7 @@
             frmBorrow.txtContact.Text = dgvBorrowerList.Item(5, e.RowIndex).Value
             frmBorrow.txtPurpose.Text = dgvBorrowerList.Item(6, e.RowIndex).Value
             frmBorrow.dtpBorrowed.Value = CDate(dgvBorrowerList.Item(7, e.RowIndex).Value)
-            frmBorrow.txtRemarks.Text = dgvBorrowerList.Item(8, e.RowIndex).Value
+            frmBorrow.cbBorrowRemarks.Text = dgvBorrowerList.Item(8, e.RowIndex).Value
         End If
 
     End Sub
@@ -55,7 +56,7 @@
             frmReturnEntry.txtBorrowerNameR.Text = dgvBorrowerList.Item(2, dgvBorrowerList.CurrentRow.Index).Value.ToString()
             frmReturnEntry.txtPurposeR.Text = dgvBorrowerList.Item(6, dgvBorrowerList.CurrentRow.Index).Value.ToString()
             frmReturnEntry.nupQuantityR.Value = If(IsNumeric(dgvBorrowerList.Item(4, dgvBorrowerList.CurrentRow.Index).Value), CInt(dgvBorrowerList.Item(4, dgvBorrowerList.CurrentRow.Index).Value), 0)
-            frmReturnEntry.txtRemarksR.Text = dgvBorrowerList.Item(8, dgvBorrowerList.CurrentRow.Index).Value.ToString()
+            frmReturnEntry.cbReturnRemarks.Text = dgvBorrowerList.Item(8, dgvBorrowerList.CurrentRow.Index).Value.ToString()
 
             frmReturnEntry.ShowDialog()
 

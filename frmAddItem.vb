@@ -1,6 +1,9 @@
 ﻿Public Class frmAddItem
     Public Property ItemID As Integer = 0
     Private Sub frmAddItem_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        cbRemarks.Items.Clear()
+        cbRemarks.Items.Add("Good")
+        cbRemarks.Items.Add("Damage")
     End Sub
 
     Private Sub btnSave_Click(sender As Object, e As EventArgs) Handles btnSave.Click
@@ -11,13 +14,14 @@
         If ItemID = 0 Then
             Try
 
+
                 cmd = New Odbc.OdbcCommand("INSERT INTO tblitemlist (ItemName, ItemCategory, ItemLocation, ItemQuantity, ItemRemarks) VALUES (?,?,?,?,?)", con)
                 With cmd.Parameters
                     .AddWithValue("?", Trim(txtNameOFItem.Text))
                     .AddWithValue("?", Trim(cbCategory.Text))
                     .AddWithValue("?", Trim(cbLocation.Text))
                     .AddWithValue("?", CInt(nupQuantity.Value))
-                    .AddWithValue("?", Trim(txtRemarks.Text))
+                    .AddWithValue("?", Trim(cbRemarks.Text))
                 End With
                 cmd.ExecuteNonQuery()
                 MsgBox("Inserted Successfully", vbInformation)
@@ -38,7 +42,7 @@
                     .AddWithValue("?", Trim(cbCategory.Text))
                     .AddWithValue("?", Trim(cbLocation.Text))
                     .AddWithValue("?", CInt(nupQuantity.Value))
-                    .AddWithValue("?", Trim(txtRemarks.Text))
+                    .AddWithValue("?", Trim(cbRemarks.Text))
                 End With
                 cmd.ExecuteNonQuery()
                 MsgBox("Edited Successfully!", vbInformation)
@@ -52,5 +56,9 @@
             End Try
 
         End If
+    End Sub
+
+    Private Sub cbRemarks_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cbRemarks.SelectedIndexChanged
+
     End Sub
 End Class

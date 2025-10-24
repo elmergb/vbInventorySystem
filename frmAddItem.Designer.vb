@@ -23,7 +23,7 @@ Partial Class frmAddItem
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         Me.GroupBox1 = New System.Windows.Forms.GroupBox()
-        Me.txtRemarks = New System.Windows.Forms.TextBox()
+        Me.cbRemarks = New System.Windows.Forms.ComboBox()
         Me.Label5 = New System.Windows.Forms.Label()
         Me.nupQuantity = New System.Windows.Forms.NumericUpDown()
         Me.Label4 = New System.Windows.Forms.Label()
@@ -42,7 +42,7 @@ Partial Class frmAddItem
         '
         'GroupBox1
         '
-        Me.GroupBox1.Controls.Add(Me.txtRemarks)
+        Me.GroupBox1.Controls.Add(Me.cbRemarks)
         Me.GroupBox1.Controls.Add(Me.Label5)
         Me.GroupBox1.Controls.Add(Me.nupQuantity)
         Me.GroupBox1.Controls.Add(Me.Label4)
@@ -59,14 +59,14 @@ Partial Class frmAddItem
         Me.GroupBox1.TabStop = False
         Me.GroupBox1.Text = "GroupBox1"
         '
-        'txtRemarks
+        'cbRemarks
         '
-        Me.txtRemarks.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtRemarks.Location = New System.Drawing.Point(308, 59)
-        Me.txtRemarks.Multiline = True
-        Me.txtRemarks.Name = "txtRemarks"
-        Me.txtRemarks.Size = New System.Drawing.Size(223, 31)
-        Me.txtRemarks.TabIndex = 12
+        Me.cbRemarks.FormattingEnabled = True
+        Me.cbRemarks.Items.AddRange(New Object() {"PB101", "Bar", "Bakery"})
+        Me.cbRemarks.Location = New System.Drawing.Point(308, 59)
+        Me.cbRemarks.Name = "cbRemarks"
+        Me.cbRemarks.Size = New System.Drawing.Size(223, 21)
+        Me.cbRemarks.TabIndex = 12
         '
         'Label5
         '
@@ -206,6 +206,6 @@ Partial Class frmAddItem
     Friend WithEvents btnSave As System.Windows.Forms.Button
     Friend WithEvents Button2 As System.Windows.Forms.Button
     Friend WithEvents Button3 As System.Windows.Forms.Button
-    Friend WithEvents txtRemarks As TextBox
     Friend WithEvents Label5 As Label
+    Friend WithEvents cbRemarks As ComboBox
 End Class

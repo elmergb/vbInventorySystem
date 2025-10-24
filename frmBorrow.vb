@@ -82,7 +82,7 @@
         cmd.Parameters.AddWithValue("?", txtContact.Text)
         cmd.Parameters.AddWithValue("?", txtPurpose.Text)
         cmd.Parameters.AddWithValue("?", DateTime.Now)
-        cmd.Parameters.AddWithValue("?", txtRemarks.Text)
+        cmd.Parameters.AddWithValue("?", cbBorrowRemarks.Text)
         cmd.ExecuteNonQuery()
 
         MessageBox.Show("Item '" & cbItemList.Text & "' added to cart successfully!", "Cart Updated", MessageBoxButtons.OK, MessageBoxIcon.Information)
@@ -92,7 +92,7 @@
         nupQuantity.Value = 0
         txtContact.Clear()
         txtPurpose.Clear()
-        txtRemarks.Clear()
+        cbBorrowRemarks.Items.Clear()
     End Sub
 
     Private Sub btnCart_Click(sender As Object, e As EventArgs) Handles btnCart.Click
@@ -101,6 +101,10 @@
     End Sub
 
     Private Sub Label8_Click(sender As Object, e As EventArgs) Handles Label8.Click
+
+    End Sub
+
+    Private Sub cbBorrowRemarks_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cbBorrowRemarks.SelectedIndexChanged
 
     End Sub
 End Class

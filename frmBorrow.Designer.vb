@@ -35,11 +35,11 @@ Partial Class frmBorrow
         Me.cbItemList = New System.Windows.Forms.ComboBox()
         Me.txtBorrowerName = New System.Windows.Forms.TextBox()
         Me.txtPurpose = New System.Windows.Forms.TextBox()
-        Me.txtRemarks = New System.Windows.Forms.TextBox()
         Me.dtpBorrowed = New System.Windows.Forms.DateTimePicker()
         Me.btnAddItem = New System.Windows.Forms.Button()
         Me.Label8 = New System.Windows.Forms.Label()
         Me.btnCart = New System.Windows.Forms.Button()
+        Me.cbBorrowRemarks = New System.Windows.Forms.ComboBox()
         CType(Me.nupQuantity, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
@@ -155,14 +155,6 @@ Partial Class frmBorrow
         Me.txtPurpose.Size = New System.Drawing.Size(174, 30)
         Me.txtPurpose.TabIndex = 12
         '
-        'txtRemarks
-        '
-        Me.txtRemarks.Location = New System.Drawing.Point(259, 296)
-        Me.txtRemarks.Multiline = True
-        Me.txtRemarks.Name = "txtRemarks"
-        Me.txtRemarks.Size = New System.Drawing.Size(187, 30)
-        Me.txtRemarks.TabIndex = 14
-        '
         'dtpBorrowed
         '
         Me.dtpBorrowed.CustomFormat = "MM/dd/yyyy hh:mm tt"
@@ -205,16 +197,24 @@ Partial Class frmBorrow
         Me.btnCart.Text = "Cart"
         Me.btnCart.UseVisualStyleBackColor = True
         '
+        'cbBorrowRemarks
+        '
+        Me.cbBorrowRemarks.FormattingEnabled = True
+        Me.cbBorrowRemarks.Location = New System.Drawing.Point(259, 286)
+        Me.cbBorrowRemarks.Name = "cbBorrowRemarks"
+        Me.cbBorrowRemarks.Size = New System.Drawing.Size(174, 21)
+        Me.cbBorrowRemarks.TabIndex = 20
+        '
         'frmBorrow
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(487, 510)
+        Me.Controls.Add(Me.cbBorrowRemarks)
         Me.Controls.Add(Me.btnCart)
         Me.Controls.Add(Me.Label8)
         Me.Controls.Add(Me.btnAddItem)
         Me.Controls.Add(Me.dtpBorrowed)
-        Me.Controls.Add(Me.txtRemarks)
         Me.Controls.Add(Me.txtPurpose)
         Me.Controls.Add(Me.txtBorrowerName)
         Me.Controls.Add(Me.cbItemList)
@@ -248,9 +248,9 @@ Partial Class frmBorrow
     Friend WithEvents cbItemList As System.Windows.Forms.ComboBox
     Friend WithEvents txtBorrowerName As System.Windows.Forms.TextBox
     Friend WithEvents txtPurpose As System.Windows.Forms.TextBox
-    Friend WithEvents txtRemarks As System.Windows.Forms.TextBox
     Friend WithEvents dtpBorrowed As System.Windows.Forms.DateTimePicker
     Friend WithEvents btnAddItem As Button
     Friend WithEvents Label8 As Label
     Friend WithEvents btnCart As Button
+    Friend WithEvents cbBorrowRemarks As ComboBox
 End Class

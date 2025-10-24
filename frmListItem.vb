@@ -29,7 +29,7 @@
             frmAddItem.cbCategory.Text = dgvItemList.Item(2, e.RowIndex).Value
             frmAddItem.cbLocation.Text = dgvItemList.Item(3, e.RowIndex).Value
             frmAddItem.nupQuantity.Value = dgvItemList.Item(4, e.RowIndex).Value
-            frmAddItem.txtRemarks.Text = dgvItemList.Item(6, e.RowIndex).Value
+            frmAddItem.cbRemarks.Text = dgvItemList.Item(6, e.RowIndex).Value
         End If
     End Sub
 

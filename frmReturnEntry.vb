@@ -7,10 +7,14 @@
     Private Sub frmReturnEntry_Load(sender As System.Object, e As System.EventArgs) Handles MyBase.Load
         cb_loader("SELECT * FROM tblitemlist", cbItemListR, "ItemName", "ItemID")
         cbItemListR.SelectedValue = ItemID
+        cbReturnRemarks.Items.Clear()
+        cbReturnRemarks.Items.Add("Good")
+        cbReturnRemarks.Items.Add("Damage")
+
     End Sub
 
     Private Sub btnReturnLog_Click(sender As System.Object, e As System.EventArgs) Handles btnReturnLog.Click
-        Dim Remarks As String = Trim(txtRemarksR.Text).ToLower()
+        Dim Remarks As String = Trim(cbReturnRemarks.Text).ToLower()
         Dim cmd As Odbc.OdbcCommand
             Try
             Dim Borrowedqtyy As Integer = 0
@@ -51,12 +55,18 @@
                 Exit Sub
             End If
 
-            Dim qtyReturned As Integer = CInt(nupQuantityR.Value)
             Dim itemID As Integer = CInt(cbItemListR.SelectedValue)
             Dim currentQty As Integer = 0
 
+            cmd = New Odbc.OdbcCommand("SELECT ItemQuantity FROM tblitemlist WHERE ItemID = ?", con)
+            cmd.Parameters.AddWithValue("?", itemID)
+            Dim cq = cmd.ExecuteScalar()
+            If cq IsNot Nothing AndAlso Not IsDBNull(cq) Then
+                currentQty = CInt(cq)
+            End If
 
-            Dim newQty As Integer = currentQty + qtyReturned
+            ' Update with correct math
+            Dim newQty As Integer = currentQty + qtyReturningNow
             cmd = New Odbc.OdbcCommand("UPDATE tblitemlist SET ItemQuantity = ? WHERE ItemID = ?", con)
             cmd.Parameters.AddWithValue("?", newQty)
             cmd.Parameters.AddWithValue("?", itemID)
@@ -72,14 +82,14 @@
             If Remarks = "Dagame" Then
                 cmd = New Odbc.OdbcCommand("INSERT INTO tblreturn (BorrowID, QuantityReturned, DateReturned, Remarks) VALUES (?,?,?,?)", con)
                 cmd.Parameters.AddWithValue("?", CInt(BorrowID))
-                cmd.Parameters.AddWithValue("?", qtyReturned)
+                cmd.Parameters.AddWithValue("?", qtyReturningNow)
                 cmd.Parameters.AddWithValue("?", dtpBorrowedR.Value.ToString("yyyy-MM-dd HH:mm:ss"))
                 cmd.Parameters.AddWithValue("?", Remarks)
                 cmd.ExecuteNonQuery()
             Else
                 cmd = New Odbc.OdbcCommand("INSERT INTO tblreturn (BorrowID, QuantityReturned, DateReturned, Remarks) VALUES (?,?,?,?)", con)
                 cmd.Parameters.AddWithValue("?", CInt(BorrowID))
-                cmd.Parameters.AddWithValue("?", qtyReturned)
+                cmd.Parameters.AddWithValue("?", qtyReturningNow)
                 cmd.Parameters.AddWithValue("?", dtpBorrowedR.Value.ToString("yyyy-MM-dd HH:mm:ss"))
                 cmd.Parameters.AddWithValue("?", Remarks)
                 cmd.ExecuteNonQuery()
@@ -96,6 +106,10 @@
     End Sub
 
     Private Sub nupDamageItem_ValueChanged(sender As Object, e As EventArgs)
+
+    End Sub
+
+    Private Sub cbReturnRemarks_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cbReturnRemarks.SelectedIndexChanged
 
     End Sub
 End Class
