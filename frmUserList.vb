@@ -55,7 +55,11 @@
         End If
     End Sub
 
-    Private Sub ToolStrip1_ItemClicked(sender As Object, e As ToolStripItemClickedEventArgs) Handles ToolStrip1.ItemClicked
+    Private Sub ToolStrip1_ItemClicked(sender As Object, e As ToolStripItemClickedEventArgs)
 
+    End Sub
+
+    Private Sub EToolStripMenuItem_Click(sender As Object, e As EventArgs) 
+        MsgExit("Are you sure you want to exit?", Login, Homepage, Me)
     End Sub
 End Class

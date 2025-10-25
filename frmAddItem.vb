@@ -4,11 +4,10 @@
         cbRemarks.Items.Clear()
         cbRemarks.Items.Add("Good")
         cbRemarks.Items.Add("Damage")
-        ClearAllText(Me)
+
     End Sub
 
     Private Sub btnSave_Click(sender As Object, e As EventArgs) Handles btnSave.Click
-
         Dim cmd As Odbc.OdbcCommand
         Dim Remarks As String = Trim(cbRemarks.Text)
         If ValidateAllTextboxes(Me) = False Then

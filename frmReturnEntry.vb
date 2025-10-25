@@ -65,7 +65,7 @@
                 currentQty = CInt(cq)
             End If
 
-            If Remarks = "damage" Or Remarks = "critical" Then
+            If Remarks = "damage" Or Remarks = "damaged" Then
                 Remarks = "Damage"
             Else
                 Remarks = Remarks
@@ -76,7 +76,7 @@
                 cmd = New Odbc.OdbcCommand("INSERT INTO tbldamaged (ItemID, QuantityDamaged, DateReported, Remarks) VALUES (?, ?, NOW(), ?)", con)
                 cmd.Parameters.AddWithValue("?", itemID)
                 cmd.Parameters.AddWithValue("?", qtyReturningNow)
-                cmd.Parameters.AddWithValue("?", "Returned as damaged")
+                cmd.Parameters.AddWithValue("?", "damaged")
                 cmd.ExecuteNonQuery()
             Else
                 ' Update with correct math

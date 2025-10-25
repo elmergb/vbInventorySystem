@@ -26,18 +26,18 @@ Partial Class frmListItem
         Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmListItem))
         Me.dgvItemList = New System.Windows.Forms.DataGridView()
-        Me.ItemName = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Column2 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Column3 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Column4 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Column5 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Column6 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Column7 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Column1 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Item = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.NameOfItem = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Category = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.ItemLocation = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Quantity = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Status = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Remarks = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Damaged = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.btnAdd = New System.Windows.Forms.Button()
         Me.btnEdit = New System.Windows.Forms.Button()
         Me.btnBorrow = New System.Windows.Forms.Button()
-        Me.TextBox1 = New System.Windows.Forms.TextBox()
+        Me.txtSearch = New System.Windows.Forms.TextBox()
         Me.ts = New System.Windows.Forms.ToolStrip()
         Me.ToolStripLabel1 = New System.Windows.Forms.ToolStripLabel()
         Me.ToolStripDropDownButton1 = New System.Windows.Forms.ToolStripDropDownButton()
@@ -61,8 +61,9 @@ Partial Class frmListItem
         Me.ToolStripLabel4 = New System.Windows.Forms.ToolStripLabel()
         Me.lblTsTime = New System.Windows.Forms.ToolStripLabel()
         Me.Panel1 = New System.Windows.Forms.Panel()
-        Me.Label1 = New System.Windows.Forms.Label()
+        Me.Label3 = New System.Windows.Forms.Label()
         Me.btnDelete = New System.Windows.Forms.Button()
+        Me.Label2 = New System.Windows.Forms.Label()
         CType(Me.dgvItemList, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.ts.SuspendLayout()
         Me.Panel1.SuspendLayout()
@@ -89,7 +90,7 @@ Partial Class frmListItem
         DataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
         Me.dgvItemList.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle2
         Me.dgvItemList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.dgvItemList.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.ItemName, Me.Column2, Me.Column3, Me.Column4, Me.Column5, Me.Column6, Me.Column7, Me.Column1})
+        Me.dgvItemList.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.Item, Me.NameOfItem, Me.Category, Me.ItemLocation, Me.Quantity, Me.Status, Me.Remarks, Me.Damaged})
         Me.dgvItemList.ImeMode = System.Windows.Forms.ImeMode.NoControl
         Me.dgvItemList.Location = New System.Drawing.Point(21, 144)
         Me.dgvItemList.Name = "dgvItemList"
@@ -100,64 +101,64 @@ Partial Class frmListItem
         Me.dgvItemList.Size = New System.Drawing.Size(1223, 603)
         Me.dgvItemList.TabIndex = 0
         '
-        'ItemName
+        'Item
         '
-        Me.ItemName.DataPropertyName = "ItemID"
-        Me.ItemName.FillWeight = 60.0!
-        Me.ItemName.HeaderText = "Item ID"
-        Me.ItemName.Name = "ItemName"
-        Me.ItemName.ReadOnly = True
-        Me.ItemName.Visible = False
+        Me.Item.DataPropertyName = "ItemID"
+        Me.Item.FillWeight = 60.0!
+        Me.Item.HeaderText = "Item ID"
+        Me.Item.Name = "Item"
+        Me.Item.ReadOnly = True
+        Me.Item.Visible = False
         '
-        'Column2
+        'NameOfItem
         '
-        Me.Column2.DataPropertyName = "Name"
-        Me.Column2.HeaderText = "Name"
-        Me.Column2.Name = "Column2"
-        Me.Column2.ReadOnly = True
+        Me.NameOfItem.DataPropertyName = "Name"
+        Me.NameOfItem.HeaderText = "Name"
+        Me.NameOfItem.Name = "NameOfItem"
+        Me.NameOfItem.ReadOnly = True
         '
-        'Column3
+        'Category
         '
-        Me.Column3.DataPropertyName = "ItemCategory"
-        Me.Column3.HeaderText = "Category"
-        Me.Column3.Name = "Column3"
-        Me.Column3.ReadOnly = True
+        Me.Category.DataPropertyName = "ItemCategory"
+        Me.Category.HeaderText = "Category"
+        Me.Category.Name = "Category"
+        Me.Category.ReadOnly = True
         '
-        'Column4
+        'ItemLocation
         '
-        Me.Column4.DataPropertyName = "ItemLocation"
-        Me.Column4.HeaderText = "Location"
-        Me.Column4.Name = "Column4"
-        Me.Column4.ReadOnly = True
+        Me.ItemLocation.DataPropertyName = "ItemLocation"
+        Me.ItemLocation.HeaderText = "Location"
+        Me.ItemLocation.Name = "ItemLocation"
+        Me.ItemLocation.ReadOnly = True
         '
-        'Column5
+        'Quantity
         '
-        Me.Column5.DataPropertyName = "Quantity"
-        Me.Column5.HeaderText = "Quantity"
-        Me.Column5.Name = "Column5"
-        Me.Column5.ReadOnly = True
+        Me.Quantity.DataPropertyName = "Quantity"
+        Me.Quantity.HeaderText = "Quantity"
+        Me.Quantity.Name = "Quantity"
+        Me.Quantity.ReadOnly = True
         '
-        'Column6
+        'Status
         '
-        Me.Column6.DataPropertyName = "ItemStatus"
-        Me.Column6.HeaderText = "Status"
-        Me.Column6.Name = "Column6"
-        Me.Column6.ReadOnly = True
+        Me.Status.DataPropertyName = "ItemStatus"
+        Me.Status.HeaderText = "Status"
+        Me.Status.Name = "Status"
+        Me.Status.ReadOnly = True
         '
-        'Column7
+        'Remarks
         '
-        Me.Column7.DataPropertyName = "ItemRemarks"
-        Me.Column7.FillWeight = 150.0!
-        Me.Column7.HeaderText = "Remarks"
-        Me.Column7.Name = "Column7"
-        Me.Column7.ReadOnly = True
+        Me.Remarks.DataPropertyName = "ItemRemarks"
+        Me.Remarks.FillWeight = 150.0!
+        Me.Remarks.HeaderText = "Remarks"
+        Me.Remarks.Name = "Remarks"
+        Me.Remarks.ReadOnly = True
         '
-        'Column1
+        'Damaged
         '
-        Me.Column1.DataPropertyName = "ItemDamage"
-        Me.Column1.HeaderText = "Item Damage"
-        Me.Column1.Name = "Column1"
-        Me.Column1.ReadOnly = True
+        Me.Damaged.DataPropertyName = "QuantityDamaged"
+        Me.Damaged.HeaderText = "Quantity Damage"
+        Me.Damaged.Name = "Damaged"
+        Me.Damaged.ReadOnly = True
         '
         'btnAdd
         '
@@ -189,13 +190,16 @@ Partial Class frmListItem
         Me.btnBorrow.Text = "Borrow"
         Me.btnBorrow.UseVisualStyleBackColor = True
         '
-        'TextBox1
+        'txtSearch
         '
-        Me.TextBox1.Location = New System.Drawing.Point(798, 110)
-        Me.TextBox1.Multiline = True
-        Me.TextBox1.Name = "TextBox1"
-        Me.TextBox1.Size = New System.Drawing.Size(417, 28)
-        Me.TextBox1.TabIndex = 6
+        Me.txtSearch.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtSearch.ForeColor = System.Drawing.SystemColors.GrayText
+        Me.txtSearch.Location = New System.Drawing.Point(788, 110)
+        Me.txtSearch.Multiline = True
+        Me.txtSearch.Name = "txtSearch"
+        Me.txtSearch.Size = New System.Drawing.Size(427, 28)
+        Me.txtSearch.TabIndex = 6
+        Me.txtSearch.Text = "Search Item"
         '
         'ts
         '
@@ -351,9 +355,9 @@ Partial Class frmListItem
         '
         'Panel1
         '
-        Me.Panel1.BackColor = System.Drawing.Color.Maroon
+        Me.Panel1.BackColor = System.Drawing.Color.FromArgb(CType(CType(90, Byte), Integer), CType(CType(61, Byte), Integer), CType(CType(41, Byte), Integer))
         Me.Panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.Panel1.Controls.Add(Me.Label1)
+        Me.Panel1.Controls.Add(Me.Label3)
         Me.Panel1.Dock = System.Windows.Forms.DockStyle.Top
         Me.Panel1.ForeColor = System.Drawing.SystemColors.ControlLightLight
         Me.Panel1.Location = New System.Drawing.Point(0, 25)
@@ -361,14 +365,19 @@ Partial Class frmListItem
         Me.Panel1.Size = New System.Drawing.Size(1464, 62)
         Me.Panel1.TabIndex = 16
         '
-        'Label1
+        'Label3
         '
-        Me.Label1.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label1.Location = New System.Drawing.Point(25, 17)
-        Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(98, 23)
-        Me.Label1.TabIndex = 4
-        Me.Label1.Text = "Item List"
+        Me.Label3.AutoSize = True
+        Me.Label3.BackColor = System.Drawing.Color.Transparent
+        Me.Label3.Font = New System.Drawing.Font("Dubai", 20.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label3.ForeColor = System.Drawing.SystemColors.ButtonHighlight
+        Me.Label3.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
+        Me.Label3.Location = New System.Drawing.Point(-18, 12)
+        Me.Label3.Name = "Label3"
+        Me.Label3.Size = New System.Drawing.Size(151, 45)
+        Me.Label3.TabIndex = 19
+        Me.Label3.Text = "     List Item"
+        Me.Label3.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
         '
         'btnDelete
         '
@@ -380,16 +389,28 @@ Partial Class frmListItem
         Me.btnDelete.Text = "Delete"
         Me.btnDelete.UseVisualStyleBackColor = True
         '
+        'Label2
+        '
+        Me.Label2.AutoSize = True
+        Me.Label2.BackColor = System.Drawing.Color.Transparent
+        Me.Label2.Font = New System.Drawing.Font("Microsoft Tai Le", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label2.Location = New System.Drawing.Point(728, 114)
+        Me.Label2.Name = "Label2"
+        Me.Label2.Size = New System.Drawing.Size(64, 21)
+        Me.Label2.TabIndex = 18
+        Me.Label2.Text = "Search: "
+        '
         'frmListItem
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.AutoScroll = True
         Me.ClientSize = New System.Drawing.Size(1464, 759)
+        Me.Controls.Add(Me.txtSearch)
+        Me.Controls.Add(Me.Label2)
         Me.Controls.Add(Me.btnDelete)
         Me.Controls.Add(Me.Panel1)
         Me.Controls.Add(Me.ts)
-        Me.Controls.Add(Me.TextBox1)
         Me.Controls.Add(Me.btnBorrow)
         Me.Controls.Add(Me.btnEdit)
         Me.Controls.Add(Me.btnAdd)
@@ -401,6 +422,7 @@ Partial Class frmListItem
         Me.ts.ResumeLayout(False)
         Me.ts.PerformLayout()
         Me.Panel1.ResumeLayout(False)
+        Me.Panel1.PerformLayout()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -409,7 +431,7 @@ Partial Class frmListItem
     Friend WithEvents btnEdit As System.Windows.Forms.Button
     Friend WithEvents btnBorrow As System.Windows.Forms.Button
     Friend WithEvents dgvItemList As System.Windows.Forms.DataGridView
-    Friend WithEvents TextBox1 As TextBox
+    Friend WithEvents txtSearch As TextBox
     Friend WithEvents ts As ToolStrip
     Friend WithEvents ToolStripLabel1 As ToolStripLabel
     Friend WithEvents ToolStripDropDownButton1 As ToolStripDropDownButton
@@ -433,14 +455,15 @@ Partial Class frmListItem
     Friend WithEvents ToolStripLabel4 As ToolStripLabel
     Friend WithEvents lblTsTime As ToolStripLabel
     Friend WithEvents Panel1 As Panel
-    Friend WithEvents Label1 As Label
-    Friend WithEvents ItemName As DataGridViewTextBoxColumn
-    Friend WithEvents Column2 As DataGridViewTextBoxColumn
-    Friend WithEvents Column3 As DataGridViewTextBoxColumn
-    Friend WithEvents Column4 As DataGridViewTextBoxColumn
-    Friend WithEvents Column5 As DataGridViewTextBoxColumn
-    Friend WithEvents Column6 As DataGridViewTextBoxColumn
-    Friend WithEvents Column7 As DataGridViewTextBoxColumn
-    Friend WithEvents Column1 As DataGridViewTextBoxColumn
     Friend WithEvents btnDelete As Button
+    Friend WithEvents Item As DataGridViewTextBoxColumn
+    Friend WithEvents NameOfItem As DataGridViewTextBoxColumn
+    Friend WithEvents Category As DataGridViewTextBoxColumn
+    Friend WithEvents ItemLocation As DataGridViewTextBoxColumn
+    Friend WithEvents Quantity As DataGridViewTextBoxColumn
+    Friend WithEvents Status As DataGridViewTextBoxColumn
+    Friend WithEvents Remarks As DataGridViewTextBoxColumn
+    Friend WithEvents Damaged As DataGridViewTextBoxColumn
+    Friend WithEvents Label2 As Label
+    Friend WithEvents Label3 As Label
 End Class

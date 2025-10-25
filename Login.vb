@@ -15,9 +15,6 @@ Public Class Login
         End If
     End Sub
 
-    Private Sub txtUsername_TextChanged(sender As System.Object, e As System.EventArgs) Handles txtUsername.TextChanged
-
-    End Sub
 
     Private Sub txtPword_GotFocus(sender As Object, e As System.EventArgs) Handles txtPword.GotFocus
         If txtPword.Text = "Password" Then

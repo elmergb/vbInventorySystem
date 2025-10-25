@@ -19,8 +19,9 @@
     End Sub
     Private Sub Homepage_Load(sender As System.Object, e As System.EventArgs) Handles MyBase.Load
         Call vbConnection()
-        LoadForm(New frmDashboard())
         DisableForm(Me)
+        LoadForm(New frmDashboard())
+
     End Sub
 
     Private Sub btnBorrowPage_Click(sender As System.Object, e As System.EventArgs) Handles btnBorrowPage.Click
@@ -72,5 +73,21 @@
 
     Private Sub btnUser_MouseLeave(sender As Object, e As EventArgs) Handles btnUser.MouseLeave
         btnUser.ForeColor = Color.Black
+    End Sub
+
+    Private Sub pnlMain_Paint(sender As Object, e As PaintEventArgs) Handles pnlMain.Paint
+
+    End Sub
+
+    Private Sub ToolStripLabel1_Click(sender As Object, e As EventArgs)
+
+    End Sub
+
+    Private Sub TabPage1_Click(sender As Object, e As EventArgs)
+
+    End Sub
+
+    Private Sub ToolStripDropDownButton2_Click(sender As Object, e As EventArgs) Handles ToolStripDropDownButton2.Click
+
     End Sub
 End Class

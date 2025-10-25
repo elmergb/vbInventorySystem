@@ -16,6 +16,7 @@ Public Class frmListItem
     End Sub
 
     Private Sub btnAdd_Click(sender As Object, e As EventArgs) Handles btnAdd.Click
+        ClearAllText(frmAddItem)
         dgvItemList.Tag = 0
         frmAddItem.ShowDialog()
         frmAddItem.ItemID = 0
@@ -26,12 +27,19 @@ Public Class frmListItem
 
     Private Sub dgvItemList_CellClick(sender As Object, e As DataGridViewCellEventArgs) Handles dgvItemList.CellClick
         If e.RowIndex >= 0 Then
-            dgvItemList.Tag = dgvItemList.Item(0, e.RowIndex).Value
-            frmAddItem.txtNameOFItem.Text = dgvItemList.Item(1, e.RowIndex).Value
-            frmAddItem.cbCategory.Text = dgvItemList.Item(2, e.RowIndex).Value
-            frmAddItem.cbLocation.Text = dgvItemList.Item(3, e.RowIndex).Value
-            frmAddItem.nupQuantity.Value = dgvItemList.Item(4, e.RowIndex).Value
-            frmAddItem.cbRemarks.Text = dgvItemList.Item(6, e.RowIndex).Value
+            dgvItemList.Tag = dgvItemList.Rows(e.RowIndex).Cells("Item").Value
+
+            frmAddItem.txtNameOFItem.Text = dgvItemList.Rows(e.RowIndex).Cells("NameofItem").Value.ToString
+            frmAddItem.cbCategory.Text = dgvItemList.Rows(e.RowIndex).Cells("Category").Value.ToString()
+            frmAddItem.cbLocation.Text = dgvItemList.Rows(e.RowIndex).Cells("ItemLocation").Value.ToString()
+            frmAddItem.nupQuantity.Value = dgvItemList.Rows(e.RowIndex).Cells("Quantity").Value
+            Dim qty As Object = dgvItemList.Rows(e.RowIndex).Cells("Quantity").Value
+            If qty IsNot Nothing AndAlso Not IsDBNull(qty) Then
+                frmAddItem.nupQuantity.Value = CInt(qty)
+            Else
+                frmAddItem.nupQuantity.Value = 0
+            End If
+            frmAddItem.cbRemarks.Text = dgvItemList.Rows(e.RowIndex).Cells("Remarks").Value.ToString()
         End If
     End Sub
 
@@ -55,13 +63,6 @@ Public Class frmListItem
         End If
     End Sub
 
-    Private Sub dgvItemList_CellContentClick(sender As System.Object, e As System.Windows.Forms.DataGridViewCellEventArgs) Handles dgvItemList.CellContentClick
-
-    End Sub
-
-    Private Sub TextBox1_TextChanged(sender As Object, e As EventArgs) Handles TextBox1.TextChanged
-        Call data_loader("SELECT * FROM tblitemlist WHERE ItemName LIKE '%" & Trim(TextBox1.Text) & "%' ", dgvItemList)
-    End Sub
 
     Private Sub btnDelete_Click(sender As Object, e As EventArgs) Handles btnDelete.Click
         Dim cmd As New Odbc.OdbcCommand
@@ -76,4 +77,43 @@ Public Class frmListItem
             Call data_loader("SELECT * FROM vw_Item", dgvItemList)
         End If
     End Sub
+
+    Private Sub EToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles EToolStripMenuItem.Click
+        MsgExit("Are you sure you want to exit?", Login, Homepage, Me)
+
+    End Sub
+    Private Sub txtSearch_TextChanged(sender As Object, e As EventArgs) Handles txtSearch.TextChanged
+        Call data_loader("SELECT * FROM vw_item WHERE Name LIKE '%" & Trim(txtSearch.Text) & "%' ", dgvItemList)
+    End Sub
+
+    Private Sub txtSearch_GotFocus(sender As Object, e As EventArgs) Handles txtSearch.GotFocus
+        If txtSearch.Text = "Search Item" Then
+            txtSearch.Text = ""
+            txtSearch.ForeColor = Color.Black
+            txtSearch.Font = New Font(txtSearch.Font, FontStyle.Italic)
+        End If
+    End Sub
+
+
+    'Private Sub txtSearch_LostFocus(sender As Object, e As EventArgs) Handles txtSearch.LostFocus
+    '    Call data_loader("SELECT * FROM vw_Item", dgvItemList)
+    '    If txtSearch.Text = "" Then
+    '        txtSearch.Text = "Search Item"
+    '        txtSearch.ForeColor = Color.Gray
+    '        txtSearch.Font = New Font(txtSearch.Font, FontStyle.Italic)
+    '    End If
+    'End Sub
+    'Private Sub txtUsername_GotFocus(sender As Object, e As System.EventArgs) Handles txtUsername.GotFocus
+    '    If txtUsername.Text = "Username" Then
+    '        txtUsername.Text = ""
+    '        txtUsername.ForeColor = Color.Black
+    '    End If
+    'End Sub
+
+    'Private Sub txtUsername_LostFocus(sender As Object, e As System.EventArgs) Handles txtUsername.LostFocus
+    '    If txtUsername.Text = "" Then
+    '        txtUsername.Text = "Username"
+    '        txtUsername.ForeColor = Color.Gray
+    '    End If
+    'End Sub
 End Class

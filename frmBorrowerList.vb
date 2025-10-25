@@ -77,4 +77,31 @@
     Private Sub UIToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles UIToolStripMenuItem.Click
 
     End Sub
+
+    Private Sub dgvBorrowerList_CellFormatting(sender As Object, e As DataGridViewCellFormattingEventArgs) Handles dgvBorrowerList.CellFormatting
+        If dgvBorrowerList.Columns(e.ColumnIndex).Name = "Status" Then
+            If e.Value IsNot Nothing Then
+                Dim statusText As String = e.Value.ToString().ToLower()
+
+                Select Case statusText
+                    Case "Available"
+                        e.CellStyle.BackColor = Color.LightGreen
+                        e.CellStyle.ForeColor = Color.Black
+
+                    Case "Damaged"
+                        e.CellStyle.BackColor = Color.LightCoral
+                        e.CellStyle.ForeColor = Color.White
+
+                    Case "Borrowed"
+                        e.CellStyle.BackColor = Color.LightYellow
+                        e.CellStyle.ForeColor = Color.Black
+
+                    Case Else
+                        e.CellStyle.BackColor = Color.White
+                        e.CellStyle.ForeColor = Color.Black
+                End Select
+            End If
+        End If
+    End Sub
+
 End Class

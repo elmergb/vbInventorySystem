@@ -5,4 +5,8 @@
         cb_loader("SELECT * FROM tblitemlist", frmReturnEntry.cbItemListR, "ItemName", "ItemID")
 
     End Sub
+
+    Private Sub dgvBorrowerCart_CellContentClick(sender As Object, e As DataGridViewCellEventArgs) Handles dgvBorrowerCart.CellContentClick
+
+    End Sub
 End Class

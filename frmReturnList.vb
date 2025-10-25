@@ -74,4 +74,38 @@
     Private Sub dgvReturnList_CellContentClick(sender As Object, e As DataGridViewCellEventArgs) Handles dgvReturnList.CellContentClick
 
     End Sub
+
+    Private Sub EToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles EToolStripMenuItem.Click
+        MsgExit("Are you sure you want to exit?", Login, Homepage, Me)
+    End Sub
+
+    Private Sub txtSearch_TextChanged(sender As Object, e As EventArgs)
+        Call data_loader("SELECT * FROM vw_transaction WHERE ItemName LIKE '%" & Trim(txtSearch.Text) & "%' ", dgvReturnList)
+    End Sub
+
+    Private Sub dgvReturnList_CellFormatting(sender As Object, e As DataGridViewCellFormattingEventArgs) Handles dgvReturnList.CellFormatting
+        If dgvReturnList.Columns(e.ColumnIndex).Name = "Remarks" Then
+            If e.Value IsNot Nothing Then
+                Dim statusText As String = e.Value.ToString().ToLower()
+
+                Select Case statusText
+                    Case "Available"
+                        e.CellStyle.BackColor = Color.LightGreen
+                        e.CellStyle.ForeColor = Color.Black
+
+                    Case "Damage"
+                        e.CellStyle.BackColor = Color.LightCoral
+                        e.CellStyle.ForeColor = Color.White
+
+                    Case "good"
+                        e.CellStyle.BackColor = Color.LightYellow
+                        e.CellStyle.ForeColor = Color.Black
+
+                    Case Else
+                        e.CellStyle.BackColor = Color.White
+                        e.CellStyle.ForeColor = Color.Black
+                End Select
+            End If
+        End If
+    End Sub
 End Class

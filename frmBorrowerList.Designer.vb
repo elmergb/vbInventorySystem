@@ -58,6 +58,8 @@ Partial Class frmBorrowerList
         Me.lblTsTime = New System.Windows.Forms.ToolStripLabel()
         Me.Panel1 = New System.Windows.Forms.Panel()
         Me.Label2 = New System.Windows.Forms.Label()
+        Me.txtSearch = New System.Windows.Forms.TextBox()
+        Me.Label1 = New System.Windows.Forms.Label()
         CType(Me.dgvBorrowerList, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.ts.SuspendLayout()
         Me.Panel1.SuspendLayout()
@@ -70,12 +72,12 @@ Partial Class frmBorrowerList
         Me.dgvBorrowerList.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill
         Me.dgvBorrowerList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.dgvBorrowerList.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.Column1, Me.Column2, Me.Column3, Me.Column4, Me.Column5, Me.Column6, Me.Column8, Me.Column9, Me.Column10})
-        Me.dgvBorrowerList.Location = New System.Drawing.Point(12, 136)
+        Me.dgvBorrowerList.Location = New System.Drawing.Point(21, 144)
         Me.dgvBorrowerList.Name = "dgvBorrowerList"
         Me.dgvBorrowerList.ReadOnly = True
         Me.dgvBorrowerList.RowHeadersVisible = False
         Me.dgvBorrowerList.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
-        Me.dgvBorrowerList.Size = New System.Drawing.Size(1398, 681)
+        Me.dgvBorrowerList.Size = New System.Drawing.Size(1223, 603)
         Me.dgvBorrowerList.TabIndex = 0
         '
         'Column1
@@ -145,7 +147,7 @@ Partial Class frmBorrowerList
         '
         'btnReturn
         '
-        Me.btnReturn.Location = New System.Drawing.Point(1428, 472)
+        Me.btnReturn.Location = New System.Drawing.Point(1281, 367)
         Me.btnReturn.Name = "btnReturn"
         Me.btnReturn.Size = New System.Drawing.Size(98, 55)
         Me.btnReturn.TabIndex = 1
@@ -306,7 +308,7 @@ Partial Class frmBorrowerList
         '
         'Panel1
         '
-        Me.Panel1.BackColor = System.Drawing.Color.Maroon
+        Me.Panel1.BackColor = System.Drawing.Color.FromArgb(CType(CType(90, Byte), Integer), CType(CType(61, Byte), Integer), CType(CType(41, Byte), Integer))
         Me.Panel1.Controls.Add(Me.Label2)
         Me.Panel1.Dock = System.Windows.Forms.DockStyle.Top
         Me.Panel1.Location = New System.Drawing.Point(0, 25)
@@ -318,21 +320,45 @@ Partial Class frmBorrowerList
         '
         Me.Label2.AutoSize = True
         Me.Label2.BackColor = System.Drawing.Color.Transparent
-        Me.Label2.Font = New System.Drawing.Font("Yu Gothic UI", 20.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label2.Font = New System.Drawing.Font("Dubai", 20.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label2.ForeColor = System.Drawing.SystemColors.ButtonHighlight
         Me.Label2.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
         Me.Label2.Location = New System.Drawing.Point(-18, 12)
         Me.Label2.Name = "Label2"
-        Me.Label2.Size = New System.Drawing.Size(140, 37)
+        Me.Label2.Size = New System.Drawing.Size(207, 45)
         Me.Label2.TabIndex = 7
-        Me.Label2.Text = "     Borrow"
+        Me.Label2.Text = "     Borrower List"
         Me.Label2.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
+        '
+        'txtSearch
+        '
+        Me.txtSearch.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtSearch.ForeColor = System.Drawing.SystemColors.GrayText
+        Me.txtSearch.Location = New System.Drawing.Point(788, 110)
+        Me.txtSearch.Multiline = True
+        Me.txtSearch.Name = "txtSearch"
+        Me.txtSearch.Size = New System.Drawing.Size(427, 28)
+        Me.txtSearch.TabIndex = 21
+        Me.txtSearch.Text = "Search Item"
+        '
+        'Label1
+        '
+        Me.Label1.AutoSize = True
+        Me.Label1.BackColor = System.Drawing.Color.Transparent
+        Me.Label1.Font = New System.Drawing.Font("Microsoft Tai Le", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label1.Location = New System.Drawing.Point(728, 114)
+        Me.Label1.Name = "Label1"
+        Me.Label1.Size = New System.Drawing.Size(64, 21)
+        Me.Label1.TabIndex = 22
+        Me.Label1.Text = "Search: "
         '
         'frmBorrowerList
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(1538, 829)
+        Me.Controls.Add(Me.txtSearch)
+        Me.Controls.Add(Me.Label1)
         Me.Controls.Add(Me.Panel1)
         Me.Controls.Add(Me.ts)
         Me.Controls.Add(Me.btnReturn)
@@ -384,4 +410,6 @@ Partial Class frmBorrowerList
     Friend WithEvents lblTsTime As ToolStripLabel
     Friend WithEvents Panel1 As Panel
     Friend WithEvents Label2 As Label
+    Friend WithEvents txtSearch As TextBox
+    Friend WithEvents Label1 As Label
 End Class

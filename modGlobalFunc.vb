@@ -113,4 +113,59 @@
         frm.MinimizeBox = False
         frm.MaximizeBox = False
     End Sub
+
+    Public Sub MsgLogout(ByVal message As String)
+        MessageBox.Show(message, "Logout", MessageBoxButtons.OK, MessageBoxIcon.Information)
+    End Sub
+
+    Public Sub MsgExit(ByVal message As String, frm As Form, homepageFrom As Form, currentForm As Form)
+        If MessageBox.Show(message, "Exit1", MessageBoxButtons.YesNo, MessageBoxIcon.Question) = DialogResult.Yes Then
+            frm.Show()
+            Homepage.Hide()
+            currentForm.Hide()
+        End If
+    End Sub
+    Public Sub clsoseForm(frm As Form)
+        frm.Close()
+    End Sub
+
+    Public Sub openForm(frm As Form)
+        frm.Show()
+    End Sub
+
+    Public Sub SearchItem(ByVal searchText As String, ByVal cbo As ComboBox)
+        Try
+            ' Make sure ComboBox is not bound to anything
+            cbo.DataSource = Nothing
+            cbo.Items.Clear()
+
+            Dim sql As String = "SELECT itemName FROM vw_item WHERE ItemName LIKE ?"
+            Using cmd As New Odbc.OdbcCommand(sql, con)
+                cmd.Parameters.AddWithValue("?", "%" & Trim(searchText) & "%")
+
+                Using reader As Odbc.OdbcDataReader = cmd.ExecuteReader()
+                    While reader.Read()
+                        cbo.Items.Add(reader("ItemName").ToString())
+                    End While
+                End Using
+            End Using
+
+        Catch ex As Exception
+            MessageBox.Show("Error loading items: " & ex.Message)
+        End Try
+    End Sub
+    'Public Function SearchItem(ByVal searchText As String) As DataTable
+    '    Dim sql As String = "SELECT * FROM vw_all WHERE itemName LIKE ?"
+    '    Dim cmd As New Odbc.OdbcCommand(sql, con)
+    '    cmd.Parameters.AddWithValue("?", "%" & Trim(searchText) & "%")
+
+    '    Dim adapter As New Odbc.OdbcDataAdapter(cmd)
+    '    Dim dtable As New DataTable
+    '    adapter.Fill(dtable)
+
+    '    adapter.Dispose()
+    '    cmd.Dispose()
+    '    Return dtable
+    'End Function
+
 End Module

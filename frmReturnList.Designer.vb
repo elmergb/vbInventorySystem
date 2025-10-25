@@ -22,7 +22,7 @@ Partial Class frmReturnList
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
-        Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle4 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmReturnList))
         Me.btnReturn = New System.Windows.Forms.Button()
         Me.dgvReturnList = New System.Windows.Forms.DataGridView()
@@ -59,6 +59,8 @@ Partial Class frmReturnList
         Me.ToolStripLabel4 = New System.Windows.Forms.ToolStripLabel()
         Me.lblTsTime = New System.Windows.Forms.ToolStripLabel()
         Me.Panel1 = New System.Windows.Forms.Panel()
+        Me.txtSearch = New System.Windows.Forms.TextBox()
+        Me.Label2 = New System.Windows.Forms.Label()
         Me.Label1 = New System.Windows.Forms.Label()
         CType(Me.dgvReturnList, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.ts.SuspendLayout()
@@ -68,7 +70,7 @@ Partial Class frmReturnList
         'btnReturn
         '
         Me.btnReturn.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnReturn.Location = New System.Drawing.Point(1226, 324)
+        Me.btnReturn.Location = New System.Drawing.Point(1269, 327)
         Me.btnReturn.Name = "btnReturn"
         Me.btnReturn.Size = New System.Drawing.Size(99, 66)
         Me.btnReturn.TabIndex = 1
@@ -82,23 +84,23 @@ Partial Class frmReturnList
         Me.dgvReturnList.AllowUserToResizeColumns = False
         Me.dgvReturnList.AllowUserToResizeRows = False
         Me.dgvReturnList.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill
-        DataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control
-        DataGridViewCellStyle1.Font = New System.Drawing.Font("Arial", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText
-        DataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight
-        DataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText
-        DataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.dgvReturnList.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle1
+        DataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Control
+        DataGridViewCellStyle4.Font = New System.Drawing.Font("Arial", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.WindowText
+        DataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight
+        DataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.dgvReturnList.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle4
         Me.dgvReturnList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.dgvReturnList.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.Column1, Me.Column2, Me.Column3, Me.Column4, Me.Column5, Me.Column6, Me.Column7, Me.Column8, Me.Column9, Me.Column10})
         Me.dgvReturnList.EnableHeadersVisualStyles = False
-        Me.dgvReturnList.Location = New System.Drawing.Point(18, 93)
+        Me.dgvReturnList.Location = New System.Drawing.Point(21, 144)
         Me.dgvReturnList.Name = "dgvReturnList"
         Me.dgvReturnList.ReadOnly = True
         Me.dgvReturnList.RowHeadersVisible = False
         Me.dgvReturnList.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
-        Me.dgvReturnList.Size = New System.Drawing.Size(1184, 734)
+        Me.dgvReturnList.Size = New System.Drawing.Size(1223, 603)
         Me.dgvReturnList.TabIndex = 0
         '
         'Column1
@@ -336,17 +338,40 @@ Partial Class frmReturnList
         Me.Panel1.Size = New System.Drawing.Size(1476, 62)
         Me.Panel1.TabIndex = 17
         '
+        'txtSearch
+        '
+        Me.txtSearch.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtSearch.ForeColor = System.Drawing.SystemColors.GrayText
+        Me.txtSearch.Location = New System.Drawing.Point(788, 110)
+        Me.txtSearch.Multiline = True
+        Me.txtSearch.Name = "txtSearch"
+        Me.txtSearch.Size = New System.Drawing.Size(427, 28)
+        Me.txtSearch.TabIndex = 19
+        Me.txtSearch.Text = "Search Item"
+        '
+        'Label2
+        '
+        Me.Label2.AutoSize = True
+        Me.Label2.BackColor = System.Drawing.Color.Transparent
+        Me.Label2.Font = New System.Drawing.Font("Microsoft Tai Le", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label2.Location = New System.Drawing.Point(728, 114)
+        Me.Label2.Name = "Label2"
+        Me.Label2.Size = New System.Drawing.Size(64, 21)
+        Me.Label2.TabIndex = 20
+        Me.Label2.Text = "Search: "
+        '
         'Label1
         '
         Me.Label1.AutoSize = True
         Me.Label1.BackColor = System.Drawing.Color.Transparent
-        Me.Label1.Font = New System.Drawing.Font("Microsoft YaHei", 18.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label1.ForeColor = System.Drawing.Color.White
-        Me.Label1.Location = New System.Drawing.Point(12, 18)
+        Me.Label1.Font = New System.Drawing.Font("Dubai", 20.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label1.ForeColor = System.Drawing.SystemColors.ButtonHighlight
+        Me.Label1.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
+        Me.Label1.Location = New System.Drawing.Point(-18, 12)
         Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(118, 31)
-        Me.Label1.TabIndex = 2
-        Me.Label1.Text = "   Return"
+        Me.Label1.Size = New System.Drawing.Size(214, 45)
+        Me.Label1.TabIndex = 9
+        Me.Label1.Text = "     Returning List"
         Me.Label1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
         '
         'frmReturnList
@@ -354,6 +379,8 @@ Partial Class frmReturnList
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(1476, 664)
+        Me.Controls.Add(Me.txtSearch)
+        Me.Controls.Add(Me.Label2)
         Me.Controls.Add(Me.Panel1)
         Me.Controls.Add(Me.ts)
         Me.Controls.Add(Me.btnReturn)
@@ -405,5 +432,7 @@ Partial Class frmReturnList
     Friend WithEvents ToolStripLabel4 As ToolStripLabel
     Friend WithEvents lblTsTime As ToolStripLabel
     Friend WithEvents Panel1 As Panel
+    Friend WithEvents txtSearch As TextBox
+    Friend WithEvents Label2 As Label
     Friend WithEvents Label1 As Label
 End Class
