@@ -12,7 +12,7 @@
         cbBorrowRemarks.Items.Add("Damage")
     End Sub
 
-    Private Sub btnLogSave_Click(sender As System.Object, e As System.EventArgs) Handles btnLogSave.Click
+    Private Sub btnLogSave_Click(sender As System.Object, e As System.EventArgs)
         Dim cmd As Odbc.OdbcCommand
 
 
@@ -60,7 +60,7 @@
 
 
     End Sub
-    Private Sub btnAddItem_Click(sender As Object, e As EventArgs) Handles btnAddItem.Click
+    Private Sub btnAddItem_Click(sender As Object, e As EventArgs)
         Dim isValid As Boolean = True
         Dim availableQty As Integer = 0
         Dim totalqty As New Odbc.OdbcCommand("SELECT ItemQuantity FROM tblitemlist WHERE ItemID = ?", con)
@@ -98,7 +98,7 @@
         cbBorrowRemarks.Items.Clear()
     End Sub
 
-    Private Sub btnCart_Click(sender As Object, e As EventArgs) Handles btnCart.Click
+    Private Sub btnCart_Click(sender As Object, e As EventArgs)
         frmCartListView.ShowDialog()
 
     End Sub
@@ -107,11 +107,15 @@
 
     End Sub
 
-    Private Sub Label9_Click(sender As Object, e As EventArgs) Handles Label9.Click
+    Private Sub Label9_Click(sender As Object, e As EventArgs)
 
     End Sub
 
-    Private Sub TextBox1_TextChanged(sender As Object, e As EventArgs) Handles txtSearch.TextChanged
-        SearchItem(txtSearch.Text, cbItemList)
+    Private Sub TextBox1_TextChanged(sender As Object, e As EventArgs)
+
+    End Sub
+
+    Private Sub btnSave_Click(sender As System.Object, e As System.EventArgs) Handles btnSave.Click
+
     End Sub
 End Class

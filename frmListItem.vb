@@ -83,7 +83,7 @@ Public Class frmListItem
 
     End Sub
     Private Sub txtSearch_TextChanged(sender As Object, e As EventArgs) Handles txtSearch.TextChanged
-        Call data_loader("SELECT * FROM vw_item WHERE Name LIKE '%" & Trim(txtSearch.Text) & "%' ", dgvItemList)
+        SearchItems(txtSearch.Text, dgvItemList)
     End Sub
 
     Private Sub txtSearch_GotFocus(sender As Object, e As EventArgs) Handles txtSearch.GotFocus

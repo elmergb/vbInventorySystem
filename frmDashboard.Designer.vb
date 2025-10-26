@@ -147,7 +147,7 @@ Partial Class frmDashboard
         Me.Label4.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label4.Location = New System.Drawing.Point(6, 16)
         Me.Label4.Name = "Label4"
-        Me.Label4.Size = New System.Drawing.Size(111, 16)
+        Me.Label4.Size = New System.Drawing.Size(112, 16)
         Me.Label4.TabIndex = 0
         Me.Label4.Text = "Damage Items "
         '
@@ -157,7 +157,7 @@ Partial Class frmDashboard
         Me.Label1.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label1.Location = New System.Drawing.Point(3, 0)
         Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(150, 16)
+        Me.Label1.Size = New System.Drawing.Size(151, 16)
         Me.Label1.TabIndex = 3
         Me.Label1.Text = "Recent Transactions"
         '
@@ -584,7 +584,7 @@ Partial Class frmDashboard
         Me.Panel5.Dock = System.Windows.Forms.DockStyle.Top
         Me.Panel5.Location = New System.Drawing.Point(0, 0)
         Me.Panel5.Name = "Panel5"
-        Me.Panel5.Size = New System.Drawing.Size(1472, 62)
+        Me.Panel5.Size = New System.Drawing.Size(1489, 62)
         Me.Panel5.TabIndex = 21
         '
         'Label6
@@ -607,7 +607,7 @@ Partial Class frmDashboard
         Me.Label2.Dock = System.Windows.Forms.DockStyle.Fill
         Me.Label2.Location = New System.Drawing.Point(0, 0)
         Me.Label2.Name = "Label2"
-        Me.Label2.Size = New System.Drawing.Size(1472, 786)
+        Me.Label2.Size = New System.Drawing.Size(1489, 786)
         Me.Label2.TabIndex = 22
         '
         'frmDashboard
@@ -616,7 +616,7 @@ Partial Class frmDashboard
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.AutoScroll = True
         Me.BackColor = System.Drawing.SystemColors.ButtonFace
-        Me.ClientSize = New System.Drawing.Size(1489, 703)
+        Me.ClientSize = New System.Drawing.Size(1506, 703)
         Me.Controls.Add(Me.Panel5)
         Me.Controls.Add(Me.Panel6)
         Me.Controls.Add(Me.Panel2)

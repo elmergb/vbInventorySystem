@@ -1,4 +1,6 @@
-﻿Module modGlobalFunc
+﻿Imports System.Data.Odbc
+
+Module modGlobalFunc
     Public Function getallText() As List(Of String)
         Dim text As New List(Of String)
 
@@ -133,39 +135,22 @@
         frm.Show()
     End Sub
 
-    Public Sub SearchItem(ByVal searchText As String, ByVal cbo As ComboBox)
+    Public Sub SearchItems(ByVal searchText As String, ByVal dgv As DataGridView)
         Try
-            ' Make sure ComboBox is not bound to anything
-            cbo.DataSource = Nothing
-            cbo.Items.Clear()
-
-            Dim sql As String = "SELECT itemName FROM vw_item WHERE ItemName LIKE ?"
-            Using cmd As New Odbc.OdbcCommand(sql, con)
+            Dim sql As String = "SELECT * FROM vw_item WHERE Name LIKE ?"
+            Using cmd As New OdbcCommand(sql, con)
                 cmd.Parameters.AddWithValue("?", "%" & Trim(searchText) & "%")
 
-                Using reader As Odbc.OdbcDataReader = cmd.ExecuteReader()
-                    While reader.Read()
-                        cbo.Items.Add(reader("ItemName").ToString())
-                    End While
-                End Using
+                Dim adapter As New OdbcDataAdapter(cmd)
+                Dim dtable As New DataTable
+                adapter.Fill(dtable)
+
+                dgv.DataSource = dtable
+                adapter.Dispose()
             End Using
 
         Catch ex As Exception
             MessageBox.Show("Error loading items: " & ex.Message)
         End Try
     End Sub
-    'Public Function SearchItem(ByVal searchText As String) As DataTable
-    '    Dim sql As String = "SELECT * FROM vw_all WHERE itemName LIKE ?"
-    '    Dim cmd As New Odbc.OdbcCommand(sql, con)
-    '    cmd.Parameters.AddWithValue("?", "%" & Trim(searchText) & "%")
-
-    '    Dim adapter As New Odbc.OdbcDataAdapter(cmd)
-    '    Dim dtable As New DataTable
-    '    adapter.Fill(dtable)
-
-    '    adapter.Dispose()
-    '    cmd.Dispose()
-    '    Return dtable
-    'End Function
-
 End Module

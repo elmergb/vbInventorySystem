@@ -30,15 +30,15 @@ Partial Class frmCartListView
         'lvCart
         '
         Me.lvCart.HideSelection = False
-        Me.lvCart.Location = New System.Drawing.Point(12, 12)
+        Me.lvCart.Location = New System.Drawing.Point(580, 98)
         Me.lvCart.Name = "lvCart"
-        Me.lvCart.Size = New System.Drawing.Size(280, 348)
+        Me.lvCart.Size = New System.Drawing.Size(303, 348)
         Me.lvCart.TabIndex = 0
         Me.lvCart.UseCompatibleStateImageBehavior = False
         '
         'btnDelete
         '
-        Me.btnDelete.Location = New System.Drawing.Point(284, 366)
+        Me.btnDelete.Location = New System.Drawing.Point(717, 12)
         Me.btnDelete.Name = "btnDelete"
         Me.btnDelete.Size = New System.Drawing.Size(91, 45)
         Me.btnDelete.TabIndex = 1
@@ -47,7 +47,7 @@ Partial Class frmCartListView
         '
         'btnEdit
         '
-        Me.btnEdit.Location = New System.Drawing.Point(187, 366)
+        Me.btnEdit.Location = New System.Drawing.Point(546, 38)
         Me.btnEdit.Name = "btnEdit"
         Me.btnEdit.Size = New System.Drawing.Size(91, 45)
         Me.btnEdit.TabIndex = 2
@@ -58,7 +58,7 @@ Partial Class frmCartListView
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(467, 448)
+        Me.ClientSize = New System.Drawing.Size(1179, 576)
         Me.Controls.Add(Me.btnEdit)
         Me.Controls.Add(Me.btnDelete)
         Me.Controls.Add(Me.lvCart)

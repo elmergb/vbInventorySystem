@@ -42,11 +42,11 @@ Partial Class frmBorrowerCartList
         Me.dgvBorrowerCart.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill
         Me.dgvBorrowerCart.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.dgvBorrowerCart.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.BorrowID, Me.ItemID, Me.Column2, Me.ItemName, Me.QuantityBorrowed, Me.Contact, Me.Purpose, Me.DateBorrowed, Me.Remarks})
-        Me.dgvBorrowerCart.Location = New System.Drawing.Point(46, 82)
+        Me.dgvBorrowerCart.Location = New System.Drawing.Point(25, 132)
         Me.dgvBorrowerCart.Name = "dgvBorrowerCart"
         Me.dgvBorrowerCart.ReadOnly = True
         Me.dgvBorrowerCart.RowHeadersVisible = False
-        Me.dgvBorrowerCart.Size = New System.Drawing.Size(768, 355)
+        Me.dgvBorrowerCart.Size = New System.Drawing.Size(1262, 452)
         Me.dgvBorrowerCart.TabIndex = 0
         '
         'BorrowID
@@ -118,7 +118,7 @@ Partial Class frmBorrowerCartList
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(886, 546)
+        Me.ClientSize = New System.Drawing.Size(1381, 596)
         Me.Controls.Add(Me.dgvBorrowerCart)
         Me.Name = "frmBorrowerCartList"
         Me.Text = "frmBorrowerCartList"

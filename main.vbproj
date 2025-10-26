@@ -139,6 +139,24 @@
     <Compile Include="frmReturnList.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="frmStudentCanBorrow.Designer.vb">
+      <DependentUpon>frmStudentCanBorrow.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmStudentCanBorrow.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmStudentlist.Designer.vb">
+      <DependentUpon>frmStudentlist.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmStudentlist.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmToBorrow.Designer.vb">
+      <DependentUpon>frmToBorrow.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmToBorrow.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="frmUserAdd.Designer.vb">
       <DependentUpon>frmUserAdd.vb</DependentUpon>
     </Compile>
@@ -212,6 +230,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmReturnList.resx">
       <DependentUpon>frmReturnList.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmStudentCanBorrow.resx">
+      <DependentUpon>frmStudentCanBorrow.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmStudentlist.resx">
+      <DependentUpon>frmStudentlist.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmUserAdd.resx">
       <DependentUpon>frmUserAdd.vb</DependentUpon>
