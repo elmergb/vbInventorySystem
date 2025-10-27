@@ -25,35 +25,35 @@ Partial Class Homepage
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(Homepage))
         Me.ts = New System.Windows.Forms.ToolStrip()
         Me.ToolStripLabel1 = New System.Windows.Forms.ToolStripLabel()
-        Me.ToolStripDropDownButton1 = New System.Windows.Forms.ToolStripDropDownButton()
-        Me.ltsLogout = New System.Windows.Forms.ToolStripMenuItem()
-        Me.ltsExit = New System.Windows.Forms.ToolStripMenuItem()
         Me.lblTsManage = New System.Windows.Forms.ToolStripLabel()
-        Me.ToolStripDropDownButton2 = New System.Windows.Forms.ToolStripDropDownButton()
-        Me.UIToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.DamageToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.BorrowesToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.UsersToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.StudentListToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.lblTsTransaction = New System.Windows.Forms.ToolStripLabel()
-        Me.ToolStripDropDownButton3 = New System.Windows.Forms.ToolStripDropDownButton()
-        Me.BorrowItemToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.ReturnItemToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.lblTsReports = New System.Windows.Forms.ToolStripLabel()
-        Me.ToolStripDropDownButton4 = New System.Windows.Forms.ToolStripDropDownButton()
-        Me.InventoryReportToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.BorrowHistoryToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ToolStripLabel2 = New System.Windows.Forms.ToolStripLabel()
         Me.lblTsUser = New System.Windows.Forms.ToolStripLabel()
         Me.ToolStripLabel4 = New System.Windows.Forms.ToolStripLabel()
         Me.lblTsTime = New System.Windows.Forms.ToolStripLabel()
         Me.pnlMain = New System.Windows.Forms.Panel()
         Me.btnBorrowPage = New System.Windows.Forms.Button()
-        Me.btnDashBoard = New System.Windows.Forms.Button()
         Me.btnAddItem = New System.Windows.Forms.Button()
         Me.btnReturnList = New System.Windows.Forms.Button()
-        Me.btnUser = New System.Windows.Forms.Button()
         Me.pnlItem = New System.Windows.Forms.Panel()
+        Me.btnDashBoard = New System.Windows.Forms.Button()
+        Me.btnUser = New System.Windows.Forms.Button()
+        Me.ToolStripDropDownButton1 = New System.Windows.Forms.ToolStripDropDownButton()
+        Me.ltsLogout = New System.Windows.Forms.ToolStripMenuItem()
+        Me.ltsExit = New System.Windows.Forms.ToolStripMenuItem()
+        Me.ToolStripDropDownButton2 = New System.Windows.Forms.ToolStripDropDownButton()
+        Me.UIToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.DamageToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.BorrowesToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.UsersToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.StudentListToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.ToolStripDropDownButton3 = New System.Windows.Forms.ToolStripDropDownButton()
+        Me.BorrowItemToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.ReturnItemToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.ToolStripDropDownButton4 = New System.Windows.Forms.ToolStripDropDownButton()
+        Me.InventoryReportToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.BorrowHistoryToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ts.SuspendLayout()
         Me.pnlMain.SuspendLayout()
         Me.SuspendLayout()
@@ -64,7 +64,7 @@ Partial Class Homepage
         Me.ts.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ToolStripLabel1, Me.ToolStripDropDownButton1, Me.lblTsManage, Me.ToolStripDropDownButton2, Me.lblTsTransaction, Me.ToolStripDropDownButton3, Me.lblTsReports, Me.ToolStripDropDownButton4, Me.ToolStripLabel2, Me.lblTsUser, Me.ToolStripLabel4, Me.lblTsTime})
         Me.ts.Location = New System.Drawing.Point(0, 0)
         Me.ts.Name = "ts"
-        Me.ts.Size = New System.Drawing.Size(1338, 25)
+        Me.ts.Size = New System.Drawing.Size(1154, 25)
         Me.ts.TabIndex = 21
         Me.ts.Text = "ToolStrip1"
         '
@@ -74,6 +74,164 @@ Partial Class Homepage
         Me.ToolStripLabel1.Size = New System.Drawing.Size(38, 22)
         Me.ToolStripLabel1.Text = "Menu"
         '
+        'lblTsManage
+        '
+        Me.lblTsManage.Name = "lblTsManage"
+        Me.lblTsManage.Size = New System.Drawing.Size(50, 22)
+        Me.lblTsManage.Text = "Manage"
+        '
+        'lblTsTransaction
+        '
+        Me.lblTsTransaction.Name = "lblTsTransaction"
+        Me.lblTsTransaction.Size = New System.Drawing.Size(67, 22)
+        Me.lblTsTransaction.Text = "Transaction"
+        '
+        'lblTsReports
+        '
+        Me.lblTsReports.Name = "lblTsReports"
+        Me.lblTsReports.Size = New System.Drawing.Size(47, 22)
+        Me.lblTsReports.Text = "Reports"
+        '
+        'ToolStripLabel2
+        '
+        Me.ToolStripLabel2.Name = "ToolStripLabel2"
+        Me.ToolStripLabel2.Size = New System.Drawing.Size(65, 22)
+        Me.ToolStripLabel2.Text = "  Log in As:"
+        '
+        'lblTsUser
+        '
+        Me.lblTsUser.Name = "lblTsUser"
+        Me.lblTsUser.Size = New System.Drawing.Size(30, 22)
+        Me.lblTsUser.Text = "User"
+        '
+        'ToolStripLabel4
+        '
+        Me.ToolStripLabel4.Name = "ToolStripLabel4"
+        Me.ToolStripLabel4.Size = New System.Drawing.Size(42, 22)
+        Me.ToolStripLabel4.Text = "  Time:"
+        '
+        'lblTsTime
+        '
+        Me.lblTsTime.Name = "lblTsTime"
+        Me.lblTsTime.Size = New System.Drawing.Size(33, 22)
+        Me.lblTsTime.Text = "Time"
+        '
+        'pnlMain
+        '
+        Me.pnlMain.BackColor = System.Drawing.Color.White
+        Me.pnlMain.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.pnlMain.Controls.Add(Me.btnBorrowPage)
+        Me.pnlMain.Controls.Add(Me.btnDashBoard)
+        Me.pnlMain.Controls.Add(Me.btnAddItem)
+        Me.pnlMain.Controls.Add(Me.btnReturnList)
+        Me.pnlMain.Controls.Add(Me.btnUser)
+        Me.pnlMain.Dock = System.Windows.Forms.DockStyle.Top
+        Me.pnlMain.Location = New System.Drawing.Point(0, 25)
+        Me.pnlMain.Name = "pnlMain"
+        Me.pnlMain.Size = New System.Drawing.Size(1154, 64)
+        Me.pnlMain.TabIndex = 22
+        '
+        'btnBorrowPage
+        '
+        Me.btnBorrowPage.BackColor = System.Drawing.Color.Transparent
+        Me.btnBorrowPage.FlatAppearance.BorderColor = System.Drawing.Color.DimGray
+        Me.btnBorrowPage.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(CType(CType(9, Byte), Integer), CType(CType(123, Byte), Integer), CType(CType(222, Byte), Integer))
+        Me.btnBorrowPage.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(CType(CType(87, Byte), Integer), CType(CType(181, Byte), Integer), CType(CType(247, Byte), Integer))
+        Me.btnBorrowPage.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.btnBorrowPage.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnBorrowPage.Image = Global.main.My.Resources.Resources.borrowing
+        Me.btnBorrowPage.ImageAlign = System.Drawing.ContentAlignment.BottomCenter
+        Me.btnBorrowPage.Location = New System.Drawing.Point(356, -1)
+        Me.btnBorrowPage.Name = "btnBorrowPage"
+        Me.btnBorrowPage.Size = New System.Drawing.Size(122, 64)
+        Me.btnBorrowPage.TabIndex = 4
+        Me.btnBorrowPage.Text = "Borrowed"
+        Me.btnBorrowPage.TextAlign = System.Drawing.ContentAlignment.TopCenter
+        Me.btnBorrowPage.TextImageRelation = System.Windows.Forms.TextImageRelation.TextAboveImage
+        Me.btnBorrowPage.UseVisualStyleBackColor = False
+        '
+        'btnAddItem
+        '
+        Me.btnAddItem.BackColor = System.Drawing.Color.Transparent
+        Me.btnAddItem.FlatAppearance.BorderColor = System.Drawing.Color.DimGray
+        Me.btnAddItem.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(CType(CType(9, Byte), Integer), CType(CType(123, Byte), Integer), CType(CType(222, Byte), Integer))
+        Me.btnAddItem.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(CType(CType(87, Byte), Integer), CType(CType(181, Byte), Integer), CType(CType(247, Byte), Integer))
+        Me.btnAddItem.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.btnAddItem.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnAddItem.Image = Global.main.My.Resources.Resources.inventory
+        Me.btnAddItem.ImageAlign = System.Drawing.ContentAlignment.BottomCenter
+        Me.btnAddItem.Location = New System.Drawing.Point(238, -1)
+        Me.btnAddItem.Name = "btnAddItem"
+        Me.btnAddItem.Size = New System.Drawing.Size(119, 64)
+        Me.btnAddItem.TabIndex = 2
+        Me.btnAddItem.Text = "Item"
+        Me.btnAddItem.TextAlign = System.Drawing.ContentAlignment.TopCenter
+        Me.btnAddItem.TextImageRelation = System.Windows.Forms.TextImageRelation.TextAboveImage
+        Me.btnAddItem.UseVisualStyleBackColor = False
+        '
+        'btnReturnList
+        '
+        Me.btnReturnList.BackColor = System.Drawing.Color.Transparent
+        Me.btnReturnList.FlatAppearance.BorderColor = System.Drawing.Color.DimGray
+        Me.btnReturnList.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(CType(CType(9, Byte), Integer), CType(CType(123, Byte), Integer), CType(CType(222, Byte), Integer))
+        Me.btnReturnList.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(CType(CType(87, Byte), Integer), CType(CType(181, Byte), Integer), CType(CType(247, Byte), Integer))
+        Me.btnReturnList.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.btnReturnList.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnReturnList.Location = New System.Drawing.Point(475, -1)
+        Me.btnReturnList.Name = "btnReturnList"
+        Me.btnReturnList.Size = New System.Drawing.Size(139, 64)
+        Me.btnReturnList.TabIndex = 5
+        Me.btnReturnList.Text = "Return"
+        Me.btnReturnList.TextAlign = System.Drawing.ContentAlignment.TopCenter
+        Me.btnReturnList.UseVisualStyleBackColor = False
+        '
+        'pnlItem
+        '
+        Me.pnlItem.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.pnlItem.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.pnlItem.Location = New System.Drawing.Point(0, 89)
+        Me.pnlItem.Name = "pnlItem"
+        Me.pnlItem.Size = New System.Drawing.Size(1154, 584)
+        Me.pnlItem.TabIndex = 23
+        '
+        'btnDashBoard
+        '
+        Me.btnDashBoard.BackColor = System.Drawing.Color.Transparent
+        Me.btnDashBoard.FlatAppearance.BorderColor = System.Drawing.Color.DimGray
+        Me.btnDashBoard.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(CType(CType(9, Byte), Integer), CType(CType(123, Byte), Integer), CType(CType(222, Byte), Integer))
+        Me.btnDashBoard.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(CType(CType(87, Byte), Integer), CType(CType(181, Byte), Integer), CType(CType(247, Byte), Integer))
+        Me.btnDashBoard.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.btnDashBoard.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnDashBoard.Image = Global.main.My.Resources.Resources._9055226_bxs_dashboard_icon
+        Me.btnDashBoard.ImageAlign = System.Drawing.ContentAlignment.BottomCenter
+        Me.btnDashBoard.Location = New System.Drawing.Point(128, -1)
+        Me.btnDashBoard.Name = "btnDashBoard"
+        Me.btnDashBoard.Size = New System.Drawing.Size(113, 64)
+        Me.btnDashBoard.TabIndex = 6
+        Me.btnDashBoard.Text = "Dashboard"
+        Me.btnDashBoard.TextAlign = System.Drawing.ContentAlignment.TopCenter
+        Me.btnDashBoard.TextImageRelation = System.Windows.Forms.TextImageRelation.TextAboveImage
+        Me.btnDashBoard.UseVisualStyleBackColor = False
+        '
+        'btnUser
+        '
+        Me.btnUser.BackColor = System.Drawing.Color.Transparent
+        Me.btnUser.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center
+        Me.btnUser.FlatAppearance.BorderColor = System.Drawing.Color.DimGray
+        Me.btnUser.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(CType(CType(9, Byte), Integer), CType(CType(123, Byte), Integer), CType(CType(222, Byte), Integer))
+        Me.btnUser.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(CType(CType(87, Byte), Integer), CType(CType(181, Byte), Integer), CType(CType(247, Byte), Integer))
+        Me.btnUser.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.btnUser.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnUser.Image = Global.main.My.Resources.Resources._1564534_customer_man_user_account_profile_icon
+        Me.btnUser.ImageAlign = System.Drawing.ContentAlignment.BottomCenter
+        Me.btnUser.Location = New System.Drawing.Point(26, -1)
+        Me.btnUser.Name = "btnUser"
+        Me.btnUser.Size = New System.Drawing.Size(105, 64)
+        Me.btnUser.TabIndex = 3
+        Me.btnUser.Text = "User"
+        Me.btnUser.TextAlign = System.Drawing.ContentAlignment.TopCenter
+        Me.btnUser.UseVisualStyleBackColor = False
+        '
         'ToolStripDropDownButton1
         '
         Me.ToolStripDropDownButton1.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
@@ -82,7 +240,7 @@ Partial Class Homepage
         Me.ToolStripDropDownButton1.ImageTransparentColor = System.Drawing.Color.Magenta
         Me.ToolStripDropDownButton1.Name = "ToolStripDropDownButton1"
         Me.ToolStripDropDownButton1.Size = New System.Drawing.Size(29, 22)
-        Me.ToolStripDropDownButton1.Text = "ToolStripDropDownButton1"
+        Me.ToolStripDropDownButton1.Text = "a"
         '
         'ltsLogout
         '
@@ -95,12 +253,6 @@ Partial Class Homepage
         Me.ltsExit.Name = "ltsExit"
         Me.ltsExit.Size = New System.Drawing.Size(115, 22)
         Me.ltsExit.Text = "Exit"
-        '
-        'lblTsManage
-        '
-        Me.lblTsManage.Name = "lblTsManage"
-        Me.lblTsManage.Size = New System.Drawing.Size(50, 22)
-        Me.lblTsManage.Text = "Manage"
         '
         'ToolStripDropDownButton2
         '
@@ -144,12 +296,6 @@ Partial Class Homepage
         Me.StudentListToolStripMenuItem.Size = New System.Drawing.Size(133, 22)
         Me.StudentListToolStripMenuItem.Text = "Student list"
         '
-        'lblTsTransaction
-        '
-        Me.lblTsTransaction.Name = "lblTsTransaction"
-        Me.lblTsTransaction.Size = New System.Drawing.Size(67, 22)
-        Me.lblTsTransaction.Text = "Transaction"
-        '
         'ToolStripDropDownButton3
         '
         Me.ToolStripDropDownButton3.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
@@ -171,12 +317,6 @@ Partial Class Homepage
         Me.ReturnItemToolStripMenuItem.Name = "ReturnItemToolStripMenuItem"
         Me.ReturnItemToolStripMenuItem.Size = New System.Drawing.Size(139, 22)
         Me.ReturnItemToolStripMenuItem.Text = "Return Item"
-        '
-        'lblTsReports
-        '
-        Me.lblTsReports.Name = "lblTsReports"
-        Me.lblTsReports.Size = New System.Drawing.Size(47, 22)
-        Me.lblTsReports.Text = "Reports"
         '
         'ToolStripDropDownButton4
         '
@@ -200,140 +340,11 @@ Partial Class Homepage
         Me.BorrowHistoryToolStripMenuItem.Size = New System.Drawing.Size(162, 22)
         Me.BorrowHistoryToolStripMenuItem.Text = "Borrow History"
         '
-        'ToolStripLabel2
-        '
-        Me.ToolStripLabel2.Name = "ToolStripLabel2"
-        Me.ToolStripLabel2.Size = New System.Drawing.Size(65, 22)
-        Me.ToolStripLabel2.Text = "  Log in As:"
-        '
-        'lblTsUser
-        '
-        Me.lblTsUser.Name = "lblTsUser"
-        Me.lblTsUser.Size = New System.Drawing.Size(30, 22)
-        Me.lblTsUser.Text = "User"
-        '
-        'ToolStripLabel4
-        '
-        Me.ToolStripLabel4.Name = "ToolStripLabel4"
-        Me.ToolStripLabel4.Size = New System.Drawing.Size(42, 22)
-        Me.ToolStripLabel4.Text = "  Time:"
-        '
-        'lblTsTime
-        '
-        Me.lblTsTime.Name = "lblTsTime"
-        Me.lblTsTime.Size = New System.Drawing.Size(33, 22)
-        Me.lblTsTime.Text = "Time"
-        '
-        'pnlMain
-        '
-        Me.pnlMain.BackColor = System.Drawing.Color.FromArgb(CType(CType(196, Byte), Integer), CType(CType(173, Byte), Integer), CType(CType(143, Byte), Integer))
-        Me.pnlMain.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.pnlMain.Controls.Add(Me.btnBorrowPage)
-        Me.pnlMain.Controls.Add(Me.btnDashBoard)
-        Me.pnlMain.Controls.Add(Me.btnAddItem)
-        Me.pnlMain.Controls.Add(Me.btnReturnList)
-        Me.pnlMain.Controls.Add(Me.btnUser)
-        Me.pnlMain.Dock = System.Windows.Forms.DockStyle.Top
-        Me.pnlMain.Location = New System.Drawing.Point(0, 25)
-        Me.pnlMain.Name = "pnlMain"
-        Me.pnlMain.Size = New System.Drawing.Size(1338, 70)
-        Me.pnlMain.TabIndex = 22
-        '
-        'btnBorrowPage
-        '
-        Me.btnBorrowPage.BackColor = System.Drawing.Color.FromArgb(CType(CType(196, Byte), Integer), CType(CType(173, Byte), Integer), CType(CType(143, Byte), Integer))
-        Me.btnBorrowPage.FlatAppearance.BorderSize = 0
-        Me.btnBorrowPage.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(CType(CType(217, Byte), Integer), CType(CType(193, Byte), Integer), CType(CType(178, Byte), Integer))
-        Me.btnBorrowPage.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(CType(CType(153, Byte), Integer), CType(CType(113, Byte), Integer), CType(CType(87, Byte), Integer))
-        Me.btnBorrowPage.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.btnBorrowPage.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnBorrowPage.Location = New System.Drawing.Point(608, 3)
-        Me.btnBorrowPage.Name = "btnBorrowPage"
-        Me.btnBorrowPage.Padding = New System.Windows.Forms.Padding(5)
-        Me.btnBorrowPage.Size = New System.Drawing.Size(235, 42)
-        Me.btnBorrowPage.TabIndex = 4
-        Me.btnBorrowPage.Text = "Borrowed"
-        Me.btnBorrowPage.UseVisualStyleBackColor = False
-        '
-        'btnDashBoard
-        '
-        Me.btnDashBoard.BackColor = System.Drawing.Color.FromArgb(CType(CType(196, Byte), Integer), CType(CType(173, Byte), Integer), CType(CType(143, Byte), Integer))
-        Me.btnDashBoard.FlatAppearance.BorderSize = 0
-        Me.btnDashBoard.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(CType(CType(217, Byte), Integer), CType(CType(193, Byte), Integer), CType(CType(178, Byte), Integer))
-        Me.btnDashBoard.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(CType(CType(153, Byte), Integer), CType(CType(113, Byte), Integer), CType(CType(87, Byte), Integer))
-        Me.btnDashBoard.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.btnDashBoard.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnDashBoard.Location = New System.Drawing.Point(359, 3)
-        Me.btnDashBoard.Name = "btnDashBoard"
-        Me.btnDashBoard.Padding = New System.Windows.Forms.Padding(5)
-        Me.btnDashBoard.Size = New System.Drawing.Size(225, 42)
-        Me.btnDashBoard.TabIndex = 6
-        Me.btnDashBoard.Text = "Dashboard"
-        Me.btnDashBoard.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText
-        Me.btnDashBoard.UseVisualStyleBackColor = False
-        '
-        'btnAddItem
-        '
-        Me.btnAddItem.BackColor = System.Drawing.Color.FromArgb(CType(CType(196, Byte), Integer), CType(CType(173, Byte), Integer), CType(CType(143, Byte), Integer))
-        Me.btnAddItem.FlatAppearance.BorderSize = 0
-        Me.btnAddItem.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(CType(CType(217, Byte), Integer), CType(CType(193, Byte), Integer), CType(CType(178, Byte), Integer))
-        Me.btnAddItem.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(CType(CType(153, Byte), Integer), CType(CType(113, Byte), Integer), CType(CType(87, Byte), Integer))
-        Me.btnAddItem.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.btnAddItem.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnAddItem.Location = New System.Drawing.Point(979, 3)
-        Me.btnAddItem.Name = "btnAddItem"
-        Me.btnAddItem.Padding = New System.Windows.Forms.Padding(5)
-        Me.btnAddItem.Size = New System.Drawing.Size(281, 42)
-        Me.btnAddItem.TabIndex = 2
-        Me.btnAddItem.Text = "Item"
-        Me.btnAddItem.UseVisualStyleBackColor = False
-        '
-        'btnReturnList
-        '
-        Me.btnReturnList.BackColor = System.Drawing.Color.FromArgb(CType(CType(196, Byte), Integer), CType(CType(173, Byte), Integer), CType(CType(143, Byte), Integer))
-        Me.btnReturnList.FlatAppearance.BorderSize = 0
-        Me.btnReturnList.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(CType(CType(217, Byte), Integer), CType(CType(193, Byte), Integer), CType(CType(178, Byte), Integer))
-        Me.btnReturnList.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(CType(CType(153, Byte), Integer), CType(CType(113, Byte), Integer), CType(CType(87, Byte), Integer))
-        Me.btnReturnList.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.btnReturnList.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnReturnList.Location = New System.Drawing.Point(802, 16)
-        Me.btnReturnList.Name = "btnReturnList"
-        Me.btnReturnList.Padding = New System.Windows.Forms.Padding(5)
-        Me.btnReturnList.Size = New System.Drawing.Size(262, 42)
-        Me.btnReturnList.TabIndex = 5
-        Me.btnReturnList.Text = "Return"
-        Me.btnReturnList.UseVisualStyleBackColor = False
-        '
-        'btnUser
-        '
-        Me.btnUser.BackColor = System.Drawing.Color.FromArgb(CType(CType(196, Byte), Integer), CType(CType(173, Byte), Integer), CType(CType(143, Byte), Integer))
-        Me.btnUser.FlatAppearance.BorderSize = 0
-        Me.btnUser.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(CType(CType(217, Byte), Integer), CType(CType(193, Byte), Integer), CType(CType(178, Byte), Integer))
-        Me.btnUser.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(CType(CType(153, Byte), Integer), CType(CType(113, Byte), Integer), CType(CType(87, Byte), Integer))
-        Me.btnUser.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.btnUser.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnUser.Location = New System.Drawing.Point(116, 16)
-        Me.btnUser.Name = "btnUser"
-        Me.btnUser.Padding = New System.Windows.Forms.Padding(5)
-        Me.btnUser.Size = New System.Drawing.Size(281, 42)
-        Me.btnUser.TabIndex = 3
-        Me.btnUser.Text = "User"
-        Me.btnUser.UseVisualStyleBackColor = False
-        '
-        'pnlItem
-        '
-        Me.pnlItem.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.pnlItem.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.pnlItem.Location = New System.Drawing.Point(0, 95)
-        Me.pnlItem.Name = "pnlItem"
-        Me.pnlItem.Size = New System.Drawing.Size(1338, 578)
-        Me.pnlItem.TabIndex = 23
-        '
         'Homepage
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(1338, 673)
+        Me.ClientSize = New System.Drawing.Size(1154, 673)
         Me.Controls.Add(Me.pnlItem)
         Me.Controls.Add(Me.pnlMain)
         Me.Controls.Add(Me.ts)

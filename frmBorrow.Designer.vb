@@ -50,7 +50,7 @@ Partial Class frmBorrow
         Me.Label8.ForeColor = System.Drawing.Color.White
         Me.Label8.Location = New System.Drawing.Point(0, 0)
         Me.Label8.Name = "Label8"
-        Me.Label8.Size = New System.Drawing.Size(908, 55)
+        Me.Label8.Size = New System.Drawing.Size(1132, 55)
         Me.Label8.TabIndex = 17
         Me.Label8.Text = " Borrow"
         Me.Label8.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
@@ -184,7 +184,7 @@ Partial Class frmBorrow
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(908, 631)
+        Me.ClientSize = New System.Drawing.Size(1132, 631)
         Me.Controls.Add(Me.btnSave)
         Me.Controls.Add(Me.Label8)
         Me.Controls.Add(Me.cbItemList)

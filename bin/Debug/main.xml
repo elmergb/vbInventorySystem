@@ -15,11 +15,23 @@ main
   Overrides the current thread's CurrentUICulture property for all
   resource lookups using this strongly typed resource class.
 </summary>
+</member><member name="P:main.My.Resources.Resources._1564534_customer_man_user_account_profile_icon">
+	<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member><member name="P:main.My.Resources.Resources._1564534_customer_man_user_account_profile_icon1">
+	<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
 </member><member name="P:main.My.Resources.Resources._380543768_699505935537282_871741826798799703_n_removebg_preview">
 	<summary>
   Looks up a localized resource of type System.Drawing.Bitmap.
 </summary>
 </member><member name="P:main.My.Resources.Resources._83275946_134612088267215_4138817785140828083_n_removebg_preview">
+	<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member><member name="P:main.My.Resources.Resources._9055226_bxs_dashboard_icon">
 	<summary>
   Looks up a localized resource of type System.Drawing.Bitmap.
 </summary>
@@ -67,7 +79,15 @@ main
 	<summary>
   Looks up a localized resource of type System.Drawing.Bitmap.
 </summary>
+</member><member name="P:main.My.Resources.Resources.png_racbw">
+	<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
 </member><member name="P:main.My.Resources.Resources.profile">
+	<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member><member name="P:main.My.Resources.Resources.user">
 	<summary>
   Looks up a localized resource of type System.Drawing.Bitmap.
 </summary>

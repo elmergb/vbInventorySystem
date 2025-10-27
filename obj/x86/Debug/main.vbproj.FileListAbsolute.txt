@@ -32,6 +32,6 @@ C:\Users\edwar\Documents\Visual Studio 2010\Projects\main\main\obj\x86\Debug\mai
 C:\Users\edwar\Documents\Visual Studio 2010\Projects\main\main\obj\x86\Debug\main.pdb
 C:\Users\edwar\Documents\Visual Studio 2010\Projects\main\main\obj\x86\Debug\main.frmDamageItem.resources
 C:\Users\edwar\Documents\Visual Studio 2010\Projects\main\main\obj\x86\Debug\main.frmStudentCanBorrow.resources
+C:\Users\edwar\Documents\Visual Studio 2010\Projects\main\main\obj\x86\Debug\main.frmStudentlist.resources
 C:\Users\edwar\Documents\Visual Studio 2010\Projects\main\main\obj\x86\Debug\RdlCompile.cache
 C:\Users\edwar\Documents\Visual Studio 2010\Projects\main\main\obj\x86\Debug\RdlCompile.compiled
-C:\Users\edwar\Documents\Visual Studio 2010\Projects\main\main\obj\x86\Debug\main.frmStudentlist.resources

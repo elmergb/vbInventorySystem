@@ -42,11 +42,11 @@ Partial Class frmBorrowerCartList
         Me.dgvBorrowerCart.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill
         Me.dgvBorrowerCart.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.dgvBorrowerCart.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.BorrowID, Me.ItemID, Me.Column2, Me.ItemName, Me.QuantityBorrowed, Me.Contact, Me.Purpose, Me.DateBorrowed, Me.Remarks})
-        Me.dgvBorrowerCart.Location = New System.Drawing.Point(25, 132)
+        Me.dgvBorrowerCart.Location = New System.Drawing.Point(25, 149)
         Me.dgvBorrowerCart.Name = "dgvBorrowerCart"
         Me.dgvBorrowerCart.ReadOnly = True
         Me.dgvBorrowerCart.RowHeadersVisible = False
-        Me.dgvBorrowerCart.Size = New System.Drawing.Size(1262, 452)
+        Me.dgvBorrowerCart.Size = New System.Drawing.Size(1262, 435)
         Me.dgvBorrowerCart.TabIndex = 0
         '
         'BorrowID

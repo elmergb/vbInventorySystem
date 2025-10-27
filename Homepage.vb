@@ -15,44 +15,44 @@
         LoadForm(New frmDashboard())
 
     End Sub
-    Private Sub btnDashBoard_MouseEnter(sender As Object, e As EventArgs)
-        btnDashBoard.ForeColor = Color.FromArgb(128, 64, 0)
-    End Sub
+    'Private Sub btnDashBoard_MouseEnter(sender As Object, e As EventArgs)
+    '    btnDashBoard.ForeColor = Color.FromArgb(128, 64, 0)
+    'End Sub
 
-    Private Sub btnDashBoard_MouseLeave(sender As Object, e As EventArgs)
-        btnDashBoard.ForeColor = Color.Black
-    End Sub
-    Private Sub btnAddItem_MouseEnter(sender As Object, e As EventArgs)
-        btnAddItem.ForeColor = Color.FromArgb(128, 64, 0)
-    End Sub
+    'Private Sub btnDashBoard_MouseLeave(sender As Object, e As EventArgs)
+    '    btnDashBoard.ForeColor = Color.Black
+    'End Sub
+    'Private Sub btnAddItem_MouseEnter(sender As Object, e As EventArgs)
+    '    btnAddItem.ForeColor = Color.FromArgb(128, 64, 0)
+    'End Sub
 
-    Private Sub btnAddItem_MouseLeave(sender As Object, e As EventArgs)
-        btnAddItem.ForeColor = Color.Black
-    End Sub
+    'Private Sub btnAddItem_MouseLeave(sender As Object, e As EventArgs)
+    '    btnAddItem.ForeColor = Color.Black
+    'End Sub
 
-    Private Sub btnBorrowPage_MouseEnter(sender As Object, e As EventArgs)
-        btnBorrowPage.ForeColor = Color.FromArgb(128, 64, 0)
-    End Sub
+    'Private Sub btnBorrowPage_MouseEnter(sender As Object, e As EventArgs)
+    '    btnBorrowPage.ForeColor = Color.FromArgb(128, 64, 0)
+    'End Sub
 
-    Private Sub btnBorrowPage_MouseLeave(sender As Object, e As EventArgs)
-        btnBorrowPage.ForeColor = Color.Black
-    End Sub
+    'Private Sub btnBorrowPage_MouseLeave(sender As Object, e As EventArgs)
+    '    btnBorrowPage.ForeColor = Color.Black
+    'End Sub
 
-    Private Sub btnReturnList_MouseLeave(sender As Object, e As EventArgs)
-        btnReturnList.ForeColor = Color.Black
-    End Sub
+    'Private Sub btnReturnList_MouseLeave(sender As Object, e As EventArgs)
+    '    btnReturnList.ForeColor = Color.Black
+    'End Sub
 
-    Private Sub btnReturnList_MouseEnter(sender As Object, e As EventArgs)
-        btnReturnList.ForeColor = Color.FromArgb(128, 64, 0)
-    End Sub
+    'Private Sub btnReturnList_MouseEnter(sender As Object, e As EventArgs)
+    '    btnReturnList.ForeColor = Color.FromArgb(128, 64, 0)
+    'End Sub
 
-    Private Sub btnUser_MouseEnter(sender As Object, e As EventArgs)
-        btnUser.ForeColor = Color.FromArgb(128, 64, 0)
-    End Sub
+    'Private Sub btnUser_MouseEnter(sender As Object, e As EventArgs)
+    '    btnUser.ForeColor = Color.FromArgb(128, 64, 0)
+    'End Sub
 
-    Private Sub btnUser_MouseLeave(sender As Object, e As EventArgs)
-        btnUser.ForeColor = Color.Black
-    End Sub
+    'Private Sub btnUser_MouseLeave(sender As Object, e As EventArgs)
+    '    btnUser.ForeColor = Color.Black
+    'End Sub
     Private Sub StudentListToolStripMenuItem_Click(sender As System.Object, e As System.EventArgs) Handles StudentListToolStripMenuItem.Click
         LoadForm(New frmStudentlist())
     End Sub
@@ -74,5 +74,18 @@
 
     Private Sub btnBorrowPage_Click_1(sender As System.Object, e As System.EventArgs) Handles btnBorrowPage.Click
         LoadForm(New frmBorrowerList())
+    End Sub
+
+
+    Private Sub ToolStripDropDownButton2_Click(sender As System.Object, e As System.EventArgs) Handles ToolStripDropDownButton2.Click
+
+    End Sub
+
+    Private Sub UserListToolStripMenuItem_Click(sender As System.Object, e As System.EventArgs)
+        LoadForm(New frmUserList())
+    End Sub
+
+    Private Sub ToolStripSplitButton1_ButtonClick(sender As System.Object, e As System.EventArgs)
+
     End Sub
 End Class
