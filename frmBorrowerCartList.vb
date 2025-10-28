@@ -9,4 +9,8 @@
     Private Sub dgvBorrowerCart_CellContentClick(sender As Object, e As DataGridViewCellEventArgs) Handles dgvBorrowerCart.CellContentClick
 
     End Sub
+
+    Private Sub Label9_Click(sender As System.Object, e As System.EventArgs) Handles Label9.Click
+
+    End Sub
 End Class

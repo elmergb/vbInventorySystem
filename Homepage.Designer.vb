@@ -25,35 +25,36 @@ Partial Class Homepage
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(Homepage))
         Me.ts = New System.Windows.Forms.ToolStrip()
         Me.ToolStripLabel1 = New System.Windows.Forms.ToolStripLabel()
-        Me.lblTsManage = New System.Windows.Forms.ToolStripLabel()
-        Me.lblTsTransaction = New System.Windows.Forms.ToolStripLabel()
-        Me.lblTsReports = New System.Windows.Forms.ToolStripLabel()
-        Me.ToolStripLabel2 = New System.Windows.Forms.ToolStripLabel()
-        Me.lblTsUser = New System.Windows.Forms.ToolStripLabel()
-        Me.ToolStripLabel4 = New System.Windows.Forms.ToolStripLabel()
-        Me.lblTsTime = New System.Windows.Forms.ToolStripLabel()
-        Me.pnlMain = New System.Windows.Forms.Panel()
-        Me.btnBorrowPage = New System.Windows.Forms.Button()
-        Me.btnAddItem = New System.Windows.Forms.Button()
-        Me.btnReturnList = New System.Windows.Forms.Button()
-        Me.pnlItem = New System.Windows.Forms.Panel()
-        Me.btnDashBoard = New System.Windows.Forms.Button()
-        Me.btnUser = New System.Windows.Forms.Button()
         Me.ToolStripDropDownButton1 = New System.Windows.Forms.ToolStripDropDownButton()
         Me.ltsLogout = New System.Windows.Forms.ToolStripMenuItem()
         Me.ltsExit = New System.Windows.Forms.ToolStripMenuItem()
+        Me.lblTsManage = New System.Windows.Forms.ToolStripLabel()
         Me.ToolStripDropDownButton2 = New System.Windows.Forms.ToolStripDropDownButton()
         Me.UIToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.DamageToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.BorrowesToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.UsersToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.StudentListToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.lblTsTransaction = New System.Windows.Forms.ToolStripLabel()
         Me.ToolStripDropDownButton3 = New System.Windows.Forms.ToolStripDropDownButton()
         Me.BorrowItemToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ReturnItemToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.lblTsReports = New System.Windows.Forms.ToolStripLabel()
         Me.ToolStripDropDownButton4 = New System.Windows.Forms.ToolStripDropDownButton()
         Me.InventoryReportToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.BorrowHistoryToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.ToolStripLabel2 = New System.Windows.Forms.ToolStripLabel()
+        Me.lblTsUser = New System.Windows.Forms.ToolStripLabel()
+        Me.ToolStripLabel4 = New System.Windows.Forms.ToolStripLabel()
+        Me.lblTsTime = New System.Windows.Forms.ToolStripLabel()
+        Me.pnlMain = New System.Windows.Forms.Panel()
+        Me.btnBorrowPage = New System.Windows.Forms.Button()
+        Me.btnDashBoard = New System.Windows.Forms.Button()
+        Me.btnAddItem = New System.Windows.Forms.Button()
+        Me.btnReturnList = New System.Windows.Forms.Button()
+        Me.btnUser = New System.Windows.Forms.Button()
+        Me.pnlItem = New System.Windows.Forms.Panel()
+        Me.BoroToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ts.SuspendLayout()
         Me.pnlMain.SuspendLayout()
         Me.SuspendLayout()
@@ -74,11 +75,76 @@ Partial Class Homepage
         Me.ToolStripLabel1.Size = New System.Drawing.Size(38, 22)
         Me.ToolStripLabel1.Text = "Menu"
         '
+        'ToolStripDropDownButton1
+        '
+        Me.ToolStripDropDownButton1.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
+        Me.ToolStripDropDownButton1.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ltsLogout, Me.ltsExit})
+        Me.ToolStripDropDownButton1.Image = CType(resources.GetObject("ToolStripDropDownButton1.Image"), System.Drawing.Image)
+        Me.ToolStripDropDownButton1.ImageTransparentColor = System.Drawing.Color.Magenta
+        Me.ToolStripDropDownButton1.Name = "ToolStripDropDownButton1"
+        Me.ToolStripDropDownButton1.Size = New System.Drawing.Size(29, 22)
+        Me.ToolStripDropDownButton1.Text = "a"
+        '
+        'ltsLogout
+        '
+        Me.ltsLogout.Name = "ltsLogout"
+        Me.ltsLogout.Size = New System.Drawing.Size(115, 22)
+        Me.ltsLogout.Text = "Log out"
+        '
+        'ltsExit
+        '
+        Me.ltsExit.Name = "ltsExit"
+        Me.ltsExit.Size = New System.Drawing.Size(115, 22)
+        Me.ltsExit.Text = "Exit"
+        '
         'lblTsManage
         '
         Me.lblTsManage.Name = "lblTsManage"
         Me.lblTsManage.Size = New System.Drawing.Size(50, 22)
         Me.lblTsManage.Text = "Manage"
+        '
+        'ToolStripDropDownButton2
+        '
+        Me.ToolStripDropDownButton2.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
+        Me.ToolStripDropDownButton2.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.UIToolStripMenuItem, Me.BorrowesToolStripMenuItem, Me.UsersToolStripMenuItem})
+        Me.ToolStripDropDownButton2.Image = CType(resources.GetObject("ToolStripDropDownButton2.Image"), System.Drawing.Image)
+        Me.ToolStripDropDownButton2.ImageTransparentColor = System.Drawing.Color.Magenta
+        Me.ToolStripDropDownButton2.Name = "ToolStripDropDownButton2"
+        Me.ToolStripDropDownButton2.Size = New System.Drawing.Size(29, 22)
+        Me.ToolStripDropDownButton2.Text = "ToolStripDropDownButton2"
+        '
+        'UIToolStripMenuItem
+        '
+        Me.UIToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.DamageToolStripMenuItem})
+        Me.UIToolStripMenuItem.Name = "UIToolStripMenuItem"
+        Me.UIToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
+        Me.UIToolStripMenuItem.Text = "Items"
+        '
+        'DamageToolStripMenuItem
+        '
+        Me.DamageToolStripMenuItem.Name = "DamageToolStripMenuItem"
+        Me.DamageToolStripMenuItem.Size = New System.Drawing.Size(118, 22)
+        Me.DamageToolStripMenuItem.Text = "Damage"
+        '
+        'BorrowesToolStripMenuItem
+        '
+        Me.BorrowesToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.BoroToolStripMenuItem})
+        Me.BorrowesToolStripMenuItem.Name = "BorrowesToolStripMenuItem"
+        Me.BorrowesToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
+        Me.BorrowesToolStripMenuItem.Text = "Borrowers"
+        '
+        'UsersToolStripMenuItem
+        '
+        Me.UsersToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.StudentListToolStripMenuItem})
+        Me.UsersToolStripMenuItem.Name = "UsersToolStripMenuItem"
+        Me.UsersToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
+        Me.UsersToolStripMenuItem.Text = "Users"
+        '
+        'StudentListToolStripMenuItem
+        '
+        Me.StudentListToolStripMenuItem.Name = "StudentListToolStripMenuItem"
+        Me.StudentListToolStripMenuItem.Size = New System.Drawing.Size(133, 22)
+        Me.StudentListToolStripMenuItem.Text = "Student list"
         '
         'lblTsTransaction
         '
@@ -86,11 +152,55 @@ Partial Class Homepage
         Me.lblTsTransaction.Size = New System.Drawing.Size(67, 22)
         Me.lblTsTransaction.Text = "Transaction"
         '
+        'ToolStripDropDownButton3
+        '
+        Me.ToolStripDropDownButton3.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
+        Me.ToolStripDropDownButton3.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.BorrowItemToolStripMenuItem, Me.ReturnItemToolStripMenuItem})
+        Me.ToolStripDropDownButton3.Image = CType(resources.GetObject("ToolStripDropDownButton3.Image"), System.Drawing.Image)
+        Me.ToolStripDropDownButton3.ImageTransparentColor = System.Drawing.Color.Magenta
+        Me.ToolStripDropDownButton3.Name = "ToolStripDropDownButton3"
+        Me.ToolStripDropDownButton3.Size = New System.Drawing.Size(29, 22)
+        Me.ToolStripDropDownButton3.Text = "ToolStripDropDownButton3"
+        '
+        'BorrowItemToolStripMenuItem
+        '
+        Me.BorrowItemToolStripMenuItem.Name = "BorrowItemToolStripMenuItem"
+        Me.BorrowItemToolStripMenuItem.Size = New System.Drawing.Size(139, 22)
+        Me.BorrowItemToolStripMenuItem.Text = "Borrow Item"
+        '
+        'ReturnItemToolStripMenuItem
+        '
+        Me.ReturnItemToolStripMenuItem.Name = "ReturnItemToolStripMenuItem"
+        Me.ReturnItemToolStripMenuItem.Size = New System.Drawing.Size(139, 22)
+        Me.ReturnItemToolStripMenuItem.Text = "Return Item"
+        '
         'lblTsReports
         '
         Me.lblTsReports.Name = "lblTsReports"
         Me.lblTsReports.Size = New System.Drawing.Size(47, 22)
         Me.lblTsReports.Text = "Reports"
+        '
+        'ToolStripDropDownButton4
+        '
+        Me.ToolStripDropDownButton4.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
+        Me.ToolStripDropDownButton4.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.InventoryReportToolStripMenuItem, Me.BorrowHistoryToolStripMenuItem})
+        Me.ToolStripDropDownButton4.Image = CType(resources.GetObject("ToolStripDropDownButton4.Image"), System.Drawing.Image)
+        Me.ToolStripDropDownButton4.ImageTransparentColor = System.Drawing.Color.Magenta
+        Me.ToolStripDropDownButton4.Name = "ToolStripDropDownButton4"
+        Me.ToolStripDropDownButton4.Size = New System.Drawing.Size(29, 22)
+        Me.ToolStripDropDownButton4.Text = "ToolStripDropDownButton4"
+        '
+        'InventoryReportToolStripMenuItem
+        '
+        Me.InventoryReportToolStripMenuItem.Name = "InventoryReportToolStripMenuItem"
+        Me.InventoryReportToolStripMenuItem.Size = New System.Drawing.Size(162, 22)
+        Me.InventoryReportToolStripMenuItem.Text = "Inventory Report"
+        '
+        'BorrowHistoryToolStripMenuItem
+        '
+        Me.BorrowHistoryToolStripMenuItem.Name = "BorrowHistoryToolStripMenuItem"
+        Me.BorrowHistoryToolStripMenuItem.Size = New System.Drawing.Size(162, 22)
+        Me.BorrowHistoryToolStripMenuItem.Text = "Borrow History"
         '
         'ToolStripLabel2
         '
@@ -150,6 +260,25 @@ Partial Class Homepage
         Me.btnBorrowPage.TextImageRelation = System.Windows.Forms.TextImageRelation.TextAboveImage
         Me.btnBorrowPage.UseVisualStyleBackColor = False
         '
+        'btnDashBoard
+        '
+        Me.btnDashBoard.BackColor = System.Drawing.Color.Transparent
+        Me.btnDashBoard.FlatAppearance.BorderColor = System.Drawing.Color.DimGray
+        Me.btnDashBoard.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(CType(CType(9, Byte), Integer), CType(CType(123, Byte), Integer), CType(CType(222, Byte), Integer))
+        Me.btnDashBoard.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(CType(CType(87, Byte), Integer), CType(CType(181, Byte), Integer), CType(CType(247, Byte), Integer))
+        Me.btnDashBoard.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.btnDashBoard.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnDashBoard.Image = Global.main.My.Resources.Resources._9055226_bxs_dashboard_icon
+        Me.btnDashBoard.ImageAlign = System.Drawing.ContentAlignment.BottomCenter
+        Me.btnDashBoard.Location = New System.Drawing.Point(128, -1)
+        Me.btnDashBoard.Name = "btnDashBoard"
+        Me.btnDashBoard.Size = New System.Drawing.Size(113, 64)
+        Me.btnDashBoard.TabIndex = 6
+        Me.btnDashBoard.Text = "Dashboard"
+        Me.btnDashBoard.TextAlign = System.Drawing.ContentAlignment.TopCenter
+        Me.btnDashBoard.TextImageRelation = System.Windows.Forms.TextImageRelation.TextAboveImage
+        Me.btnDashBoard.UseVisualStyleBackColor = False
+        '
         'btnAddItem
         '
         Me.btnAddItem.BackColor = System.Drawing.Color.Transparent
@@ -185,34 +314,6 @@ Partial Class Homepage
         Me.btnReturnList.TextAlign = System.Drawing.ContentAlignment.TopCenter
         Me.btnReturnList.UseVisualStyleBackColor = False
         '
-        'pnlItem
-        '
-        Me.pnlItem.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.pnlItem.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.pnlItem.Location = New System.Drawing.Point(0, 89)
-        Me.pnlItem.Name = "pnlItem"
-        Me.pnlItem.Size = New System.Drawing.Size(1154, 584)
-        Me.pnlItem.TabIndex = 23
-        '
-        'btnDashBoard
-        '
-        Me.btnDashBoard.BackColor = System.Drawing.Color.Transparent
-        Me.btnDashBoard.FlatAppearance.BorderColor = System.Drawing.Color.DimGray
-        Me.btnDashBoard.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(CType(CType(9, Byte), Integer), CType(CType(123, Byte), Integer), CType(CType(222, Byte), Integer))
-        Me.btnDashBoard.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(CType(CType(87, Byte), Integer), CType(CType(181, Byte), Integer), CType(CType(247, Byte), Integer))
-        Me.btnDashBoard.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.btnDashBoard.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnDashBoard.Image = Global.main.My.Resources.Resources._9055226_bxs_dashboard_icon
-        Me.btnDashBoard.ImageAlign = System.Drawing.ContentAlignment.BottomCenter
-        Me.btnDashBoard.Location = New System.Drawing.Point(128, -1)
-        Me.btnDashBoard.Name = "btnDashBoard"
-        Me.btnDashBoard.Size = New System.Drawing.Size(113, 64)
-        Me.btnDashBoard.TabIndex = 6
-        Me.btnDashBoard.Text = "Dashboard"
-        Me.btnDashBoard.TextAlign = System.Drawing.ContentAlignment.TopCenter
-        Me.btnDashBoard.TextImageRelation = System.Windows.Forms.TextImageRelation.TextAboveImage
-        Me.btnDashBoard.UseVisualStyleBackColor = False
-        '
         'btnUser
         '
         Me.btnUser.BackColor = System.Drawing.Color.Transparent
@@ -232,113 +333,20 @@ Partial Class Homepage
         Me.btnUser.TextAlign = System.Drawing.ContentAlignment.TopCenter
         Me.btnUser.UseVisualStyleBackColor = False
         '
-        'ToolStripDropDownButton1
+        'pnlItem
         '
-        Me.ToolStripDropDownButton1.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
-        Me.ToolStripDropDownButton1.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ltsLogout, Me.ltsExit})
-        Me.ToolStripDropDownButton1.Image = CType(resources.GetObject("ToolStripDropDownButton1.Image"), System.Drawing.Image)
-        Me.ToolStripDropDownButton1.ImageTransparentColor = System.Drawing.Color.Magenta
-        Me.ToolStripDropDownButton1.Name = "ToolStripDropDownButton1"
-        Me.ToolStripDropDownButton1.Size = New System.Drawing.Size(29, 22)
-        Me.ToolStripDropDownButton1.Text = "a"
+        Me.pnlItem.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.pnlItem.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.pnlItem.Location = New System.Drawing.Point(0, 89)
+        Me.pnlItem.Name = "pnlItem"
+        Me.pnlItem.Size = New System.Drawing.Size(1154, 584)
+        Me.pnlItem.TabIndex = 23
         '
-        'ltsLogout
+        'BoroToolStripMenuItem
         '
-        Me.ltsLogout.Name = "ltsLogout"
-        Me.ltsLogout.Size = New System.Drawing.Size(115, 22)
-        Me.ltsLogout.Text = "Log out"
-        '
-        'ltsExit
-        '
-        Me.ltsExit.Name = "ltsExit"
-        Me.ltsExit.Size = New System.Drawing.Size(115, 22)
-        Me.ltsExit.Text = "Exit"
-        '
-        'ToolStripDropDownButton2
-        '
-        Me.ToolStripDropDownButton2.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
-        Me.ToolStripDropDownButton2.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.UIToolStripMenuItem, Me.BorrowesToolStripMenuItem, Me.UsersToolStripMenuItem})
-        Me.ToolStripDropDownButton2.Image = CType(resources.GetObject("ToolStripDropDownButton2.Image"), System.Drawing.Image)
-        Me.ToolStripDropDownButton2.ImageTransparentColor = System.Drawing.Color.Magenta
-        Me.ToolStripDropDownButton2.Name = "ToolStripDropDownButton2"
-        Me.ToolStripDropDownButton2.Size = New System.Drawing.Size(29, 22)
-        Me.ToolStripDropDownButton2.Text = "ToolStripDropDownButton2"
-        '
-        'UIToolStripMenuItem
-        '
-        Me.UIToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.DamageToolStripMenuItem})
-        Me.UIToolStripMenuItem.Name = "UIToolStripMenuItem"
-        Me.UIToolStripMenuItem.Size = New System.Drawing.Size(127, 22)
-        Me.UIToolStripMenuItem.Text = "Items"
-        '
-        'DamageToolStripMenuItem
-        '
-        Me.DamageToolStripMenuItem.Name = "DamageToolStripMenuItem"
-        Me.DamageToolStripMenuItem.Size = New System.Drawing.Size(118, 22)
-        Me.DamageToolStripMenuItem.Text = "Damage"
-        '
-        'BorrowesToolStripMenuItem
-        '
-        Me.BorrowesToolStripMenuItem.Name = "BorrowesToolStripMenuItem"
-        Me.BorrowesToolStripMenuItem.Size = New System.Drawing.Size(127, 22)
-        Me.BorrowesToolStripMenuItem.Text = "Borrowers"
-        '
-        'UsersToolStripMenuItem
-        '
-        Me.UsersToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.StudentListToolStripMenuItem})
-        Me.UsersToolStripMenuItem.Name = "UsersToolStripMenuItem"
-        Me.UsersToolStripMenuItem.Size = New System.Drawing.Size(127, 22)
-        Me.UsersToolStripMenuItem.Text = "Users"
-        '
-        'StudentListToolStripMenuItem
-        '
-        Me.StudentListToolStripMenuItem.Name = "StudentListToolStripMenuItem"
-        Me.StudentListToolStripMenuItem.Size = New System.Drawing.Size(133, 22)
-        Me.StudentListToolStripMenuItem.Text = "Student list"
-        '
-        'ToolStripDropDownButton3
-        '
-        Me.ToolStripDropDownButton3.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
-        Me.ToolStripDropDownButton3.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.BorrowItemToolStripMenuItem, Me.ReturnItemToolStripMenuItem})
-        Me.ToolStripDropDownButton3.Image = CType(resources.GetObject("ToolStripDropDownButton3.Image"), System.Drawing.Image)
-        Me.ToolStripDropDownButton3.ImageTransparentColor = System.Drawing.Color.Magenta
-        Me.ToolStripDropDownButton3.Name = "ToolStripDropDownButton3"
-        Me.ToolStripDropDownButton3.Size = New System.Drawing.Size(29, 22)
-        Me.ToolStripDropDownButton3.Text = "ToolStripDropDownButton3"
-        '
-        'BorrowItemToolStripMenuItem
-        '
-        Me.BorrowItemToolStripMenuItem.Name = "BorrowItemToolStripMenuItem"
-        Me.BorrowItemToolStripMenuItem.Size = New System.Drawing.Size(139, 22)
-        Me.BorrowItemToolStripMenuItem.Text = "Borrow Item"
-        '
-        'ReturnItemToolStripMenuItem
-        '
-        Me.ReturnItemToolStripMenuItem.Name = "ReturnItemToolStripMenuItem"
-        Me.ReturnItemToolStripMenuItem.Size = New System.Drawing.Size(139, 22)
-        Me.ReturnItemToolStripMenuItem.Text = "Return Item"
-        '
-        'ToolStripDropDownButton4
-        '
-        Me.ToolStripDropDownButton4.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
-        Me.ToolStripDropDownButton4.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.InventoryReportToolStripMenuItem, Me.BorrowHistoryToolStripMenuItem})
-        Me.ToolStripDropDownButton4.Image = CType(resources.GetObject("ToolStripDropDownButton4.Image"), System.Drawing.Image)
-        Me.ToolStripDropDownButton4.ImageTransparentColor = System.Drawing.Color.Magenta
-        Me.ToolStripDropDownButton4.Name = "ToolStripDropDownButton4"
-        Me.ToolStripDropDownButton4.Size = New System.Drawing.Size(29, 22)
-        Me.ToolStripDropDownButton4.Text = "ToolStripDropDownButton4"
-        '
-        'InventoryReportToolStripMenuItem
-        '
-        Me.InventoryReportToolStripMenuItem.Name = "InventoryReportToolStripMenuItem"
-        Me.InventoryReportToolStripMenuItem.Size = New System.Drawing.Size(162, 22)
-        Me.InventoryReportToolStripMenuItem.Text = "Inventory Report"
-        '
-        'BorrowHistoryToolStripMenuItem
-        '
-        Me.BorrowHistoryToolStripMenuItem.Name = "BorrowHistoryToolStripMenuItem"
-        Me.BorrowHistoryToolStripMenuItem.Size = New System.Drawing.Size(162, 22)
-        Me.BorrowHistoryToolStripMenuItem.Text = "Borrow History"
+        Me.BoroToolStripMenuItem.Name = "BoroToolStripMenuItem"
+        Me.BoroToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
+        Me.BoroToolStripMenuItem.Text = "Borrow"
         '
         'Homepage
         '
@@ -390,4 +398,5 @@ Partial Class Homepage
     Friend WithEvents btnReturnList As System.Windows.Forms.Button
     Friend WithEvents btnUser As System.Windows.Forms.Button
     Friend WithEvents pnlItem As System.Windows.Forms.Panel
+    Friend WithEvents BoroToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
 End Class

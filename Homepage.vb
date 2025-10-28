@@ -88,4 +88,8 @@
     Private Sub ToolStripSplitButton1_ButtonClick(sender As System.Object, e As System.EventArgs)
 
     End Sub
+
+    Private Sub BoroToolStripMenuItem_Click(sender As System.Object, e As System.EventArgs) Handles BoroToolStripMenuItem.Click
+        LoadForm(New frmBorrowerCartList())
+    End Sub
 End Class

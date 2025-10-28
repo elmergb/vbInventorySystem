@@ -30,7 +30,7 @@ Partial Class frmCartListView
         'lvCart
         '
         Me.lvCart.HideSelection = False
-        Me.lvCart.Location = New System.Drawing.Point(580, 98)
+        Me.lvCart.Location = New System.Drawing.Point(806, 216)
         Me.lvCart.Name = "lvCart"
         Me.lvCart.Size = New System.Drawing.Size(303, 348)
         Me.lvCart.TabIndex = 0
@@ -38,7 +38,7 @@ Partial Class frmCartListView
         '
         'btnDelete
         '
-        Me.btnDelete.Location = New System.Drawing.Point(717, 12)
+        Me.btnDelete.Location = New System.Drawing.Point(709, 332)
         Me.btnDelete.Name = "btnDelete"
         Me.btnDelete.Size = New System.Drawing.Size(91, 45)
         Me.btnDelete.TabIndex = 1
@@ -47,7 +47,7 @@ Partial Class frmCartListView
         '
         'btnEdit
         '
-        Me.btnEdit.Location = New System.Drawing.Point(546, 38)
+        Me.btnEdit.Location = New System.Drawing.Point(709, 270)
         Me.btnEdit.Name = "btnEdit"
         Me.btnEdit.Size = New System.Drawing.Size(91, 45)
         Me.btnEdit.TabIndex = 2
