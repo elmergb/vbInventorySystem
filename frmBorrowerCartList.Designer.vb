@@ -22,16 +22,8 @@ Partial Class frmBorrowerCartList
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
-        Me.dgvBorrowerCart = New System.Windows.Forms.DataGridView()
-        Me.BorrowID = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.ItemID = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Column2 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.ItemName = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.QuantityBorrowed = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Contact = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Purpose = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DateBorrowed = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Remarks = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.txtStudentNo = New System.Windows.Forms.TextBox()
         Me.Label2 = New System.Windows.Forms.Label()
@@ -52,90 +44,18 @@ Partial Class frmBorrowerCartList
         Me.txtSchoolYear = New System.Windows.Forms.TextBox()
         Me.Label11 = New System.Windows.Forms.Label()
         Me.DateTimePicker1 = New System.Windows.Forms.DateTimePicker()
-        Me.cbSemester = New System.Windows.Forms.ComboBox()
         Me.cbTeacher = New System.Windows.Forms.ComboBox()
         Me.Label12 = New System.Windows.Forms.Label()
-        CType(Me.dgvBorrowerCart, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.txtSemester = New System.Windows.Forms.TextBox()
+        Me.dgvItemList = New System.Windows.Forms.DataGridView()
+        Me.Item = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.NameOfItem = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.ItemDescription = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Category = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.ItemLocation = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Quantity = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        CType(Me.dgvItemList, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
-        '
-        'dgvBorrowerCart
-        '
-        Me.dgvBorrowerCart.AllowUserToAddRows = False
-        Me.dgvBorrowerCart.AllowUserToDeleteRows = False
-        Me.dgvBorrowerCart.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill
-        Me.dgvBorrowerCart.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.dgvBorrowerCart.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.BorrowID, Me.ItemID, Me.Column2, Me.ItemName, Me.QuantityBorrowed, Me.Contact, Me.Purpose, Me.DateBorrowed, Me.Remarks})
-        Me.dgvBorrowerCart.Location = New System.Drawing.Point(16, 313)
-        Me.dgvBorrowerCart.Name = "dgvBorrowerCart"
-        Me.dgvBorrowerCart.ReadOnly = True
-        Me.dgvBorrowerCart.RowHeadersVisible = False
-        Me.dgvBorrowerCart.Size = New System.Drawing.Size(1262, 397)
-        Me.dgvBorrowerCart.TabIndex = 0
-        '
-        'BorrowID
-        '
-        Me.BorrowID.DataPropertyName = "BorrowID"
-        Me.BorrowID.HeaderText = "BorrowID"
-        Me.BorrowID.Name = "BorrowID"
-        Me.BorrowID.ReadOnly = True
-        Me.BorrowID.Visible = False
-        '
-        'ItemID
-        '
-        Me.ItemID.DataPropertyName = "ItemID"
-        Me.ItemID.HeaderText = "ItemID"
-        Me.ItemID.Name = "ItemID"
-        Me.ItemID.ReadOnly = True
-        Me.ItemID.Visible = False
-        '
-        'Column2
-        '
-        Me.Column2.DataPropertyName = "BorrowerName"
-        Me.Column2.HeaderText = "Borrower Name"
-        Me.Column2.Name = "Column2"
-        Me.Column2.ReadOnly = True
-        '
-        'ItemName
-        '
-        Me.ItemName.DataPropertyName = "ItemName"
-        Me.ItemName.HeaderText = "item name"
-        Me.ItemName.Name = "ItemName"
-        Me.ItemName.ReadOnly = True
-        '
-        'QuantityBorrowed
-        '
-        Me.QuantityBorrowed.DataPropertyName = "QuantityBorrowed"
-        Me.QuantityBorrowed.HeaderText = "Quantity Borrowed"
-        Me.QuantityBorrowed.Name = "QuantityBorrowed"
-        Me.QuantityBorrowed.ReadOnly = True
-        '
-        'Contact
-        '
-        Me.Contact.DataPropertyName = "Contact"
-        Me.Contact.HeaderText = "Contact"
-        Me.Contact.Name = "Contact"
-        Me.Contact.ReadOnly = True
-        '
-        'Purpose
-        '
-        Me.Purpose.DataPropertyName = "Purpose"
-        Me.Purpose.HeaderText = "Purpose"
-        Me.Purpose.Name = "Purpose"
-        Me.Purpose.ReadOnly = True
-        '
-        'DateBorrowed
-        '
-        Me.DateBorrowed.DataPropertyName = "DateBorrowed"
-        Me.DateBorrowed.HeaderText = "DateBorrowed"
-        Me.DateBorrowed.Name = "DateBorrowed"
-        Me.DateBorrowed.ReadOnly = True
-        '
-        'Remarks
-        '
-        Me.Remarks.DataPropertyName = "Remarks"
-        Me.Remarks.HeaderText = "Remarks"
-        Me.Remarks.Name = "Remarks"
-        Me.Remarks.ReadOnly = True
         '
         'Label1
         '
@@ -297,6 +217,7 @@ Partial Class frmBorrowerCartList
         '
         Me.txtSchoolYear.Location = New System.Drawing.Point(721, 72)
         Me.txtSchoolYear.Name = "txtSchoolYear"
+        Me.txtSchoolYear.ReadOnly = True
         Me.txtSchoolYear.Size = New System.Drawing.Size(155, 20)
         Me.txtSchoolYear.TabIndex = 18
         '
@@ -319,14 +240,6 @@ Partial Class frmBorrowerCartList
         Me.DateTimePicker1.Size = New System.Drawing.Size(155, 20)
         Me.DateTimePicker1.TabIndex = 23
         '
-        'cbSemester
-        '
-        Me.cbSemester.FormattingEnabled = True
-        Me.cbSemester.Location = New System.Drawing.Point(410, 205)
-        Me.cbSemester.Name = "cbSemester"
-        Me.cbSemester.Size = New System.Drawing.Size(155, 21)
-        Me.cbSemester.TabIndex = 24
-        '
         'cbTeacher
         '
         Me.cbTeacher.FormattingEnabled = True
@@ -345,14 +258,99 @@ Partial Class frmBorrowerCartList
         Me.Label12.TabIndex = 26
         Me.Label12.Text = "Teacher:"
         '
+        'txtSemester
+        '
+        Me.txtSemester.Location = New System.Drawing.Point(410, 205)
+        Me.txtSemester.Name = "txtSemester"
+        Me.txtSemester.ReadOnly = True
+        Me.txtSemester.Size = New System.Drawing.Size(155, 20)
+        Me.txtSemester.TabIndex = 27
+        '
+        'dgvItemList
+        '
+        Me.dgvItemList.AllowUserToAddRows = False
+        Me.dgvItemList.AllowUserToDeleteRows = False
+        Me.dgvItemList.AllowUserToResizeColumns = False
+        Me.dgvItemList.AllowUserToResizeRows = False
+        DataGridViewCellStyle1.BackColor = System.Drawing.Color.White
+        DataGridViewCellStyle1.ForeColor = System.Drawing.Color.Black
+        Me.dgvItemList.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle1
+        Me.dgvItemList.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill
+        Me.dgvItemList.BorderStyle = System.Windows.Forms.BorderStyle.None
+        Me.dgvItemList.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.[Single]
+        DataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Control
+        DataGridViewCellStyle2.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText
+        DataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight
+        DataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.dgvItemList.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle2
+        Me.dgvItemList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
+        Me.dgvItemList.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.Item, Me.NameOfItem, Me.ItemDescription, Me.Category, Me.ItemLocation, Me.Quantity})
+        Me.dgvItemList.ImeMode = System.Windows.Forms.ImeMode.NoControl
+        Me.dgvItemList.Location = New System.Drawing.Point(16, 271)
+        Me.dgvItemList.Name = "dgvItemList"
+        Me.dgvItemList.ReadOnly = True
+        Me.dgvItemList.RowHeadersVisible = False
+        Me.dgvItemList.RowHeadersWidth = 50
+        Me.dgvItemList.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
+        Me.dgvItemList.Size = New System.Drawing.Size(1353, 370)
+        Me.dgvItemList.TabIndex = 28
+        '
+        'Item
+        '
+        Me.Item.DataPropertyName = "ItemID"
+        Me.Item.FillWeight = 60.0!
+        Me.Item.HeaderText = "Item ID"
+        Me.Item.Name = "Item"
+        Me.Item.ReadOnly = True
+        Me.Item.Visible = False
+        '
+        'NameOfItem
+        '
+        Me.NameOfItem.DataPropertyName = "Name"
+        Me.NameOfItem.HeaderText = "Name"
+        Me.NameOfItem.Name = "NameOfItem"
+        Me.NameOfItem.ReadOnly = True
+        '
+        'ItemDescription
+        '
+        Me.ItemDescription.DataPropertyName = "ItemDescription"
+        Me.ItemDescription.HeaderText = "Description"
+        Me.ItemDescription.Name = "ItemDescription"
+        Me.ItemDescription.ReadOnly = True
+        '
+        'Category
+        '
+        Me.Category.DataPropertyName = "ItemCategory"
+        Me.Category.HeaderText = "Category"
+        Me.Category.Name = "Category"
+        Me.Category.ReadOnly = True
+        '
+        'ItemLocation
+        '
+        Me.ItemLocation.DataPropertyName = "ItemLocation"
+        Me.ItemLocation.HeaderText = "Location"
+        Me.ItemLocation.Name = "ItemLocation"
+        Me.ItemLocation.ReadOnly = True
+        '
+        'Quantity
+        '
+        Me.Quantity.DataPropertyName = "Quantity"
+        Me.Quantity.HeaderText = "Quantity"
+        Me.Quantity.Name = "Quantity"
+        Me.Quantity.ReadOnly = True
+        '
         'frmBorrowerCartList
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(1381, 916)
+        Me.Controls.Add(Me.dgvItemList)
+        Me.Controls.Add(Me.txtSemester)
         Me.Controls.Add(Me.Label12)
         Me.Controls.Add(Me.cbTeacher)
-        Me.Controls.Add(Me.cbSemester)
         Me.Controls.Add(Me.DateTimePicker1)
         Me.Controls.Add(Me.Label9)
         Me.Controls.Add(Me.Label10)
@@ -373,25 +371,14 @@ Partial Class frmBorrowerCartList
         Me.Controls.Add(Me.Label2)
         Me.Controls.Add(Me.txtStudentNo)
         Me.Controls.Add(Me.Label1)
-        Me.Controls.Add(Me.dgvBorrowerCart)
         Me.Name = "frmBorrowerCartList"
         Me.Text = "frmBorrowerCartList"
-        CType(Me.dgvBorrowerCart, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.dgvItemList, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
     End Sub
 
-    Friend WithEvents dgvBorrowerCart As DataGridView
-    Friend WithEvents BorrowID As DataGridViewTextBoxColumn
-    Friend WithEvents ItemID As DataGridViewTextBoxColumn
-    Friend WithEvents Column2 As DataGridViewTextBoxColumn
-    Friend WithEvents ItemName As DataGridViewTextBoxColumn
-    Friend WithEvents QuantityBorrowed As DataGridViewTextBoxColumn
-    Friend WithEvents Contact As DataGridViewTextBoxColumn
-    Friend WithEvents Purpose As DataGridViewTextBoxColumn
-    Friend WithEvents DateBorrowed As DataGridViewTextBoxColumn
-    Friend WithEvents Remarks As DataGridViewTextBoxColumn
     Friend WithEvents Label1 As System.Windows.Forms.Label
     Friend WithEvents txtStudentNo As System.Windows.Forms.TextBox
     Friend WithEvents Label2 As System.Windows.Forms.Label
@@ -412,7 +399,14 @@ Partial Class frmBorrowerCartList
     Friend WithEvents txtSchoolYear As System.Windows.Forms.TextBox
     Friend WithEvents Label11 As System.Windows.Forms.Label
     Friend WithEvents DateTimePicker1 As System.Windows.Forms.DateTimePicker
-    Friend WithEvents cbSemester As System.Windows.Forms.ComboBox
     Friend WithEvents cbTeacher As System.Windows.Forms.ComboBox
     Friend WithEvents Label12 As System.Windows.Forms.Label
+    Friend WithEvents txtSemester As System.Windows.Forms.TextBox
+    Friend WithEvents dgvItemList As System.Windows.Forms.DataGridView
+    Friend WithEvents Item As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents NameOfItem As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents ItemDescription As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents Category As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents ItemLocation As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents Quantity As System.Windows.Forms.DataGridViewTextBoxColumn
 End Class

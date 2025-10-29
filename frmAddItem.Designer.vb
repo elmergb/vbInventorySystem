@@ -23,6 +23,8 @@ Partial Class frmAddItem
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         Me.GroupBox1 = New System.Windows.Forms.GroupBox()
+        Me.Label6 = New System.Windows.Forms.Label()
+        Me.txtItemDesc = New System.Windows.Forms.TextBox()
         Me.cbRemarks = New System.Windows.Forms.ComboBox()
         Me.Label5 = New System.Windows.Forms.Label()
         Me.nupQuantity = New System.Windows.Forms.NumericUpDown()
@@ -36,12 +38,19 @@ Partial Class frmAddItem
         Me.btnSave = New System.Windows.Forms.Button()
         Me.Button2 = New System.Windows.Forms.Button()
         Me.Button3 = New System.Windows.Forms.Button()
+        Me.nupDamaged = New System.Windows.Forms.NumericUpDown()
+        Me.Label7 = New System.Windows.Forms.Label()
         Me.GroupBox1.SuspendLayout()
         CType(Me.nupQuantity, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.nupDamaged, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'GroupBox1
         '
+        Me.GroupBox1.Controls.Add(Me.nupDamaged)
+        Me.GroupBox1.Controls.Add(Me.Label7)
+        Me.GroupBox1.Controls.Add(Me.Label6)
+        Me.GroupBox1.Controls.Add(Me.txtItemDesc)
         Me.GroupBox1.Controls.Add(Me.cbRemarks)
         Me.GroupBox1.Controls.Add(Me.Label5)
         Me.GroupBox1.Controls.Add(Me.nupQuantity)
@@ -54,10 +63,28 @@ Partial Class frmAddItem
         Me.GroupBox1.Controls.Add(Me.txtNameOFItem)
         Me.GroupBox1.Location = New System.Drawing.Point(12, 35)
         Me.GroupBox1.Name = "GroupBox1"
-        Me.GroupBox1.Size = New System.Drawing.Size(590, 275)
+        Me.GroupBox1.Size = New System.Drawing.Size(590, 317)
         Me.GroupBox1.TabIndex = 0
         Me.GroupBox1.TabStop = False
         Me.GroupBox1.Text = "GroupBox1"
+        '
+        'Label6
+        '
+        Me.Label6.Font = New System.Drawing.Font("Segoe Fluent Icons", 15.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label6.Location = New System.Drawing.Point(7, 106)
+        Me.Label6.Name = "Label6"
+        Me.Label6.Size = New System.Drawing.Size(149, 28)
+        Me.Label6.TabIndex = 14
+        Me.Label6.Text = "Item Description"
+        '
+        'txtItemDesc
+        '
+        Me.txtItemDesc.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtItemDesc.Location = New System.Drawing.Point(11, 137)
+        Me.txtItemDesc.Multiline = True
+        Me.txtItemDesc.Name = "txtItemDesc"
+        Me.txtItemDesc.Size = New System.Drawing.Size(223, 31)
+        Me.txtItemDesc.TabIndex = 13
         '
         'cbRemarks
         '
@@ -97,7 +124,7 @@ Partial Class frmAddItem
         '
         Me.cbLocation.FormattingEnabled = True
         Me.cbLocation.Items.AddRange(New Object() {"PB101", "Bar", "Bakery"})
-        Me.cbLocation.Location = New System.Drawing.Point(10, 206)
+        Me.cbLocation.Location = New System.Drawing.Point(6, 272)
         Me.cbLocation.Name = "cbLocation"
         Me.cbLocation.Size = New System.Drawing.Size(223, 21)
         Me.cbLocation.TabIndex = 8
@@ -105,7 +132,7 @@ Partial Class frmAddItem
         'Label3
         '
         Me.Label3.Font = New System.Drawing.Font("Segoe Fluent Icons", 15.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label3.Location = New System.Drawing.Point(6, 175)
+        Me.Label3.Location = New System.Drawing.Point(2, 241)
         Me.Label3.Name = "Label3"
         Me.Label3.Size = New System.Drawing.Size(112, 28)
         Me.Label3.TabIndex = 7
@@ -114,7 +141,7 @@ Partial Class frmAddItem
         'Label2
         '
         Me.Label2.Font = New System.Drawing.Font("Segoe Fluent Icons", 15.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label2.Location = New System.Drawing.Point(6, 106)
+        Me.Label2.Location = New System.Drawing.Point(2, 172)
         Me.Label2.Name = "Label2"
         Me.Label2.Size = New System.Drawing.Size(112, 28)
         Me.Label2.TabIndex = 6
@@ -133,7 +160,7 @@ Partial Class frmAddItem
         '
         Me.cbCategory.FormattingEnabled = True
         Me.cbCategory.Items.AddRange(New Object() {"Kitchen", "Baking", "Liquor"})
-        Me.cbCategory.Location = New System.Drawing.Point(10, 137)
+        Me.cbCategory.Location = New System.Drawing.Point(6, 203)
         Me.cbCategory.Name = "cbCategory"
         Me.cbCategory.Size = New System.Drawing.Size(223, 21)
         Me.cbCategory.TabIndex = 2
@@ -150,7 +177,7 @@ Partial Class frmAddItem
         'btnSave
         '
         Me.btnSave.Font = New System.Drawing.Font("Constantia", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnSave.Location = New System.Drawing.Point(62, 339)
+        Me.btnSave.Location = New System.Drawing.Point(63, 372)
         Me.btnSave.Name = "btnSave"
         Me.btnSave.Size = New System.Drawing.Size(84, 44)
         Me.btnSave.TabIndex = 3
@@ -160,7 +187,7 @@ Partial Class frmAddItem
         'Button2
         '
         Me.Button2.Font = New System.Drawing.Font("Constantia", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Button2.Location = New System.Drawing.Point(161, 339)
+        Me.Button2.Location = New System.Drawing.Point(162, 372)
         Me.Button2.Name = "Button2"
         Me.Button2.Size = New System.Drawing.Size(84, 44)
         Me.Button2.TabIndex = 4
@@ -170,12 +197,28 @@ Partial Class frmAddItem
         'Button3
         '
         Me.Button3.Font = New System.Drawing.Font("Constantia", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Button3.Location = New System.Drawing.Point(476, 339)
+        Me.Button3.Location = New System.Drawing.Point(477, 372)
         Me.Button3.Name = "Button3"
         Me.Button3.Size = New System.Drawing.Size(84, 44)
         Me.Button3.TabIndex = 5
         Me.Button3.Text = "Exit"
         Me.Button3.UseVisualStyleBackColor = True
+        '
+        'nupDamaged
+        '
+        Me.nupDamaged.Location = New System.Drawing.Point(308, 204)
+        Me.nupDamaged.Name = "nupDamaged"
+        Me.nupDamaged.Size = New System.Drawing.Size(176, 20)
+        Me.nupDamaged.TabIndex = 16
+        '
+        'Label7
+        '
+        Me.Label7.Font = New System.Drawing.Font("Segoe Fluent Icons", 15.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label7.Location = New System.Drawing.Point(304, 174)
+        Me.Label7.Name = "Label7"
+        Me.Label7.Size = New System.Drawing.Size(148, 28)
+        Me.Label7.TabIndex = 15
+        Me.Label7.Text = "Quantity Damage"
         '
         'frmAddItem
         '
@@ -191,6 +234,7 @@ Partial Class frmAddItem
         Me.GroupBox1.ResumeLayout(False)
         Me.GroupBox1.PerformLayout()
         CType(Me.nupQuantity, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.nupDamaged, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
 
     End Sub
@@ -208,4 +252,8 @@ Partial Class frmAddItem
     Friend WithEvents Button3 As System.Windows.Forms.Button
     Friend WithEvents Label5 As Label
     Friend WithEvents cbRemarks As ComboBox
+    Friend WithEvents Label6 As System.Windows.Forms.Label
+    Friend WithEvents txtItemDesc As System.Windows.Forms.TextBox
+    Friend WithEvents nupDamaged As System.Windows.Forms.NumericUpDown
+    Friend WithEvents Label7 As System.Windows.Forms.Label
 End Class

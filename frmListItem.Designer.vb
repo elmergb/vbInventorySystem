@@ -26,14 +26,6 @@ Partial Class frmListItem
         Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmListItem))
         Me.dgvItemList = New System.Windows.Forms.DataGridView()
-        Me.Item = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.NameOfItem = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Category = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.ItemLocation = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Quantity = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Status = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Remarks = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Damaged = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.btnAdd = New System.Windows.Forms.Button()
         Me.btnEdit = New System.Windows.Forms.Button()
         Me.btnBorrow = New System.Windows.Forms.Button()
@@ -64,6 +56,15 @@ Partial Class frmListItem
         Me.Label3 = New System.Windows.Forms.Label()
         Me.btnDelete = New System.Windows.Forms.Button()
         Me.Label2 = New System.Windows.Forms.Label()
+        Me.Item = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.NameOfItem = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.ItemDesc = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Category = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.ItemLocation = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Quantity = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Status = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Remarks = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Damaged = New System.Windows.Forms.DataGridViewTextBoxColumn()
         CType(Me.dgvItemList, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.ts.SuspendLayout()
         Me.Panel1.SuspendLayout()
@@ -90,7 +91,7 @@ Partial Class frmListItem
         DataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
         Me.dgvItemList.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle2
         Me.dgvItemList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.dgvItemList.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.Item, Me.NameOfItem, Me.Category, Me.ItemLocation, Me.Quantity, Me.Status, Me.Remarks, Me.Damaged})
+        Me.dgvItemList.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.Item, Me.NameOfItem, Me.ItemDesc, Me.Category, Me.ItemLocation, Me.Quantity, Me.Status, Me.Remarks, Me.Damaged})
         Me.dgvItemList.ImeMode = System.Windows.Forms.ImeMode.NoControl
         Me.dgvItemList.Location = New System.Drawing.Point(21, 144)
         Me.dgvItemList.Name = "dgvItemList"
@@ -100,65 +101,6 @@ Partial Class frmListItem
         Me.dgvItemList.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
         Me.dgvItemList.Size = New System.Drawing.Size(1223, 603)
         Me.dgvItemList.TabIndex = 0
-        '
-        'Item
-        '
-        Me.Item.DataPropertyName = "ItemID"
-        Me.Item.FillWeight = 60.0!
-        Me.Item.HeaderText = "Item ID"
-        Me.Item.Name = "Item"
-        Me.Item.ReadOnly = True
-        Me.Item.Visible = False
-        '
-        'NameOfItem
-        '
-        Me.NameOfItem.DataPropertyName = "Name"
-        Me.NameOfItem.HeaderText = "Name"
-        Me.NameOfItem.Name = "NameOfItem"
-        Me.NameOfItem.ReadOnly = True
-        '
-        'Category
-        '
-        Me.Category.DataPropertyName = "ItemCategory"
-        Me.Category.HeaderText = "Category"
-        Me.Category.Name = "Category"
-        Me.Category.ReadOnly = True
-        '
-        'ItemLocation
-        '
-        Me.ItemLocation.DataPropertyName = "ItemLocation"
-        Me.ItemLocation.HeaderText = "Location"
-        Me.ItemLocation.Name = "ItemLocation"
-        Me.ItemLocation.ReadOnly = True
-        '
-        'Quantity
-        '
-        Me.Quantity.DataPropertyName = "Quantity"
-        Me.Quantity.HeaderText = "Quantity"
-        Me.Quantity.Name = "Quantity"
-        Me.Quantity.ReadOnly = True
-        '
-        'Status
-        '
-        Me.Status.DataPropertyName = "ItemStatus"
-        Me.Status.HeaderText = "Status"
-        Me.Status.Name = "Status"
-        Me.Status.ReadOnly = True
-        '
-        'Remarks
-        '
-        Me.Remarks.DataPropertyName = "ItemRemarks"
-        Me.Remarks.FillWeight = 150.0!
-        Me.Remarks.HeaderText = "Remarks"
-        Me.Remarks.Name = "Remarks"
-        Me.Remarks.ReadOnly = True
-        '
-        'Damaged
-        '
-        Me.Damaged.DataPropertyName = "QuantityDamaged"
-        Me.Damaged.HeaderText = "Quantity Damage"
-        Me.Damaged.Name = "Damaged"
-        Me.Damaged.ReadOnly = True
         '
         'btnAdd
         '
@@ -400,6 +342,72 @@ Partial Class frmListItem
         Me.Label2.TabIndex = 18
         Me.Label2.Text = "Search: "
         '
+        'Item
+        '
+        Me.Item.DataPropertyName = "ItemID"
+        Me.Item.FillWeight = 60.0!
+        Me.Item.HeaderText = "Item ID"
+        Me.Item.Name = "Item"
+        Me.Item.ReadOnly = True
+        Me.Item.Visible = False
+        '
+        'NameOfItem
+        '
+        Me.NameOfItem.DataPropertyName = "Name"
+        Me.NameOfItem.HeaderText = "Name"
+        Me.NameOfItem.Name = "NameOfItem"
+        Me.NameOfItem.ReadOnly = True
+        '
+        'ItemDesc
+        '
+        Me.ItemDesc.DataPropertyName = "ItemDescription"
+        Me.ItemDesc.HeaderText = "ItemDescription"
+        Me.ItemDesc.Name = "ItemDesc"
+        Me.ItemDesc.ReadOnly = True
+        '
+        'Category
+        '
+        Me.Category.DataPropertyName = "ItemCategory"
+        Me.Category.HeaderText = "Category"
+        Me.Category.Name = "Category"
+        Me.Category.ReadOnly = True
+        '
+        'ItemLocation
+        '
+        Me.ItemLocation.DataPropertyName = "ItemLocation"
+        Me.ItemLocation.HeaderText = "Location"
+        Me.ItemLocation.Name = "ItemLocation"
+        Me.ItemLocation.ReadOnly = True
+        '
+        'Quantity
+        '
+        Me.Quantity.DataPropertyName = "Quantity"
+        Me.Quantity.HeaderText = "Quantity"
+        Me.Quantity.Name = "Quantity"
+        Me.Quantity.ReadOnly = True
+        '
+        'Status
+        '
+        Me.Status.DataPropertyName = "ItemStatus"
+        Me.Status.HeaderText = "Status"
+        Me.Status.Name = "Status"
+        Me.Status.ReadOnly = True
+        '
+        'Remarks
+        '
+        Me.Remarks.DataPropertyName = "ItemRemarks"
+        Me.Remarks.FillWeight = 150.0!
+        Me.Remarks.HeaderText = "Remarks"
+        Me.Remarks.Name = "Remarks"
+        Me.Remarks.ReadOnly = True
+        '
+        'Damaged
+        '
+        Me.Damaged.DataPropertyName = "ItemDamage"
+        Me.Damaged.HeaderText = "Quantity Damage"
+        Me.Damaged.Name = "Damaged"
+        Me.Damaged.ReadOnly = True
+        '
         'frmListItem
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -456,14 +464,15 @@ Partial Class frmListItem
     Friend WithEvents lblTsTime As ToolStripLabel
     Friend WithEvents Panel1 As Panel
     Friend WithEvents btnDelete As Button
-    Friend WithEvents Item As DataGridViewTextBoxColumn
-    Friend WithEvents NameOfItem As DataGridViewTextBoxColumn
-    Friend WithEvents Category As DataGridViewTextBoxColumn
-    Friend WithEvents ItemLocation As DataGridViewTextBoxColumn
-    Friend WithEvents Quantity As DataGridViewTextBoxColumn
-    Friend WithEvents Status As DataGridViewTextBoxColumn
-    Friend WithEvents Remarks As DataGridViewTextBoxColumn
-    Friend WithEvents Damaged As DataGridViewTextBoxColumn
     Friend WithEvents Label2 As Label
     Friend WithEvents Label3 As Label
+    Friend WithEvents Item As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents NameOfItem As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents ItemDesc As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents Category As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents ItemLocation As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents Quantity As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents Status As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents Remarks As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents Damaged As System.Windows.Forms.DataGridViewTextBoxColumn
 End Class

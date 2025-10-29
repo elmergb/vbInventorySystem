@@ -29,17 +29,27 @@ Public Class frmListItem
         If e.RowIndex >= 0 Then
             dgvItemList.Tag = dgvItemList.Rows(e.RowIndex).Cells("Item").Value
 
-            frmAddItem.txtNameOFItem.Text = dgvItemList.Rows(e.RowIndex).Cells("NameofItem").Value.ToString
+            frmAddItem.txtNameOFItem.Text = dgvItemList.Rows(e.RowIndex).Cells("NameofItem").Value.ToString()
+            frmAddItem.txtItemDesc.Text = dgvItemList.Rows(e.RowIndex).Cells("ItemDesc").Value.ToString()
             frmAddItem.cbCategory.Text = dgvItemList.Rows(e.RowIndex).Cells("Category").Value.ToString()
             frmAddItem.cbLocation.Text = dgvItemList.Rows(e.RowIndex).Cells("ItemLocation").Value.ToString()
-            frmAddItem.nupQuantity.Value = dgvItemList.Rows(e.RowIndex).Cells("Quantity").Value
+            frmAddItem.cbRemarks.Text = dgvItemList.Rows(e.RowIndex).Cells("Remarks").Value.ToString()
+
+            ' ✅ Quantity
             Dim qty As Object = dgvItemList.Rows(e.RowIndex).Cells("Quantity").Value
-            If qty IsNot Nothing AndAlso Not IsDBNull(qty) Then
+            If qty IsNot Nothing AndAlso Not IsDBNull(qty) AndAlso IsNumeric(qty) Then
                 frmAddItem.nupQuantity.Value = CInt(qty)
             Else
                 frmAddItem.nupQuantity.Value = 0
             End If
-            frmAddItem.cbRemarks.Text = dgvItemList.Rows(e.RowIndex).Cells("Remarks").Value.ToString()
+
+            ' ✅ Damaged (if you have a separate control, e.g., nupDamaged)
+            Dim qtydamage As Object = dgvItemList.Rows(e.RowIndex).Cells("Damaged").Value
+            If qtydamage IsNot Nothing AndAlso Not IsDBNull(qtydamage) AndAlso IsNumeric(qtydamage) Then
+                frmAddItem.nupDamaged.Value = CInt(qtydamage)
+            Else
+                frmAddItem.nupDamaged.Value = 0
+            End If
         End If
     End Sub
 
@@ -116,4 +126,8 @@ Public Class frmListItem
     '        txtUsername.ForeColor = Color.Gray
     '    End If
     'End Sub
+
+    Private Sub dgvItemList_CellContentClick(sender As System.Object, e As System.Windows.Forms.DataGridViewCellEventArgs) Handles dgvItemList.CellContentClick
+
+    End Sub
 End Class
