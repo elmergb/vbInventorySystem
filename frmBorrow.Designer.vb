@@ -59,7 +59,7 @@ Partial Class frmBorrow
         'Label2
         '
         Me.Label2.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label2.Location = New System.Drawing.Point(42, 183)
+        Me.Label2.Location = New System.Drawing.Point(43, 123)
         Me.Label2.Name = "Label2"
         Me.Label2.Size = New System.Drawing.Size(89, 23)
         Me.Label2.TabIndex = 4
@@ -84,22 +84,24 @@ Partial Class frmBorrow
         'Label3
         '
         Me.Label3.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label3.Location = New System.Drawing.Point(42, 126)
+        Me.Label3.Location = New System.Drawing.Point(42, 306)
         Me.Label3.Name = "Label3"
         Me.Label3.Size = New System.Drawing.Size(151, 23)
         Me.Label3.TabIndex = 5
         Me.Label3.Text = "Borrower Name"
+        Me.Label3.Visible = False
         '
         'txtBorrowerName
         '
-        Me.txtBorrowerName.Location = New System.Drawing.Point(45, 152)
+        Me.txtBorrowerName.Location = New System.Drawing.Point(45, 332)
         Me.txtBorrowerName.Name = "txtBorrowerName"
         Me.txtBorrowerName.Size = New System.Drawing.Size(174, 20)
         Me.txtBorrowerName.TabIndex = 11
+        Me.txtBorrowerName.Visible = False
         '
         'nupQuantity
         '
-        Me.nupQuantity.Location = New System.Drawing.Point(45, 217)
+        Me.nupQuantity.Location = New System.Drawing.Point(46, 157)
         Me.nupQuantity.Name = "nupQuantity"
         Me.nupQuantity.Size = New System.Drawing.Size(137, 20)
         Me.nupQuantity.TabIndex = 1
@@ -107,7 +109,7 @@ Partial Class frmBorrow
         'Label4
         '
         Me.Label4.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label4.Location = New System.Drawing.Point(42, 251)
+        Me.Label4.Location = New System.Drawing.Point(43, 191)
         Me.Label4.Name = "Label4"
         Me.Label4.Size = New System.Drawing.Size(82, 23)
         Me.Label4.TabIndex = 6
@@ -124,7 +126,7 @@ Partial Class frmBorrow
         '
         'txtContact
         '
-        Me.txtContact.Location = New System.Drawing.Point(45, 277)
+        Me.txtContact.Location = New System.Drawing.Point(46, 217)
         Me.txtContact.Name = "txtContact"
         Me.txtContact.Size = New System.Drawing.Size(174, 20)
         Me.txtContact.TabIndex = 0
@@ -175,10 +177,11 @@ Partial Class frmBorrow
         '
         'txtItemDesc
         '
-        Me.txtItemDesc.Location = New System.Drawing.Point(277, 277)
+        Me.txtItemDesc.Location = New System.Drawing.Point(47, 275)
         Me.txtItemDesc.Name = "txtItemDesc"
         Me.txtItemDesc.Size = New System.Drawing.Size(174, 20)
         Me.txtItemDesc.TabIndex = 22
+        Me.txtItemDesc.Visible = False
         '
         'cbItemList
         '

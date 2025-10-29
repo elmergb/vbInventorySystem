@@ -10,6 +10,7 @@
         cbBorrowRemarks.Items.Clear()
         cbBorrowRemarks.Items.Add("Good")
         cbBorrowRemarks.Items.Add("Damage")
+
     End Sub
 
 
@@ -56,6 +57,18 @@
         cbBorrowRemarks.Items.Clear()
         Me.Close()
         
+
+    End Sub
+
+    Private Sub txtBorrowerName_TextChanged(sender As System.Object, e As System.EventArgs) Handles txtBorrowerName.TextChanged
+
+    End Sub
+
+    Private Sub Label3_Click(sender As System.Object, e As System.EventArgs) Handles Label3.Click
+
+    End Sub
+
+    Private Sub txtItemDesc_TextChanged(sender As System.Object, e As System.EventArgs) Handles txtItemDesc.TextChanged
 
     End Sub
 End Class

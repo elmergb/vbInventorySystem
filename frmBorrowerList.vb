@@ -61,7 +61,7 @@
 
             ' Fill data
             .cbItemListR.SelectedValue = .ItemID
-            .txtItemDescR.Text = row.Cells("ItemDesc").Value.ToString() ' ✅ newly added description
+            .txtItemDescR.Text = row.Cells("ItemDesc").Value.ToString()
             .txtBorrowerNameR.Text = row.Cells("BorrowerName").Value.ToString()
             .txtPurposeR.Text = row.Cells("purpose").Value.ToString()
 

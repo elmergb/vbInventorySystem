@@ -25,20 +25,22 @@ Partial Class frmCartListView
         Me.lvCart = New System.Windows.Forms.ListView()
         Me.btnDelete = New System.Windows.Forms.Button()
         Me.btnEdit = New System.Windows.Forms.Button()
+        Me.lblSchoolYear = New System.Windows.Forms.Label()
+        Me.btnBack = New System.Windows.Forms.Button()
         Me.SuspendLayout()
         '
         'lvCart
         '
         Me.lvCart.HideSelection = False
-        Me.lvCart.Location = New System.Drawing.Point(81, 128)
+        Me.lvCart.Location = New System.Drawing.Point(24, 91)
         Me.lvCart.Name = "lvCart"
-        Me.lvCart.Size = New System.Drawing.Size(614, 175)
+        Me.lvCart.Size = New System.Drawing.Size(575, 175)
         Me.lvCart.TabIndex = 0
         Me.lvCart.UseCompatibleStateImageBehavior = False
         '
         'btnDelete
         '
-        Me.btnDelete.Location = New System.Drawing.Point(627, 391)
+        Me.btnDelete.Location = New System.Drawing.Point(399, 299)
         Me.btnDelete.Name = "btnDelete"
         Me.btnDelete.Size = New System.Drawing.Size(91, 45)
         Me.btnDelete.TabIndex = 1
@@ -47,23 +49,49 @@ Partial Class frmCartListView
         '
         'btnEdit
         '
-        Me.btnEdit.Location = New System.Drawing.Point(627, 329)
+        Me.btnEdit.Location = New System.Drawing.Point(302, 299)
         Me.btnEdit.Name = "btnEdit"
         Me.btnEdit.Size = New System.Drawing.Size(91, 45)
         Me.btnEdit.TabIndex = 2
         Me.btnEdit.Text = "Edit"
         Me.btnEdit.UseVisualStyleBackColor = True
         '
+        'lblSchoolYear
+        '
+        Me.lblSchoolYear.BackColor = System.Drawing.SystemColors.ActiveCaption
+        Me.lblSchoolYear.Dock = System.Windows.Forms.DockStyle.Top
+        Me.lblSchoolYear.Font = New System.Drawing.Font("Microsoft YaHei", 21.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblSchoolYear.Location = New System.Drawing.Point(0, 0)
+        Me.lblSchoolYear.Name = "lblSchoolYear"
+        Me.lblSchoolYear.Size = New System.Drawing.Size(611, 58)
+        Me.lblSchoolYear.TabIndex = 46
+        Me.lblSchoolYear.Text = "Cart"
+        Me.lblSchoolYear.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
+        '
+        'btnBack
+        '
+        Me.btnBack.Location = New System.Drawing.Point(12, 12)
+        Me.btnBack.Name = "btnBack"
+        Me.btnBack.Size = New System.Drawing.Size(59, 35)
+        Me.btnBack.TabIndex = 47
+        Me.btnBack.Text = "Back"
+        Me.btnBack.UseVisualStyleBackColor = True
+        '
         'frmCartListView
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(1179, 576)
+        Me.ClientSize = New System.Drawing.Size(611, 362)
+        Me.ControlBox = False
+        Me.Controls.Add(Me.btnBack)
+        Me.Controls.Add(Me.lblSchoolYear)
         Me.Controls.Add(Me.btnEdit)
         Me.Controls.Add(Me.btnDelete)
         Me.Controls.Add(Me.lvCart)
         Me.Name = "frmCartListView"
-        Me.Text = "frmCartListView"
+        Me.ShowIcon = False
+        Me.ShowInTaskbar = False
+        Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.ResumeLayout(False)
 
     End Sub
@@ -71,4 +99,6 @@ Partial Class frmCartListView
     Friend WithEvents lvCart As ListView
     Friend WithEvents btnDelete As Button
     Friend WithEvents btnEdit As Button
+    Friend WithEvents lblSchoolYear As System.Windows.Forms.Label
+    Friend WithEvents btnBack As System.Windows.Forms.Button
 End Class

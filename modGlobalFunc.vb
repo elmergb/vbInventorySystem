@@ -170,4 +170,27 @@ Module modGlobalFunc
         End Try
         Return desc
     End Function
+
+    Public Sub GetBorrowerName(studentNo As String)
+        Try
+            Dim query As String = "SELECT fname, mi, lname FROM vw_students WHERE StudentNo = ?"
+            Dim cmd As New Odbc.OdbcCommand(query, con)
+            cmd.Parameters.AddWithValue("?", studentNo)
+
+            Dim reader As Odbc.OdbcDataReader = cmd.ExecuteReader()
+
+            If reader.Read() Then
+                Dim fullName As String = reader("fname").ToString() & " " & reader("mi").ToString() & " " & reader("lname").ToString()
+
+                frmBorrow.txtBorrowerName.Text = fullName.Trim()
+            Else
+                MsgBox("Student No not found!", vbExclamation)
+                frmBorrow.txtBorrowerName.Clear()
+            End If
+
+            reader.Close()
+        Catch ex As Exception
+            MsgBox("Error loading student name: " & ex.Message, vbCritical)
+        End Try
+    End Sub
 End Module
