@@ -79,14 +79,15 @@ Module modGlobalFunc
         Dim cmd As Odbc.OdbcCommand
         frmCartListView.lvCart.Items.Clear()
 
-        cmd = New Odbc.OdbcCommand("SELECT ItemName, QuantityBorrowed FROM vw_cartlist", con)
+        cmd = New Odbc.OdbcCommand("SELECT ItemName, ItemDescription, QuantityBorrowed FROM vw_cartlist", con)
         Dim result As Odbc.OdbcDataReader = cmd.ExecuteReader()
 
         While result.Read()
             Dim itemName As String = result("ItemName").ToString
             Dim qty As Integer = CInt(result("QuantityBorrowed"))
-
+            Dim itemDesc As String = result("ItemDescription").ToString
             Dim listItem As New ListViewItem(itemName)
+            listItem.SubItems.Add(itemDesc)
             listItem.SubItems.Add(qty)
             frmCartListView.lvCart.Items.Add(listItem)
         End While
@@ -153,4 +154,20 @@ Module modGlobalFunc
             MessageBox.Show("Error loading items: " & ex.Message)
         End Try
     End Sub
+
+    Public Function GetItemDescription(ByVal itemName As String) As String
+        Dim desc As String = ""
+        Try
+            Dim cmd As New Odbc.OdbcCommand("SELECT ItemDescription FROM tblitemlist WHERE ItemName = ?", con)
+            cmd.Parameters.AddWithValue("?", itemName)
+
+            Dim result = cmd.ExecuteScalar()
+            If result IsNot Nothing Then
+                desc = result.ToString()
+            End If
+        Catch ex As Exception
+            MsgBox("Error loading description: " & ex.Message)
+        End Try
+        Return desc
+    End Function
 End Module

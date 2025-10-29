@@ -18,6 +18,8 @@ Public Class frmListItem
     Private Sub btnAdd_Click(sender As Object, e As EventArgs) Handles btnAdd.Click
         ClearAllText(frmAddItem)
         dgvItemList.Tag = 0
+        frmAddItem.nupDamaged.Visible = False
+        frmAddItem.lblDamage.Visible = False
         frmAddItem.ShowDialog()
         frmAddItem.ItemID = 0
         'If Val(dgvItemList.Tag) = 0 Then
@@ -68,6 +70,8 @@ Public Class frmListItem
         If (dgvItemList.Tag) = 0 Then
             MsgBox("Select an Item to edit!", vbInformation, "Select Item")
         Else
+            frmAddItem.nupDamaged.Visible = True
+            frmAddItem.lblDamage.Visible = True
             frmAddItem.ItemID = Val(dgvItemList.Tag)
             frmAddItem.ShowDialog()
         End If

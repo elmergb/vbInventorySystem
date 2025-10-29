@@ -9,11 +9,11 @@
     End Sub
 
     Private Sub dgvItemList_CellClick(sender As Object, e As System.Windows.Forms.DataGridViewCellEventArgs) Handles dgvItemList.CellClick
+        'medyo confusing pa 
         If e.RowIndex >= 0 Then
             dgvItemList.Tag = dgvItemList.Rows(e.RowIndex).Cells("Item").Value
-
-            frmAddItem.txtNameOFItem.Text = dgvItemList.Rows(e.RowIndex).Cells("NameofItem").Value.ToString
-            frmAddItem.txtItemDesc.Text = dgvItemList.Rows(e.RowIndex).Cells("ItemDescription").Value.ToString
+            frmBorrow.cbItemList.Text = dgvItemList.Rows(e.RowIndex).Cells("NameofItem").Value.ToString
+            frmBorrow.txtItemDesc.Text = dgvItemList.Rows(e.RowIndex).Cells("ItemDescription").Value.ToString
             frmAddItem.cbCategory.Text = dgvItemList.Rows(e.RowIndex).Cells("Category").Value.ToString()
             frmAddItem.cbLocation.Text = dgvItemList.Rows(e.RowIndex).Cells("ItemLocation").Value.ToString()
             frmAddItem.nupQuantity.Value = dgvItemList.Rows(e.RowIndex).Cells("Quantity").Value
@@ -25,6 +25,22 @@
             End If
 
         End If
+        'If e.RowIndex >= 0 Then
+        '    dgvItemList.Tag = dgvItemList.Rows(e.RowIndex).Cells("Item").Value
+
+        '    frmAddItem.txtNameOFItem.Text = dgvItemList.Rows(e.RowIndex).Cells("NameofItem").Value.ToString
+        '    frmAddItem.txtItemDesc.Text = dgvItemList.Rows(e.RowIndex).Cells("ItemDescription").Value.ToString
+        '    frmAddItem.cbCategory.Text = dgvItemList.Rows(e.RowIndex).Cells("Category").Value.ToString()
+        '    frmAddItem.cbLocation.Text = dgvItemList.Rows(e.RowIndex).Cells("ItemLocation").Value.ToString()
+        '    frmAddItem.nupQuantity.Value = dgvItemList.Rows(e.RowIndex).Cells("Quantity").Value
+        '    Dim qty As Object = dgvItemList.Rows(e.RowIndex).Cells("Quantity").Value
+        '    If qty IsNot Nothing AndAlso Not IsDBNull(qty) Then
+        '        frmAddItem.nupQuantity.Value = CInt(qty)
+        '    Else
+        '        frmAddItem.nupQuantity.Value = 0
+        '    End If
+
+        'End If
     End Sub
 
     Private Sub LoadStudentData(studentNo As String)
@@ -77,13 +93,68 @@
         End If
     End Sub
 
-    Private Sub cbSemester_SelectedIndexChanged(sender As System.Object, e As System.EventArgs)
+    Private Sub btnBorrow_Click(sender As System.Object, e As System.EventArgs) Handles btnBorrow.Click
+        If (dgvItemList.Tag) = 0 Then
+            MsgBox("Select an item to borrow!", vbInformation, "Select Item")
+        Else
+            frmBorrow.SelectedItemID = Val(dgvItemList.Tag)
+            frmBorrow.ShowDialog()
+        End If
 
     End Sub
 
-    Private Sub dgvBorrowerCart_CellContentClick(sender As System.Object, e As System.Windows.Forms.DataGridViewCellEventArgs)
+    Private Sub btnSave_Click(sender As System.Object, e As System.EventArgs) Handles btnSave.Click
+        Dim cmd As Odbc.OdbcCommand
 
+
+        Try
+            cmd = New Odbc.OdbcCommand("SELECT COUNT(*) FROM tblcartlist", con)
+            If CInt(cmd.ExecuteScalar()) = 0 Then
+                MsgBox("Cart is empty. Add items first.", vbExclamation)
+                Exit Sub
+            End If
+
+            cmd = New Odbc.OdbcCommand("SELECT * FROM tblcartlist", con)
+            Dim reader As Odbc.OdbcDataReader = cmd.ExecuteReader()
+
+            While reader.Read()
+                Dim insertCmd As New Odbc.OdbcCommand("INSERT INTO tblborrow (ItemID, BorrowerName, QuantityBorrowed, Contact, Purpose, DateBorrowed, Remarks) VALUES (?, ?, ?, ?, ?, ?, ?)", con)
+                insertCmd.Parameters.AddWithValue("?", reader("ItemID"))
+                insertCmd.Parameters.AddWithValue("?", reader("BorrowerName"))
+                insertCmd.Parameters.AddWithValue("?", reader("QuantityBorrowed"))
+                insertCmd.Parameters.AddWithValue("?", reader("Contact"))
+                insertCmd.Parameters.AddWithValue("?", reader("Purpose"))
+                insertCmd.Parameters.AddWithValue("?", reader("DateBorrowed"))
+                insertCmd.Parameters.AddWithValue("?", reader("Remarks"))
+                insertCmd.ExecuteNonQuery()
+
+                ' 2. Update the item quantity in tblitemlist
+                Dim updateCmd As New Odbc.OdbcCommand("UPDATE tblitemlist SET ItemQuantity = ItemQuantity - ? WHERE ItemID = ?", con)
+                updateCmd.Parameters.AddWithValue("?", reader("QuantityBorrowed"))
+                updateCmd.Parameters.AddWithValue("?", reader("ItemID"))
+                updateCmd.ExecuteNonQuery()
+            End While
+
+            reader.Close()
+
+            ' 3. Clear the cart
+            Dim clearCmd As New Odbc.OdbcCommand("DELETE FROM tblcartlist", con)
+            clearCmd.ExecuteNonQuery()
+
+            MessageBox.Show("Borrowing finalized successfully!")
+        Catch ex As Exception
+            MsgBox(ex.Message.ToString)
+        Finally
+            GC.Collect()
+        End Try
     End Sub
 
+ 
+    Private Sub btnCart_Click(sender As System.Object, e As System.EventArgs) Handles btnCart.Click
+        frmCartListView.ShowDialog()
+    End Sub
 
+    Private Sub dgvItemList_CellContentClick(sender As System.Object, e As System.Windows.Forms.DataGridViewCellEventArgs) Handles dgvItemList.CellContentClick
+
+    End Sub
 End Class

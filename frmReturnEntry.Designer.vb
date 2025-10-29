@@ -35,6 +35,7 @@ Partial Class frmReturnEntry
         Me.txtPurposeR = New System.Windows.Forms.TextBox()
         Me.btnReturnLog = New System.Windows.Forms.Button()
         Me.cbReturnRemarks = New System.Windows.Forms.ComboBox()
+        Me.txtItemDescR = New System.Windows.Forms.TextBox()
         CType(Me.nupQuantityR, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
@@ -162,11 +163,21 @@ Partial Class frmReturnEntry
         Me.cbReturnRemarks.Size = New System.Drawing.Size(187, 22)
         Me.cbReturnRemarks.TabIndex = 31
         '
+        'txtItemDescR
+        '
+        Me.txtItemDescR.Location = New System.Drawing.Point(376, 255)
+        Me.txtItemDescR.Margin = New System.Windows.Forms.Padding(4, 3, 4, 3)
+        Me.txtItemDescR.Multiline = True
+        Me.txtItemDescR.Name = "txtItemDescR"
+        Me.txtItemDescR.Size = New System.Drawing.Size(202, 32)
+        Me.txtItemDescR.TabIndex = 32
+        '
         'frmReturnEntry
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(7.0!, 14.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(646, 472)
+        Me.Controls.Add(Me.txtItemDescR)
         Me.Controls.Add(Me.cbReturnRemarks)
         Me.Controls.Add(Me.btnReturnLog)
         Me.Controls.Add(Me.txtPurposeR)
@@ -202,4 +213,5 @@ Partial Class frmReturnEntry
     Friend WithEvents txtPurposeR As System.Windows.Forms.TextBox
     Friend WithEvents btnReturnLog As System.Windows.Forms.Button
     Friend WithEvents cbReturnRemarks As ComboBox
+    Friend WithEvents txtItemDescR As System.Windows.Forms.TextBox
 End Class

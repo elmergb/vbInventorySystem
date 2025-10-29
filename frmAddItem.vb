@@ -5,26 +5,27 @@
         cbRemarks.Items.Add("Good")
         cbRemarks.Items.Add("Damage")
         cbLocation.Focus()
+ 
     End Sub
 
     Private Sub btnSave_Click(sender As Object, e As EventArgs) Handles btnSave.Click
         Dim cmd As Odbc.OdbcCommand
         Dim qty As Integer = CInt(nupQuantity.Value)
-        Dim damagedQty As Integer = CInt(nupDamaged.Value)
+
         Dim Remarks As String = Trim(cbRemarks.Text)
 
         If ValidateAllTextboxes(Me) = False Then
             Return
         End If
 
-        If qty <= 0 Then
-            MsgBox("Nakalimutan mo mag lagay ng item")
-            Return
-        End If
 
         If ItemID = 0 Then
             ' --- ADD NEW ITEM ---
             Try
+                If qty <= 0 Then
+                    MsgBox("Nakalimutan mo mag lagay ng item")
+                    Return
+                End If
                 cmd = New Odbc.OdbcCommand("SELECT ItemID, ItemQuantity FROM tblitemlist WHERE TRIM(ItemName)=? AND TRIM(ItemDescription)=? AND TRIM(ItemLocation)=?", con)
                 With cmd.Parameters
                     .AddWithValue("?", Trim(txtNameOFItem.Text))
@@ -83,48 +84,47 @@
 
         Else
             ' --- EDIT EXISTING ITEM ---
-            Try
-                Dim currentQty As Integer = 0
-                cmd = New Odbc.OdbcCommand("SELECT ItemQuantity FROM tblitemlist WHERE ItemID = ?", con)
-                cmd.Parameters.AddWithValue("?", ItemID)
-                Dim totalQty = cmd.ExecuteScalar()
+            Dim damagedQty As Integer = CInt(nupDamaged.Value)
+            If qty <= -1 Then
+                MsgBox("Nakalimutan mo mag lagay ng item")
+                Return
+            End If
 
-                If totalQty IsNot Nothing Then
-                    currentQty = CInt(totalQty)
+
+            Try
+                ' Determine remarks automatically based on quantities
+                If damagedQty > qty Then
+                    Remarks = "Partial Damage"
+                ElseIf damagedQty > 0 Then
+                    Remarks = "Damaged"
+                Else
+                    Remarks = "Good"
                 End If
 
-                If Remarks = "Damage" Or Remarks = "Damaged" Then
-                    ' Insert damaged record
-                    cmd = New Odbc.OdbcCommand("INSERT INTO tbldamaged (ItemID, QuantityDamaged, DateReported, Remarks) VALUES (?, ?, NOW(), ?)", con)
+                ' --- UPDATE ITEM RECORD ---
+                cmd = New Odbc.OdbcCommand("Update(tblitemlist) SET ItemName=?, ItemDescription=?, ItemCategory=?, ItemLocation=?, ItemQuantity=?, ItemRemarks=? WHERE ItemID=?", con)
+
+                With cmd.Parameters
+                    .AddWithValue("?", Trim(txtNameOFItem.Text))
+                    .AddWithValue("?", Trim(txtItemDesc.Text))
+                    .AddWithValue("?", Trim(cbCategory.Text))
+                    .AddWithValue("?", Trim(cbLocation.Text))
+                    .AddWithValue("?", qty)
+                    .AddWithValue("?", Remarks)
+                    .AddWithValue("?", ItemID)
+                End With
+
+                cmd.ExecuteNonQuery()
+
+                MsgBox("Item updated successfully!", MsgBoxStyle.Information, "Success")
+
+                ' Optional: also log damaged items in a separate table if you want to track changes
+                If damagedQty > 0 Then
+                    cmd = New Odbc.OdbcCommand("INSERT INTO tbldamaged (ItemID, QuantityDamaged, DateReported, Remarks)VALUES (?, ?, NOW(), ?)", con)
                     cmd.Parameters.AddWithValue("?", ItemID)
                     cmd.Parameters.AddWithValue("?", damagedQty)
-                    cmd.Parameters.AddWithValue("?", "Damaged")
+                    cmd.Parameters.AddWithValue("?", Remarks)
                     cmd.ExecuteNonQuery()
-
-                    ' Update item quantity (reduce)
-                    Dim newQty As Integer = Math.Max(0, currentQty - damagedQty)
-                    cmd = New Odbc.OdbcCommand("UPDATE tblitemlist SET ItemQuantity=?, ItemRemarks=? WHERE ItemID=?", con)
-                    cmd.Parameters.AddWithValue("?", newQty)
-                    cmd.Parameters.AddWithValue("?", "Damaged")
-                    cmd.Parameters.AddWithValue("?", ItemID)
-                    cmd.ExecuteNonQuery()
-
-                    MsgBox("Damaged items recorded successfully!", vbInformation)
-
-                Else
-                    ' Normal update
-                    cmd = New Odbc.OdbcCommand("UPDATE tblitemlist SET ItemName=?, ItemDescription=?, ItemCategory=?, ItemLocation=?, ItemQuantity=?, ItemRemarks=? WHERE ItemID=?", con)
-                    With cmd.Parameters
-                        .AddWithValue("?", Trim(txtNameOFItem.Text))
-                        .AddWithValue("?", Trim(txtItemDesc.Text))
-                        .AddWithValue("?", Trim(cbCategory.Text))
-                        .AddWithValue("?", Trim(cbLocation.Text))
-                        .AddWithValue("?", qty)
-                        .AddWithValue("?", Trim(cbRemarks.Text))
-                        .AddWithValue("?", ItemID)
-                    End With
-                    cmd.ExecuteNonQuery()
-                    MsgBox("Item edited successfully!", MsgBoxStyle.Information, "Success")
                 End If
 
                 ClearAllText(Me)

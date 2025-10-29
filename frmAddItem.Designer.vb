@@ -23,6 +23,8 @@ Partial Class frmAddItem
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         Me.GroupBox1 = New System.Windows.Forms.GroupBox()
+        Me.nupDamaged = New System.Windows.Forms.NumericUpDown()
+        Me.lblDamage = New System.Windows.Forms.Label()
         Me.Label6 = New System.Windows.Forms.Label()
         Me.txtItemDesc = New System.Windows.Forms.TextBox()
         Me.cbRemarks = New System.Windows.Forms.ComboBox()
@@ -38,17 +40,15 @@ Partial Class frmAddItem
         Me.btnSave = New System.Windows.Forms.Button()
         Me.Button2 = New System.Windows.Forms.Button()
         Me.Button3 = New System.Windows.Forms.Button()
-        Me.nupDamaged = New System.Windows.Forms.NumericUpDown()
-        Me.Label7 = New System.Windows.Forms.Label()
         Me.GroupBox1.SuspendLayout()
-        CType(Me.nupQuantity, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.nupDamaged, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.nupQuantity, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'GroupBox1
         '
         Me.GroupBox1.Controls.Add(Me.nupDamaged)
-        Me.GroupBox1.Controls.Add(Me.Label7)
+        Me.GroupBox1.Controls.Add(Me.lblDamage)
         Me.GroupBox1.Controls.Add(Me.Label6)
         Me.GroupBox1.Controls.Add(Me.txtItemDesc)
         Me.GroupBox1.Controls.Add(Me.cbRemarks)
@@ -67,6 +67,22 @@ Partial Class frmAddItem
         Me.GroupBox1.TabIndex = 0
         Me.GroupBox1.TabStop = False
         Me.GroupBox1.Text = "GroupBox1"
+        '
+        'nupDamaged
+        '
+        Me.nupDamaged.Location = New System.Drawing.Point(308, 204)
+        Me.nupDamaged.Name = "nupDamaged"
+        Me.nupDamaged.Size = New System.Drawing.Size(176, 20)
+        Me.nupDamaged.TabIndex = 16
+        '
+        'lblDamage
+        '
+        Me.lblDamage.Font = New System.Drawing.Font("Segoe Fluent Icons", 15.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblDamage.Location = New System.Drawing.Point(304, 174)
+        Me.lblDamage.Name = "lblDamage"
+        Me.lblDamage.Size = New System.Drawing.Size(148, 28)
+        Me.lblDamage.TabIndex = 15
+        Me.lblDamage.Text = "Quantity Damage"
         '
         'Label6
         '
@@ -204,22 +220,6 @@ Partial Class frmAddItem
         Me.Button3.Text = "Exit"
         Me.Button3.UseVisualStyleBackColor = True
         '
-        'nupDamaged
-        '
-        Me.nupDamaged.Location = New System.Drawing.Point(308, 204)
-        Me.nupDamaged.Name = "nupDamaged"
-        Me.nupDamaged.Size = New System.Drawing.Size(176, 20)
-        Me.nupDamaged.TabIndex = 16
-        '
-        'Label7
-        '
-        Me.Label7.Font = New System.Drawing.Font("Segoe Fluent Icons", 15.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label7.Location = New System.Drawing.Point(304, 174)
-        Me.Label7.Name = "Label7"
-        Me.Label7.Size = New System.Drawing.Size(148, 28)
-        Me.Label7.TabIndex = 15
-        Me.Label7.Text = "Quantity Damage"
-        '
         'frmAddItem
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -233,8 +233,8 @@ Partial Class frmAddItem
         Me.Text = "frmAddEquipment"
         Me.GroupBox1.ResumeLayout(False)
         Me.GroupBox1.PerformLayout()
-        CType(Me.nupQuantity, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.nupDamaged, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.nupQuantity, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
 
     End Sub
@@ -255,5 +255,5 @@ Partial Class frmAddItem
     Friend WithEvents Label6 As System.Windows.Forms.Label
     Friend WithEvents txtItemDesc As System.Windows.Forms.TextBox
     Friend WithEvents nupDamaged As System.Windows.Forms.NumericUpDown
-    Friend WithEvents Label7 As System.Windows.Forms.Label
+    Friend WithEvents lblDamage As System.Windows.Forms.Label
 End Class

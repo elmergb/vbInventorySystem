@@ -5,6 +5,7 @@
             .FullRowSelect = True
             .Columns.Clear()
             .Columns.Add("Item", 150)
+            .Columns.Add("Description", 200)
             .Columns.Add("Quantity", 80)
         End With
         Call listLoader()
@@ -14,10 +15,12 @@
         If lvCart.SelectedItems.Count > 0 Then
             Dim selectedItem As ListViewItem = lvCart.SelectedItems(0)
             Dim itemName As String = selectedItem.SubItems(0).Text
-            Dim qty As String = selectedItem.SubItems(1).Text
+            Dim desc As String = selectedItem.SubItems(1).Text
+            Dim qty As String = selectedItem.SubItems(2).Text
 
 
             frmBorrow.cbItemList.Text = itemName
+            frmBorrow.txtItemDesc.Text = desc
             frmBorrow.nupQuantity.Value = CInt(qty)
         End If
     End Sub

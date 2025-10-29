@@ -5,62 +5,80 @@
         Call vbConnection()
         Call data_loader("SELECT * FROM vw_borrowing WHERE Status <> 'Returned'", dgvBorrowerList)
         cb_loader("SELECT * FROM tblitemlist", frmReturnEntry.cbItemListR, "ItemName", "ItemID")
+        'Dim colNames As String = ""
+        'For Each col As DataGridViewColumn In dgvBorrowerList.Columns
+        '    colNames &= col.Index & " - " & col.Name & vbCrLf
+        'Next
+        'MsgBox(colNames, MsgBoxStyle.Information, "Column Arrangement")
 
-        'Dim sb As New System.Text.StringBuilder()
-        'If dgvBorrowerList.Columns.Count = 0 Then
-        '    MsgBox("Columns count = 0 (no columns yet)")
-        'Else
-
-        '    For Each col As DataGridViewColumn In dgvBorrowerList.Columns
-        '        sb.AppendLine(col.Index & " - " & col.HeaderText & " (Name: " & col.Name & ")")
-        '    Next
-
-        '     ✅ Correct MsgBox syntax: first argument = text, second (optional) = style, third = caption
-        '    MsgBox(sb.ToString(), MsgBoxStyle.Information, "DataGridView Columns")
-        'End If
     End Sub
 
     Private Sub dgvBorrowerList_CellClick(sender As Object, e As System.Windows.Forms.DataGridViewCellEventArgs) Handles dgvBorrowerList.CellClick
-
         If e.RowIndex >= 0 Then
-            dgvBorrowerList.Tag = dgvBorrowerList.Item(0, e.RowIndex).Value
-            frmBorrow.cbItemList.SelectedValue = dgvBorrowerList.Item(1, e.RowIndex).Value
-            frmBorrow.txtBorrowerName.Text = dgvBorrowerList.Item(2, e.RowIndex).Value
-            frmBorrow.nupQuantity.Value = dgvBorrowerList.Item(4, e.RowIndex).Value
-            frmBorrow.txtContact.Text = dgvBorrowerList.Item(5, e.RowIndex).Value
-            frmBorrow.txtPurpose.Text = dgvBorrowerList.Item(6, e.RowIndex).Value
-            frmBorrow.dtpBorrowed.Value = CDate(dgvBorrowerList.Item(7, e.RowIndex).Value)
-            frmBorrow.cbBorrowRemarks.Text = dgvBorrowerList.Item(8, e.RowIndex).Value
+            ' Store the selected record’s ID or key
+            dgvBorrowerList.Tag = dgvBorrowerList.Rows(e.RowIndex).Cells("bID").Value
+
+            ' Transfer values from the DataGridView to frmBorrow controls
+            frmBorrow.cbItemList.Text = dgvBorrowerList.Rows(e.RowIndex).Cells("ItemName").Value.ToString()
+            frmBorrow.txtItemDesc.Text = dgvBorrowerList.Rows(e.RowIndex).Cells("ItemDesc").Value.ToString()
+            frmBorrow.txtBorrowerName.Text = dgvBorrowerList.Rows(e.RowIndex).Cells("BorrowerName").Value.ToString()
+
+            ' Handle Quantity (convert safely to integer)
+            Dim qty As Object = dgvBorrowerList.Rows(e.RowIndex).Cells("qtyBorrowed").Value
+            If qty IsNot Nothing AndAlso Not IsDBNull(qty) Then
+                frmBorrow.nupQuantity.Value = CInt(qty)
+            Else
+                frmBorrow.nupQuantity.Value = 0
+            End If
+
+            frmBorrow.txtContact.Text = dgvBorrowerList.Rows(e.RowIndex).Cells("contact").Value.ToString()
+            frmBorrow.txtPurpose.Text = dgvBorrowerList.Rows(e.RowIndex).Cells("purpose").Value.ToString()
+
+            ' Handle Date safely
+            Dim dateBorrowed As Object = dgvBorrowerList.Rows(e.RowIndex).Cells("dateborrowed").Value
+            If dateBorrowed IsNot Nothing AndAlso Not IsDBNull(dateBorrowed) Then
+                frmBorrow.dtpBorrowed.Value = CDate(dateBorrowed)
+            End If
+
+            frmBorrow.cbBorrowRemarks.Text = dgvBorrowerList.Rows(e.RowIndex).Cells("remarks").Value.ToString()
         End If
 
     End Sub
     Private Sub btnReturn_Click(sender As System.Object, e As System.EventArgs) Handles btnReturn.Click
         If dgvBorrowerList.CurrentRow Is Nothing Then
             MsgBox("Select a record to return", vbInformation)
-        Else
-            ' Use the correct column indexes based on your DataGridView:
-            ' 0 - BorrowID
-            ' 1 - ItemID
-            ' 2 - Borrower Name
-            ' 3 - Item Name
-            ' 4 - Quantity Borrowed
-            ' 5 - Contact
-            ' 6 - Purpose
-            ' 7 - Date Borrowed
-            ' 8 - Remarks
-
-            frmReturnEntry.BorrowID = CInt(dgvBorrowerList.Item(0, dgvBorrowerList.CurrentRow.Index).Value) ' BorrowID
-            frmReturnEntry.ItemID = CInt(dgvBorrowerList.Item(1, dgvBorrowerList.CurrentRow.Index).Value)   ' ItemID
-
-            frmReturnEntry.cbItemListR.SelectedValue = frmReturnEntry.ItemID
-            frmReturnEntry.txtBorrowerNameR.Text = dgvBorrowerList.Item(2, dgvBorrowerList.CurrentRow.Index).Value.ToString()
-            frmReturnEntry.txtPurposeR.Text = dgvBorrowerList.Item(6, dgvBorrowerList.CurrentRow.Index).Value.ToString()
-            frmReturnEntry.nupQuantityR.Value = If(IsNumeric(dgvBorrowerList.Item(4, dgvBorrowerList.CurrentRow.Index).Value), CInt(dgvBorrowerList.Item(4, dgvBorrowerList.CurrentRow.Index).Value), 0)
-            frmReturnEntry.cbReturnRemarks.Text = dgvBorrowerList.Item(8, dgvBorrowerList.CurrentRow.Index).Value.ToString()
-
-            frmReturnEntry.ShowDialog()
-
+            Exit Sub
         End If
+
+        ' Get the current selected row
+        Dim row As DataGridViewRow = dgvBorrowerList.CurrentRow
+
+        ' Assign values to frmReturnEntry
+        With frmReturnEntry
+            ' Main IDs
+            .BorrowID = CInt(row.Cells("bID").Value)
+            .ItemID = CInt(row.Cells("ItemID").Value)
+
+            ' Fill data
+            .cbItemListR.SelectedValue = .ItemID
+            .txtItemDescR.Text = row.Cells("ItemDesc").Value.ToString() ' ✅ newly added description
+            .txtBorrowerNameR.Text = row.Cells("BorrowerName").Value.ToString()
+            .txtPurposeR.Text = row.Cells("purpose").Value.ToString()
+
+            ' Handle numeric and null safely
+            Dim qtyObj As Object = row.Cells("qtyBorrowed").Value
+            If qtyObj IsNot Nothing AndAlso IsNumeric(qtyObj) Then
+                .nupQuantityR.Value = CInt(qtyObj)
+            Else
+                .nupQuantityR.Value = 0
+            End If
+
+            ' Remarks
+            .cbReturnRemarks.Text = row.Cells("remarks").Value.ToString()
+
+            ' Finally show the Return Entry form
+            .ShowDialog()
+        End With
     End Sub
 
 

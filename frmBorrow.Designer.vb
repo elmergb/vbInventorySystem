@@ -35,9 +35,10 @@ Partial Class frmBorrow
         Me.Label7 = New System.Windows.Forms.Label()
         Me.cbBorrowRemarks = New System.Windows.Forms.ComboBox()
         Me.Label6 = New System.Windows.Forms.Label()
-        Me.cbItemList = New System.Windows.Forms.ComboBox()
         Me.dtpBorrowed = New System.Windows.Forms.DateTimePicker()
         Me.btnSave = New System.Windows.Forms.Button()
+        Me.txtItemDesc = New System.Windows.Forms.TextBox()
+        Me.cbItemList = New System.Windows.Forms.ComboBox()
         CType(Me.nupQuantity, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
@@ -154,14 +155,6 @@ Partial Class frmBorrow
         Me.Label6.TabIndex = 8
         Me.Label6.Text = "Time and Date"
         '
-        'cbItemList
-        '
-        Me.cbItemList.FormattingEnabled = True
-        Me.cbItemList.Location = New System.Drawing.Point(46, 91)
-        Me.cbItemList.Name = "cbItemList"
-        Me.cbItemList.Size = New System.Drawing.Size(161, 21)
-        Me.cbItemList.TabIndex = 10
-        '
         'dtpBorrowed
         '
         Me.dtpBorrowed.CustomFormat = "MM/dd/yyyy hh:mm tt"
@@ -180,11 +173,27 @@ Partial Class frmBorrow
         Me.btnSave.Text = "Save"
         Me.btnSave.UseVisualStyleBackColor = True
         '
+        'txtItemDesc
+        '
+        Me.txtItemDesc.Location = New System.Drawing.Point(277, 277)
+        Me.txtItemDesc.Name = "txtItemDesc"
+        Me.txtItemDesc.Size = New System.Drawing.Size(174, 20)
+        Me.txtItemDesc.TabIndex = 22
+        '
+        'cbItemList
+        '
+        Me.cbItemList.FormattingEnabled = True
+        Me.cbItemList.Location = New System.Drawing.Point(46, 91)
+        Me.cbItemList.Name = "cbItemList"
+        Me.cbItemList.Size = New System.Drawing.Size(161, 21)
+        Me.cbItemList.TabIndex = 10
+        '
         'frmBorrow
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(1132, 631)
+        Me.Controls.Add(Me.txtItemDesc)
         Me.Controls.Add(Me.btnSave)
         Me.Controls.Add(Me.Label8)
         Me.Controls.Add(Me.cbItemList)
@@ -221,7 +230,8 @@ Partial Class frmBorrow
     Friend WithEvents Label7 As Label
     Friend WithEvents cbBorrowRemarks As ComboBox
     Friend WithEvents Label6 As Label
-    Friend WithEvents cbItemList As ComboBox
     Friend WithEvents dtpBorrowed As DateTimePicker
     Friend WithEvents btnSave As System.Windows.Forms.Button
+    Friend WithEvents txtItemDesc As System.Windows.Forms.TextBox
+    Friend WithEvents cbItemList As System.Windows.Forms.ComboBox
 End Class

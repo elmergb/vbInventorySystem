@@ -12,55 +12,13 @@
         cbBorrowRemarks.Items.Add("Damage")
     End Sub
 
-    Private Sub btnLogSave_Click(sender As System.Object, e As System.EventArgs)
-        Dim cmd As Odbc.OdbcCommand
 
-
-        Try
-            cmd = New Odbc.OdbcCommand("SELECT COUNT(*) FROM tblcartlist", con)
-            If CInt(cmd.ExecuteScalar()) = 0 Then
-                MsgBox("Cart is empty. Add items first.", vbExclamation)
-                Exit Sub
-            End If
-
-            cmd = New Odbc.OdbcCommand("SELECT * FROM tblcartlist", con)
-            Dim reader As Odbc.OdbcDataReader = cmd.ExecuteReader()
-
-            While reader.Read()
-                Dim insertCmd As New Odbc.OdbcCommand("INSERT INTO tblborrow (ItemID, BorrowerName, QuantityBorrowed, Contact, Purpose, DateBorrowed, Remarks) VALUES (?, ?, ?, ?, ?, ?, ?)", con)
-                insertCmd.Parameters.AddWithValue("?", reader("ItemID"))
-                insertCmd.Parameters.AddWithValue("?", reader("BorrowerName"))
-                insertCmd.Parameters.AddWithValue("?", reader("QuantityBorrowed"))
-                insertCmd.Parameters.AddWithValue("?", reader("Contact"))
-                insertCmd.Parameters.AddWithValue("?", reader("Purpose"))
-                insertCmd.Parameters.AddWithValue("?", reader("DateBorrowed"))
-                insertCmd.Parameters.AddWithValue("?", reader("Remarks"))
-                insertCmd.ExecuteNonQuery()
-
-                ' 2. Update the item quantity in tblitemlist
-                Dim updateCmd As New Odbc.OdbcCommand("UPDATE tblitemlist SET ItemQuantity = ItemQuantity - ? WHERE ItemID = ?", con)
-                updateCmd.Parameters.AddWithValue("?", reader("QuantityBorrowed"))
-                updateCmd.Parameters.AddWithValue("?", reader("ItemID"))
-                updateCmd.ExecuteNonQuery()
-            End While
-
-            reader.Close()
-
-            ' 3. Clear the cart
-            Dim clearCmd As New Odbc.OdbcCommand("DELETE FROM tblcartlist", con)
-            clearCmd.ExecuteNonQuery()
-
-            MessageBox.Show("Borrowing finalized successfully!")
-            Me.Close()
-        Catch ex As Exception
-            MsgBox(ex.Message.ToString)
-        Finally
-            GC.Collect()
-        End Try
-
+    Private Sub btnCart_Click(sender As Object, e As EventArgs)
+        frmCartListView.ShowDialog()
 
     End Sub
-    Private Sub btnAddItem_Click(sender As Object, e As EventArgs)
+
+    Private Sub btnSave_Click(sender As System.Object, e As System.EventArgs) Handles btnSave.Click
         Dim isValid As Boolean = True
         Dim availableQty As Integer = 0
         Dim totalqty As New Odbc.OdbcCommand("SELECT ItemQuantity FROM tblitemlist WHERE ItemID = ?", con)
@@ -96,26 +54,8 @@
         txtContact.Clear()
         txtPurpose.Clear()
         cbBorrowRemarks.Items.Clear()
-    End Sub
-
-    Private Sub btnCart_Click(sender As Object, e As EventArgs)
-        frmCartListView.ShowDialog()
-
-    End Sub
-
-    Private Sub Label1_Click(sender As Object, e As EventArgs) Handles Label1.Click
-
-    End Sub
-
-    Private Sub Label9_Click(sender As Object, e As EventArgs)
-
-    End Sub
-
-    Private Sub TextBox1_TextChanged(sender As Object, e As EventArgs)
-
-    End Sub
-
-    Private Sub btnSave_Click(sender As System.Object, e As System.EventArgs) Handles btnSave.Click
+        Me.Close()
+        
 
     End Sub
 End Class

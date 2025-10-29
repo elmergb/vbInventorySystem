@@ -54,6 +54,9 @@ Partial Class frmBorrowerCartList
         Me.Category = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.ItemLocation = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Quantity = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.btnBorrow = New System.Windows.Forms.Button()
+        Me.btnSave = New System.Windows.Forms.Button()
+        Me.btnCart = New System.Windows.Forms.Button()
         CType(Me.dgvItemList, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
@@ -342,11 +345,44 @@ Partial Class frmBorrowerCartList
         Me.Quantity.Name = "Quantity"
         Me.Quantity.ReadOnly = True
         '
+        'btnBorrow
+        '
+        Me.btnBorrow.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnBorrow.Location = New System.Drawing.Point(43, 686)
+        Me.btnBorrow.Name = "btnBorrow"
+        Me.btnBorrow.Size = New System.Drawing.Size(102, 42)
+        Me.btnBorrow.TabIndex = 29
+        Me.btnBorrow.Text = "Borrow"
+        Me.btnBorrow.UseVisualStyleBackColor = True
+        '
+        'btnSave
+        '
+        Me.btnSave.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnSave.Location = New System.Drawing.Point(165, 686)
+        Me.btnSave.Name = "btnSave"
+        Me.btnSave.Size = New System.Drawing.Size(102, 42)
+        Me.btnSave.TabIndex = 30
+        Me.btnSave.Text = "Save"
+        Me.btnSave.UseVisualStyleBackColor = True
+        '
+        'btnCart
+        '
+        Me.btnCart.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnCart.Location = New System.Drawing.Point(287, 686)
+        Me.btnCart.Name = "btnCart"
+        Me.btnCart.Size = New System.Drawing.Size(102, 42)
+        Me.btnCart.TabIndex = 31
+        Me.btnCart.Text = "Cart"
+        Me.btnCart.UseVisualStyleBackColor = True
+        '
         'frmBorrowerCartList
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(1381, 916)
+        Me.Controls.Add(Me.btnCart)
+        Me.Controls.Add(Me.btnSave)
+        Me.Controls.Add(Me.btnBorrow)
         Me.Controls.Add(Me.dgvItemList)
         Me.Controls.Add(Me.txtSemester)
         Me.Controls.Add(Me.Label12)
@@ -409,4 +445,7 @@ Partial Class frmBorrowerCartList
     Friend WithEvents Category As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents ItemLocation As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents Quantity As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents btnBorrow As System.Windows.Forms.Button
+    Friend WithEvents btnSave As System.Windows.Forms.Button
+    Friend WithEvents btnCart As System.Windows.Forms.Button
 End Class
