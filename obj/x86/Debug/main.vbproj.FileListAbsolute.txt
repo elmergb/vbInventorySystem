@@ -35,3 +35,5 @@ C:\Users\edwar\Documents\Visual Studio 2010\Projects\main\main\obj\x86\Debug\mai
 C:\Users\edwar\Documents\Visual Studio 2010\Projects\main\main\obj\x86\Debug\main.frmStudentlist.resources
 C:\Users\edwar\Documents\Visual Studio 2010\Projects\main\main\obj\x86\Debug\RdlCompile.cache
 C:\Users\edwar\Documents\Visual Studio 2010\Projects\main\main\obj\x86\Debug\RdlCompile.compiled
+C:\Users\edwar\Documents\Visual Studio 2010\Projects\main\main\obj\x86\Debug\main.frmReturnSub.resources
+C:\Users\edwar\Documents\Visual Studio 2010\Projects\main\main\obj\x86\Debug\main.frmGoodItem.resources

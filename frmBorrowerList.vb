@@ -44,7 +44,7 @@
         End If
 
     End Sub
-    Private Sub btnReturn_Click(sender As System.Object, e As System.EventArgs) Handles btnReturn.Click
+    Private Sub btnReturn_Click(sender As System.Object, e As System.EventArgs)
         If dgvBorrowerList.CurrentRow Is Nothing Then
             MsgBox("Select a record to return", vbInformation)
             Exit Sub
@@ -86,13 +86,13 @@
 
     End Sub
 
-    Private Sub EToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles EToolStripMenuItem.Click
+    Private Sub EToolStripMenuItem_Click(sender As Object, e As EventArgs)
         If MsgBox("Are you sure to exit?", vbYesNo + vbQuestion) = vbYes Then
             Me.Close()
         End If
     End Sub
 
-    Private Sub UIToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles UIToolStripMenuItem.Click
+    Private Sub UIToolStripMenuItem_Click(sender As Object, e As EventArgs)
 
     End Sub
 

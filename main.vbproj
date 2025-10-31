@@ -121,6 +121,12 @@
     <Compile Include="frmDashboard.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="frmGoodItem.Designer.vb">
+      <DependentUpon>frmGoodItem.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmGoodItem.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="frmListItem.Designer.vb">
       <DependentUpon>frmListItem.vb</DependentUpon>
     </Compile>
@@ -137,6 +143,12 @@
       <DependentUpon>frmReturnList.vb</DependentUpon>
     </Compile>
     <Compile Include="frmReturnList.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmReturnSub.Designer.vb">
+      <DependentUpon>frmReturnSub.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmReturnSub.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="frmStudentCanBorrow.Designer.vb">
@@ -222,6 +234,9 @@
     <EmbeddedResource Include="frmDashboard.resx">
       <DependentUpon>frmDashboard.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="frmGoodItem.resx">
+      <DependentUpon>frmGoodItem.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmListItem.resx">
       <DependentUpon>frmListItem.vb</DependentUpon>
     </EmbeddedResource>
@@ -230,6 +245,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmReturnList.resx">
       <DependentUpon>frmReturnList.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmReturnSub.resx">
+      <DependentUpon>frmReturnSub.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmStudentCanBorrow.resx">
       <DependentUpon>frmStudentCanBorrow.vb</DependentUpon>

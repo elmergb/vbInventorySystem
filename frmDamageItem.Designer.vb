@@ -22,16 +22,100 @@ Partial Class frmDamageItem
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
+        Me.dgvDamageItems = New System.Windows.Forms.DataGridView()
+        Me.ID = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Item = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Description = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Category = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DamageLocation = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Quantity = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.dateReported = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        CType(Me.dgvDamageItems, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
+        '
+        'dgvDamageItems
+        '
+        Me.dgvDamageItems.AllowUserToAddRows = False
+        Me.dgvDamageItems.AllowUserToDeleteRows = False
+        Me.dgvDamageItems.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill
+        Me.dgvDamageItems.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
+        Me.dgvDamageItems.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.ID, Me.Item, Me.Description, Me.Category, Me.DamageLocation, Me.Quantity, Me.dateReported})
+        Me.dgvDamageItems.Location = New System.Drawing.Point(40, 100)
+        Me.dgvDamageItems.Name = "dgvDamageItems"
+        Me.dgvDamageItems.ReadOnly = True
+        Me.dgvDamageItems.RowHeadersVisible = False
+        Me.dgvDamageItems.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
+        Me.dgvDamageItems.Size = New System.Drawing.Size(1095, 415)
+        Me.dgvDamageItems.TabIndex = 0
+        '
+        'ID
+        '
+        Me.ID.DataPropertyName = "DamageID"
+        Me.ID.HeaderText = "Damage ID"
+        Me.ID.Name = "ID"
+        Me.ID.ReadOnly = True
+        Me.ID.Visible = False
+        '
+        'Item
+        '
+        Me.Item.DataPropertyName = "ItemName"
+        Me.Item.HeaderText = "Item"
+        Me.Item.Name = "Item"
+        Me.Item.ReadOnly = True
+        '
+        'Description
+        '
+        Me.Description.DataPropertyName = "ItemDescription"
+        Me.Description.HeaderText = "Description"
+        Me.Description.Name = "Description"
+        Me.Description.ReadOnly = True
+        '
+        'Category
+        '
+        Me.Category.DataPropertyName = "ItemCategory"
+        Me.Category.HeaderText = "Category"
+        Me.Category.Name = "Category"
+        Me.Category.ReadOnly = True
+        '
+        'DamageLocation
+        '
+        Me.DamageLocation.DataPropertyName = "ItemLocation"
+        Me.DamageLocation.HeaderText = "Location"
+        Me.DamageLocation.Name = "DamageLocation"
+        Me.DamageLocation.ReadOnly = True
+        '
+        'Quantity
+        '
+        Me.Quantity.DataPropertyName = "QuantityDamaged"
+        Me.Quantity.HeaderText = "Quantity Damage"
+        Me.Quantity.Name = "Quantity"
+        Me.Quantity.ReadOnly = True
+        '
+        'dateReported
+        '
+        Me.dateReported.DataPropertyName = "DateReported"
+        Me.dateReported.HeaderText = "Date Reported"
+        Me.dateReported.Name = "dateReported"
+        Me.dateReported.ReadOnly = True
         '
         'frmDamageItem
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(872, 513)
+        Me.ClientSize = New System.Drawing.Size(1259, 589)
+        Me.Controls.Add(Me.dgvDamageItems)
         Me.Name = "frmDamageItem"
         Me.Text = "frmDamageItem"
+        CType(Me.dgvDamageItems, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
 
     End Sub
+    Friend WithEvents dgvDamageItems As System.Windows.Forms.DataGridView
+    Friend WithEvents ID As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents Item As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents Description As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents Category As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents DamageLocation As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents Quantity As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents dateReported As System.Windows.Forms.DataGridViewTextBoxColumn
 End Class

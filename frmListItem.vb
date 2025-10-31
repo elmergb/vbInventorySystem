@@ -79,20 +79,31 @@ Public Class frmListItem
 
 
     Private Sub btnDelete_Click(sender As Object, e As EventArgs) Handles btnDelete.Click
-        Dim cmd As New Odbc.OdbcCommand
+        Dim cmd As Odbc.OdbcCommand
         If dgvItemList.Tag = 0 Then
             MsgBox("Please select a record to delete.", MsgBoxStyle.Exclamation)
-        ElseIf MsgBox("Are you sure to Delete this record?", vbYesNo + vbQuestion + MsgBoxStyle.Question, "Confirm Delete") = vbYes Then
-            cmd = New Odbc.OdbcCommand("DELETE FROM tbldamaged WHERE ItemID = " & Val(dgvItemList.Tag), con)
-            cmd.ExecuteNonQuery()
-            cmd = New Odbc.OdbcCommand("DELETE FROM tblitemlist WHERE ItemID = " & Val(dgvItemList.Tag), con)
-            cmd.ExecuteNonQuery()
-            MsgBox("Item deleted successfully!")
-            Call data_loader("SELECT * FROM vw_Item", dgvItemList)
+        ElseIf MsgBox("Are you sure you want to delete this record?", vbYesNo + vbQuestion, "Confirm Delete") = vbYes Then
+            Try
+                ' Step 1: Copy the record to tbldeleteditem (Recycle Bin)
+                cmd = New Odbc.OdbcCommand("INSERT INTO tbldeleteditem (deleteID, ItemName, ItemDescription, ItemCategory, ItemQuantity, DeletedDate) SELECT ItemID, ItemName, ItemDescription, ItemCategory, ItemQuantity, NOW()  FROM tblitemlist  WHERE ItemID = " & Val(dgvItemList.Tag), con)
+                cmd.ExecuteNonQuery()
+
+                ' Step 2: Delete the record from main table
+                cmd = New Odbc.OdbcCommand("DELETE FROM tblitemlist WHERE ItemID = " & Val(dgvItemList.Tag), con)
+                cmd.ExecuteNonQuery()
+
+                MsgBox("Deleted successfully!", MsgBoxStyle.Information)
+
+                ' Step 3: Refresh the DataGridView
+                Call data_loader("SELECT * FROM vw_item", dgvItemList)
+
+            Catch ex As Exception
+                MsgBox("Error: " & ex.Message, MsgBoxStyle.Critical)
+            End Try
         End If
     End Sub
 
-    Private Sub EToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles EToolStripMenuItem.Click
+    Private Sub EToolStripMenuItem_Click(sender As Object, e As EventArgs)
         MsgExit("Are you sure you want to exit?", Login, Homepage, Me)
 
     End Sub

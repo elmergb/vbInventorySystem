@@ -5,7 +5,9 @@
         cb_loader("SELECT * FROM tblitemlist", frmReturnEntry.cbItemListR, "ItemName", "ItemID")
         Call data_loader("SELECT ItemID, Name, ItemDescription, ItemCategory, ItemLocation, Quantity FROM vw_Item", dgvItemList)
         cb_loader("SELECT * FROM vw_teacher", cbTeacher, "teacher_fullname", "tID")
-
+        For Each col As DataGridViewColumn In dgvItemList.Columns
+            col.SortMode = DataGridViewColumnSortMode.NotSortable
+        Next
     End Sub
 
     Private Sub dgvItemList_CellClick(sender As Object, e As System.Windows.Forms.DataGridViewCellEventArgs) Handles dgvItemList.CellClick
@@ -167,7 +169,7 @@
 
  
     Private Sub btnCart_Click(sender As System.Object, e As System.EventArgs) Handles btnCart.Click
-        Dim cartForm As New frmCartListView()
+        ' Dim cartForm As New frmCartListView()
         'para sa mamaya sa view details
         ' Pass all student details to the cart form
         'cartForm.StudentNo = txtStudentNo.Text

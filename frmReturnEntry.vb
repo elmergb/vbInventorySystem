@@ -68,7 +68,7 @@
             If Remarks = "damage" Or Remarks = "damaged" Then
                 Remarks = "Damage"
             Else
-                Remarks = Remarks
+                Remarks = "Good"
             End If
 
             If Remarks = "Damage" Or Remarks = "damaged" Then
@@ -98,7 +98,7 @@
 
 
             MsgBox("Item successfully returned!", vbInformation)
-            data_loader("SELECT * FROM vw_transaction WHERE QuantityBorrowed > QuantityReturned", frmReturnList.dgvReturnList)
+            Call data_loader("SELECT * FROM vw_transaction WHERE QuantityBorrowed > QuantityReturned", frmReturnList.dgvReturn)
 
         Catch ex As Exception
             MsgBox("Error: " & ex.Message, vbCritical)

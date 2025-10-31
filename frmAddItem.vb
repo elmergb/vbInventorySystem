@@ -118,14 +118,25 @@
 
                 MsgBox("Item updated successfully!", MsgBoxStyle.Information, "Success")
 
-                ' Optional: also log damaged items in a separate table if you want to track changes
-                If damagedQty > 0 Then
-                    cmd = New Odbc.OdbcCommand("INSERT INTO tbldamaged (ItemID, QuantityDamaged, DateReported, Remarks)VALUES (?, ?, NOW(), ?)", con)
+                cmd = New Odbc.OdbcCommand("SELECT COUNT(*) FROM tbldamaged WHERE ItemID = ?", con)
+                cmd.Parameters.AddWithValue("?", ItemID)
+                Dim countDamaged As Integer = Convert.ToInt32(cmd.ExecuteScalar())
+
+                If countDamaged > 0 Then
+                    ' Update existing record
+                    cmd = New Odbc.OdbcCommand("UPDATE tbldamaged SET QuantityDamaged=?, DateReported=NOW(), Remarks=? WHERE ItemID=?", con)
+                    cmd.Parameters.AddWithValue("?", damagedQty)
+                    cmd.Parameters.AddWithValue("?", Remarks)
+                    cmd.Parameters.AddWithValue("?", ItemID)
+                Else
+                    ' Insert new damaged record
+                    cmd = New Odbc.OdbcCommand("INSERT INTO tbldamaged (ItemID, QuantityDamaged, DateReported, Remarks) VALUES (?, ?, NOW(), ?)", con)
                     cmd.Parameters.AddWithValue("?", ItemID)
                     cmd.Parameters.AddWithValue("?", damagedQty)
                     cmd.Parameters.AddWithValue("?", Remarks)
-                    cmd.ExecuteNonQuery()
                 End If
+
+                cmd.ExecuteNonQuery()
 
                 ClearAllText(Me)
 

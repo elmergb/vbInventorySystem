@@ -1,111 +1,76 @@
 ﻿Public Class frmReturnList
 
     Private Sub frmReturnList_Load(sender As System.Object, e As System.EventArgs) Handles MyBase.Load
-        Call data_loader("SELECT * FROM vw_transaction ", dgvReturnList)
-
-        For Each col As DataGridViewColumn In dgvReturnList.Columns
-            col.SortMode = DataGridViewColumnSortMode.NotSortable
-        Next
-        'Dim sb As New System.Text.StringBuilder()
-        'If dgvReturnList.Columns.Count = 0 Then
-        '    MsgBox("Columns count = 0 (no columns yet)")
-        'Else
-
-        '    For Each col As DataGridViewColumn In dgvReturnList.Columns
-        '        sb.AppendLine(col.Index & " - " & col.HeaderText & " (Name: " & col.Name & ")")
-        '    Next
-
-        '    
-        '    MsgBox(sb.ToString(), MsgBoxStyle.Information, "DataGridView Columns")
-        'End If
+        Call vbConnection()
+        Call data_loader("SELECT * FROM vw_borrowing WHERE Status <> 'Returned'", dgvReturn)
+        cb_loader("SELECT * FROM tblitemlist", frmReturnEntry.cbItemListR, "ItemName", "ItemID")
     End Sub
 
 
-
-    Private Sub dgvReturnList_CellClick(sender As Object, e As DataGridViewCellEventArgs) Handles dgvReturnList.CellClick
-        Try
-            If e.RowIndex >= 0 Then
-                dgvReturnList.Tag = dgvReturnList.Item(0, e.RowIndex).Value
-
-
-                ' 0 ReturnID | 1 BorrowID | 2 ItemID | 3 ItemName | 4 BorrowerName |
-                ' 5 Purpose | 6 QuantityBorrowed | 7 QuantityReturned | 8 DateReturned | 9 Remarks
-
-                frmReturnEntry.cbItemListR.Text = dgvReturnList.Item(3, e.RowIndex).Value.ToString() ' ItemName
-                frmReturnEntry.txtBorrowerNameR.Text = dgvReturnList.Item(4, e.RowIndex).Value.ToString() ' Borrower Name
-                frmReturnEntry.txtPurposeR.Text = dgvReturnList.Item(5, e.RowIndex).Value.ToString() ' Purpose
-
-                ' Use QuantityReturned for nup control
-                Dim qty As Object = dgvReturnList.Item(7, e.RowIndex).Value
-                If Not IsDBNull(qty) AndAlso IsNumeric(qty) Then
-                    frmReturnEntry.nupQuantityR.Value = CInt(qty)
-                Else
-                    frmReturnEntry.nupQuantityR.Value = 0
-                End If
-
-                ' Handle possible NULL dates safely
-                Dim dateVal As Object = dgvReturnList.Item(8, e.RowIndex).Value
-                If Not IsDBNull(dateVal) Then
-                    frmReturnEntry.dtpBorrowedR.Value = CDate(dateVal)
-                End If
-
-                frmReturnEntry.cbItemListR.Text = dgvReturnList.Item(9, e.RowIndex).Value.ToString()
-
-                ' Store IDs
-                frmReturnEntry.ItemID = CInt(dgvReturnList.Item(2, e.RowIndex).Value)
-                frmReturnEntry.BorrowID = CInt(dgvReturnList.Item(1, e.RowIndex).Value)
-            End If
-        Catch ex As Exception
-            MsgBox("Error loading selected record: " & ex.Message, vbCritical)
-        End Try
-    End Sub
-
-    Private Sub btnReturn_Click(sender As Object, e As EventArgs) Handles btnReturn.Click
-        If Val(dgvReturnList.Tag) = 0 Then
+    Private Sub btnReturn_Click(sender As System.Object, e As System.EventArgs) Handles btnReturn.Click
+        If dgvReturn.CurrentRow Is Nothing Then
             MsgBox("Select a record to return", vbInformation)
-        Else
-
-            frmReturnEntry.ItemID = Val(dgvReturnList.Tag)
-            frmReturnEntry.BorrowID = Val(dgvReturnList.Tag)
-            frmReturnEntry.ShowDialog()
+            Exit Sub
         End If
-    End Sub
 
-    Private Sub dgvReturnList_CellContentClick(sender As Object, e As DataGridViewCellEventArgs) Handles dgvReturnList.CellContentClick
+        ' Get the current selected row
+        Dim row As DataGridViewRow = dgvReturn.CurrentRow
 
-    End Sub
+        ' Assign values to frmReturnEntry
+        With frmReturnEntry
+            ' Main IDs
+            .BorrowID = CInt(row.Cells("bID").Value)
+            .ItemID = CInt(row.Cells("ItemID").Value)
 
-    Private Sub EToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles EToolStripMenuItem.Click
-        MsgExit("Are you sure you want to exit?", Login, Homepage, Me)
-    End Sub
+            ' Fill data
+            .cbItemListR.SelectedValue = .ItemID
+            .txtItemDescR.Text = row.Cells("ItemDesc").Value.ToString()
+            .txtBorrowerNameR.Text = row.Cells("BorrowerName").Value.ToString()
+            .txtPurposeR.Text = row.Cells("purpose").Value.ToString()
 
-    Private Sub txtSearch_TextChanged(sender As Object, e As EventArgs)
-        Call data_loader("SELECT * FROM vw_transaction WHERE ItemName LIKE '%" & Trim(txtSearch.Text) & "%' ", dgvReturnList)
-    End Sub
-
-    Private Sub dgvReturnList_CellFormatting(sender As Object, e As DataGridViewCellFormattingEventArgs) Handles dgvReturnList.CellFormatting
-        If dgvReturnList.Columns(e.ColumnIndex).Name = "Remarks" Then
-            If e.Value IsNot Nothing Then
-                Dim statusText As String = e.Value.ToString().ToLower()
-
-                Select Case statusText
-                    Case "Available"
-                        e.CellStyle.BackColor = Color.LightGreen
-                        e.CellStyle.ForeColor = Color.Black
-
-                    Case "Damage"
-                        e.CellStyle.BackColor = Color.LightCoral
-                        e.CellStyle.ForeColor = Color.White
-
-                    Case "good"
-                        e.CellStyle.BackColor = Color.LightYellow
-                        e.CellStyle.ForeColor = Color.Black
-
-                    Case Else
-                        e.CellStyle.BackColor = Color.White
-                        e.CellStyle.ForeColor = Color.Black
-                End Select
+            ' Handle numeric and null safely
+            Dim qtyObj As Object = row.Cells("qtyBorrowed").Value
+            If qtyObj IsNot Nothing AndAlso IsNumeric(qtyObj) Then
+                .nupQuantityR.Value = CInt(qtyObj)
+            Else
+                .nupQuantityR.Value = 0
             End If
+
+            ' Remarks
+            .cbReturnRemarks.Text = row.Cells("remarks").Value.ToString()
+
+            ' Finally show the Return Entry form
+            .ShowDialog()
+        End With
+    End Sub
+    Private Sub dgvBorrowerList_CellClick(sender As Object, e As System.Windows.Forms.DataGridViewCellEventArgs) Handles dgvReturn.CellClick
+        If e.RowIndex >= 0 Then
+            ' Store the selected record’s ID or key
+            dgvReturn.Tag = dgvReturn.Rows(e.RowIndex).Cells("bID").Value
+
+            ' Transfer values from the DataGridView to frmBorrow controls
+            frmBorrow.cbItemList.Text = dgvReturn.Rows(e.RowIndex).Cells("ItemName").Value.ToString()
+            frmBorrow.txtItemDesc.Text = dgvReturn.Rows(e.RowIndex).Cells("ItemDesc").Value.ToString()
+            frmBorrow.txtBorrowerName.Text = dgvReturn.Rows(e.RowIndex).Cells("BorrowerName").Value.ToString()
+
+            ' Handle Quantity (convert safely to integer)
+            Dim qty As Object = dgvReturn.Rows(e.RowIndex).Cells("qtyBorrowed").Value
+            If qty IsNot Nothing AndAlso Not IsDBNull(qty) Then
+                frmBorrow.nupQuantity.Value = CInt(qty)
+            Else
+                frmBorrow.nupQuantity.Value = 0
+            End If
+
+            frmBorrow.txtContact.Text = dgvReturn.Rows(e.RowIndex).Cells("contact").Value.ToString()
+            frmBorrow.txtPurpose.Text = dgvReturn.Rows(e.RowIndex).Cells("purpose").Value.ToString()
+
+            ' Handle Date safely
+            Dim dateBorrowed As Object = dgvReturn.Rows(e.RowIndex).Cells("dateborrowed").Value
+            If dateBorrowed IsNot Nothing AndAlso Not IsDBNull(dateBorrowed) Then
+                frmBorrow.dtpBorrowed.Value = CDate(dateBorrowed)
+            End If
+
+            frmBorrow.cbBorrowRemarks.Text = dgvReturn.Rows(e.RowIndex).Cells("remarks").Value.ToString()
         End If
     End Sub
 End Class

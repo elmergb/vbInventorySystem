@@ -3,7 +3,9 @@
 
     Private Sub frmUserList_Load(sender As System.Object, e As System.EventArgs) Handles MyBase.Load
         Call data_loader("SELECT * FROM tbluser", dgvUserList)
-
+        For Each col As DataGridViewColumn In dgvUserList.Columns
+            col.SortMode = DataGridViewColumnSortMode.NotSortable
+        Next
     End Sub
 
     Private Sub btnAdd_Click(sender As System.Object, e As System.EventArgs) Handles btnAdd.Click
