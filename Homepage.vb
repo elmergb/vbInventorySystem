@@ -65,7 +65,7 @@
     End Sub
 
     Private Sub btnDashBoard_Click_1(sender As System.Object, e As System.EventArgs) Handles btnDashBoard.Click
-        LoadForm(New frmDashboard())
+        'LoadForm(New frmDashboard())
     End Sub
 
     Private Sub btnReturnList_Click_1(sender As System.Object, e As System.EventArgs) Handles btnReturnList.Click
@@ -73,7 +73,7 @@
     End Sub
 
     Private Sub btnBorrowPage_Click_1(sender As System.Object, e As System.EventArgs) Handles btnBorrowPage.Click
-        LoadForm(New frmBorrowerList())
+        LoadForm(New frmBorrowerCartList())
     End Sub
 
 
@@ -90,6 +90,7 @@
     End Sub
 
     Private Sub BoroToolStripMenuItem_Click(sender As System.Object, e As System.EventArgs) Handles BoroToolStripMenuItem.Click
-        LoadForm(New frmBorrowerCartList())
+        LoadForm(New frmBorrowerList())
+
     End Sub
 End Class

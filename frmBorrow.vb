@@ -30,6 +30,16 @@
             availableQty = CInt(availqty)
         End If
 
+        If nupQuantity.Value = 0 Then
+            MsgBox("invalid quantity")
+            Exit Sub
+        End If
+
+        If txtPurpose.Text.Trim() = "" Or txtContact.Text.Trim() = "" Then
+            MsgBox("Fill this information")
+            Exit Sub
+        End If
+
         If nupQuantity.Value > availqty Then
             MsgBox("Not enough available stock! Only " & availableQty & " left", vbInformation)
             isValid = False
@@ -50,25 +60,13 @@
         MessageBox.Show("Item '" & cbItemList.Text & "' added to cart successfully!", "Cart Updated", MessageBoxButtons.OK, MessageBoxIcon.Information)
         Call listLoader()
         cbItemList.SelectedIndex = -1
-        txtBorrowerName.Clear()
         nupQuantity.Value = 0
         txtContact.Clear()
         txtPurpose.Clear()
         cbBorrowRemarks.Items.Clear()
         Me.Close()
-        
+
 
     End Sub
 
-    Private Sub txtBorrowerName_TextChanged(sender As System.Object, e As System.EventArgs) Handles txtBorrowerName.TextChanged
-
-    End Sub
-
-    Private Sub Label3_Click(sender As System.Object, e As System.EventArgs) Handles Label3.Click
-
-    End Sub
-
-    Private Sub txtItemDesc_TextChanged(sender As System.Object, e As System.EventArgs) Handles txtItemDesc.TextChanged
-
-    End Sub
 End Class

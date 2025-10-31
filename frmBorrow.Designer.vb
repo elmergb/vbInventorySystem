@@ -51,7 +51,7 @@ Partial Class frmBorrow
         Me.Label8.ForeColor = System.Drawing.Color.White
         Me.Label8.Location = New System.Drawing.Point(0, 0)
         Me.Label8.Name = "Label8"
-        Me.Label8.Size = New System.Drawing.Size(1132, 55)
+        Me.Label8.Size = New System.Drawing.Size(592, 55)
         Me.Label8.TabIndex = 17
         Me.Label8.Text = " Borrow"
         Me.Label8.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
@@ -195,7 +195,8 @@ Partial Class frmBorrow
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(1132, 631)
+        Me.ClientSize = New System.Drawing.Size(592, 430)
+        Me.ControlBox = False
         Me.Controls.Add(Me.txtItemDesc)
         Me.Controls.Add(Me.btnSave)
         Me.Controls.Add(Me.Label8)
@@ -213,8 +214,12 @@ Partial Class frmBorrow
         Me.Controls.Add(Me.nupQuantity)
         Me.Controls.Add(Me.Label5)
         Me.Controls.Add(Me.Label4)
+        Me.MaximizeBox = False
+        Me.MinimizeBox = False
         Me.Name = "frmBorrow"
-        Me.Text = "frmBorrow"
+        Me.ShowIcon = False
+        Me.ShowInTaskbar = False
+        Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         CType(Me.nupQuantity, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()

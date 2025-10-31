@@ -52,17 +52,23 @@
 
     Private Sub btnDelete_Click(sender As Object, e As EventArgs) Handles btnDelete.Click
         Dim cmd As Odbc.OdbcCommand
-        If lvCart.SelectedItems.Count = 0 Then
+        If lvCart.SelectedItems.Count >= 0 Then
             MsgBox("Please select an item to delete.", MsgBoxStyle.Exclamation)
+            Exit Sub
         End If
 
-        Dim itemName As String = lvCart.SelectedItems(0).SubItems(0).Text
-        cmd = New Odbc.OdbcCommand("DELETE FROM tblcartlist WHERE ItemID =  (SELECT ItemID From tblitemlist WHERE ItemName = ?)", con)
-        cmd.Parameters.AddWithValue("?", itemName)
-        cmd.ExecuteNonQuery()
+        Try
+            Dim itemName As String = lvCart.SelectedItems(0).SubItems(0).Text
+            cmd = New Odbc.OdbcCommand("DELETE FROM tblcartlist WHERE ItemID =  (SELECT ItemID From tblitemlist WHERE ItemName = ?)", con)
+            cmd.Parameters.AddWithValue("?", itemName)
+            cmd.ExecuteNonQuery()
 
-        MsgBox("Item removed successfully!")
-        Call listLoader()
+            MsgBox("Item removed successfully!")
+            Call listLoader()
+        Catch ex As Exception
+            MsgBox(ex.Message.ToString)
+        End Try
+
     End Sub
 
     Private Sub btnEdit_Click(sender As Object, e As EventArgs) Handles btnEdit.Click

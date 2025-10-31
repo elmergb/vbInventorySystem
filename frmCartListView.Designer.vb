@@ -88,6 +88,8 @@ Partial Class frmCartListView
         Me.Controls.Add(Me.btnEdit)
         Me.Controls.Add(Me.btnDelete)
         Me.Controls.Add(Me.lvCart)
+        Me.MaximizeBox = False
+        Me.MinimizeBox = False
         Me.Name = "frmCartListView"
         Me.ShowIcon = False
         Me.ShowInTaskbar = False

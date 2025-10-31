@@ -111,32 +111,42 @@
     Private Sub btnSave_Click(sender As System.Object, e As System.EventArgs) Handles btnSave.Click
         Dim transaction As Odbc.OdbcTransaction = con.BeginTransaction()
         Dim cmd As Odbc.OdbcCommand
+
+
+
         Try
             cmd = New Odbc.OdbcCommand("SELECT * FROM tblcartlist", con, transaction)
             Dim reader As Odbc.OdbcDataReader = cmd.ExecuteReader()
 
-            While reader.Read()
-                ' Insert into tblborrow
-                cmd = New Odbc.OdbcCommand("INSERT INTO tblborrow (ItemID, BorrowerName, QuantityBorrowed, Contact, Purpose, DateBorrowed, Remarks) VALUES (?, ?, ?, ?, ?, ?, ?)", con, transaction)
-                With cmd.Parameters
-                    .AddWithValue("?", reader("ItemID"))
-                    .AddWithValue("?", reader("BorrowerName"))
-                    .AddWithValue("?", reader("QuantityBorrowed"))
-                    .AddWithValue("?", reader("Contact"))
-                    .AddWithValue("?", reader("Purpose"))
-                    .AddWithValue("?", reader("DateBorrowed"))
-                    .AddWithValue("?", reader("Remarks"))
+            If reader.HasRows Then
+
+                While reader.Read()
+                    ' Insert into tblborrow
+                    cmd = New Odbc.OdbcCommand("INSERT INTO tblborrow (ItemID, BorrowerName, QuantityBorrowed, Contact, Purpose, DateBorrowed, Remarks) VALUES (?, ?, ?, ?, ?, ?, ?)", con, transaction)
+                    With cmd.Parameters
+                        .AddWithValue("?", reader("ItemID"))
+                        .AddWithValue("?", reader("BorrowerName"))
+                        .AddWithValue("?", reader("QuantityBorrowed"))
+                        .AddWithValue("?", reader("Contact"))
+                        .AddWithValue("?", reader("Purpose"))
+                        .AddWithValue("?", reader("DateBorrowed"))
+                        .AddWithValue("?", reader("Remarks"))
+                        cmd.ExecuteNonQuery()
+
+                    End With
+
+
+                    ' Update item quantity
+                    cmd = New Odbc.OdbcCommand("UPDATE tblitemlist SET ItemQuantity = ItemQuantity - ? WHERE ItemID = ?", con, transaction)
+                    cmd.Parameters.AddWithValue("?", reader("QuantityBorrowed"))
+                    cmd.Parameters.AddWithValue("?", reader("ItemID"))
                     cmd.ExecuteNonQuery()
+                End While
 
-                End With
-                
-                ' Update item quantity
-                cmd = New Odbc.OdbcCommand("UPDATE tblitemlist SET ItemQuantity = ItemQuantity - ? WHERE ItemID = ?", con, transaction)
-                cmd.Parameters.AddWithValue("?", reader("QuantityBorrowed"))
-                cmd.Parameters.AddWithValue("?", reader("ItemID"))
-                cmd.ExecuteNonQuery()
-            End While
-
+            Else
+                MsgBox("No records found. The table is empty.", MsgBoxStyle.Information)
+                Exit Sub
+            End If
             reader.Close()
 
             ' Clear the cart
