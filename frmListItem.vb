@@ -56,7 +56,7 @@ Public Class frmListItem
     End Sub
 
 
-    Private Sub btnBorrow_Click(sender As System.Object, e As System.EventArgs) Handles btnBorrow.Click
+    Private Sub btnBorrow_Click(sender As System.Object, e As System.EventArgs)
         If (dgvItemList.Tag) = 0 Then
             MsgBox("Select an item to borrow!", vbInformation, "Select Item")
         Else
@@ -115,32 +115,8 @@ Public Class frmListItem
         If txtSearch.Text = "Search Item" Then
             txtSearch.Text = ""
             txtSearch.ForeColor = Color.Black
-            txtSearch.Font = New Font(txtSearch.Font, FontStyle.Italic)
         End If
     End Sub
-
-
-    'Private Sub txtSearch_LostFocus(sender As Object, e As EventArgs) Handles txtSearch.LostFocus
-    '    Call data_loader("SELECT * FROM vw_Item", dgvItemList)
-    '    If txtSearch.Text = "" Then
-    '        txtSearch.Text = "Search Item"
-    '        txtSearch.ForeColor = Color.Gray
-    '        txtSearch.Font = New Font(txtSearch.Font, FontStyle.Italic)
-    '    End If
-    'End Sub
-    'Private Sub txtUsername_GotFocus(sender As Object, e As System.EventArgs) Handles txtUsername.GotFocus
-    '    If txtUsername.Text = "Username" Then
-    '        txtUsername.Text = ""
-    '        txtUsername.ForeColor = Color.Black
-    '    End If
-    'End Sub
-
-    'Private Sub txtUsername_LostFocus(sender As Object, e As System.EventArgs) Handles txtUsername.LostFocus
-    '    If txtUsername.Text = "" Then
-    '        txtUsername.Text = "Username"
-    '        txtUsername.ForeColor = Color.Gray
-    '    End If
-    'End Sub
 
     Private Sub dgvItemList_CellContentClick(sender As System.Object, e As System.Windows.Forms.DataGridViewCellEventArgs) Handles dgvItemList.CellContentClick
 

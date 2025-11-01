@@ -67,17 +67,17 @@ Partial Class frmDashboard
         Me.lblItemTotal = New System.Windows.Forms.Label()
         Me.FileSystemWatcher1 = New System.IO.FileSystemWatcher()
         Me.Panel1 = New System.Windows.Forms.Panel()
+        Me.lbl1 = New System.Windows.Forms.Label()
         Me.Panel3 = New System.Windows.Forms.Panel()
+        Me.Label12 = New System.Windows.Forms.Label()
         Me.lblTotalBorrowed = New System.Windows.Forms.Label()
         Me.Panel2 = New System.Windows.Forms.Panel()
+        Me.Label5 = New System.Windows.Forms.Label()
         Me.Panel6 = New System.Windows.Forms.Panel()
+        Me.Label3 = New System.Windows.Forms.Label()
         Me.Panel5 = New System.Windows.Forms.Panel()
         Me.Label6 = New System.Windows.Forms.Label()
         Me.Label2 = New System.Windows.Forms.Label()
-        Me.Label3 = New System.Windows.Forms.Label()
-        Me.Label5 = New System.Windows.Forms.Label()
-        Me.Label12 = New System.Windows.Forms.Label()
-        Me.lbl1 = New System.Windows.Forms.Label()
         Me.GroupBox1.SuspendLayout()
         CType(Me.dgvDamageItem, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.Panel4.SuspendLayout()
@@ -471,6 +471,21 @@ Partial Class frmDashboard
         Me.Panel1.Size = New System.Drawing.Size(161, 129)
         Me.Panel1.TabIndex = 15
         '
+        'lbl1
+        '
+        Me.lbl1.BackColor = System.Drawing.Color.Transparent
+        Me.lbl1.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lbl1.ForeColor = System.Drawing.SystemColors.Desktop
+        Me.lbl1.Image = Global.main.My.Resources.Resources.inventory
+        Me.lbl1.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
+        Me.lbl1.Location = New System.Drawing.Point(1, 0)
+        Me.lbl1.Name = "lbl1"
+        Me.lbl1.Padding = New System.Windows.Forms.Padding(5)
+        Me.lbl1.Size = New System.Drawing.Size(147, 41)
+        Me.lbl1.TabIndex = 17
+        Me.lbl1.Text = "    Total Items"
+        Me.lbl1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
+        '
         'Panel3
         '
         Me.Panel3.BackColor = System.Drawing.Color.Gainsboro
@@ -481,6 +496,22 @@ Partial Class frmDashboard
         Me.Panel3.Name = "Panel3"
         Me.Panel3.Size = New System.Drawing.Size(161, 129)
         Me.Panel3.TabIndex = 17
+        '
+        'Label12
+        '
+        Me.Label12.BackColor = System.Drawing.Color.Transparent
+        Me.Label12.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label12.ForeColor = System.Drawing.SystemColors.ActiveCaptionText
+        Me.Label12.Image = Global.main.My.Resources.Resources.inventory
+        Me.Label12.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
+        Me.Label12.Location = New System.Drawing.Point(0, 0)
+        Me.Label12.Margin = New System.Windows.Forms.Padding(0)
+        Me.Label12.Name = "Label12"
+        Me.Label12.Padding = New System.Windows.Forms.Padding(7)
+        Me.Label12.Size = New System.Drawing.Size(199, 44)
+        Me.Label12.TabIndex = 17
+        Me.Label12.Text = "       Total Borrowed"
+        Me.Label12.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
         '
         'lblTotalBorrowed
         '
@@ -503,6 +534,22 @@ Partial Class frmDashboard
         Me.Panel2.Size = New System.Drawing.Size(161, 129)
         Me.Panel2.TabIndex = 18
         '
+        'Label5
+        '
+        Me.Label5.BackColor = System.Drawing.Color.Transparent
+        Me.Label5.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label5.ForeColor = System.Drawing.SystemColors.ActiveCaptionText
+        Me.Label5.Image = Global.main.My.Resources.Resources.inventory
+        Me.Label5.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
+        Me.Label5.Location = New System.Drawing.Point(0, -1)
+        Me.Label5.Margin = New System.Windows.Forms.Padding(0)
+        Me.Label5.Name = "Label5"
+        Me.Label5.Padding = New System.Windows.Forms.Padding(7)
+        Me.Label5.Size = New System.Drawing.Size(176, 40)
+        Me.Label5.TabIndex = 19
+        Me.Label5.Text = "       Total Returned"
+        Me.Label5.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
+        '
         'Panel6
         '
         Me.Panel6.BackColor = System.Drawing.Color.Gainsboro
@@ -514,9 +561,25 @@ Partial Class frmDashboard
         Me.Panel6.Size = New System.Drawing.Size(161, 129)
         Me.Panel6.TabIndex = 19
         '
+        'Label3
+        '
+        Me.Label3.BackColor = System.Drawing.Color.Transparent
+        Me.Label3.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label3.ForeColor = System.Drawing.SystemColors.ActiveCaptionText
+        Me.Label3.Image = Global.main.My.Resources.Resources.inventory
+        Me.Label3.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
+        Me.Label3.Location = New System.Drawing.Point(0, 0)
+        Me.Label3.Margin = New System.Windows.Forms.Padding(0)
+        Me.Label3.Name = "Label3"
+        Me.Label3.Padding = New System.Windows.Forms.Padding(7)
+        Me.Label3.Size = New System.Drawing.Size(176, 40)
+        Me.Label3.TabIndex = 18
+        Me.Label3.Text = "       Total Damage"
+        Me.Label3.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
+        '
         'Panel5
         '
-        Me.Panel5.BackColor = System.Drawing.Color.FromArgb(CType(CType(90, Byte), Integer), CType(CType(61, Byte), Integer), CType(CType(41, Byte), Integer))
+        Me.Panel5.BackColor = System.Drawing.SystemColors.ActiveCaption
         Me.Panel5.Controls.Add(Me.Label6)
         Me.Panel5.Dock = System.Windows.Forms.DockStyle.Top
         Me.Panel5.Location = New System.Drawing.Point(0, 0)
@@ -546,69 +609,6 @@ Partial Class frmDashboard
         Me.Label2.Name = "Label2"
         Me.Label2.Size = New System.Drawing.Size(1489, 786)
         Me.Label2.TabIndex = 22
-        '
-        'Label3
-        '
-        Me.Label3.BackColor = System.Drawing.Color.Transparent
-        Me.Label3.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label3.ForeColor = System.Drawing.SystemColors.ActiveCaptionText
-        Me.Label3.Image = Global.main.My.Resources.Resources.inventory
-        Me.Label3.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.Label3.Location = New System.Drawing.Point(0, 0)
-        Me.Label3.Margin = New System.Windows.Forms.Padding(0)
-        Me.Label3.Name = "Label3"
-        Me.Label3.Padding = New System.Windows.Forms.Padding(7)
-        Me.Label3.Size = New System.Drawing.Size(176, 40)
-        Me.Label3.TabIndex = 18
-        Me.Label3.Text = "       Total Damage"
-        Me.Label3.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
-        '
-        'Label5
-        '
-        Me.Label5.BackColor = System.Drawing.Color.Transparent
-        Me.Label5.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label5.ForeColor = System.Drawing.SystemColors.ActiveCaptionText
-        Me.Label5.Image = Global.main.My.Resources.Resources.inventory
-        Me.Label5.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.Label5.Location = New System.Drawing.Point(0, -1)
-        Me.Label5.Margin = New System.Windows.Forms.Padding(0)
-        Me.Label5.Name = "Label5"
-        Me.Label5.Padding = New System.Windows.Forms.Padding(7)
-        Me.Label5.Size = New System.Drawing.Size(176, 40)
-        Me.Label5.TabIndex = 19
-        Me.Label5.Text = "       Total Returned"
-        Me.Label5.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
-        '
-        'Label12
-        '
-        Me.Label12.BackColor = System.Drawing.Color.Transparent
-        Me.Label12.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label12.ForeColor = System.Drawing.SystemColors.ActiveCaptionText
-        Me.Label12.Image = Global.main.My.Resources.Resources.inventory
-        Me.Label12.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.Label12.Location = New System.Drawing.Point(0, 0)
-        Me.Label12.Margin = New System.Windows.Forms.Padding(0)
-        Me.Label12.Name = "Label12"
-        Me.Label12.Padding = New System.Windows.Forms.Padding(7)
-        Me.Label12.Size = New System.Drawing.Size(199, 44)
-        Me.Label12.TabIndex = 17
-        Me.Label12.Text = "       Total Borrowed"
-        Me.Label12.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
-        '
-        'lbl1
-        '
-        Me.lbl1.BackColor = System.Drawing.Color.Transparent
-        Me.lbl1.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lbl1.ForeColor = System.Drawing.SystemColors.Desktop
-        Me.lbl1.Image = Global.main.My.Resources.Resources.inventory
-        Me.lbl1.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.lbl1.Location = New System.Drawing.Point(1, 0)
-        Me.lbl1.Name = "lbl1"
-        Me.lbl1.Padding = New System.Windows.Forms.Padding(5)
-        Me.lbl1.Size = New System.Drawing.Size(147, 41)
-        Me.lbl1.TabIndex = 17
-        Me.lbl1.Text = "    Total Items"
-        Me.lbl1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
         '
         'frmDashboard
         '

@@ -9,7 +9,7 @@
         form.Show()
 
         If Login.role = "Student" Then
-            msUser.Visible = False
+            msStudent.Visible = False
             msDashboard.Visible = False
         End If
     End Sub
@@ -33,16 +33,12 @@
         LoadForm(New frmBorrowerList())
 
     End Sub
-
-  
-
-
-    Private Sub MEnuToolStripMenuItem_Click(sender As System.Object, e As System.EventArgs) Handles msUser.Click
-        LoadForm(New frmUserList())
+    Private Sub MEnuToolStripMenuItem_Click(sender As System.Object, e As System.EventArgs) Handles msStudent.Click
+        LoadForm(New frmStudentlist())
     End Sub
 
     Private Sub DashboardToolStripMenuItem_Click(sender As System.Object, e As System.EventArgs) Handles msDashboard.Click
-        LoadForm(New frmStudentlist())
+        LoadForm(New frmDashboard())
     End Sub
 
     Private Sub ItemToolStripMenuItem_Click(sender As System.Object, e As System.EventArgs) Handles msItem.Click
@@ -62,10 +58,10 @@
     End Sub
 
     Private Sub DamageToolStripMenuItem_Click(sender As System.Object, e As System.EventArgs) Handles DamageToolStripMenuItem.Click
-        frmDamageItem.Show()
+        LoadForm(New frmDamageItem())
     End Sub
 
     Private Sub GoodToolStripMenuItem_Click(sender As System.Object, e As System.EventArgs) Handles GoodToolStripMenuItem.Click
-        frmGoodItem.Show()
+        LoadForm(New frmGoodItem())
     End Sub
 End Class

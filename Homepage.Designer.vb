@@ -36,7 +36,7 @@ Partial Class Homepage
         Me.MenuStrip1 = New System.Windows.Forms.MenuStrip()
         Me.msBorrow = New System.Windows.Forms.ToolStripMenuItem()
         Me.msReturn = New System.Windows.Forms.ToolStripMenuItem()
-        Me.msUser = New System.Windows.Forms.ToolStripMenuItem()
+        Me.msStudent = New System.Windows.Forms.ToolStripMenuItem()
         Me.msDashboard = New System.Windows.Forms.ToolStripMenuItem()
         Me.msItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ToolStripDropDownButton1 = New System.Windows.Forms.ToolStripDropDownButton()
@@ -48,7 +48,6 @@ Partial Class Homepage
         Me.GoodToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.BorrowesToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.BoroToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.ReturnToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.UsersToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.StudentListToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ReturnToolStripMenuItem1 = New System.Windows.Forms.ToolStripMenuItem()
@@ -133,7 +132,7 @@ Partial Class Homepage
         '
         Me.MenuStrip1.AutoSize = False
         Me.MenuStrip1.GripStyle = System.Windows.Forms.ToolStripGripStyle.Visible
-        Me.MenuStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.msUser, Me.msDashboard, Me.msItem, Me.msBorrow, Me.msReturn})
+        Me.MenuStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.msDashboard, Me.msItem, Me.msBorrow, Me.msReturn, Me.msStudent})
         Me.MenuStrip1.Location = New System.Drawing.Point(0, 25)
         Me.MenuStrip1.Name = "MenuStrip1"
         Me.MenuStrip1.Size = New System.Drawing.Size(1154, 54)
@@ -154,13 +153,13 @@ Partial Class Homepage
         Me.msReturn.Size = New System.Drawing.Size(73, 50)
         Me.msReturn.Text = "Return"
         '
-        'msUser
+        'msStudent
         '
-        Me.msUser.Font = New System.Drawing.Font("Segoe UI", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.msUser.Image = Global.main.My.Resources.Resources._1564534_customer_man_user_account_profile_icon1
-        Me.msUser.Name = "msUser"
-        Me.msUser.Size = New System.Drawing.Size(72, 50)
-        Me.msUser.Text = "User"
+        Me.msStudent.Font = New System.Drawing.Font("Segoe UI", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.msStudent.Image = Global.main.My.Resources.Resources._1564534_customer_man_user_account_profile_icon1
+        Me.msStudent.Name = "msStudent"
+        Me.msStudent.Size = New System.Drawing.Size(98, 50)
+        Me.msStudent.Text = "Student"
         '
         'msDashboard
         '
@@ -231,7 +230,7 @@ Partial Class Homepage
         '
         'BorrowesToolStripMenuItem
         '
-        Me.BorrowesToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.BoroToolStripMenuItem, Me.ReturnToolStripMenuItem})
+        Me.BorrowesToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.BoroToolStripMenuItem})
         Me.BorrowesToolStripMenuItem.Name = "BorrowesToolStripMenuItem"
         Me.BorrowesToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
         Me.BorrowesToolStripMenuItem.Text = "Borrowers"
@@ -241,12 +240,6 @@ Partial Class Homepage
         Me.BoroToolStripMenuItem.Name = "BoroToolStripMenuItem"
         Me.BoroToolStripMenuItem.Size = New System.Drawing.Size(112, 22)
         Me.BoroToolStripMenuItem.Text = "Borrow"
-        '
-        'ReturnToolStripMenuItem
-        '
-        Me.ReturnToolStripMenuItem.Name = "ReturnToolStripMenuItem"
-        Me.ReturnToolStripMenuItem.Size = New System.Drawing.Size(112, 22)
-        Me.ReturnToolStripMenuItem.Text = "Return"
         '
         'UsersToolStripMenuItem
         '
@@ -358,9 +351,8 @@ Partial Class Homepage
     Friend WithEvents StudentListToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents pnlItem As System.Windows.Forms.Panel
     Friend WithEvents BoroToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
-    Friend WithEvents ReturnToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents MenuStrip1 As System.Windows.Forms.MenuStrip
-    Friend WithEvents msUser As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents msStudent As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents msDashboard As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents msItem As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents msBorrow As System.Windows.Forms.ToolStripMenuItem

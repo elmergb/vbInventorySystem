@@ -193,4 +193,23 @@ Module modGlobalFunc
             MsgBox("Error loading student name: " & ex.Message, vbCritical)
         End Try
     End Sub
+
+    Public Sub SearchBorrowinglist(ByVal searchText As String, ByVal dgv As DataGridView)
+        Try
+            Dim sql As String = "SELECT * FROM vw_borrowing WHERE Status <> 'Returned' AND BorrowerName LIKE ?"
+            Using cmd As New OdbcCommand(sql, con)
+                cmd.Parameters.AddWithValue("?", "%" & Trim(searchText) & "%")
+
+                Dim adapter As New OdbcDataAdapter(cmd)
+                Dim dtable As New DataTable
+                adapter.Fill(dtable)
+
+                dgv.DataSource = dtable
+                adapter.Dispose()
+            End Using
+
+        Catch ex As Exception
+            MessageBox.Show("Error loading items: " & ex.Message)
+        End Try
+    End Sub
 End Module

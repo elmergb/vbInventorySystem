@@ -22,8 +22,8 @@ Partial Class frmListItem
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
-        Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle3 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle4 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Me.dgvItemList = New System.Windows.Forms.DataGridView()
         Me.Item = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.NameOfItem = New System.Windows.Forms.DataGridViewTextBoxColumn()
@@ -36,7 +36,6 @@ Partial Class frmListItem
         Me.Damaged = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.btnAdd = New System.Windows.Forms.Button()
         Me.btnEdit = New System.Windows.Forms.Button()
-        Me.btnBorrow = New System.Windows.Forms.Button()
         Me.txtSearch = New System.Windows.Forms.TextBox()
         Me.Panel1 = New System.Windows.Forms.Panel()
         Me.Label3 = New System.Windows.Forms.Label()
@@ -52,20 +51,20 @@ Partial Class frmListItem
         Me.dgvItemList.AllowUserToDeleteRows = False
         Me.dgvItemList.AllowUserToResizeColumns = False
         Me.dgvItemList.AllowUserToResizeRows = False
-        DataGridViewCellStyle1.BackColor = System.Drawing.Color.White
-        DataGridViewCellStyle1.ForeColor = System.Drawing.Color.Black
-        Me.dgvItemList.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle1
+        DataGridViewCellStyle3.BackColor = System.Drawing.Color.White
+        DataGridViewCellStyle3.ForeColor = System.Drawing.Color.Black
+        Me.dgvItemList.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle3
         Me.dgvItemList.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill
         Me.dgvItemList.BorderStyle = System.Windows.Forms.BorderStyle.None
         Me.dgvItemList.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.[Single]
-        DataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Control
-        DataGridViewCellStyle2.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText
-        DataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight
-        DataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText
-        DataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.dgvItemList.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle2
+        DataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Control
+        DataGridViewCellStyle4.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.WindowText
+        DataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight
+        DataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.dgvItemList.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle4
         Me.dgvItemList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.dgvItemList.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.Item, Me.NameOfItem, Me.ItemDesc, Me.Category, Me.ItemLocation, Me.Quantity, Me.Status, Me.Remarks, Me.Damaged})
         Me.dgvItemList.ImeMode = System.Windows.Forms.ImeMode.NoControl
@@ -147,7 +146,7 @@ Partial Class frmListItem
         'btnAdd
         '
         Me.btnAdd.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnAdd.Location = New System.Drawing.Point(1250, 311)
+        Me.btnAdd.Location = New System.Drawing.Point(1263, 231)
         Me.btnAdd.Name = "btnAdd"
         Me.btnAdd.Size = New System.Drawing.Size(153, 70)
         Me.btnAdd.TabIndex = 1
@@ -157,22 +156,12 @@ Partial Class frmListItem
         'btnEdit
         '
         Me.btnEdit.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnEdit.Location = New System.Drawing.Point(1250, 434)
+        Me.btnEdit.Location = New System.Drawing.Point(1263, 354)
         Me.btnEdit.Name = "btnEdit"
         Me.btnEdit.Size = New System.Drawing.Size(153, 70)
         Me.btnEdit.TabIndex = 2
         Me.btnEdit.Text = "Edit"
         Me.btnEdit.UseVisualStyleBackColor = True
-        '
-        'btnBorrow
-        '
-        Me.btnBorrow.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnBorrow.Location = New System.Drawing.Point(1250, 198)
-        Me.btnBorrow.Name = "btnBorrow"
-        Me.btnBorrow.Size = New System.Drawing.Size(153, 69)
-        Me.btnBorrow.TabIndex = 5
-        Me.btnBorrow.Text = "Borrow"
-        Me.btnBorrow.UseVisualStyleBackColor = True
         '
         'txtSearch
         '
@@ -187,7 +176,7 @@ Partial Class frmListItem
         '
         'Panel1
         '
-        Me.Panel1.BackColor = System.Drawing.Color.FromArgb(CType(CType(90, Byte), Integer), CType(CType(61, Byte), Integer), CType(CType(41, Byte), Integer))
+        Me.Panel1.BackColor = System.Drawing.SystemColors.ActiveCaption
         Me.Panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
         Me.Panel1.Controls.Add(Me.Label3)
         Me.Panel1.Dock = System.Windows.Forms.DockStyle.Top
@@ -214,7 +203,7 @@ Partial Class frmListItem
         'btnDelete
         '
         Me.btnDelete.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnDelete.Location = New System.Drawing.Point(1250, 557)
+        Me.btnDelete.Location = New System.Drawing.Point(1263, 477)
         Me.btnDelete.Name = "btnDelete"
         Me.btnDelete.Size = New System.Drawing.Size(153, 70)
         Me.btnDelete.TabIndex = 17
@@ -242,7 +231,6 @@ Partial Class frmListItem
         Me.Controls.Add(Me.Label2)
         Me.Controls.Add(Me.btnDelete)
         Me.Controls.Add(Me.Panel1)
-        Me.Controls.Add(Me.btnBorrow)
         Me.Controls.Add(Me.btnEdit)
         Me.Controls.Add(Me.btnAdd)
         Me.Controls.Add(Me.dgvItemList)
@@ -258,7 +246,6 @@ Partial Class frmListItem
     End Sub
     Friend WithEvents btnAdd As System.Windows.Forms.Button
     Friend WithEvents btnEdit As System.Windows.Forms.Button
-    Friend WithEvents btnBorrow As System.Windows.Forms.Button
     Friend WithEvents dgvItemList As System.Windows.Forms.DataGridView
     Friend WithEvents txtSearch As TextBox
     Friend WithEvents Panel1 As Panel

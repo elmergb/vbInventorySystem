@@ -111,6 +111,7 @@
     End Sub
 
     Private Sub btnSave_Click(sender As System.Object, e As System.EventArgs) Handles btnSave.Click
+
         Dim transaction As Odbc.OdbcTransaction = con.BeginTransaction()
         Dim cmd As Odbc.OdbcCommand
 
@@ -119,6 +120,13 @@
         Try
             cmd = New Odbc.OdbcCommand("SELECT * FROM tblcartlist", con, transaction)
             Dim reader As Odbc.OdbcDataReader = cmd.ExecuteReader()
+
+            If Not reader.HasRows Then
+                MsgBox("No item found.")
+                reader.Close() ' Always close before rollback
+                transaction.Rollback()
+                Exit Sub
+            End If
 
             If reader.HasRows Then
 
@@ -146,6 +154,7 @@
                 End While
 
             Else
+
                 MsgBox("No records found. The table is empty.", MsgBoxStyle.Information)
                 Exit Sub
             End If
@@ -190,5 +199,9 @@
         If txtStudentNo.Text.Trim() <> "" Then
             GetBorrowerName(txtStudentNo.Text.Trim())
         End If
+    End Sub
+
+    Private Sub dgvItemList_CellContentClick(sender As System.Object, e As System.Windows.Forms.DataGridViewCellEventArgs) Handles dgvItemList.CellContentClick
+
     End Sub
 End Class

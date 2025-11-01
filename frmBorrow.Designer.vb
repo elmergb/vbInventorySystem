@@ -39,6 +39,7 @@ Partial Class frmBorrow
         Me.btnSave = New System.Windows.Forms.Button()
         Me.txtItemDesc = New System.Windows.Forms.TextBox()
         Me.cbItemList = New System.Windows.Forms.ComboBox()
+        Me.Button1 = New System.Windows.Forms.Button()
         CType(Me.nupQuantity, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
@@ -53,7 +54,7 @@ Partial Class frmBorrow
         Me.Label8.Name = "Label8"
         Me.Label8.Size = New System.Drawing.Size(592, 55)
         Me.Label8.TabIndex = 17
-        Me.Label8.Text = " Borrow"
+        Me.Label8.Text = "          Borrow"
         Me.Label8.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
         '
         'Label2
@@ -76,7 +77,7 @@ Partial Class frmBorrow
         '
         'txtPurpose
         '
-        Me.txtPurpose.Location = New System.Drawing.Point(277, 91)
+        Me.txtPurpose.Location = New System.Drawing.Point(286, 91)
         Me.txtPurpose.Name = "txtPurpose"
         Me.txtPurpose.Size = New System.Drawing.Size(174, 20)
         Me.txtPurpose.TabIndex = 12
@@ -118,7 +119,7 @@ Partial Class frmBorrow
         'Label5
         '
         Me.Label5.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label5.Location = New System.Drawing.Point(283, 65)
+        Me.Label5.Location = New System.Drawing.Point(284, 65)
         Me.Label5.Name = "Label5"
         Me.Label5.Size = New System.Drawing.Size(82, 23)
         Me.Label5.TabIndex = 7
@@ -134,7 +135,7 @@ Partial Class frmBorrow
         'Label7
         '
         Me.Label7.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label7.Location = New System.Drawing.Point(283, 198)
+        Me.Label7.Location = New System.Drawing.Point(284, 191)
         Me.Label7.Name = "Label7"
         Me.Label7.Size = New System.Drawing.Size(149, 23)
         Me.Label7.TabIndex = 9
@@ -143,7 +144,7 @@ Partial Class frmBorrow
         'cbBorrowRemarks
         '
         Me.cbBorrowRemarks.FormattingEnabled = True
-        Me.cbBorrowRemarks.Location = New System.Drawing.Point(287, 224)
+        Me.cbBorrowRemarks.Location = New System.Drawing.Point(286, 217)
         Me.cbBorrowRemarks.Name = "cbBorrowRemarks"
         Me.cbBorrowRemarks.Size = New System.Drawing.Size(164, 21)
         Me.cbBorrowRemarks.TabIndex = 20
@@ -191,12 +192,22 @@ Partial Class frmBorrow
         Me.cbItemList.Size = New System.Drawing.Size(161, 21)
         Me.cbItemList.TabIndex = 10
         '
+        'Button1
+        '
+        Me.Button1.Location = New System.Drawing.Point(6, 12)
+        Me.Button1.Name = "Button1"
+        Me.Button1.Size = New System.Drawing.Size(44, 33)
+        Me.Button1.TabIndex = 23
+        Me.Button1.Text = "Back"
+        Me.Button1.UseVisualStyleBackColor = True
+        '
         'frmBorrow
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(592, 430)
         Me.ControlBox = False
+        Me.Controls.Add(Me.Button1)
         Me.Controls.Add(Me.txtItemDesc)
         Me.Controls.Add(Me.btnSave)
         Me.Controls.Add(Me.Label8)
@@ -242,4 +253,5 @@ Partial Class frmBorrow
     Friend WithEvents btnSave As System.Windows.Forms.Button
     Friend WithEvents txtItemDesc As System.Windows.Forms.TextBox
     Friend WithEvents cbItemList As System.Windows.Forms.ComboBox
+    Friend WithEvents Button1 As System.Windows.Forms.Button
 End Class

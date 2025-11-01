@@ -113,4 +113,12 @@
     Private Sub cbReturnRemarks_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cbReturnRemarks.SelectedIndexChanged
 
     End Sub
+
+    Private Sub Button1_Click(sender As System.Object, e As System.EventArgs) Handles Button1.Click
+        Me.Close()
+    End Sub
+
+    Private Sub cbItemListR_KeyPress(sender As Object, e As System.Windows.Forms.KeyPressEventArgs) Handles cbItemListR.KeyPress
+        e.Handled = True
+    End Sub
 End Class

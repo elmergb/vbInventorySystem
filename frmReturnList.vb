@@ -4,6 +4,7 @@
         Call vbConnection()
         Call data_loader("SELECT * FROM vw_borrowing WHERE Status <> 'Returned'", dgvReturn)
         cb_loader("SELECT * FROM tblitemlist", frmReturnEntry.cbItemListR, "ItemName", "ItemID")
+
     End Sub
 
 
@@ -19,7 +20,7 @@
         ' Assign values to frmReturnEntry
         With frmReturnEntry
             ' Main IDs
-            .BorrowID = CInt(row.Cells("bID").Value)
+            .BorrowID = CInt(row.Cells("borrowID").Value)
             .ItemID = CInt(row.Cells("ItemID").Value)
 
             ' Fill data
@@ -37,7 +38,7 @@
             End If
 
             ' Remarks
-            .cbReturnRemarks.Text = row.Cells("remarks").Value.ToString()
+            .cbReturnRemarks.Text = row.Cells("RemarksItem").Value.ToString()
 
             ' Finally show the Return Entry form
             .ShowDialog()
@@ -46,12 +47,12 @@
     Private Sub dgvBorrowerList_CellClick(sender As Object, e As System.Windows.Forms.DataGridViewCellEventArgs) Handles dgvReturn.CellClick
         If e.RowIndex >= 0 Then
             ' Store the selected record’s ID or key
-            dgvReturn.Tag = dgvReturn.Rows(e.RowIndex).Cells("bID").Value
+            dgvReturn.Tag = dgvReturn.Rows(e.RowIndex).Cells("borrowID").Value
 
             ' Transfer values from the DataGridView to frmBorrow controls
             frmBorrow.cbItemList.Text = dgvReturn.Rows(e.RowIndex).Cells("ItemName").Value.ToString()
             frmBorrow.txtItemDesc.Text = dgvReturn.Rows(e.RowIndex).Cells("ItemDesc").Value.ToString()
-            frmBorrow.txtBorrowerName.Text = dgvReturn.Rows(e.RowIndex).Cells("BorrowerName").Value.ToString()
+            frmBorrow.txtBorrowerName.Text = dgvReturn.Rows(e.RowIndex).Cells("borrowerName").Value.ToString()
 
             ' Handle Quantity (convert safely to integer)
             Dim qty As Object = dgvReturn.Rows(e.RowIndex).Cells("qtyBorrowed").Value
@@ -70,7 +71,18 @@
                 frmBorrow.dtpBorrowed.Value = CDate(dateBorrowed)
             End If
 
-            frmBorrow.cbBorrowRemarks.Text = dgvReturn.Rows(e.RowIndex).Cells("remarks").Value.ToString()
+            frmBorrow.cbBorrowRemarks.Text = dgvReturn.Rows(e.RowIndex).Cells("RemarksItem").Value.ToString()
         End If
     End Sub
+    Private Sub txtSearch_GotFocus(sender As Object, e As System.EventArgs) Handles txtSearch.GotFocus
+        If Trim(txtSearch.Text) = "Search by Name/Item" Then
+            txtSearch.Text = ""
+            txtSearch.ForeColor = Color.Black
+        End If
+    End Sub
+
+    Private Sub txtSearch_TextChanged(sender As System.Object, e As System.EventArgs) Handles txtSearch.TextChanged
+        SearchBorrowinglist(txtSearch.Text, dgvReturn)
+    End Sub
+
 End Class
