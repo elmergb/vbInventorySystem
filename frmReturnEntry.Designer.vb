@@ -34,11 +34,18 @@ Partial Class frmReturnEntry
         Me.txtPurposeR = New System.Windows.Forms.TextBox()
         Me.btnReturnLog = New System.Windows.Forms.Button()
         Me.cbReturnRemarks = New System.Windows.Forms.ComboBox()
-        Me.txtItemDescR = New System.Windows.Forms.TextBox()
         Me.Label8 = New System.Windows.Forms.Label()
         Me.Button1 = New System.Windows.Forms.Button()
-        Me.cbItemListR = New System.Windows.Forms.ComboBox()
+        Me.txtSection = New System.Windows.Forms.TextBox()
+        Me.txtCourse = New System.Windows.Forms.TextBox()
+        Me.txtTeacher = New System.Windows.Forms.TextBox()
+        Me.txtSchoolYear = New System.Windows.Forms.TextBox()
+        Me.txtYearLevel = New System.Windows.Forms.TextBox()
+        Me.txtSemester = New System.Windows.Forms.TextBox()
         Me.txtStudentNo = New System.Windows.Forms.TextBox()
+        Me.txtContact = New System.Windows.Forms.TextBox()
+        Me.txtItemDescR = New System.Windows.Forms.TextBox()
+        Me.cbItemListR = New System.Windows.Forms.ComboBox()
         CType(Me.nupQuantityR, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
@@ -157,15 +164,6 @@ Partial Class frmReturnEntry
         Me.cbReturnRemarks.Size = New System.Drawing.Size(187, 22)
         Me.cbReturnRemarks.TabIndex = 31
         '
-        'txtItemDescR
-        '
-        Me.txtItemDescR.Location = New System.Drawing.Point(25, 466)
-        Me.txtItemDescR.Margin = New System.Windows.Forms.Padding(4, 3, 4, 3)
-        Me.txtItemDescR.Name = "txtItemDescR"
-        Me.txtItemDescR.Size = New System.Drawing.Size(202, 20)
-        Me.txtItemDescR.TabIndex = 32
-        Me.txtItemDescR.Visible = False
-        '
         'Label8
         '
         Me.Label8.AllowDrop = True
@@ -189,6 +187,71 @@ Partial Class frmReturnEntry
         Me.Button1.Text = "Back"
         Me.Button1.UseVisualStyleBackColor = True
         '
+        'txtSection
+        '
+        Me.txtSection.Location = New System.Drawing.Point(73, 501)
+        Me.txtSection.Name = "txtSection"
+        Me.txtSection.Size = New System.Drawing.Size(172, 20)
+        Me.txtSection.TabIndex = 41
+        '
+        'txtCourse
+        '
+        Me.txtCourse.Location = New System.Drawing.Point(73, 475)
+        Me.txtCourse.Name = "txtCourse"
+        Me.txtCourse.Size = New System.Drawing.Size(172, 20)
+        Me.txtCourse.TabIndex = 40
+        '
+        'txtTeacher
+        '
+        Me.txtTeacher.Location = New System.Drawing.Point(374, 501)
+        Me.txtTeacher.Name = "txtTeacher"
+        Me.txtTeacher.Size = New System.Drawing.Size(172, 20)
+        Me.txtTeacher.TabIndex = 39
+        '
+        'txtSchoolYear
+        '
+        Me.txtSchoolYear.Location = New System.Drawing.Point(71, 566)
+        Me.txtSchoolYear.Name = "txtSchoolYear"
+        Me.txtSchoolYear.Size = New System.Drawing.Size(172, 20)
+        Me.txtSchoolYear.TabIndex = 38
+        '
+        'txtYearLevel
+        '
+        Me.txtYearLevel.Location = New System.Drawing.Point(372, 528)
+        Me.txtYearLevel.Name = "txtYearLevel"
+        Me.txtYearLevel.Size = New System.Drawing.Size(174, 20)
+        Me.txtYearLevel.TabIndex = 37
+        '
+        'txtSemester
+        '
+        Me.txtSemester.Location = New System.Drawing.Point(374, 554)
+        Me.txtSemester.Name = "txtSemester"
+        Me.txtSemester.Size = New System.Drawing.Size(174, 20)
+        Me.txtSemester.TabIndex = 36
+        '
+        'txtStudentNo
+        '
+        Me.txtStudentNo.Location = New System.Drawing.Point(69, 425)
+        Me.txtStudentNo.Name = "txtStudentNo"
+        Me.txtStudentNo.Size = New System.Drawing.Size(174, 20)
+        Me.txtStudentNo.TabIndex = 35
+        '
+        'txtContact
+        '
+        Me.txtContact.Location = New System.Drawing.Point(333, 457)
+        Me.txtContact.Margin = New System.Windows.Forms.Padding(4, 3, 4, 3)
+        Me.txtContact.Name = "txtContact"
+        Me.txtContact.ReadOnly = True
+        Me.txtContact.Size = New System.Drawing.Size(202, 20)
+        Me.txtContact.TabIndex = 42
+        '
+        'txtItemDescR
+        '
+        Me.txtItemDescR.Location = New System.Drawing.Point(277, 431)
+        Me.txtItemDescR.Name = "txtItemDescR"
+        Me.txtItemDescR.Size = New System.Drawing.Size(174, 20)
+        Me.txtItemDescR.TabIndex = 43
+        '
         'cbItemListR
         '
         Me.cbItemListR.DropDownStyle = System.Windows.Forms.ComboBoxStyle.Simple
@@ -199,24 +262,22 @@ Partial Class frmReturnEntry
         Me.cbItemListR.Size = New System.Drawing.Size(187, 22)
         Me.cbItemListR.TabIndex = 25
         '
-        'txtStudentNo
-        '
-        Me.txtStudentNo.Location = New System.Drawing.Point(14, 508)
-        Me.txtStudentNo.Margin = New System.Windows.Forms.Padding(4, 3, 4, 3)
-        Me.txtStudentNo.Name = "txtStudentNo"
-        Me.txtStudentNo.Size = New System.Drawing.Size(202, 20)
-        Me.txtStudentNo.TabIndex = 35
-        Me.txtStudentNo.Visible = False
-        '
         'frmReturnEntry
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(7.0!, 14.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(646, 613)
+        Me.Controls.Add(Me.txtItemDescR)
+        Me.Controls.Add(Me.txtContact)
+        Me.Controls.Add(Me.txtSection)
+        Me.Controls.Add(Me.txtCourse)
+        Me.Controls.Add(Me.txtTeacher)
+        Me.Controls.Add(Me.txtSchoolYear)
+        Me.Controls.Add(Me.txtYearLevel)
+        Me.Controls.Add(Me.txtSemester)
         Me.Controls.Add(Me.txtStudentNo)
         Me.Controls.Add(Me.Button1)
         Me.Controls.Add(Me.Label8)
-        Me.Controls.Add(Me.txtItemDescR)
         Me.Controls.Add(Me.cbReturnRemarks)
         Me.Controls.Add(Me.btnReturnLog)
         Me.Controls.Add(Me.txtPurposeR)
@@ -251,9 +312,16 @@ Partial Class frmReturnEntry
     Friend WithEvents txtPurposeR As System.Windows.Forms.TextBox
     Friend WithEvents btnReturnLog As System.Windows.Forms.Button
     Friend WithEvents cbReturnRemarks As ComboBox
-    Friend WithEvents txtItemDescR As System.Windows.Forms.TextBox
     Friend WithEvents Label8 As System.Windows.Forms.Label
     Friend WithEvents Button1 As System.Windows.Forms.Button
-    Friend WithEvents cbItemListR As System.Windows.Forms.ComboBox
+    Friend WithEvents txtSection As System.Windows.Forms.TextBox
+    Friend WithEvents txtCourse As System.Windows.Forms.TextBox
+    Friend WithEvents txtTeacher As System.Windows.Forms.TextBox
+    Friend WithEvents txtSchoolYear As System.Windows.Forms.TextBox
+    Friend WithEvents txtYearLevel As System.Windows.Forms.TextBox
+    Friend WithEvents txtSemester As System.Windows.Forms.TextBox
     Friend WithEvents txtStudentNo As System.Windows.Forms.TextBox
+    Friend WithEvents txtContact As System.Windows.Forms.TextBox
+    Friend WithEvents txtItemDescR As System.Windows.Forms.TextBox
+    Friend WithEvents cbItemListR As System.Windows.Forms.ComboBox
 End Class

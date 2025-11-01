@@ -40,6 +40,15 @@ Partial Class frmBorrow
         Me.txtItemDesc = New System.Windows.Forms.TextBox()
         Me.cbItemList = New System.Windows.Forms.ComboBox()
         Me.Button1 = New System.Windows.Forms.Button()
+        Me.Label9 = New System.Windows.Forms.Label()
+        Me.txtStudentNo = New System.Windows.Forms.TextBox()
+        Me.Label10 = New System.Windows.Forms.Label()
+        Me.txtSemester = New System.Windows.Forms.TextBox()
+        Me.txtYearLevel = New System.Windows.Forms.TextBox()
+        Me.txtSchoolYear = New System.Windows.Forms.TextBox()
+        Me.txtTeacher = New System.Windows.Forms.TextBox()
+        Me.txtCourse = New System.Windows.Forms.TextBox()
+        Me.txtSection = New System.Windows.Forms.TextBox()
         CType(Me.nupQuantity, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
@@ -90,7 +99,6 @@ Partial Class frmBorrow
         Me.Label3.Size = New System.Drawing.Size(151, 23)
         Me.Label3.TabIndex = 5
         Me.Label3.Text = "Borrower Name"
-        Me.Label3.Visible = False
         '
         'txtBorrowerName
         '
@@ -98,7 +106,6 @@ Partial Class frmBorrow
         Me.txtBorrowerName.Name = "txtBorrowerName"
         Me.txtBorrowerName.Size = New System.Drawing.Size(174, 20)
         Me.txtBorrowerName.TabIndex = 11
-        Me.txtBorrowerName.Visible = False
         '
         'nupQuantity
         '
@@ -152,7 +159,7 @@ Partial Class frmBorrow
         'Label6
         '
         Me.Label6.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label6.Location = New System.Drawing.Point(283, 127)
+        Me.Label6.Location = New System.Drawing.Point(301, 411)
         Me.Label6.Name = "Label6"
         Me.Label6.Size = New System.Drawing.Size(149, 23)
         Me.Label6.TabIndex = 8
@@ -162,7 +169,7 @@ Partial Class frmBorrow
         '
         Me.dtpBorrowed.CustomFormat = "MM/dd/yyyy hh:mm tt"
         Me.dtpBorrowed.Format = System.Windows.Forms.DateTimePickerFormat.Custom
-        Me.dtpBorrowed.Location = New System.Drawing.Point(286, 153)
+        Me.dtpBorrowed.Location = New System.Drawing.Point(304, 437)
         Me.dtpBorrowed.Name = "dtpBorrowed"
         Me.dtpBorrowed.Size = New System.Drawing.Size(165, 20)
         Me.dtpBorrowed.TabIndex = 15
@@ -182,7 +189,6 @@ Partial Class frmBorrow
         Me.txtItemDesc.Name = "txtItemDesc"
         Me.txtItemDesc.Size = New System.Drawing.Size(174, 20)
         Me.txtItemDesc.TabIndex = 22
-        Me.txtItemDesc.Visible = False
         '
         'cbItemList
         '
@@ -201,12 +207,88 @@ Partial Class frmBorrow
         Me.Button1.Text = "Back"
         Me.Button1.UseVisualStyleBackColor = True
         '
+        'Label9
+        '
+        Me.Label9.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label9.Location = New System.Drawing.Point(44, 249)
+        Me.Label9.Name = "Label9"
+        Me.Label9.Size = New System.Drawing.Size(151, 23)
+        Me.Label9.TabIndex = 24
+        Me.Label9.Text = "Item Description"
+        '
+        'txtStudentNo
+        '
+        Me.txtStudentNo.Location = New System.Drawing.Point(45, 390)
+        Me.txtStudentNo.Name = "txtStudentNo"
+        Me.txtStudentNo.Size = New System.Drawing.Size(174, 20)
+        Me.txtStudentNo.TabIndex = 25
+        '
+        'Label10
+        '
+        Me.Label10.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label10.Location = New System.Drawing.Point(44, 364)
+        Me.Label10.Name = "Label10"
+        Me.Label10.Size = New System.Drawing.Size(151, 23)
+        Me.Label10.TabIndex = 26
+        Me.Label10.Text = "Student No"
+        '
+        'txtSemester
+        '
+        Me.txtSemester.Location = New System.Drawing.Point(350, 519)
+        Me.txtSemester.Name = "txtSemester"
+        Me.txtSemester.Size = New System.Drawing.Size(174, 20)
+        Me.txtSemester.TabIndex = 27
+        '
+        'txtYearLevel
+        '
+        Me.txtYearLevel.Location = New System.Drawing.Point(348, 493)
+        Me.txtYearLevel.Name = "txtYearLevel"
+        Me.txtYearLevel.Size = New System.Drawing.Size(174, 20)
+        Me.txtYearLevel.TabIndex = 28
+        '
+        'txtSchoolYear
+        '
+        Me.txtSchoolYear.Location = New System.Drawing.Point(47, 531)
+        Me.txtSchoolYear.Name = "txtSchoolYear"
+        Me.txtSchoolYear.Size = New System.Drawing.Size(172, 20)
+        Me.txtSchoolYear.TabIndex = 29
+        '
+        'txtTeacher
+        '
+        Me.txtTeacher.Location = New System.Drawing.Point(350, 466)
+        Me.txtTeacher.Name = "txtTeacher"
+        Me.txtTeacher.Size = New System.Drawing.Size(172, 20)
+        Me.txtTeacher.TabIndex = 30
+        '
+        'txtCourse
+        '
+        Me.txtCourse.Location = New System.Drawing.Point(49, 440)
+        Me.txtCourse.Name = "txtCourse"
+        Me.txtCourse.Size = New System.Drawing.Size(172, 20)
+        Me.txtCourse.TabIndex = 31
+        '
+        'txtSection
+        '
+        Me.txtSection.Location = New System.Drawing.Point(49, 466)
+        Me.txtSection.Name = "txtSection"
+        Me.txtSection.Size = New System.Drawing.Size(172, 20)
+        Me.txtSection.TabIndex = 32
+        '
         'frmBorrow
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(592, 430)
+        Me.ClientSize = New System.Drawing.Size(592, 577)
         Me.ControlBox = False
+        Me.Controls.Add(Me.txtSection)
+        Me.Controls.Add(Me.txtCourse)
+        Me.Controls.Add(Me.txtTeacher)
+        Me.Controls.Add(Me.txtSchoolYear)
+        Me.Controls.Add(Me.txtYearLevel)
+        Me.Controls.Add(Me.txtSemester)
+        Me.Controls.Add(Me.Label10)
+        Me.Controls.Add(Me.txtStudentNo)
+        Me.Controls.Add(Me.Label9)
         Me.Controls.Add(Me.Button1)
         Me.Controls.Add(Me.txtItemDesc)
         Me.Controls.Add(Me.btnSave)
@@ -254,4 +336,13 @@ Partial Class frmBorrow
     Friend WithEvents txtItemDesc As System.Windows.Forms.TextBox
     Friend WithEvents cbItemList As System.Windows.Forms.ComboBox
     Friend WithEvents Button1 As System.Windows.Forms.Button
+    Friend WithEvents Label9 As System.Windows.Forms.Label
+    Friend WithEvents txtStudentNo As System.Windows.Forms.TextBox
+    Friend WithEvents Label10 As System.Windows.Forms.Label
+    Friend WithEvents txtSemester As System.Windows.Forms.TextBox
+    Friend WithEvents txtYearLevel As System.Windows.Forms.TextBox
+    Friend WithEvents txtSchoolYear As System.Windows.Forms.TextBox
+    Friend WithEvents txtTeacher As System.Windows.Forms.TextBox
+    Friend WithEvents txtCourse As System.Windows.Forms.TextBox
+    Friend WithEvents txtSection As System.Windows.Forms.TextBox
 End Class

@@ -30,14 +30,23 @@ Partial Class frmReturnList
         Me.Label2 = New System.Windows.Forms.Label()
         Me.dgvReturn = New System.Windows.Forms.DataGridView()
         Me.borrowID = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.itemID = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.studentNo = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.borrowerName = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.ItemName = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.ItemDesc = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.qtyBorrowed = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.contact = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.purpose = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.qtyReturned = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Remaining = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Status = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.TeacherName = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.CourseCode = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.YearLevel = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.dateborrowed = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.ReturnedDate = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Semester = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.SchoolYear = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.purpose = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.contact = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.RemarksItem = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Panel1.SuspendLayout()
         CType(Me.dgvReturn, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -113,13 +122,13 @@ Partial Class frmReturnList
         DataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
         Me.dgvReturn.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle1
         Me.dgvReturn.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.dgvReturn.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.borrowID, Me.itemID, Me.borrowerName, Me.ItemName, Me.ItemDesc, Me.qtyBorrowed, Me.contact, Me.purpose, Me.dateborrowed, Me.RemarksItem})
+        Me.dgvReturn.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.borrowID, Me.studentNo, Me.borrowerName, Me.ItemName, Me.ItemDesc, Me.qtyBorrowed, Me.qtyReturned, Me.Remaining, Me.Status, Me.TeacherName, Me.CourseCode, Me.YearLevel, Me.dateborrowed, Me.ReturnedDate, Me.Semester, Me.SchoolYear, Me.purpose, Me.contact, Me.RemarksItem})
         Me.dgvReturn.Location = New System.Drawing.Point(31, 141)
         Me.dgvReturn.Name = "dgvReturn"
         Me.dgvReturn.ReadOnly = True
         Me.dgvReturn.RowHeadersVisible = False
         Me.dgvReturn.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
-        Me.dgvReturn.Size = New System.Drawing.Size(1160, 371)
+        Me.dgvReturn.Size = New System.Drawing.Size(1201, 371)
         Me.dgvReturn.TabIndex = 21
         '
         'borrowID
@@ -128,19 +137,17 @@ Partial Class frmReturnList
         Me.borrowID.HeaderText = "BorrowID"
         Me.borrowID.Name = "borrowID"
         Me.borrowID.ReadOnly = True
-        Me.borrowID.Visible = False
         '
-        'itemID
+        'studentNo
         '
-        Me.itemID.DataPropertyName = "ItemID"
-        Me.itemID.HeaderText = "ItemID"
-        Me.itemID.Name = "itemID"
-        Me.itemID.ReadOnly = True
-        Me.itemID.Visible = False
+        Me.studentNo.DataPropertyName = "StudentNo"
+        Me.studentNo.HeaderText = "Student No."
+        Me.studentNo.Name = "studentNo"
+        Me.studentNo.ReadOnly = True
         '
         'borrowerName
         '
-        Me.borrowerName.DataPropertyName = "BorrowerName"
+        Me.borrowerName.DataPropertyName = "StudentName"
         Me.borrowerName.HeaderText = "Borrower Name"
         Me.borrowerName.Name = "borrowerName"
         Me.borrowerName.ReadOnly = True
@@ -167,19 +174,47 @@ Partial Class frmReturnList
         Me.qtyBorrowed.Name = "qtyBorrowed"
         Me.qtyBorrowed.ReadOnly = True
         '
-        'contact
+        'qtyReturned
         '
-        Me.contact.DataPropertyName = "Contact"
-        Me.contact.HeaderText = "Contact"
-        Me.contact.Name = "contact"
-        Me.contact.ReadOnly = True
+        Me.qtyReturned.DataPropertyName = "QuantityReturned"
+        Me.qtyReturned.HeaderText = "Quantity Returned"
+        Me.qtyReturned.Name = "qtyReturned"
+        Me.qtyReturned.ReadOnly = True
         '
-        'purpose
+        'Remaining
         '
-        Me.purpose.DataPropertyName = "Purpose"
-        Me.purpose.HeaderText = "Purpose"
-        Me.purpose.Name = "purpose"
-        Me.purpose.ReadOnly = True
+        Me.Remaining.DataPropertyName = "Remaining"
+        Me.Remaining.HeaderText = "Remaining"
+        Me.Remaining.Name = "Remaining"
+        Me.Remaining.ReadOnly = True
+        '
+        'Status
+        '
+        Me.Status.DataPropertyName = "Status"
+        Me.Status.HeaderText = "Status"
+        Me.Status.Name = "Status"
+        Me.Status.ReadOnly = True
+        '
+        'TeacherName
+        '
+        Me.TeacherName.DataPropertyName = "TeacherName"
+        Me.TeacherName.HeaderText = "Teacher Name"
+        Me.TeacherName.Name = "TeacherName"
+        Me.TeacherName.ReadOnly = True
+        '
+        'CourseCode
+        '
+        Me.CourseCode.DataPropertyName = "CourseCode"
+        Me.CourseCode.HeaderText = "Course"
+        Me.CourseCode.Name = "CourseCode"
+        Me.CourseCode.ReadOnly = True
+        '
+        'YearLevel
+        '
+        Me.YearLevel.DataPropertyName = "YearLevel"
+        Me.YearLevel.HeaderText = "Year Level"
+        Me.YearLevel.Name = "YearLevel"
+        Me.YearLevel.ReadOnly = True
         '
         'dateborrowed
         '
@@ -188,9 +223,44 @@ Partial Class frmReturnList
         Me.dateborrowed.Name = "dateborrowed"
         Me.dateborrowed.ReadOnly = True
         '
+        'ReturnedDate
+        '
+        Me.ReturnedDate.DataPropertyName = "LastDateReturned"
+        Me.ReturnedDate.HeaderText = "Date/Time Returned"
+        Me.ReturnedDate.Name = "ReturnedDate"
+        Me.ReturnedDate.ReadOnly = True
+        '
+        'Semester
+        '
+        Me.Semester.DataPropertyName = "Semester"
+        Me.Semester.HeaderText = "Semester"
+        Me.Semester.Name = "Semester"
+        Me.Semester.ReadOnly = True
+        '
+        'SchoolYear
+        '
+        Me.SchoolYear.DataPropertyName = "SchoolYear"
+        Me.SchoolYear.HeaderText = "School Year"
+        Me.SchoolYear.Name = "SchoolYear"
+        Me.SchoolYear.ReadOnly = True
+        '
+        'purpose
+        '
+        Me.purpose.DataPropertyName = "Purpose"
+        Me.purpose.HeaderText = "Purpose"
+        Me.purpose.Name = "purpose"
+        Me.purpose.ReadOnly = True
+        '
+        'contact
+        '
+        Me.contact.DataPropertyName = "Contact"
+        Me.contact.HeaderText = "Contact"
+        Me.contact.Name = "contact"
+        Me.contact.ReadOnly = True
+        '
         'RemarksItem
         '
-        Me.RemarksItem.DataPropertyName = "Remarks"
+        Me.RemarksItem.DataPropertyName = "BorrowRemarks"
         Me.RemarksItem.HeaderText = "Remarks"
         Me.RemarksItem.Name = "RemarksItem"
         Me.RemarksItem.ReadOnly = True
@@ -222,13 +292,22 @@ Partial Class frmReturnList
     Friend WithEvents Label1 As Label
     Friend WithEvents dgvReturn As System.Windows.Forms.DataGridView
     Friend WithEvents borrowID As System.Windows.Forms.DataGridViewTextBoxColumn
-    Friend WithEvents itemID As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents studentNo As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents borrowerName As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents ItemName As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents ItemDesc As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents qtyBorrowed As System.Windows.Forms.DataGridViewTextBoxColumn
-    Friend WithEvents contact As System.Windows.Forms.DataGridViewTextBoxColumn
-    Friend WithEvents purpose As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents qtyReturned As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents Remaining As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents Status As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents TeacherName As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents CourseCode As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents YearLevel As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents dateborrowed As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents ReturnedDate As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents Semester As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents SchoolYear As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents purpose As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents contact As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents RemarksItem As System.Windows.Forms.DataGridViewTextBoxColumn
 End Class

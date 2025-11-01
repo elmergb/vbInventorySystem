@@ -171,18 +171,25 @@ Module modGlobalFunc
         Return desc
     End Function
 
-    Public Sub GetBorrowerName(studentNo As String)
+    Public Sub GetBorrowerName(studentNo As String, course As String, section As String, yDesc As String)
         Try
-            Dim query As String = "SELECT fname, mi, lname FROM vw_students WHERE StudentNo = ?"
+            Dim query As String = "SELECT fname, mi, lname, cCode, section, yDesc FROM vw_students WHERE StudentNo = ?"
             Dim cmd As New Odbc.OdbcCommand(query, con)
             cmd.Parameters.AddWithValue("?", studentNo)
-
+            cmd.Parameters.AddWithValue("?", course)
+            cmd.Parameters.AddWithValue("?", section)
+            cmd.Parameters.AddWithValue("?", yDesc)
             Dim reader As Odbc.OdbcDataReader = cmd.ExecuteReader()
 
             If reader.Read() Then
                 Dim fullName As String = reader("fname").ToString() & " " & reader("mi").ToString() & " " & reader("lname").ToString()
-
+                Dim c As String = reader("cCode").ToString
+                Dim s As String = reader("section").ToString
+                Dim yearLevel As String = reader("yDesc").ToString
                 frmBorrow.txtBorrowerName.Text = fullName.Trim()
+                frmBorrow.txtCourse.Text = course.Trim
+                frmBorrow.txtSection.Text = section.Trim
+                frmBorrow.txtSchoolYear.Text = yearLevel.Trim
             Else
                 MsgBox("Student No not found!", vbExclamation)
                 frmBorrow.txtBorrowerName.Clear()
@@ -196,7 +203,7 @@ Module modGlobalFunc
 
     Public Sub SearchBorrowinglist(ByVal searchText As String, ByVal dgv As DataGridView)
         Try
-            Dim sql As String = "SELECT * FROM vw_borrowing WHERE Status <> 'Returned' AND BorrowerName LIKE ?"
+            Dim sql As String = "SELECT * FROM vw_borrowed_items WHERE Status <> 'Returned' AND StudentName LIKE ?"
             Using cmd As New OdbcCommand(sql, con)
                 cmd.Parameters.AddWithValue("?", "%" & Trim(searchText) & "%")
 

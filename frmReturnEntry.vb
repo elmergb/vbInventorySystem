@@ -67,6 +67,7 @@
 
             If Remarks = "damage" Or Remarks = "damaged" Then
                 Remarks = "Damage"
+
             Else
                 Remarks = "Good"
             End If

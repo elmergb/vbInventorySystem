@@ -2,10 +2,10 @@
 
 Public Class frmDashboard
     Private Sub frmDashboard_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        Call data_loader("SELECT BorrowerName, ItemName, QuantityBorrowed, Purpose, DateBorrowed FROM vw_borrowing ORDER BY DateBorrowed DESC LIMIT 5 ", frmDBdgvBorrow)
-        Call data_loader("SELECT  ItemName,BorrowerName, QuantityBorrowed, QuantityReturned, DateReturned FROM vw_transaction ORDER BY DateReturned DESC LIMIT 5 ", frmDBdgvReturn)
+        Call data_loader("SELECT StudentName, ItemName, QuantityBorrowed, DateBorrowed FROM vwborrowings ORDER BY DateBorrowed DESC LIMIT 5 ", frmDBdgvBorrow)
+        'Call data_loader("SELECT  ItemName,BorrowerName, QuantityBorrowed, QuantityReturned, DateReturned FROM vw_transaction ORDER BY DateReturned DESC LIMIT 5 ", frmDBdgvReturn)
         Call data_loader("SELECT * FROM tblitemlist ORDER BY ItemID DESC LIMIT 5 ", frmDBdgvItem)
-        Call data_loader("SELECT Name, ItemDamage FROM vw_item WHERE ItemDamage > 0", dgvDamageItem)
+        Call data_loader("SELECT Name, ItemDamage FROM vw_items WHERE ItemDamage > 0", dgvDamageItem)
         frmDBdgvBorrow.ClearSelection()
         frmDBdgvReturn.ClearSelection()
         frmDBdgvItem.ClearSelection()
@@ -131,5 +131,9 @@ Public Class frmDashboard
                 End Select
             End If
         End If
+    End Sub
+
+    Private Sub frmDBdgvBorrow_CellContentClick(sender As System.Object, e As System.Windows.Forms.DataGridViewCellEventArgs) Handles frmDBdgvBorrow.CellContentClick
+
     End Sub
 End Class

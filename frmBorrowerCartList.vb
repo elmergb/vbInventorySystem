@@ -1,9 +1,10 @@
 ﻿Public Class frmBorrowerCartList
+
     Private Sub frmBorrowerCartList_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         Call vbConnection()
         'Call data_loader("SELECT * FROM vw_cartlist", dgvBorrowerCart)
         cb_loader("SELECT * FROM tblitemlist", frmReturnEntry.cbItemListR, "ItemName", "ItemID")
-        Call data_loader("SELECT ItemID, Name, ItemDescription, ItemCategory, ItemLocation, Quantity FROM vw_Item", dgvItemList)
+        Call data_loader("SELECT ItemID, Name, ItemDescription, ItemCategory, ItemLocation, Quantity FROM vw_Items", dgvItemList)
         cb_loader("SELECT * FROM vw_teacher", cbTeacher, "teacher_fullname", "tID")
         For Each col As DataGridViewColumn In dgvItemList.Columns
             col.SortMode = DataGridViewColumnSortMode.NotSortable
@@ -104,6 +105,11 @@
         If (dgvItemList.Tag) = 0 Then
             MsgBox("Select an item to borrow!", vbInformation, "Select Item")
         Else
+            frmBorrow.txtYearLevel.Text = txtYearLevel.Text
+            frmBorrow.txtSchoolYear.Text = txtSchoolYear.Text
+            frmBorrow.txtSemester.Text = txtSemester.Text
+            frmBorrow.txtTeacher.Text = cbTeacher.Text
+            frmBorrow.txtStudentNo.Text = txtStudentNo.Text
             frmBorrow.SelectedItemID = Val(dgvItemList.Tag)
             frmBorrow.ShowDialog()
         End If
@@ -111,72 +117,60 @@
     End Sub
 
     Private Sub btnSave_Click(sender As System.Object, e As System.EventArgs) Handles btnSave.Click
-
-        Dim transaction As Odbc.OdbcTransaction = con.BeginTransaction()
         Dim cmd As Odbc.OdbcCommand
-
-
+        Dim transaction As Odbc.OdbcTransaction = con.BeginTransaction()
 
         Try
-            cmd = New Odbc.OdbcCommand("SELECT * FROM tblcartlist", con, transaction)
-            Dim reader As Odbc.OdbcDataReader = cmd.ExecuteReader()
 
-            If Not reader.HasRows Then
-                MsgBox("No item found.")
-                reader.Close() ' Always close before rollback
-                transaction.Rollback()
-                Exit Sub
-            End If
+            ' --- Step 1: Read all cart rows into memory ---
+            Dim cmdSelect As New Odbc.OdbcCommand("SELECT * FROM tblcartlist", con, transaction)
+            Dim reader As Odbc.OdbcDataReader = cmdSelect.ExecuteReader()
 
             If reader.HasRows Then
 
                 While reader.Read()
-                    ' Insert into tblborrow
-                    cmd = New Odbc.OdbcCommand("INSERT INTO tblborrow (ItemID, BorrowerName, QuantityBorrowed, Contact, Purpose, DateBorrowed, Remarks) VALUES (?, ?, ?, ?, ?, ?, ?)", con, transaction)
-                    With cmd.Parameters
-                        .AddWithValue("?", reader("ItemID"))
-                        .AddWithValue("?", reader("BorrowerName"))
-                        .AddWithValue("?", reader("QuantityBorrowed"))
-                        .AddWithValue("?", reader("Contact"))
-                        .AddWithValue("?", reader("Purpose"))
-                        .AddWithValue("?", reader("DateBorrowed"))
-                        .AddWithValue("?", reader("Remarks"))
-                        cmd.ExecuteNonQuery()
-
+                    Dim insertCmd As New Odbc.OdbcCommand("INSERT INTO tblborrowing (ItemID, borrowQty, borrowDateTime, sID, tID, semester, settingID, remarks, Contact, Purpose, yID) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)", con, transaction)
+                    With insertCmd.Parameters
+                        .AddWithValue("@ItemID", reader("ItemID"))
+                        .AddWithValue("@borrowQty", reader("QuantityBorrowed"))
+                        .AddWithValue("@borrowDateTime", reader("borrowDateTime"))
+                        .AddWithValue("@sID", reader("sID"))
+                        .AddWithValue("@tID", reader("tID"))
+                        .AddWithValue("@semester", "semester") ' Change to actual semester if exists
+                        .AddWithValue("@settingID", reader("settingID"))
+                        .AddWithValue("@remarks", reader("Remarks"))
+                        .AddWithValue("@Contact", reader("Contact"))
+                        .AddWithValue("@Purpose", reader("Purpose"))
+                        .AddWithValue("@yID", reader("yID"))
+                        insertCmd.ExecuteNonQuery()
                     End With
-
-
-                    ' Update item quantity
                     cmd = New Odbc.OdbcCommand("UPDATE tblitemlist SET ItemQuantity = ItemQuantity - ? WHERE ItemID = ?", con, transaction)
                     cmd.Parameters.AddWithValue("?", reader("QuantityBorrowed"))
                     cmd.Parameters.AddWithValue("?", reader("ItemID"))
                     cmd.ExecuteNonQuery()
+
                 End While
-
             Else
-
                 MsgBox("No records found. The table is empty.", MsgBoxStyle.Information)
                 Exit Sub
             End If
             reader.Close()
-
-            ' Clear the cart
+            ' --- Step 3: Clear the cart ---
             Dim clearCmd As New Odbc.OdbcCommand("DELETE FROM tblcartlist", con, transaction)
             clearCmd.ExecuteNonQuery()
 
-
             transaction.Commit()
+            MessageBox.Show("Borrowing finalized successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information)
 
-            MessageBox.Show("Borrowing finalized successfully!")
         Catch ex As Exception
             transaction.Rollback()
-            MsgBox("Error occurred: " & ex.Message)
+            MsgBox("Error occurred: " & ex.Message, vbCritical)
         Finally
             GC.Collect()
         End Try
     End Sub
 
- 
+
     Private Sub btnCart_Click(sender As System.Object, e As System.EventArgs) Handles btnCart.Click
         ' Dim cartForm As New frmCartListView()
         'para sa mamaya sa view details
@@ -197,11 +191,8 @@
 
     Private Sub txtStudentNo_Leave(sender As Object, e As System.EventArgs) Handles txtStudentNo.Leave
         If txtStudentNo.Text.Trim() <> "" Then
-            GetBorrowerName(txtStudentNo.Text.Trim())
+            GetBorrowerName(txtStudentNo.Text.Trim(), txtCourse.Text.Trim(), txtSection.Text.Trim(), txtSchoolYear.Text.Trim())
         End If
     End Sub
 
-    Private Sub dgvItemList_CellContentClick(sender As System.Object, e As System.Windows.Forms.DataGridViewCellEventArgs) Handles dgvItemList.CellContentClick
-
-    End Sub
 End Class

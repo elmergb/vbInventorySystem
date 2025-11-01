@@ -2,7 +2,7 @@
 
     Private Sub frmReturnList_Load(sender As System.Object, e As System.EventArgs) Handles MyBase.Load
         Call vbConnection()
-        Call data_loader("SELECT * FROM vw_borrowing WHERE Status <> 'Returned'", dgvReturn)
+        Call data_loader("SELECT * FROM vw_borrowed_items", dgvReturn)
         cb_loader("SELECT * FROM tblitemlist", frmReturnEntry.cbItemListR, "ItemName", "ItemID")
 
     End Sub
@@ -10,37 +10,82 @@
 
     Private Sub btnReturn_Click(sender As System.Object, e As System.EventArgs) Handles btnReturn.Click
         If dgvReturn.CurrentRow Is Nothing Then
-            MsgBox("Select a record to return", vbInformation)
+            MsgBox("Select a record to return.", vbInformation)
             Exit Sub
         End If
 
-        ' Get the current selected row
         Dim row As DataGridViewRow = dgvReturn.CurrentRow
 
-        ' Assign values to frmReturnEntry
+        Dim RemainingQty As Integer = 0
+        If Not IsDBNull(row.Cells("Remaining").Value) AndAlso IsNumeric(row.Cells("Remaining").Value) Then
+            RemainingQty = CInt(row.Cells("Remaining").Value)
+        End If
+
+        If RemainingQty <= 0 Then
+            MsgBox("This item has already been fully returned.", vbInformation, "No Remaining Items")
+            Exit Sub
+        End If
+
         With frmReturnEntry
-            ' Main IDs
-            .BorrowID = CInt(row.Cells("borrowID").Value)
-            .ItemID = CInt(row.Cells("ItemID").Value)
+            ' IDs
+            Dim BorrowID As Integer = CInt(row.Cells("BorrowID").Value)
 
-            ' Fill data
-            .cbItemListR.SelectedValue = .ItemID
-            .txtItemDescR.Text = row.Cells("ItemDesc").Value.ToString()
+            ' Borrower info
+            .txtStudentNo.Text = row.Cells("StudentNo").Value.ToString()
             .txtBorrowerNameR.Text = row.Cells("BorrowerName").Value.ToString()
-            .txtPurposeR.Text = row.Cells("purpose").Value.ToString()
+            .txtTeacher.Text = row.Cells("TeacherName").Value.ToString()
 
-            ' Handle numeric and null safely
-            Dim qtyObj As Object = row.Cells("qtyBorrowed").Value
-            If qtyObj IsNot Nothing AndAlso IsNumeric(qtyObj) Then
-                .nupQuantityR.Value = CInt(qtyObj)
+            ' Contact & Purpose
+            .txtContact.Text = row.Cells("Contact").Value.ToString()
+            .txtPurposeR.Text = row.Cells("Purpose").Value.ToString()
+
+            ' Item info
+            Dim borrowedItemName As String = row.Cells("ItemName").Value.ToString().Trim()
+
+            ' Get the single item row from DB
+            Dim dt As New DataTable()
+            Using cmd As New Odbc.OdbcCommand("SELECT ItemID, ItemName FROM tblitemlist WHERE TRIM(ItemName) = ?", con)
+                cmd.Parameters.AddWithValue("?", borrowedItemName)
+                Using da As New Odbc.OdbcDataAdapter(cmd)
+                    da.Fill(dt)
+                End Using
+            End Using
+
+            If dt.Rows.Count > 0 Then
+                frmReturnEntry.cbItemListR.DataSource = dt
+                frmReturnEntry.cbItemListR.DisplayMember = "ItemName"
+                frmReturnEntry.cbItemListR.ValueMember = "ItemID"
+                frmReturnEntry.cbItemListR.SelectedIndex = 0
             Else
-                .nupQuantityR.Value = 0
+                ' If no matching item found, show the name as plain text
+                frmReturnEntry.cbItemListR.DataSource = Nothing
+                frmReturnEntry.cbItemListR.Items.Clear()
+                frmReturnEntry.cbItemListR.Items.Add(borrowedItemName)
+                frmReturnEntry.cbItemListR.SelectedIndex = 0
             End If
+
+            .txtItemDescR.Text = row.Cells("ItemDesc").Value.ToString()
+
+            ' --- Step 7: Quantity setup ---
+            Dim qtyBorrowed As Integer = 0
+            Dim qtyReturned As Integer = 0
+
+            If Not IsDBNull(row.Cells("qtyBorrowed").Value) AndAlso IsNumeric(row.Cells("qtyBorrowed").Value) Then
+                qtyBorrowed = CInt(row.Cells("qtyBorrowed").Value)
+            End If
+            If Not IsDBNull(row.Cells("qtyReturned").Value) AndAlso IsNumeric(row.Cells("qtyBorrowed").Value) Then
+                qtyReturned = CInt(row.Cells("qtyReturned").Value)
+            End If
+
+            ' Configure your NumericUpDown (nupReturned)
+            .nupQuantityR.Minimum = 1
+            .nupQuantityR.Maximum = RemainingQty
+            .nupQuantityR.Value = 1 ' default to 1 item being returned
 
             ' Remarks
             .cbReturnRemarks.Text = row.Cells("RemarksItem").Value.ToString()
 
-            ' Finally show the Return Entry form
+            ' --- Step 8: Show the form ---
             .ShowDialog()
         End With
     End Sub
