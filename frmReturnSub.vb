@@ -29,12 +29,11 @@
                 dgvReturnLists.Tag = dgvReturnLists.Item(0, e.RowIndex).Value
 
 
-                ' 0 ReturnID | 1 BorrowID | 2 ItemID | 3 ItemName | 4 BorrowerName |
-                ' 5 Purpose | 6 QuantityBorrowed | 7 QuantityReturned | 8 DateReturned | 9 Remarks
+               
 
                 frmReturnEntry.cbItemListR.Text = dgvReturnLists.Item(4, e.RowIndex).Value.ToString() ' ItemName
-                frmReturnEntry.txtBorrowerNameR.Text = dgvReturnLists.Item(3, e.RowIndex).Value.ToString() ' Borrower Name
-                frmReturnEntry.txtPurposeR.Text = dgvReturnLists.Item(5, e.RowIndex).Value.ToString() ' Purpose
+                frmReturnEntry.lblBorrowerName.Text = dgvReturnLists.Item(3, e.RowIndex).Value.ToString() ' Borrower Name
+                frmReturnEntry.lblPurpose.Text = dgvReturnLists.Item(5, e.RowIndex).Value.ToString() ' Purpose
 
                 ' Use QuantityReturned for nup control
                 Dim qty As Object = dgvReturnLists.Item(7, e.RowIndex).Value

@@ -17,23 +17,12 @@
         Dim Remarks As String = Trim(cbReturnRemarks.Text).ToLower()
         Dim cmd As Odbc.OdbcCommand
             Try
-            Dim Borrowedqtyy As Integer = 0
-            cmd = New Odbc.OdbcCommand("SELECT QuantityBorrowed FROM tblborrow WHERE ItemID = ? AND BorrowerName = ?", con)
-            cmd.Parameters.AddWithValue("?", CInt(cbItemListR.SelectedValue))
-            cmd.Parameters.AddWithValue("?", txtBorrowerNameR.Text)
-            Dim borrowResult = cmd.ExecuteScalar()
-
-            If borrowResult Is Nothing OrElse IsDBNull(borrowResult) Then
-                MsgBox("This borrower did not borrow the selected item.", vbCritical, "Error")
-                Exit Sub
-            End If
-
             ' qty being returned right now
             Dim qtyReturningNow As Integer = CInt(nupQuantityR.Value)
 
             ' get borrowed quantity for this BorrowID
             Dim borrowedQty As Integer = 0
-            cmd = New Odbc.OdbcCommand("SELECT IFNULL(SUM(QuantityBorrowed), 0) FROM tblborrow WHERE BorrowID = ?", con)
+            cmd = New Odbc.OdbcCommand("SELECT IFNULL(SUM(borrowQty), 0) FROM tblborrowing WHERE bID = ?", con)
             cmd.Parameters.AddWithValue("?", BorrowID)
             Dim br = cmd.ExecuteScalar()
             If br IsNot Nothing AndAlso Not IsDBNull(br) Then borrowedQty = CInt(br)
@@ -107,14 +96,6 @@
 
     End Sub
 
-    Private Sub nupDamageItem_ValueChanged(sender As Object, e As EventArgs)
-
-    End Sub
-
-    Private Sub cbReturnRemarks_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cbReturnRemarks.SelectedIndexChanged
-
-    End Sub
-
     Private Sub Button1_Click(sender As System.Object, e As System.EventArgs) Handles Button1.Click
         Me.Close()
     End Sub
@@ -122,4 +103,5 @@
     Private Sub cbItemListR_KeyPress(sender As Object, e As System.Windows.Forms.KeyPressEventArgs) Handles cbItemListR.KeyPress
         e.Handled = True
     End Sub
+
 End Class

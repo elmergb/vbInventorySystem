@@ -138,7 +138,7 @@ Module modGlobalFunc
 
     Public Sub SearchItems(ByVal searchText As String, ByVal dgv As DataGridView)
         Try
-            Dim sql As String = "SELECT * FROM vw_item WHERE Name LIKE ?"
+            Dim sql As String = "SELECT * FROM vw_items WHERE Name LIKE ?"
             Using cmd As New OdbcCommand(sql, con)
                 cmd.Parameters.AddWithValue("?", "%" & Trim(searchText) & "%")
 

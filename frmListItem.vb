@@ -4,7 +4,7 @@ Public Class frmListItem
     Public BorrowID As Integer
     Public ItemID As Integer
     Private Sub frmListItem_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        Call data_loader("SELECT * FROM vw_Item", dgvItemList)
+        Call data_loader("SELECT * FROM vw_Items", dgvItemList)
         frmAddItem.nupQuantity.Maximum = 1000
         dgvItemList.AutoGenerateColumns = False
         dgvItemList.Tag = 0

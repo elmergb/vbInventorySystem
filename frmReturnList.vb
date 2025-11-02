@@ -27,44 +27,22 @@
         End If
 
         With frmReturnEntry
-            ' IDs
             Dim BorrowID As Integer = CInt(row.Cells("BorrowID").Value)
+            Dim ItemID As Integer = CInt(row.Cells("ItemID").Value)
+            .ItemID = CInt(row.Cells("ItemID").Value)
+            .cbItemListR.Text = row.Cells("ItemName").Value.ToString()
 
-            ' Borrower info
-            .txtStudentNo.Text = row.Cells("StudentNo").Value.ToString()
-            .txtBorrowerNameR.Text = row.Cells("BorrowerName").Value.ToString()
-            .txtTeacher.Text = row.Cells("TeacherName").Value.ToString()
-
-            ' Contact & Purpose
-            .txtContact.Text = row.Cells("Contact").Value.ToString()
-            .txtPurposeR.Text = row.Cells("Purpose").Value.ToString()
-
-            ' Item info
-            Dim borrowedItemName As String = row.Cells("ItemName").Value.ToString().Trim()
-
-            ' Get the single item row from DB
-            Dim dt As New DataTable()
-            Using cmd As New Odbc.OdbcCommand("SELECT ItemID, ItemName FROM tblitemlist WHERE TRIM(ItemName) = ?", con)
-                cmd.Parameters.AddWithValue("?", borrowedItemName)
-                Using da As New Odbc.OdbcDataAdapter(cmd)
-                    da.Fill(dt)
-                End Using
-            End Using
-
-            If dt.Rows.Count > 0 Then
-                frmReturnEntry.cbItemListR.DataSource = dt
-                frmReturnEntry.cbItemListR.DisplayMember = "ItemName"
-                frmReturnEntry.cbItemListR.ValueMember = "ItemID"
-                frmReturnEntry.cbItemListR.SelectedIndex = 0
-            Else
-                ' If no matching item found, show the name as plain text
-                frmReturnEntry.cbItemListR.DataSource = Nothing
-                frmReturnEntry.cbItemListR.Items.Clear()
-                frmReturnEntry.cbItemListR.Items.Add(borrowedItemName)
-                frmReturnEntry.cbItemListR.SelectedIndex = 0
-            End If
-
-            .txtItemDescR.Text = row.Cells("ItemDesc").Value.ToString()
+            .lblStudentNo.Text = row.Cells("StudentNo").Value.ToString()
+            .lblBorrowerName.Text = row.Cells("borrowerName").Value.ToString()
+            .lblteacher.Text = row.Cells("TeacherName").Value.ToString()
+            .lblSchoolYear.Text = row.Cells("SchoolYear").Value.ToString
+            .lblCourse.Text = row.Cells("CourseCode").Value.ToString()
+            .lblContact.Text = row.Cells("Contact").Value.ToString()
+            .lblPurpose.Text = row.Cells("Purpose").Value.ToString()
+            .lblSemester.Text = row.Cells("Semester").Value.ToString
+            .lblYearLevel.Text = row.Cells("YearLevel").Value.ToString()
+            .lblSection.Text = row.Cells("Sections").Value.ToString()
+            .lblItemDesc.Text = row.Cells("ItemDesc").Value.ToString()
 
             ' --- Step 7: Quantity setup ---
             Dim qtyBorrowed As Integer = 0
@@ -130,4 +108,7 @@
         SearchBorrowinglist(txtSearch.Text, dgvReturn)
     End Sub
 
+    Private Sub dgvReturn_CellContentClick(sender As System.Object, e As System.Windows.Forms.DataGridViewCellEventArgs) Handles dgvReturn.CellContentClick
+
+    End Sub
 End Class

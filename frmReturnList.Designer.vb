@@ -30,6 +30,7 @@ Partial Class frmReturnList
         Me.Label2 = New System.Windows.Forms.Label()
         Me.dgvReturn = New System.Windows.Forms.DataGridView()
         Me.borrowID = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.ItemID = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.studentNo = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.borrowerName = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.ItemName = New System.Windows.Forms.DataGridViewTextBoxColumn()
@@ -41,9 +42,9 @@ Partial Class frmReturnList
         Me.TeacherName = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.CourseCode = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.YearLevel = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.dateborrowed = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.ReturnedDate = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Sections = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Semester = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.dateborrowed = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.SchoolYear = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.purpose = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.contact = New System.Windows.Forms.DataGridViewTextBoxColumn()
@@ -122,21 +123,29 @@ Partial Class frmReturnList
         DataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
         Me.dgvReturn.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle1
         Me.dgvReturn.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.dgvReturn.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.borrowID, Me.studentNo, Me.borrowerName, Me.ItemName, Me.ItemDesc, Me.qtyBorrowed, Me.qtyReturned, Me.Remaining, Me.Status, Me.TeacherName, Me.CourseCode, Me.YearLevel, Me.dateborrowed, Me.ReturnedDate, Me.Semester, Me.SchoolYear, Me.purpose, Me.contact, Me.RemarksItem})
-        Me.dgvReturn.Location = New System.Drawing.Point(31, 141)
+        Me.dgvReturn.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.borrowID, Me.ItemID, Me.studentNo, Me.borrowerName, Me.ItemName, Me.ItemDesc, Me.qtyBorrowed, Me.qtyReturned, Me.Remaining, Me.Status, Me.TeacherName, Me.CourseCode, Me.YearLevel, Me.Sections, Me.Semester, Me.dateborrowed, Me.SchoolYear, Me.purpose, Me.contact, Me.RemarksItem})
+        Me.dgvReturn.Location = New System.Drawing.Point(8, 140)
         Me.dgvReturn.Name = "dgvReturn"
         Me.dgvReturn.ReadOnly = True
         Me.dgvReturn.RowHeadersVisible = False
         Me.dgvReturn.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
-        Me.dgvReturn.Size = New System.Drawing.Size(1201, 371)
+        Me.dgvReturn.Size = New System.Drawing.Size(1273, 371)
         Me.dgvReturn.TabIndex = 21
         '
         'borrowID
         '
         Me.borrowID.DataPropertyName = "BorrowID"
+        Me.borrowID.FillWeight = 50.0!
         Me.borrowID.HeaderText = "BorrowID"
         Me.borrowID.Name = "borrowID"
         Me.borrowID.ReadOnly = True
+        '
+        'ItemID
+        '
+        Me.ItemID.DataPropertyName = "ItemID"
+        Me.ItemID.HeaderText = "ItemID"
+        Me.ItemID.Name = "ItemID"
+        Me.ItemID.ReadOnly = True
         '
         'studentNo
         '
@@ -216,19 +225,12 @@ Partial Class frmReturnList
         Me.YearLevel.Name = "YearLevel"
         Me.YearLevel.ReadOnly = True
         '
-        'dateborrowed
+        'Sections
         '
-        Me.dateborrowed.DataPropertyName = "DateBorrowed"
-        Me.dateborrowed.HeaderText = "Date Borrowed"
-        Me.dateborrowed.Name = "dateborrowed"
-        Me.dateborrowed.ReadOnly = True
-        '
-        'ReturnedDate
-        '
-        Me.ReturnedDate.DataPropertyName = "LastDateReturned"
-        Me.ReturnedDate.HeaderText = "Date/Time Returned"
-        Me.ReturnedDate.Name = "ReturnedDate"
-        Me.ReturnedDate.ReadOnly = True
+        Me.Sections.DataPropertyName = "Section"
+        Me.Sections.HeaderText = "Section"
+        Me.Sections.Name = "Sections"
+        Me.Sections.ReadOnly = True
         '
         'Semester
         '
@@ -236,6 +238,13 @@ Partial Class frmReturnList
         Me.Semester.HeaderText = "Semester"
         Me.Semester.Name = "Semester"
         Me.Semester.ReadOnly = True
+        '
+        'dateborrowed
+        '
+        Me.dateborrowed.DataPropertyName = "DateBorrowed"
+        Me.dateborrowed.HeaderText = "Date Borrowed"
+        Me.dateborrowed.Name = "dateborrowed"
+        Me.dateborrowed.ReadOnly = True
         '
         'SchoolYear
         '
@@ -260,7 +269,7 @@ Partial Class frmReturnList
         '
         'RemarksItem
         '
-        Me.RemarksItem.DataPropertyName = "BorrowRemarks"
+        Me.RemarksItem.DataPropertyName = "Remarks"
         Me.RemarksItem.HeaderText = "Remarks"
         Me.RemarksItem.Name = "RemarksItem"
         Me.RemarksItem.ReadOnly = True
@@ -292,6 +301,7 @@ Partial Class frmReturnList
     Friend WithEvents Label1 As Label
     Friend WithEvents dgvReturn As System.Windows.Forms.DataGridView
     Friend WithEvents borrowID As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents ItemID As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents studentNo As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents borrowerName As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents ItemName As System.Windows.Forms.DataGridViewTextBoxColumn
@@ -303,9 +313,9 @@ Partial Class frmReturnList
     Friend WithEvents TeacherName As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents CourseCode As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents YearLevel As System.Windows.Forms.DataGridViewTextBoxColumn
-    Friend WithEvents dateborrowed As System.Windows.Forms.DataGridViewTextBoxColumn
-    Friend WithEvents ReturnedDate As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents Sections As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents Semester As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents dateborrowed As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents SchoolYear As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents purpose As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents contact As System.Windows.Forms.DataGridViewTextBoxColumn

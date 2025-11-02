@@ -61,9 +61,9 @@
 
             ' Fill data
             .cbItemListR.SelectedValue = .ItemID
-            .txtItemDescR.Text = row.Cells("ItemDesc").Value.ToString()
-            .txtBorrowerNameR.Text = row.Cells("BorrowerName").Value.ToString()
-            .txtPurposeR.Text = row.Cells("purpose").Value.ToString()
+            .lblItemDesc.Text = row.Cells("ItemDesc").Value.ToString()
+            .lblBorrowerName.Text = row.Cells("BorrowerName").Value.ToString()
+            .lblPurpose.Text = row.Cells("purpose").Value.ToString()
 
             ' Handle numeric and null safely
             Dim qtyObj As Object = row.Cells("qtyBorrowed").Value
