@@ -61,7 +61,7 @@ Partial Class frmBorrow
         Me.Label8.ForeColor = System.Drawing.Color.White
         Me.Label8.Location = New System.Drawing.Point(0, 0)
         Me.Label8.Name = "Label8"
-        Me.Label8.Size = New System.Drawing.Size(592, 55)
+        Me.Label8.Size = New System.Drawing.Size(492, 55)
         Me.Label8.TabIndex = 17
         Me.Label8.Text = "          Borrow"
         Me.Label8.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
@@ -94,18 +94,20 @@ Partial Class frmBorrow
         'Label3
         '
         Me.Label3.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label3.Location = New System.Drawing.Point(42, 306)
+        Me.Label3.Location = New System.Drawing.Point(205, 493)
         Me.Label3.Name = "Label3"
         Me.Label3.Size = New System.Drawing.Size(151, 23)
         Me.Label3.TabIndex = 5
         Me.Label3.Text = "Borrower Name"
+        Me.Label3.Visible = False
         '
         'txtBorrowerName
         '
-        Me.txtBorrowerName.Location = New System.Drawing.Point(45, 332)
+        Me.txtBorrowerName.Location = New System.Drawing.Point(208, 519)
         Me.txtBorrowerName.Name = "txtBorrowerName"
         Me.txtBorrowerName.Size = New System.Drawing.Size(174, 20)
         Me.txtBorrowerName.TabIndex = 11
+        Me.txtBorrowerName.Visible = False
         '
         'nupQuantity
         '
@@ -164,6 +166,7 @@ Partial Class frmBorrow
         Me.Label6.Size = New System.Drawing.Size(149, 23)
         Me.Label6.TabIndex = 8
         Me.Label6.Text = "Time and Date"
+        Me.Label6.Visible = False
         '
         'dtpBorrowed
         '
@@ -173,10 +176,11 @@ Partial Class frmBorrow
         Me.dtpBorrowed.Name = "dtpBorrowed"
         Me.dtpBorrowed.Size = New System.Drawing.Size(165, 20)
         Me.dtpBorrowed.TabIndex = 15
+        Me.dtpBorrowed.Visible = False
         '
         'btnSave
         '
-        Me.btnSave.Location = New System.Drawing.Point(348, 351)
+        Me.btnSave.Location = New System.Drawing.Point(339, 275)
         Me.btnSave.Name = "btnSave"
         Me.btnSave.Size = New System.Drawing.Size(73, 42)
         Me.btnSave.TabIndex = 21
@@ -218,19 +222,21 @@ Partial Class frmBorrow
         '
         'txtStudentNo
         '
-        Me.txtStudentNo.Location = New System.Drawing.Point(45, 390)
+        Me.txtStudentNo.Location = New System.Drawing.Point(46, 414)
         Me.txtStudentNo.Name = "txtStudentNo"
         Me.txtStudentNo.Size = New System.Drawing.Size(174, 20)
         Me.txtStudentNo.TabIndex = 25
+        Me.txtStudentNo.Visible = False
         '
         'Label10
         '
         Me.Label10.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label10.Location = New System.Drawing.Point(44, 364)
+        Me.Label10.Location = New System.Drawing.Point(207, 551)
         Me.Label10.Name = "Label10"
         Me.Label10.Size = New System.Drawing.Size(151, 23)
         Me.Label10.TabIndex = 26
         Me.Label10.Text = "Student No"
+        Me.Label10.Visible = False
         '
         'txtSemester
         '
@@ -238,6 +244,7 @@ Partial Class frmBorrow
         Me.txtSemester.Name = "txtSemester"
         Me.txtSemester.Size = New System.Drawing.Size(174, 20)
         Me.txtSemester.TabIndex = 27
+        Me.txtSemester.Visible = False
         '
         'txtYearLevel
         '
@@ -245,6 +252,7 @@ Partial Class frmBorrow
         Me.txtYearLevel.Name = "txtYearLevel"
         Me.txtYearLevel.Size = New System.Drawing.Size(174, 20)
         Me.txtYearLevel.TabIndex = 28
+        Me.txtYearLevel.Visible = False
         '
         'txtSchoolYear
         '
@@ -252,6 +260,7 @@ Partial Class frmBorrow
         Me.txtSchoolYear.Name = "txtSchoolYear"
         Me.txtSchoolYear.Size = New System.Drawing.Size(172, 20)
         Me.txtSchoolYear.TabIndex = 29
+        Me.txtSchoolYear.Visible = False
         '
         'txtTeacher
         '
@@ -259,6 +268,7 @@ Partial Class frmBorrow
         Me.txtTeacher.Name = "txtTeacher"
         Me.txtTeacher.Size = New System.Drawing.Size(172, 20)
         Me.txtTeacher.TabIndex = 30
+        Me.txtTeacher.Visible = False
         '
         'txtCourse
         '
@@ -266,6 +276,7 @@ Partial Class frmBorrow
         Me.txtCourse.Name = "txtCourse"
         Me.txtCourse.Size = New System.Drawing.Size(172, 20)
         Me.txtCourse.TabIndex = 31
+        Me.txtCourse.Visible = False
         '
         'txtSection
         '
@@ -273,12 +284,13 @@ Partial Class frmBorrow
         Me.txtSection.Name = "txtSection"
         Me.txtSection.Size = New System.Drawing.Size(172, 20)
         Me.txtSection.TabIndex = 32
+        Me.txtSection.Visible = False
         '
         'frmBorrow
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(592, 577)
+        Me.ClientSize = New System.Drawing.Size(492, 377)
         Me.ControlBox = False
         Me.Controls.Add(Me.txtSection)
         Me.Controls.Add(Me.txtCourse)

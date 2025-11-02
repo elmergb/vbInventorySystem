@@ -1,6 +1,6 @@
 ﻿Public Class frmReturnEntry
     Public Property returnID As Integer = 0
-    Property BorrowID As Integer
+    Public Property BorrowID As Integer
     Property ItemID As Integer
 
 
@@ -10,32 +10,37 @@
         cbReturnRemarks.Items.Clear()
         cbReturnRemarks.Items.Add("Good")
         cbReturnRemarks.Items.Add("Damage")
-
     End Sub
 
     Private Sub btnReturnLog_Click(sender As System.Object, e As System.EventArgs) Handles btnReturnLog.Click
-        Dim Remarks As String = Trim(cbReturnRemarks.Text).ToLower()
-        Dim cmd As Odbc.OdbcCommand
-            Try
-            ' qty being returned right now
+
+        Try
+            Dim BorrowID As Integer = Me.BorrowID
+
+
+            Dim Remarks As String = Trim(cbReturnRemarks.Text).ToUpper()
+            Dim cmd As Odbc.OdbcCommand
+            Dim returnID As Integer
             Dim qtyReturningNow As Integer = CInt(nupQuantityR.Value)
 
             ' get borrowed quantity for this BorrowID
             Dim borrowedQty As Integer = 0
-            cmd = New Odbc.OdbcCommand("SELECT IFNULL(SUM(borrowQty), 0) FROM tblborrowing WHERE bID = ?", con)
+            cmd = New Odbc.OdbcCommand("SELECT IFNULL(SUM(borrowqty), 0) FROM tblborrowing WHERE bID = ?", con)
             cmd.Parameters.AddWithValue("?", BorrowID)
             Dim br = cmd.ExecuteScalar()
             If br IsNot Nothing AndAlso Not IsDBNull(br) Then borrowedQty = CInt(br)
-
-            ' get already returned total for this BorrowID
+            ' get already returned total for this bID
             Dim returnedTotal As Integer = 0
-            cmd = New Odbc.OdbcCommand("SELECT IFNULL(SUM(QuantityReturned), 0) FROM tblreturn WHERE BorrowID = ?", con)
+            cmd = New Odbc.OdbcCommand("SELECT IFNULL(SUM(QuantityReturned), 0) FROM tblreturn WHERE bID = ?", con)
             cmd.Parameters.AddWithValue("?", BorrowID)
             Dim rr = cmd.ExecuteScalar()
             If rr IsNot Nothing AndAlso Not IsDBNull(rr) Then returnedTotal = CInt(rr)
+            MsgBox("BorrowID value: " & BorrowID)
 
-
-            ' validate
+            MsgBox("BorrowedQty = " & borrowedQty & vbCrLf &
+                   "AlreadyReturned = " & returnedTotal & vbCrLf &
+                   "ReturningNow = " & qtyReturningNow)
+            ' validation
             If returnedTotal + qtyReturningNow > borrowedQty Then
                 MsgBox("Returned quantity exceeds total borrowed amount.", vbExclamation)
                 Exit Sub
@@ -45,31 +50,36 @@
             End If
 
             Dim itemID As Integer = CInt(cbItemListR.SelectedValue)
-            Dim currentQty As Integer = 0
-
             cmd = New Odbc.OdbcCommand("SELECT ItemQuantity FROM tblitemlist WHERE ItemID = ?", con)
             cmd.Parameters.AddWithValue("?", itemID)
-            Dim cq = cmd.ExecuteScalar()
-            If cq IsNot Nothing AndAlso Not IsDBNull(cq) Then
-                currentQty = CInt(cq)
-            End If
+            Dim currentQty As Integer = CInt(cmd.ExecuteScalar())
 
-            If Remarks = "damage" Or Remarks = "damaged" Then
+            If Remarks = "damage" Then
                 Remarks = "Damage"
-
             Else
                 Remarks = "Good"
             End If
 
-            If Remarks = "Damage" Or Remarks = "damaged" Then
-                ' Insert into damaged table, DO NOT add back to stock
-                cmd = New Odbc.OdbcCommand("INSERT INTO tbldamaged (ItemID, QuantityDamaged, DateReported, Remarks) VALUES (?, ?, NOW(), ?)", con)
+            cmd = New Odbc.OdbcCommand("INSERT INTO tblreturn (bID, QuantityReturned, DateTimeReturned, Remarks) VALUES (?, ?, ?, ?)", con)
+            cmd.Parameters.AddWithValue("?", CInt(BorrowID))
+            cmd.Parameters.AddWithValue("?", qtyReturningNow)
+            cmd.Parameters.AddWithValue("?", dtpBorrowedR.Value.ToString("yyyy-MM-dd HH:mm:ss"))
+            cmd.Parameters.AddWithValue("?", Remarks)
+            cmd.ExecuteNonQuery()
+
+            cmd = New Odbc.OdbcCommand("SELECT LAST_INSERT_ID()", con)
+            returnID = CInt(cmd.ExecuteScalar())
+
+            If Remarks = "Damage" Then
+                ' insert damage record
+                cmd = New Odbc.OdbcCommand("INSERT INTO tbldamaged (ItemID, QuantityDamaged, DateReported, DamageRemarks, ReturnID)VALUES (?, ?, NOW(), ?, ?)", con)
                 cmd.Parameters.AddWithValue("?", itemID)
                 cmd.Parameters.AddWithValue("?", qtyReturningNow)
-                cmd.Parameters.AddWithValue("?", "damaged")
+                cmd.Parameters.AddWithValue("?", "Damaged item upon return")
+                cmd.Parameters.AddWithValue("?", returnID)
                 cmd.ExecuteNonQuery()
             Else
-                ' Update with correct math
+                ' update item stock
                 Dim newQty As Integer = currentQty + qtyReturningNow
                 cmd = New Odbc.OdbcCommand("UPDATE tblitemlist SET ItemQuantity = ? WHERE ItemID = ?", con)
                 cmd.Parameters.AddWithValue("?", newQty)
@@ -79,16 +89,8 @@
 
 
 
-            cmd = New Odbc.OdbcCommand(" INSERT INTO tblreturn (BorrowID, QuantityReturned, DateReturned, Remarks) VALUES (?, ?, ?, ?)", con)
-            cmd.Parameters.AddWithValue("?", CInt(BorrowID))
-            cmd.Parameters.AddWithValue("?", qtyReturningNow)
-            cmd.Parameters.AddWithValue("?", dtpBorrowedR.Value.ToString("yyyy-MM-dd HH:mm:ss"))
-            cmd.Parameters.AddWithValue("?", Remarks)
-            cmd.ExecuteNonQuery()
-
-
             MsgBox("Item successfully returned!", vbInformation)
-            Call data_loader("SELECT * FROM vw_transaction WHERE QuantityBorrowed > QuantityReturned", frmReturnList.dgvReturn)
+            Call data_loader("SELECT * FROM vw_borrowed_items", frmReturnList.dgvReturn)
 
         Catch ex As Exception
             MsgBox("Error: " & ex.Message, vbCritical)

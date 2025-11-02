@@ -27,7 +27,7 @@
         End If
 
         With frmReturnEntry
-            Dim BorrowID As Integer = CInt(row.Cells("BorrowID").Value)
+            .BorrowID = CInt(row.Cells("bID").Value)
             Dim ItemID As Integer = CInt(row.Cells("ItemID").Value)
             .ItemID = CInt(row.Cells("ItemID").Value)
             .cbItemListR.Text = row.Cells("ItemName").Value.ToString()
@@ -70,7 +70,7 @@
     Private Sub dgvBorrowerList_CellClick(sender As Object, e As System.Windows.Forms.DataGridViewCellEventArgs) Handles dgvReturn.CellClick
         If e.RowIndex >= 0 Then
             ' Store the selected record’s ID or key
-            dgvReturn.Tag = dgvReturn.Rows(e.RowIndex).Cells("borrowID").Value
+            dgvReturn.Tag = dgvReturn.Rows(e.RowIndex).Cells("bID").Value
 
             ' Transfer values from the DataGridView to frmBorrow controls
             frmBorrow.cbItemList.Text = dgvReturn.Rows(e.RowIndex).Cells("ItemName").Value.ToString()

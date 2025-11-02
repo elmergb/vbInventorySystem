@@ -29,7 +29,7 @@ Partial Class frmReturnList
         Me.txtSearch = New System.Windows.Forms.TextBox()
         Me.Label2 = New System.Windows.Forms.Label()
         Me.dgvReturn = New System.Windows.Forms.DataGridView()
-        Me.borrowID = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.bID = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.ItemID = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.studentNo = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.borrowerName = New System.Windows.Forms.DataGridViewTextBoxColumn()
@@ -123,7 +123,7 @@ Partial Class frmReturnList
         DataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
         Me.dgvReturn.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle1
         Me.dgvReturn.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.dgvReturn.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.borrowID, Me.ItemID, Me.studentNo, Me.borrowerName, Me.ItemName, Me.ItemDesc, Me.qtyBorrowed, Me.qtyReturned, Me.Remaining, Me.Status, Me.TeacherName, Me.CourseCode, Me.YearLevel, Me.Sections, Me.Semester, Me.dateborrowed, Me.SchoolYear, Me.purpose, Me.contact, Me.RemarksItem})
+        Me.dgvReturn.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.bID, Me.ItemID, Me.studentNo, Me.borrowerName, Me.ItemName, Me.ItemDesc, Me.qtyBorrowed, Me.qtyReturned, Me.Remaining, Me.Status, Me.TeacherName, Me.CourseCode, Me.YearLevel, Me.Sections, Me.Semester, Me.dateborrowed, Me.SchoolYear, Me.purpose, Me.contact, Me.RemarksItem})
         Me.dgvReturn.Location = New System.Drawing.Point(8, 140)
         Me.dgvReturn.Name = "dgvReturn"
         Me.dgvReturn.ReadOnly = True
@@ -132,13 +132,13 @@ Partial Class frmReturnList
         Me.dgvReturn.Size = New System.Drawing.Size(1273, 371)
         Me.dgvReturn.TabIndex = 21
         '
-        'borrowID
+        'bID
         '
-        Me.borrowID.DataPropertyName = "BorrowID"
-        Me.borrowID.FillWeight = 50.0!
-        Me.borrowID.HeaderText = "BorrowID"
-        Me.borrowID.Name = "borrowID"
-        Me.borrowID.ReadOnly = True
+        Me.bID.DataPropertyName = "BorrowID"
+        Me.bID.FillWeight = 50.0!
+        Me.bID.HeaderText = "BorrowID"
+        Me.bID.Name = "bID"
+        Me.bID.ReadOnly = True
         '
         'ItemID
         '
@@ -300,7 +300,7 @@ Partial Class frmReturnList
     Friend WithEvents Label2 As Label
     Friend WithEvents Label1 As Label
     Friend WithEvents dgvReturn As System.Windows.Forms.DataGridView
-    Friend WithEvents borrowID As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents bID As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents ItemID As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents studentNo As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents borrowerName As System.Windows.Forms.DataGridViewTextBoxColumn

@@ -53,7 +53,7 @@
 
                 ' Store IDs
                 frmReturnEntry.ItemID = CInt(dgvReturnLists.Item(2, e.RowIndex).Value)
-                frmReturnEntry.BorrowID = CInt(dgvReturnLists.Item(1, e.RowIndex).Value)
+                'frmReturnEntry.BorrowID = CInt(dgvReturnLists.Item(1, e.RowIndex).Value)
             End If
         Catch ex As Exception
             MsgBox("Error loading selected record: " & ex.Message, vbCritical)
