@@ -139,6 +139,7 @@ Partial Class frmReturnList
         Me.bID.HeaderText = "BorrowID"
         Me.bID.Name = "bID"
         Me.bID.ReadOnly = True
+        Me.bID.Visible = False
         '
         'ItemID
         '
@@ -146,6 +147,7 @@ Partial Class frmReturnList
         Me.ItemID.HeaderText = "ItemID"
         Me.ItemID.Name = "ItemID"
         Me.ItemID.ReadOnly = True
+        Me.ItemID.Visible = False
         '
         'studentNo
         '
@@ -210,6 +212,7 @@ Partial Class frmReturnList
         Me.TeacherName.HeaderText = "Teacher Name"
         Me.TeacherName.Name = "TeacherName"
         Me.TeacherName.ReadOnly = True
+        Me.TeacherName.Visible = False
         '
         'CourseCode
         '
@@ -217,6 +220,7 @@ Partial Class frmReturnList
         Me.CourseCode.HeaderText = "Course"
         Me.CourseCode.Name = "CourseCode"
         Me.CourseCode.ReadOnly = True
+        Me.CourseCode.Visible = False
         '
         'YearLevel
         '
@@ -224,6 +228,7 @@ Partial Class frmReturnList
         Me.YearLevel.HeaderText = "Year Level"
         Me.YearLevel.Name = "YearLevel"
         Me.YearLevel.ReadOnly = True
+        Me.YearLevel.Visible = False
         '
         'Sections
         '
@@ -231,6 +236,7 @@ Partial Class frmReturnList
         Me.Sections.HeaderText = "Section"
         Me.Sections.Name = "Sections"
         Me.Sections.ReadOnly = True
+        Me.Sections.Visible = False
         '
         'Semester
         '
@@ -238,6 +244,7 @@ Partial Class frmReturnList
         Me.Semester.HeaderText = "Semester"
         Me.Semester.Name = "Semester"
         Me.Semester.ReadOnly = True
+        Me.Semester.Visible = False
         '
         'dateborrowed
         '
@@ -252,6 +259,7 @@ Partial Class frmReturnList
         Me.SchoolYear.HeaderText = "School Year"
         Me.SchoolYear.Name = "SchoolYear"
         Me.SchoolYear.ReadOnly = True
+        Me.SchoolYear.Visible = False
         '
         'purpose
         '

@@ -118,8 +118,19 @@
 
     Private Sub btnSave_Click(sender As System.Object, e As System.EventArgs) Handles btnSave.Click
         Dim cmd As Odbc.OdbcCommand
-        Dim transaction As Odbc.OdbcTransaction = con.BeginTransaction()
 
+        If String.IsNullOrWhiteSpace(txtStudentNo.Text) Then
+            MsgBox("Please select a student before saving.", vbExclamation)
+            Exit Sub
+        End If
+        Dim cmdCheck As New Odbc.OdbcCommand("SELECT COUNT(*) FROM tblcartlist", con)
+        Dim itemCount As Integer = CInt(cmdCheck.ExecuteScalar())
+
+        If itemCount = 0 Then
+            MsgBox("No items found in the cart to save.", vbExclamation)
+            Exit Sub
+        End If
+        Dim transaction As Odbc.OdbcTransaction = con.BeginTransaction()
         Try
 
             ' --- Step 1: Read all cart rows into memory ---

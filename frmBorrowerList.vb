@@ -3,7 +3,7 @@
     Private Sub frmBorrowerList_Load(sender As System.Object, e As System.EventArgs) Handles MyBase.Load
 
         Call vbConnection()
-        Call data_loader("SELECT * FROM vw_borrowing WHERE Status <> 'Returned'", dgvBorrowerList)
+        Call data_loader("SELECT * FROM vw_borrowed_items WHERE Status <> 'Returned'", dgvBorrowerList)
         cb_loader("SELECT * FROM tblitemlist", frmReturnEntry.cbItemListR, "ItemName", "ItemID")
         'Dim colNames As String = ""
         'For Each col As DataGridViewColumn In dgvBorrowerList.Columns
@@ -13,7 +13,7 @@
 
     End Sub
 
-    Private Sub dgvBorrowerList_CellClick(sender As Object, e As System.Windows.Forms.DataGridViewCellEventArgs) Handles dgvBorrowerList.CellClick
+    Private Sub dgvBorrowerList_CellClick(sender As Object, e As System.Windows.Forms.DataGridViewCellEventArgs)
         If e.RowIndex >= 0 Then
             ' Store the selected record’s ID or key
             dgvBorrowerList.Tag = dgvBorrowerList.Rows(e.RowIndex).Cells("bID").Value
@@ -44,82 +44,29 @@
         End If
 
     End Sub
-    Private Sub btnReturn_Click(sender As System.Object, e As System.EventArgs)
-        If dgvBorrowerList.CurrentRow Is Nothing Then
-            MsgBox("Select a record to return", vbInformation)
-            Exit Sub
-        End If
 
-        ' Get the current selected row
-        Dim row As DataGridViewRow = dgvBorrowerList.CurrentRow
+    Private Sub btnDelete_Click(sender As System.Object, e As System.EventArgs) Handles btnDelete.Click
+        'Dim cmd As Odbc.OdbcCommand
+        'If dgvBorrowerList.Tag = 0 Then
+        '    MsgBox("Please select a record to delete.", MsgBoxStyle.Exclamation)
+        'ElseIf MsgBox("Are you sure you want to delete this record?", vbYesNo + vbQuestion, "Confirm Delete") = vbYes Then
+        '    Try
+        '        ' Step 1: Copy the record to tbldeleteditem (Recycle Bin)
+        '        cmd = New Odbc.OdbcCommand("INSERT INTO tblborrower_bin (bBinID, BorrowerID, fname, mi, lname, StudentNo) SELECT ItemID, ItemName, ItemDescription, ItemCategory, ItemQuantity, NOW()  FROM tblitemlist  WHERE ItemID = " & Val(dgvItemList.Tag), con)
+        '        cmd.ExecuteNonQuery()
 
-        ' Assign values to frmReturnEntry
-        With frmReturnEntry
-            ' Main IDs
-            .BorrowID = CInt(row.Cells("bID").Value)
-            .ItemID = CInt(row.Cells("ItemID").Value)
+        '        ' Step 2: Delete the record from main table
+        '        cmd = New Odbc.OdbcCommand("DELETE FROM tblitemlist WHERE ItemID = " & Val(dgvItemList.Tag), con)
+        '        cmd.ExecuteNonQuery()
 
-            ' Fill data
-            .cbItemListR.SelectedValue = .ItemID
-            .lblItemDesc.Text = row.Cells("ItemDesc").Value.ToString()
-            .lblBorrowerName.Text = row.Cells("BorrowerName").Value.ToString()
-            .lblPurpose.Text = row.Cells("purpose").Value.ToString()
+        '        MsgBox("Deleted successfully!", MsgBoxStyle.Information)
 
-            ' Handle numeric and null safely
-            Dim qtyObj As Object = row.Cells("qtyBorrowed").Value
-            If qtyObj IsNot Nothing AndAlso IsNumeric(qtyObj) Then
-                .nupQuantityR.Value = CInt(qtyObj)
-            Else
-                .nupQuantityR.Value = 0
-            End If
+        '        ' Step 3: Refresh the DataGridView
+        '        Call data_loader("SELECT * FROM vw_item", dgvItemList)
 
-            ' Remarks
-            .cbReturnRemarks.Text = row.Cells("remarks").Value.ToString()
-
-            ' Finally show the Return Entry form
-            .ShowDialog()
-        End With
+        '    Catch ex As Exception
+        '        MsgBox("Error: " & ex.Message, MsgBoxStyle.Critical)
+        '    End Try
+        'End If
     End Sub
-
-
-    Private Sub dgvBorrowerList_CellContentClick(sender As System.Object, e As System.Windows.Forms.DataGridViewCellEventArgs) Handles dgvBorrowerList.CellContentClick
-
-    End Sub
-
-    Private Sub EToolStripMenuItem_Click(sender As Object, e As EventArgs)
-        If MsgBox("Are you sure to exit?", vbYesNo + vbQuestion) = vbYes Then
-            Me.Close()
-        End If
-    End Sub
-
-    Private Sub UIToolStripMenuItem_Click(sender As Object, e As EventArgs)
-
-    End Sub
-
-    Private Sub dgvBorrowerList_CellFormatting(sender As Object, e As DataGridViewCellFormattingEventArgs) Handles dgvBorrowerList.CellFormatting
-        If dgvBorrowerList.Columns(e.ColumnIndex).Name = "Status" Then
-            If e.Value IsNot Nothing Then
-                Dim statusText As String = e.Value.ToString().ToLower()
-
-                Select Case statusText
-                    Case "Available"
-                        e.CellStyle.BackColor = Color.LightGreen
-                        e.CellStyle.ForeColor = Color.Black
-
-                    Case "Damaged"
-                        e.CellStyle.BackColor = Color.LightCoral
-                        e.CellStyle.ForeColor = Color.White
-
-                    Case "Borrowed"
-                        e.CellStyle.BackColor = Color.LightYellow
-                        e.CellStyle.ForeColor = Color.Black
-
-                    Case Else
-                        e.CellStyle.BackColor = Color.White
-                        e.CellStyle.ForeColor = Color.Black
-                End Select
-            End If
-        End If
-    End Sub
-
 End Class

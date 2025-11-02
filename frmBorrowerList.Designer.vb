@@ -22,109 +22,34 @@ Partial Class frmBorrowerList
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
+        Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Me.Panel1 = New System.Windows.Forms.Panel()
+        Me.Label2 = New System.Windows.Forms.Label()
         Me.dgvBorrowerList = New System.Windows.Forms.DataGridView()
         Me.bID = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.itemID = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.ItemID = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.studentNo = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.borrowerName = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.ItemName = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.ItemDesc = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.qtyBorrowed = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.contact = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.purpose = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.qtyReturned = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Remaining = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Status = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.TeacherName = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.CourseCode = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.YearLevel = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Sections = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Semester = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.dateborrowed = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Remarks = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Panel1 = New System.Windows.Forms.Panel()
-        Me.Label2 = New System.Windows.Forms.Label()
-        CType(Me.dgvBorrowerList, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.SchoolYear = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.purpose = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.contact = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.RemarksItem = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.btnDelete = New System.Windows.Forms.Button()
         Me.Panel1.SuspendLayout()
+        CType(Me.dgvBorrowerList, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
-        '
-        'dgvBorrowerList
-        '
-        Me.dgvBorrowerList.AllowUserToAddRows = False
-        Me.dgvBorrowerList.AllowUserToDeleteRows = False
-        Me.dgvBorrowerList.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill
-        Me.dgvBorrowerList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.dgvBorrowerList.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.bID, Me.itemID, Me.borrowerName, Me.ItemName, Me.ItemDesc, Me.qtyBorrowed, Me.contact, Me.purpose, Me.dateborrowed, Me.Remarks})
-        Me.dgvBorrowerList.Location = New System.Drawing.Point(21, 80)
-        Me.dgvBorrowerList.Name = "dgvBorrowerList"
-        Me.dgvBorrowerList.ReadOnly = True
-        Me.dgvBorrowerList.RowHeadersVisible = False
-        Me.dgvBorrowerList.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
-        Me.dgvBorrowerList.Size = New System.Drawing.Size(1304, 726)
-        Me.dgvBorrowerList.TabIndex = 0
-        '
-        'bID
-        '
-        Me.bID.DataPropertyName = "BorrowID"
-        Me.bID.HeaderText = "BorrowID"
-        Me.bID.Name = "bID"
-        Me.bID.ReadOnly = True
-        Me.bID.Visible = False
-        '
-        'itemID
-        '
-        Me.itemID.DataPropertyName = "ItemID"
-        Me.itemID.HeaderText = "ItemID"
-        Me.itemID.Name = "itemID"
-        Me.itemID.ReadOnly = True
-        Me.itemID.Visible = False
-        '
-        'borrowerName
-        '
-        Me.borrowerName.DataPropertyName = "BorrowerName"
-        Me.borrowerName.HeaderText = "Borrower Name"
-        Me.borrowerName.Name = "borrowerName"
-        Me.borrowerName.ReadOnly = True
-        '
-        'ItemName
-        '
-        Me.ItemName.DataPropertyName = "ItemName"
-        Me.ItemName.HeaderText = "Item Name"
-        Me.ItemName.Name = "ItemName"
-        Me.ItemName.ReadOnly = True
-        '
-        'ItemDesc
-        '
-        Me.ItemDesc.DataPropertyName = "ItemDescription"
-        Me.ItemDesc.HeaderText = "Description"
-        Me.ItemDesc.Name = "ItemDesc"
-        Me.ItemDesc.ReadOnly = True
-        '
-        'qtyBorrowed
-        '
-        Me.qtyBorrowed.DataPropertyName = "QuantityBorrowed"
-        Me.qtyBorrowed.HeaderText = "Quantity Borrowed"
-        Me.qtyBorrowed.Name = "qtyBorrowed"
-        Me.qtyBorrowed.ReadOnly = True
-        '
-        'contact
-        '
-        Me.contact.DataPropertyName = "Contact"
-        Me.contact.HeaderText = "Contact"
-        Me.contact.Name = "contact"
-        Me.contact.ReadOnly = True
-        '
-        'purpose
-        '
-        Me.purpose.DataPropertyName = "Purpose"
-        Me.purpose.HeaderText = "Purpose"
-        Me.purpose.Name = "purpose"
-        Me.purpose.ReadOnly = True
-        '
-        'dateborrowed
-        '
-        Me.dateborrowed.DataPropertyName = "DateBorrowed"
-        Me.dateborrowed.HeaderText = "Date Borrowed"
-        Me.dateborrowed.Name = "dateborrowed"
-        Me.dateborrowed.ReadOnly = True
-        '
-        'Remarks
-        '
-        Me.Remarks.DataPropertyName = "Remarks"
-        Me.Remarks.HeaderText = "Remarks"
-        Me.Remarks.Name = "Remarks"
-        Me.Remarks.ReadOnly = True
         '
         'Panel1
         '
@@ -150,33 +75,223 @@ Partial Class frmBorrowerList
         Me.Label2.Text = "     Borrower List"
         Me.Label2.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
         '
+        'dgvBorrowerList
+        '
+        Me.dgvBorrowerList.AllowUserToAddRows = False
+        Me.dgvBorrowerList.AllowUserToDeleteRows = False
+        Me.dgvBorrowerList.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill
+        DataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
+        DataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control
+        DataGridViewCellStyle1.Font = New System.Drawing.Font("Microsoft JhengHei UI", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText
+        DataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight
+        DataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.dgvBorrowerList.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle1
+        Me.dgvBorrowerList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
+        Me.dgvBorrowerList.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.bID, Me.ItemID, Me.studentNo, Me.borrowerName, Me.ItemName, Me.ItemDesc, Me.qtyBorrowed, Me.qtyReturned, Me.Remaining, Me.Status, Me.TeacherName, Me.CourseCode, Me.YearLevel, Me.Sections, Me.Semester, Me.dateborrowed, Me.SchoolYear, Me.purpose, Me.contact, Me.RemarksItem})
+        Me.dgvBorrowerList.Location = New System.Drawing.Point(28, 111)
+        Me.dgvBorrowerList.Name = "dgvBorrowerList"
+        Me.dgvBorrowerList.ReadOnly = True
+        Me.dgvBorrowerList.RowHeadersVisible = False
+        Me.dgvBorrowerList.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
+        Me.dgvBorrowerList.Size = New System.Drawing.Size(1389, 371)
+        Me.dgvBorrowerList.TabIndex = 22
+        '
+        'bID
+        '
+        Me.bID.DataPropertyName = "BorrowID"
+        Me.bID.FillWeight = 50.0!
+        Me.bID.HeaderText = "BorrowID"
+        Me.bID.Name = "bID"
+        Me.bID.ReadOnly = True
+        Me.bID.Visible = False
+        '
+        'ItemID
+        '
+        Me.ItemID.DataPropertyName = "ItemID"
+        Me.ItemID.HeaderText = "ItemID"
+        Me.ItemID.Name = "ItemID"
+        Me.ItemID.ReadOnly = True
+        Me.ItemID.Visible = False
+        '
+        'studentNo
+        '
+        Me.studentNo.DataPropertyName = "StudentNo"
+        Me.studentNo.HeaderText = "Student No."
+        Me.studentNo.Name = "studentNo"
+        Me.studentNo.ReadOnly = True
+        '
+        'borrowerName
+        '
+        Me.borrowerName.DataPropertyName = "StudentName"
+        Me.borrowerName.HeaderText = "Borrower Name"
+        Me.borrowerName.Name = "borrowerName"
+        Me.borrowerName.ReadOnly = True
+        '
+        'ItemName
+        '
+        Me.ItemName.DataPropertyName = "ItemName"
+        Me.ItemName.HeaderText = "Item"
+        Me.ItemName.Name = "ItemName"
+        Me.ItemName.ReadOnly = True
+        '
+        'ItemDesc
+        '
+        Me.ItemDesc.DataPropertyName = "ItemDescription"
+        Me.ItemDesc.HeaderText = "Description"
+        Me.ItemDesc.Name = "ItemDesc"
+        Me.ItemDesc.ReadOnly = True
+        '
+        'qtyBorrowed
+        '
+        Me.qtyBorrowed.DataPropertyName = "QuantityBorrowed"
+        Me.qtyBorrowed.FillWeight = 60.0!
+        Me.qtyBorrowed.HeaderText = "Quantity Borrowed"
+        Me.qtyBorrowed.Name = "qtyBorrowed"
+        Me.qtyBorrowed.ReadOnly = True
+        '
+        'qtyReturned
+        '
+        Me.qtyReturned.DataPropertyName = "QuantityReturned"
+        Me.qtyReturned.HeaderText = "Quantity Returned"
+        Me.qtyReturned.Name = "qtyReturned"
+        Me.qtyReturned.ReadOnly = True
+        '
+        'Remaining
+        '
+        Me.Remaining.DataPropertyName = "Remaining"
+        Me.Remaining.HeaderText = "Remaining"
+        Me.Remaining.Name = "Remaining"
+        Me.Remaining.ReadOnly = True
+        '
+        'Status
+        '
+        Me.Status.DataPropertyName = "Status"
+        Me.Status.HeaderText = "Status"
+        Me.Status.Name = "Status"
+        Me.Status.ReadOnly = True
+        '
+        'TeacherName
+        '
+        Me.TeacherName.DataPropertyName = "TeacherName"
+        Me.TeacherName.HeaderText = "Teacher Name"
+        Me.TeacherName.Name = "TeacherName"
+        Me.TeacherName.ReadOnly = True
+        '
+        'CourseCode
+        '
+        Me.CourseCode.DataPropertyName = "CourseCode"
+        Me.CourseCode.HeaderText = "Course"
+        Me.CourseCode.Name = "CourseCode"
+        Me.CourseCode.ReadOnly = True
+        '
+        'YearLevel
+        '
+        Me.YearLevel.DataPropertyName = "YearLevel"
+        Me.YearLevel.HeaderText = "Year Level"
+        Me.YearLevel.Name = "YearLevel"
+        Me.YearLevel.ReadOnly = True
+        '
+        'Sections
+        '
+        Me.Sections.DataPropertyName = "Section"
+        Me.Sections.HeaderText = "Section"
+        Me.Sections.Name = "Sections"
+        Me.Sections.ReadOnly = True
+        '
+        'Semester
+        '
+        Me.Semester.DataPropertyName = "Semester"
+        Me.Semester.HeaderText = "Semester"
+        Me.Semester.Name = "Semester"
+        Me.Semester.ReadOnly = True
+        '
+        'dateborrowed
+        '
+        Me.dateborrowed.DataPropertyName = "DateBorrowed"
+        Me.dateborrowed.HeaderText = "Date Borrowed"
+        Me.dateborrowed.Name = "dateborrowed"
+        Me.dateborrowed.ReadOnly = True
+        Me.dateborrowed.Visible = False
+        '
+        'SchoolYear
+        '
+        Me.SchoolYear.DataPropertyName = "SchoolYear"
+        Me.SchoolYear.HeaderText = "School Year"
+        Me.SchoolYear.Name = "SchoolYear"
+        Me.SchoolYear.ReadOnly = True
+        '
+        'purpose
+        '
+        Me.purpose.DataPropertyName = "Purpose"
+        Me.purpose.HeaderText = "Purpose"
+        Me.purpose.Name = "purpose"
+        Me.purpose.ReadOnly = True
+        Me.purpose.Visible = False
+        '
+        'contact
+        '
+        Me.contact.DataPropertyName = "Contact"
+        Me.contact.HeaderText = "Contact"
+        Me.contact.Name = "contact"
+        Me.contact.ReadOnly = True
+        '
+        'RemarksItem
+        '
+        Me.RemarksItem.DataPropertyName = "Remarks"
+        Me.RemarksItem.HeaderText = "Remarks"
+        Me.RemarksItem.Name = "RemarksItem"
+        Me.RemarksItem.ReadOnly = True
+        '
+        'btnDelete
+        '
+        Me.btnDelete.Location = New System.Drawing.Point(148, 533)
+        Me.btnDelete.Name = "btnDelete"
+        Me.btnDelete.Size = New System.Drawing.Size(75, 23)
+        Me.btnDelete.TabIndex = 23
+        Me.btnDelete.Text = "Delete"
+        Me.btnDelete.UseVisualStyleBackColor = True
+        '
         'frmBorrowerList
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(1538, 829)
-        Me.Controls.Add(Me.Panel1)
+        Me.Controls.Add(Me.btnDelete)
         Me.Controls.Add(Me.dgvBorrowerList)
+        Me.Controls.Add(Me.Panel1)
         Me.Name = "frmBorrowerList"
         Me.Text = "frmBorrowerList"
         Me.WindowState = System.Windows.Forms.FormWindowState.Maximized
-        CType(Me.dgvBorrowerList, System.ComponentModel.ISupportInitialize).EndInit()
         Me.Panel1.ResumeLayout(False)
         Me.Panel1.PerformLayout()
+        CType(Me.dgvBorrowerList, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
 
     End Sub
-    Friend WithEvents dgvBorrowerList As System.Windows.Forms.DataGridView
     Friend WithEvents Panel1 As Panel
     Friend WithEvents Label2 As Label
+    Friend WithEvents dgvBorrowerList As System.Windows.Forms.DataGridView
     Friend WithEvents bID As System.Windows.Forms.DataGridViewTextBoxColumn
-    Friend WithEvents itemID As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents ItemID As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents studentNo As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents borrowerName As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents ItemName As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents ItemDesc As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents qtyBorrowed As System.Windows.Forms.DataGridViewTextBoxColumn
-    Friend WithEvents contact As System.Windows.Forms.DataGridViewTextBoxColumn
-    Friend WithEvents purpose As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents qtyReturned As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents Remaining As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents Status As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents TeacherName As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents CourseCode As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents YearLevel As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents Sections As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents Semester As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents dateborrowed As System.Windows.Forms.DataGridViewTextBoxColumn
-    Friend WithEvents Remarks As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents SchoolYear As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents purpose As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents contact As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents RemarksItem As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents btnDelete As System.Windows.Forms.Button
 End Class

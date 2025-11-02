@@ -13,12 +13,9 @@
     End Sub
 
     Private Sub btnReturnLog_Click(sender As System.Object, e As System.EventArgs) Handles btnReturnLog.Click
-
         Try
             Dim BorrowID As Integer = Me.BorrowID
-
-
-            Dim Remarks As String = Trim(cbReturnRemarks.Text).ToUpper()
+            Dim Remarks As String = Trim(cbReturnRemarks.Text)
             Dim cmd As Odbc.OdbcCommand
             Dim returnID As Integer
             Dim qtyReturningNow As Integer = CInt(nupQuantityR.Value)
@@ -29,17 +26,16 @@
             cmd.Parameters.AddWithValue("?", BorrowID)
             Dim br = cmd.ExecuteScalar()
             If br IsNot Nothing AndAlso Not IsDBNull(br) Then borrowedQty = CInt(br)
+
             ' get already returned total for this bID
             Dim returnedTotal As Integer = 0
             cmd = New Odbc.OdbcCommand("SELECT IFNULL(SUM(QuantityReturned), 0) FROM tblreturn WHERE bID = ?", con)
             cmd.Parameters.AddWithValue("?", BorrowID)
             Dim rr = cmd.ExecuteScalar()
             If rr IsNot Nothing AndAlso Not IsDBNull(rr) Then returnedTotal = CInt(rr)
+
             MsgBox("BorrowID value: " & BorrowID)
 
-            MsgBox("BorrowedQty = " & borrowedQty & vbCrLf &
-                   "AlreadyReturned = " & returnedTotal & vbCrLf &
-                   "ReturningNow = " & qtyReturningNow)
             ' validation
             If returnedTotal + qtyReturningNow > borrowedQty Then
                 MsgBox("Returned quantity exceeds total borrowed amount.", vbExclamation)
@@ -54,12 +50,7 @@
             cmd.Parameters.AddWithValue("?", itemID)
             Dim currentQty As Integer = CInt(cmd.ExecuteScalar())
 
-            If Remarks = "damage" Then
-                Remarks = "Damage"
-            Else
-                Remarks = "Good"
-            End If
-
+            ' insert to tblreturn
             cmd = New Odbc.OdbcCommand("INSERT INTO tblreturn (bID, QuantityReturned, DateTimeReturned, Remarks) VALUES (?, ?, ?, ?)", con)
             cmd.Parameters.AddWithValue("?", CInt(BorrowID))
             cmd.Parameters.AddWithValue("?", qtyReturningNow)
@@ -67,15 +58,25 @@
             cmd.Parameters.AddWithValue("?", Remarks)
             cmd.ExecuteNonQuery()
 
-            cmd = New Odbc.OdbcCommand("SELECT LAST_INSERT_ID()", con)
+            ' retrieve the new returnID
+            cmd = New Odbc.OdbcCommand("SELECT MAX(ReturnID) FROM tblreturn WHERE bID = ?", con)
+            cmd.Parameters.AddWithValue("?", BorrowID)
             returnID = CInt(cmd.ExecuteScalar())
+
+            ' handle damage
+            'If Remarks = "Damage" Then
+            '    MsgBox("There are " & qtyReturningNow & " damaged item(s)." & vbCrLf &
+            '           "Does the student want to PAY or REPLACE the damaged item?",
+            '           vbYesNoCancel + vbQuestion, "Damage Detected")
+            '    Exit Sub
+            'End If
 
             If Remarks = "Damage" Then
                 ' insert damage record
-                cmd = New Odbc.OdbcCommand("INSERT INTO tbldamaged (ItemID, QuantityDamaged, DateReported, DamageRemarks, ReturnID)VALUES (?, ?, NOW(), ?, ?)", con)
+                cmd = New Odbc.OdbcCommand("INSERT INTO tbldamaged (ItemID, QuantityDamaged, DateReported, DamageRemarks, ReturnID) VALUES (?, ?, NOW(), ?, ?)", con)
                 cmd.Parameters.AddWithValue("?", itemID)
                 cmd.Parameters.AddWithValue("?", qtyReturningNow)
-                cmd.Parameters.AddWithValue("?", "Damaged item upon return")
+                cmd.Parameters.AddWithValue("?", "Damaged")
                 cmd.Parameters.AddWithValue("?", returnID)
                 cmd.ExecuteNonQuery()
             Else
@@ -87,11 +88,10 @@
                 cmd.ExecuteNonQuery()
             End If
 
-
-
-            MsgBox("Item successfully returned!", vbInformation)
+            MsgBox("Return recorded successfully.", vbInformation)
             Call data_loader("SELECT * FROM vw_borrowed_items", frmReturnList.dgvReturn)
 
+            Me.Close()
         Catch ex As Exception
             MsgBox("Error: " & ex.Message, vbCritical)
         End Try
