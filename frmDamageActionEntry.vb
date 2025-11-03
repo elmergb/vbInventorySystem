@@ -2,8 +2,7 @@
     Public Property actionID As Integer
     Private Sub frmDamageActionEntry_Load(sender As System.Object, e As System.EventArgs) Handles MyBase.Load
         vbConnection()
-        cbActionType.Items.Add("Paid")
-        cbActionType.Items.Add("Replace")
+        cbActionType.Items.AddRange({"Pay", "Replace", "Repair", "Penalty"})
     End Sub
 
     Private Sub btnSave_Click(sender As System.Object, e As System.EventArgs) Handles btnSave.Click
@@ -37,7 +36,6 @@
                     .AddWithValue("?", amountPaid)
                     .AddWithValue("?", notes)
                     .AddWithValue("?", dtpDateTime.Value)
-
                 End With
 
                 cmd.ExecuteNonQuery()

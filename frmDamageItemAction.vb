@@ -5,38 +5,37 @@
     End Sub
 
     Private Sub btnUpdate_Click(sender As System.Object, e As System.EventArgs) Handles btnUpdate.Click
-        ' Check if a row is selected
         If dgvDamageAction.CurrentRow Is Nothing Then
             MsgBox("Please select a record to update.", vbInformation)
-        Else
-            Dim frm As New frmDamageActionEntry()
-            frm.actionID = Val(dgvDamageAction.Tag)
-            frm.ShowDialog()
+            Exit Sub
         End If
+
+        Dim row As DataGridViewRow = dgvDamageAction.CurrentRow
+        Dim frm As New frmDamageActionEntry()
+
+        ' Pass values from the selected row to the form
+        frm.actionID = Val(row.Cells("ActionID").Value)
+        frm.lblStudent.Text = row.Cells("BorrowerName").Value.ToString()
+        frm.lblItemName.Text = row.Cells("ItemName").Value.ToString()
+        frm.lblqtyDamage.Text = row.Cells("QuantityDamaged").Value.ToString()
+        frm.lblStudentNo.Text = row.Cells("StudentNo").Value.ToString()
+        frm.cbActionType.Text = row.Cells("ActionType").Value.ToString()
+        frm.txtAmount.Text = row.Cells("AmountPaid").Value.ToString()
+        frm.txtRemarks.Text = row.Cells("Notes").Value.ToString()
+
+        ' Handle date properly
+        If Not IsDBNull(row.Cells("DateCompleted").Value) Then
+            frm.dtpDateTime.Value = CDate(row.Cells("DateCompleted").Value)
+        End If
+
+        frm.ShowDialog()
 
     End Sub
 
     Private Sub dgvDamageAction_CellClick(sender As Object, e As System.Windows.Forms.DataGridViewCellEventArgs) Handles dgvDamageAction.CellClick
-            If e.RowIndex >= 0 Then
-            ' ✅ Change ReturnID → ActionID
+        If e.RowIndex >= 0 Then
             dgvDamageAction.Tag = dgvDamageAction.Rows(e.RowIndex).Cells("ActionID").Value
-
-            ' ✅ Existing data loading (same as your original)
-            frmDamageActionEntry.lblStudent.Text = dgvDamageAction.Rows(e.RowIndex).Cells("BorrowerName").Value.ToString
-            frmDamageActionEntry.lblItemName.Text = dgvDamageAction.Rows(e.RowIndex).Cells("ItemName").Value.ToString
-            frmDamageActionEntry.lblStudentNo.Text = dgvDamageAction.Rows(e.RowIndex).Cells("StudentNo").Value.ToString
-            frmDamageActionEntry.cbActionType.Text = dgvDamageAction.Rows(e.RowIndex).Cells("ActionType").Value.ToString
-            frmDamageActionEntry.txtAmount.Text = dgvDamageAction.Rows(e.RowIndex).Cells("AmountPaid").Value.ToString
-
-            ' ✅ Fixed typo: "Nores" → "Notes"
-            frmDamageActionEntry.txtRemarks.Text = dgvDamageAction.Rows(e.RowIndex).Cells("Notes").Value.ToString
-
-            ' ✅ Added DateCompleted
-            If Not IsDBNull(dgvDamageAction.Rows(e.RowIndex).Cells("DateCompleted").Value) Then
-                frmDamageActionEntry.dtpDateTime.Value = dgvDamageAction.Rows(e.RowIndex).Cells("DateCompleted").Value
-            End If
         End If
-
     End Sub
 
 End Class

@@ -65,46 +65,47 @@ Public Class Login
         '    Finally
         '        GC.Collect()
         '    End Try
-        Dim username As String = Trim(txtUsername.Text)
-        Dim password As String = Trim(txtPword.Text)
-        Dim cmd As New Odbc.OdbcCommand
+        Dim username As String = txtUsername.Text.Trim()
+        Dim password As String = txtPword.Text.Trim()
+
+        If String.IsNullOrEmpty(username) OrElse String.IsNullOrEmpty(password) Then
+            MessageBox.Show("Please enter both username and password.", "Login Error", MessageBoxButtons.OK, MessageBoxIcon.Warning)
+            Return
+        End If
+
         Try
 
-            cmd = New Odbc.OdbcCommand("SELECT COUNT(*) FROM tblstudentlist WHERE lname = ? AND studentNo = ?", con)
+            Dim cmd As New Odbc.OdbcCommand("SELECT pword, Role, isActive FROM vw_user WHERE BINARY username = ?", con)
             cmd.Parameters.AddWithValue("?", username)
-            cmd.Parameters.AddWithValue("?", password)
-            Dim countStudent As Integer = Convert.ToInt32(cmd.ExecuteScalar())
 
-            If countStudent > 0 Then
-                role = "Student"
-                MsgBox("Welcome student!")
-                Homepage.Show()
-                Me.Hide()
-                Exit Sub
-            End If
+            Using rdr As Odbc.OdbcDataReader = cmd.ExecuteReader()
+                If rdr.Read() Then
+                    Dim dbPassword As String = rdr("pword").ToString()
+                    Dim roleVal As String = rdr("Role").ToString()
+                    Dim isActive As Boolean = Convert.ToBoolean(rdr("isActive"))
 
+                    If Not isActive Then
+                        MessageBox.Show("Account is inactive. Please contact administrator.", "Login Error", MessageBoxButtons.OK, MessageBoxIcon.Warning)
+                        Return
+                    End If
 
-            cmd = New Odbc.OdbcCommand("SELECT COUNT(*) FROM tblteacher WHERE lname = ? AND tNum = ?", con)
-            cmd.Parameters.AddWithValue("?", username)
-            cmd.Parameters.AddWithValue("?", password)
-            Dim countTeacher As Integer = Convert.ToInt32(cmd.ExecuteScalar())
+                    If String.Equals(password, dbPassword, StringComparison.Ordinal) Then
+                        role = roleVal
+                        MessageBox.Show("Welcome " & role & "!", "Login", MessageBoxButtons.OK, MessageBoxIcon.Information)
+                        Homepage.Show()
+                        Me.Hide()
+                        Return
+                    End If
+                End If
+            End Using
 
-            If countTeacher > 0 Then
-                role = "Admin"
-                MsgBox("Welcome teacher/admin!")
-                Homepage.Show()
-                Me.Hide()
-                Exit Sub
-            End If
+            MessageBox.Show("Login failed. Check your credentials.", "Login Error", MessageBoxButtons.OK, MessageBoxIcon.Warning)
 
-            MsgBox("User not Found!")
         Catch ex As Exception
-            MsgBox(ex.Message.ToString)
-        Finally
-            GC.Collect()
+            MessageBox.Show("An error occurred: " & ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+
         End Try
-        txtPword.Clear()
-        txtUsername.Clear()
+
     End Sub
 
     Private Sub PictureBox2_Click(sender As Object, e As EventArgs) Handles PictureBox2.Click

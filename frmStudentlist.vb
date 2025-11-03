@@ -5,7 +5,7 @@
     End Sub
 
     Private Sub frmStudentlist_Load(sender As System.Object, e As System.EventArgs) Handles MyBase.Load
-        Call data_loader("SELECT * FROM vw_students", dgvStudentList)
+        Call data_loader("SELECT * FROM vw_user", dgvStudentList)
         'If e.RowIndex >= 0 Then
         '    dgvItemList.Tag = dgvItemList.Rows(e.RowIndex).Cells("Item").Value
 
@@ -37,6 +37,11 @@
             frmStudentCanBorrow.cbCourses.SelectedValue = dgvStudentList.Rows(e.RowIndex).Cells("course").Value.ToString()
             frmStudentCanBorrow.txtSection.Text = dgvStudentList.Rows(e.RowIndex).Cells("section").Value.ToString()
             frmStudentCanBorrow.cbYear.SelectedValue = dgvStudentList.Rows(e.RowIndex).Cells("yDesc").Value.ToString()
+            frmStudentCanBorrow.cbRole.SelectedValue = dgvStudentList.Rows(e.RowIndex).Cells("Role").Value.ToString()
+            frmStudentCanBorrow.txtuname.Text = dgvStudentList.Rows(e.RowIndex).Cells("UserName").Value.ToString()
+            frmStudentCanBorrow.txtPword.Text = dgvStudentList.Rows(e.RowIndex).Cells("pword").Value.ToString()
+            frmStudentCanBorrow.ckbisActive.Checked = CBool(dgvStudentList.Rows(e.RowIndex).Cells("isActive").Value)
+
         End If
     End Sub
 

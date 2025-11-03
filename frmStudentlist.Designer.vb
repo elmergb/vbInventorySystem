@@ -25,6 +25,9 @@ Partial Class frmStudentlist
         Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.dgvStudentList = New System.Windows.Forms.DataGridView()
+        Me.btnAdd = New System.Windows.Forms.Button()
+        Me.btnEdit = New System.Windows.Forms.Button()
+        Me.btnDelete = New System.Windows.Forms.Button()
         Me.sID = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.studentNo = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.fname = New System.Windows.Forms.DataGridViewTextBoxColumn()
@@ -32,10 +35,11 @@ Partial Class frmStudentlist
         Me.lname = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.course = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.section = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Role = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.yDesc = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.btnAdd = New System.Windows.Forms.Button()
-        Me.btnEdit = New System.Windows.Forms.Button()
-        Me.btnDelete = New System.Windows.Forms.Button()
+        Me.isActive = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.UserName = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.pword = New System.Windows.Forms.DataGridViewTextBoxColumn()
         CType(Me.dgvStudentList, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
@@ -65,7 +69,7 @@ Partial Class frmStudentlist
         DataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
         Me.dgvStudentList.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle1
         Me.dgvStudentList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.dgvStudentList.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.sID, Me.studentNo, Me.fname, Me.mi, Me.lname, Me.course, Me.section, Me.yDesc})
+        Me.dgvStudentList.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.sID, Me.studentNo, Me.fname, Me.mi, Me.lname, Me.course, Me.section, Me.Role, Me.yDesc, Me.isActive, Me.UserName, Me.pword})
         Me.dgvStudentList.Location = New System.Drawing.Point(4, 113)
         Me.dgvStudentList.Name = "dgvStudentList"
         Me.dgvStudentList.ReadOnly = True
@@ -74,6 +78,33 @@ Partial Class frmStudentlist
         Me.dgvStudentList.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
         Me.dgvStudentList.Size = New System.Drawing.Size(1379, 473)
         Me.dgvStudentList.TabIndex = 1
+        '
+        'btnAdd
+        '
+        Me.btnAdd.Location = New System.Drawing.Point(25, 592)
+        Me.btnAdd.Name = "btnAdd"
+        Me.btnAdd.Size = New System.Drawing.Size(75, 23)
+        Me.btnAdd.TabIndex = 2
+        Me.btnAdd.Text = "Add"
+        Me.btnAdd.UseVisualStyleBackColor = True
+        '
+        'btnEdit
+        '
+        Me.btnEdit.Location = New System.Drawing.Point(106, 592)
+        Me.btnEdit.Name = "btnEdit"
+        Me.btnEdit.Size = New System.Drawing.Size(75, 23)
+        Me.btnEdit.TabIndex = 3
+        Me.btnEdit.Text = "Edit"
+        Me.btnEdit.UseVisualStyleBackColor = True
+        '
+        'btnDelete
+        '
+        Me.btnDelete.Location = New System.Drawing.Point(187, 592)
+        Me.btnDelete.Name = "btnDelete"
+        Me.btnDelete.Size = New System.Drawing.Size(75, 23)
+        Me.btnDelete.TabIndex = 4
+        Me.btnDelete.Text = "Delete"
+        Me.btnDelete.UseVisualStyleBackColor = True
         '
         'sID
         '
@@ -125,6 +156,13 @@ Partial Class frmStudentlist
         Me.section.Name = "section"
         Me.section.ReadOnly = True
         '
+        'Role
+        '
+        Me.Role.DataPropertyName = "Role"
+        Me.Role.HeaderText = "Role"
+        Me.Role.Name = "Role"
+        Me.Role.ReadOnly = True
+        '
         'yDesc
         '
         Me.yDesc.DataPropertyName = "yDesc"
@@ -132,32 +170,27 @@ Partial Class frmStudentlist
         Me.yDesc.Name = "yDesc"
         Me.yDesc.ReadOnly = True
         '
-        'btnAdd
+        'isActive
         '
-        Me.btnAdd.Location = New System.Drawing.Point(25, 592)
-        Me.btnAdd.Name = "btnAdd"
-        Me.btnAdd.Size = New System.Drawing.Size(75, 23)
-        Me.btnAdd.TabIndex = 2
-        Me.btnAdd.Text = "Add"
-        Me.btnAdd.UseVisualStyleBackColor = True
+        Me.isActive.DataPropertyName = "isActive"
+        Me.isActive.HeaderText = "Status"
+        Me.isActive.Name = "isActive"
+        Me.isActive.ReadOnly = True
         '
-        'btnEdit
+        'UserName
         '
-        Me.btnEdit.Location = New System.Drawing.Point(106, 592)
-        Me.btnEdit.Name = "btnEdit"
-        Me.btnEdit.Size = New System.Drawing.Size(75, 23)
-        Me.btnEdit.TabIndex = 3
-        Me.btnEdit.Text = "Edit"
-        Me.btnEdit.UseVisualStyleBackColor = True
+        Me.UserName.DataPropertyName = "UserName"
+        Me.UserName.HeaderText = "Username"
+        Me.UserName.Name = "UserName"
+        Me.UserName.ReadOnly = True
         '
-        'btnDelete
+        'pword
         '
-        Me.btnDelete.Location = New System.Drawing.Point(187, 592)
-        Me.btnDelete.Name = "btnDelete"
-        Me.btnDelete.Size = New System.Drawing.Size(75, 23)
-        Me.btnDelete.TabIndex = 4
-        Me.btnDelete.Text = "Delete"
-        Me.btnDelete.UseVisualStyleBackColor = True
+        Me.pword.DataPropertyName = "pword"
+        Me.pword.HeaderText = "password"
+        Me.pword.Name = "pword"
+        Me.pword.ReadOnly = True
+        Me.pword.Visible = False
         '
         'frmStudentlist
         '
@@ -179,6 +212,7 @@ Partial Class frmStudentlist
     Friend WithEvents dgvStudentList As System.Windows.Forms.DataGridView
     Friend WithEvents btnAdd As System.Windows.Forms.Button
     Friend WithEvents btnEdit As System.Windows.Forms.Button
+    Friend WithEvents btnDelete As System.Windows.Forms.Button
     Friend WithEvents sID As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents studentNo As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents fname As System.Windows.Forms.DataGridViewTextBoxColumn
@@ -186,6 +220,9 @@ Partial Class frmStudentlist
     Friend WithEvents lname As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents course As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents section As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents Role As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents yDesc As System.Windows.Forms.DataGridViewTextBoxColumn
-    Friend WithEvents btnDelete As System.Windows.Forms.Button
+    Friend WithEvents isActive As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents UserName As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents pword As System.Windows.Forms.DataGridViewTextBoxColumn
 End Class

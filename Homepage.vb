@@ -87,5 +87,7 @@
 
     Private Sub ltsLogout_Click(sender As System.Object, e As System.EventArgs) Handles ltsLogout.Click
         MsgLogout("Do you want to Logut?", Me, Login)
+        Login.txtPword.Clear()
+        Login.txtUsername.Clear()
     End Sub
 End Class

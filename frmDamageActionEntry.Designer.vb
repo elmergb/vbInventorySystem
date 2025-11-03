@@ -37,6 +37,8 @@ Partial Class frmDamageActionEntry
         Me.lblStudent = New System.Windows.Forms.Label()
         Me.lblStudentNo = New System.Windows.Forms.Label()
         Me.lblItemName = New System.Windows.Forms.Label()
+        Me.Label8 = New System.Windows.Forms.Label()
+        Me.lblqtyDamage = New System.Windows.Forms.Label()
         Me.SuspendLayout()
         '
         'Label1
@@ -52,14 +54,14 @@ Partial Class frmDamageActionEntry
         'cbActionType
         '
         Me.cbActionType.FormattingEnabled = True
-        Me.cbActionType.Location = New System.Drawing.Point(105, 205)
+        Me.cbActionType.Location = New System.Drawing.Point(104, 227)
         Me.cbActionType.Name = "cbActionType"
         Me.cbActionType.Size = New System.Drawing.Size(121, 21)
         Me.cbActionType.TabIndex = 1
         '
         'txtAmount
         '
-        Me.txtAmount.Location = New System.Drawing.Point(116, 246)
+        Me.txtAmount.Location = New System.Drawing.Point(115, 268)
         Me.txtAmount.Name = "txtAmount"
         Me.txtAmount.Size = New System.Drawing.Size(148, 20)
         Me.txtAmount.TabIndex = 2
@@ -88,7 +90,7 @@ Partial Class frmDamageActionEntry
         '
         Me.Label4.AutoSize = True
         Me.Label4.Font = New System.Drawing.Font("Microsoft Tai Le", 11.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label4.Location = New System.Drawing.Point(40, 205)
+        Me.Label4.Location = New System.Drawing.Point(39, 227)
         Me.Label4.Name = "Label4"
         Me.Label4.Size = New System.Drawing.Size(59, 19)
         Me.Label4.TabIndex = 5
@@ -98,7 +100,7 @@ Partial Class frmDamageActionEntry
         '
         Me.Label5.AutoSize = True
         Me.Label5.Font = New System.Drawing.Font("Microsoft Tai Le", 11.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label5.Location = New System.Drawing.Point(39, 246)
+        Me.Label5.Location = New System.Drawing.Point(38, 268)
         Me.Label5.Name = "Label5"
         Me.Label5.Size = New System.Drawing.Size(71, 19)
         Me.Label5.TabIndex = 6
@@ -106,7 +108,7 @@ Partial Class frmDamageActionEntry
         '
         'txtRemarks
         '
-        Me.txtRemarks.Location = New System.Drawing.Point(116, 283)
+        Me.txtRemarks.Location = New System.Drawing.Point(115, 305)
         Me.txtRemarks.Name = "txtRemarks"
         Me.txtRemarks.Size = New System.Drawing.Size(148, 20)
         Me.txtRemarks.TabIndex = 7
@@ -115,7 +117,7 @@ Partial Class frmDamageActionEntry
         '
         Me.Label6.AutoSize = True
         Me.Label6.Font = New System.Drawing.Font("Microsoft Tai Le", 11.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label6.Location = New System.Drawing.Point(39, 284)
+        Me.Label6.Location = New System.Drawing.Point(38, 306)
         Me.Label6.Name = "Label6"
         Me.Label6.Size = New System.Drawing.Size(74, 19)
         Me.Label6.TabIndex = 8
@@ -178,11 +180,33 @@ Partial Class frmDamageActionEntry
         Me.lblItemName.TabIndex = 14
         Me.lblItemName.Text = "Item Name"
         '
+        'Label8
+        '
+        Me.Label8.AutoSize = True
+        Me.Label8.Font = New System.Drawing.Font("Microsoft Tai Le", 11.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label8.Location = New System.Drawing.Point(40, 196)
+        Me.Label8.Name = "Label8"
+        Me.Label8.Size = New System.Drawing.Size(136, 19)
+        Me.Label8.TabIndex = 15
+        Me.Label8.Text = "Quantity Damage:"
+        '
+        'lblqtyDamage
+        '
+        Me.lblqtyDamage.AutoSize = True
+        Me.lblqtyDamage.Font = New System.Drawing.Font("Microsoft Tai Le", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblqtyDamage.Location = New System.Drawing.Point(198, 196)
+        Me.lblqtyDamage.Name = "lblqtyDamage"
+        Me.lblqtyDamage.Size = New System.Drawing.Size(30, 19)
+        Me.lblqtyDamage.TabIndex = 16
+        Me.lblqtyDamage.Text = "qty"
+        '
         'frmDamageActionEntry
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(752, 529)
+        Me.Controls.Add(Me.lblqtyDamage)
+        Me.Controls.Add(Me.Label8)
         Me.Controls.Add(Me.lblItemName)
         Me.Controls.Add(Me.lblStudentNo)
         Me.Controls.Add(Me.lblStudent)
@@ -219,4 +243,6 @@ Partial Class frmDamageActionEntry
     Friend WithEvents lblStudent As System.Windows.Forms.Label
     Friend WithEvents lblStudentNo As System.Windows.Forms.Label
     Friend WithEvents lblItemName As System.Windows.Forms.Label
+    Friend WithEvents Label8 As System.Windows.Forms.Label
+    Friend WithEvents lblqtyDamage As System.Windows.Forms.Label
 End Class

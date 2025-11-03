@@ -4,7 +4,7 @@ Public Class frmListItem
     Public BorrowID As Integer
     Public ItemID As Integer
     Private Sub frmListItem_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        Call data_loader("SELECT * FROM vw_Items", dgvItemList)
+        Call data_loader("SELECT * FROM vw_items", dgvItemList)
         frmAddItem.nupQuantity.Maximum = 1000
         dgvItemList.AutoGenerateColumns = False
         dgvItemList.Tag = 0
@@ -95,7 +95,7 @@ Public Class frmListItem
                 MsgBox("Deleted successfully!", MsgBoxStyle.Information)
 
                 ' Step 3: Refresh the DataGridView
-                Call data_loader("SELECT * FROM vw_item", dgvItemList)
+                Call data_loader("SELECT * FROM vw_items", dgvItemList)
 
             Catch ex As Exception
                 MsgBox("Error: " & ex.Message, MsgBoxStyle.Critical)

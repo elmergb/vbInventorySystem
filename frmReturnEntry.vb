@@ -102,6 +102,11 @@
                     MsgBox("Damage return canceled.", vbInformation)
                     Exit Sub
                 End If
+            Else
+                cmd = New Odbc.OdbcCommand("UPDATE tblitemlist SET ItemQuantity = ItemQuantity + ? WHERE ItemID = ?", con)
+                cmd.Parameters.AddWithValue("?", qtyReturningNow)
+                cmd.Parameters.AddWithValue("?", itemID)
+                cmd.ExecuteNonQuery()
             End If
 
             MsgBox("Return recorded successfully.", vbInformation)
