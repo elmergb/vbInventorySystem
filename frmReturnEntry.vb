@@ -63,29 +63,45 @@
             cmd.Parameters.AddWithValue("?", BorrowID)
             returnID = CInt(cmd.ExecuteScalar())
 
-            ' handle damage
-            'If Remarks = "Damage" Then
-            '    MsgBox("There are " & qtyReturningNow & " damaged item(s)." & vbCrLf &
-            '           "Does the student want to PAY or REPLACE the damaged item?",
-            '           vbYesNoCancel + vbQuestion, "Damage Detected")
-            '    Exit Sub
-            'End If
-
+            ' Handle(damage)
             If Remarks = "Damage" Then
-                ' insert damage record
-                cmd = New Odbc.OdbcCommand("INSERT INTO tbldamaged (ItemID, QuantityDamaged, DateReported, DamageRemarks, ReturnID) VALUES (?, ?, NOW(), ?, ?)", con)
+                Dim choice As MsgBoxResult
+                choice = MsgBox("There are " & qtyReturningNow & " damaged item(s)." & vbCrLf &
+                                "Does the student want to PAY (Yes) or REPLACE (No)?",
+                                vbYesNoCancel + vbQuestion, "Damage Detected")
+
+                ' Insert into tbldamaged first
+                cmd = New Odbc.OdbcCommand("INSERT INTO tbldamaged (ItemID, QuantityDamaged, DateReported, DamageRemarks, ReturnID, Status) VALUES (?, ?, NOW(), ?, ?, 'Pending')", con)
                 cmd.Parameters.AddWithValue("?", itemID)
                 cmd.Parameters.AddWithValue("?", qtyReturningNow)
                 cmd.Parameters.AddWithValue("?", "Damaged")
                 cmd.Parameters.AddWithValue("?", returnID)
                 cmd.ExecuteNonQuery()
-            Else
-                ' update item stock
-                Dim newQty As Integer = currentQty + qtyReturningNow
-                cmd = New Odbc.OdbcCommand("UPDATE tblitemlist SET ItemQuantity = ? WHERE ItemID = ?", con)
-                cmd.Parameters.AddWithValue("?", newQty)
-                cmd.Parameters.AddWithValue("?", itemID)
-                cmd.ExecuteNonQuery()
+
+                ' Get last DamageID
+                cmd = New Odbc.OdbcCommand("SELECT MAX(DamageID) FROM tbldamaged", con)
+                Dim damageID As Integer = CInt(cmd.ExecuteScalar())
+
+                If choice = vbYes Then
+                    ' Student chose PAY
+                    cmd = New Odbc.OdbcCommand("INSERT INTO tbldamage_action (DamageID, ActionType, Status) VALUES (?, 'Pay', 'Pending')", con)
+                    cmd.Parameters.AddWithValue("?", damageID)
+                    cmd.ExecuteNonQuery()
+
+                    MsgBox("Marked as pending payment.", vbInformation)
+
+                ElseIf choice = vbNo Then
+                    ' Student chose REPLACE
+                    cmd = New Odbc.OdbcCommand("INSERT INTO tbldamage_action (DamageID, ActionType, Status) VALUES (?, 'Replace', 'Pending')", con)
+                    cmd.Parameters.AddWithValue("?", damageID)
+                    cmd.ExecuteNonQuery()
+
+                    MsgBox("Marked as pending replacement.", vbInformation)
+
+                ElseIf choice = vbCancel Then
+                    MsgBox("Damage return canceled.", vbInformation)
+                    Exit Sub
+                End If
             End If
 
             MsgBox("Return recorded successfully.", vbInformation)

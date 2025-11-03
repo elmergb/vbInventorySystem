@@ -109,10 +109,22 @@
     <Compile Include="frmCartListView.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="frmDamageActionEntry.Designer.vb">
+      <DependentUpon>frmDamageActionEntry.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmDamageActionEntry.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="frmDamageItem.Designer.vb">
       <DependentUpon>frmDamageItem.vb</DependentUpon>
     </Compile>
     <Compile Include="frmDamageItem.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmDamageItemAction.Designer.vb">
+      <DependentUpon>frmDamageItemAction.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmDamageItemAction.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="frmDashboard.Designer.vb">
@@ -161,12 +173,6 @@
       <DependentUpon>frmStudentlist.vb</DependentUpon>
     </Compile>
     <Compile Include="frmStudentlist.vb">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="frmToBorrow.Designer.vb">
-      <DependentUpon>frmToBorrow.vb</DependentUpon>
-    </Compile>
-    <Compile Include="frmToBorrow.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="frmUserAdd.Designer.vb">
@@ -228,8 +234,14 @@
     <EmbeddedResource Include="frmCartListView.resx">
       <DependentUpon>frmCartListView.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="frmDamageActionEntry.resx">
+      <DependentUpon>frmDamageActionEntry.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmDamageItem.resx">
       <DependentUpon>frmDamageItem.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmDamageItemAction.resx">
+      <DependentUpon>frmDamageItemAction.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmDashboard.resx">
       <DependentUpon>frmDashboard.vb</DependentUpon>

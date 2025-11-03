@@ -18,7 +18,7 @@
         Call vbConnection()
         DisableForm(Me)
         LoadForm(New frmDashboard())
-
+        lblTsUser.Text = Login.txtUsername.Text + " " + Login.txtPword.Text
     End Sub
 
     Private Sub btnDashBoard_Click_1(sender As System.Object, e As System.EventArgs)
@@ -58,10 +58,34 @@
     End Sub
 
     Private Sub DamageToolStripMenuItem_Click(sender As System.Object, e As System.EventArgs) Handles DamageToolStripMenuItem.Click
-        LoadForm(New frmDamageItem())
+
     End Sub
 
     Private Sub GoodToolStripMenuItem_Click(sender As System.Object, e As System.EventArgs) Handles GoodToolStripMenuItem.Click
         LoadForm(New frmGoodItem())
+    End Sub
+
+    Private Sub DamageAccountibilityToolStripMenuItem_Click(sender As System.Object, e As System.EventArgs) Handles DamageAccountibilityToolStripMenuItem.Click
+        LoadForm(New frmDamageItemAction())
+    End Sub
+
+    Private Sub DamageItemToolStripMenuItem_Click(sender As System.Object, e As System.EventArgs) Handles DamageItemToolStripMenuItem.Click
+        LoadForm(New frmDamageItem())
+    End Sub
+
+    Private Sub lblTsUser_Click(sender As System.Object, e As System.EventArgs) Handles lblTsUser.Click
+        lblTsUser.Text = Login.txtUsername.Text + Login.txtPword.Text
+    End Sub
+
+    Private Sub StudentListToolStripMenuItem_Click(sender As System.Object, e As System.EventArgs) Handles StudentListToolStripMenuItem.Click
+        LoadForm(New frmStudentlist())
+    End Sub
+
+    Private Sub ltsExit_Click(sender As System.Object, e As System.EventArgs) Handles ltsExit.Click
+        MsgExit("Do you want to exit?", Me, Me, Me)
+    End Sub
+
+    Private Sub ltsLogout_Click(sender As System.Object, e As System.EventArgs) Handles ltsLogout.Click
+        MsgLogout("Do you want to Logut?", Me, Login)
     End Sub
 End Class

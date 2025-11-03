@@ -103,7 +103,8 @@ Public Class Login
         Finally
             GC.Collect()
         End Try
-
+        txtPword.Clear()
+        txtUsername.Clear()
     End Sub
 
     Private Sub PictureBox2_Click(sender As Object, e As EventArgs) Handles PictureBox2.Click

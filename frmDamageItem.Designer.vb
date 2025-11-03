@@ -30,6 +30,7 @@ Partial Class frmDamageItem
         Me.DamageLocation = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Quantity = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.dateReported = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Label1 = New System.Windows.Forms.Label()
         CType(Me.dgvDamageItems, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
@@ -40,12 +41,12 @@ Partial Class frmDamageItem
         Me.dgvDamageItems.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill
         Me.dgvDamageItems.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.dgvDamageItems.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.ID, Me.Item, Me.Description, Me.Category, Me.DamageLocation, Me.Quantity, Me.dateReported})
-        Me.dgvDamageItems.Location = New System.Drawing.Point(40, 100)
+        Me.dgvDamageItems.Location = New System.Drawing.Point(24, 70)
         Me.dgvDamageItems.Name = "dgvDamageItems"
         Me.dgvDamageItems.ReadOnly = True
         Me.dgvDamageItems.RowHeadersVisible = False
         Me.dgvDamageItems.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
-        Me.dgvDamageItems.Size = New System.Drawing.Size(1095, 415)
+        Me.dgvDamageItems.Size = New System.Drawing.Size(1210, 415)
         Me.dgvDamageItems.TabIndex = 0
         '
         'ID
@@ -98,11 +99,24 @@ Partial Class frmDamageItem
         Me.dateReported.Name = "dateReported"
         Me.dateReported.ReadOnly = True
         '
+        'Label1
+        '
+        Me.Label1.BackColor = System.Drawing.SystemColors.ActiveCaption
+        Me.Label1.Dock = System.Windows.Forms.DockStyle.Top
+        Me.Label1.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label1.Location = New System.Drawing.Point(0, 0)
+        Me.Label1.Name = "Label1"
+        Me.Label1.Size = New System.Drawing.Size(1259, 47)
+        Me.Label1.TabIndex = 1
+        Me.Label1.Text = "   Damage Item"
+        Me.Label1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
+        '
         'frmDamageItem
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(1259, 589)
+        Me.Controls.Add(Me.Label1)
         Me.Controls.Add(Me.dgvDamageItems)
         Me.Name = "frmDamageItem"
         Me.Text = "frmDamageItem"
@@ -118,4 +132,5 @@ Partial Class frmDamageItem
     Friend WithEvents DamageLocation As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents Quantity As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents dateReported As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents Label1 As System.Windows.Forms.Label
 End Class
