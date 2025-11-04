@@ -23,9 +23,11 @@ Partial Class frmBorrowerList
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Me.Panel1 = New System.Windows.Forms.Panel()
         Me.Label2 = New System.Windows.Forms.Label()
         Me.dgvBorrowerList = New System.Windows.Forms.DataGridView()
+        Me.btnDelete = New System.Windows.Forms.Button()
         Me.bID = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.ItemID = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.studentNo = New System.Windows.Forms.DataGridViewTextBoxColumn()
@@ -46,7 +48,6 @@ Partial Class frmBorrowerList
         Me.purpose = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.contact = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.RemarksItem = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.btnDelete = New System.Windows.Forms.Button()
         Me.Panel1.SuspendLayout()
         CType(Me.dgvBorrowerList, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
@@ -58,7 +59,7 @@ Partial Class frmBorrowerList
         Me.Panel1.Dock = System.Windows.Forms.DockStyle.Top
         Me.Panel1.Location = New System.Drawing.Point(0, 0)
         Me.Panel1.Name = "Panel1"
-        Me.Panel1.Size = New System.Drawing.Size(1538, 62)
+        Me.Panel1.Size = New System.Drawing.Size(1538, 67)
         Me.Panel1.TabIndex = 16
         '
         'Label2
@@ -68,7 +69,7 @@ Partial Class frmBorrowerList
         Me.Label2.Font = New System.Drawing.Font("Dubai", 20.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label2.ForeColor = System.Drawing.SystemColors.ButtonHighlight
         Me.Label2.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.Label2.Location = New System.Drawing.Point(-18, 12)
+        Me.Label2.Location = New System.Drawing.Point(-18, 13)
         Me.Label2.Name = "Label2"
         Me.Label2.Size = New System.Drawing.Size(207, 45)
         Me.Label2.TabIndex = 7
@@ -80,9 +81,10 @@ Partial Class frmBorrowerList
         Me.dgvBorrowerList.AllowUserToAddRows = False
         Me.dgvBorrowerList.AllowUserToDeleteRows = False
         Me.dgvBorrowerList.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill
+        Me.dgvBorrowerList.BackgroundColor = System.Drawing.Color.White
         DataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
         DataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control
-        DataGridViewCellStyle1.Font = New System.Drawing.Font("Microsoft JhengHei UI", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle1.Font = New System.Drawing.Font("Arial", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         DataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText
         DataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight
         DataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText
@@ -90,13 +92,30 @@ Partial Class frmBorrowerList
         Me.dgvBorrowerList.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle1
         Me.dgvBorrowerList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.dgvBorrowerList.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.bID, Me.ItemID, Me.studentNo, Me.borrowerName, Me.ItemName, Me.ItemDesc, Me.qtyBorrowed, Me.qtyReturned, Me.Remaining, Me.Status, Me.TeacherName, Me.CourseCode, Me.YearLevel, Me.Sections, Me.Semester, Me.dateborrowed, Me.SchoolYear, Me.purpose, Me.contact, Me.RemarksItem})
-        Me.dgvBorrowerList.Location = New System.Drawing.Point(28, 111)
+        DataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
+        DataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window
+        DataGridViewCellStyle2.Font = New System.Drawing.Font("Arial", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText
+        DataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.FromArgb(CType(CType(190, Byte), Integer), CType(CType(214, Byte), Integer), CType(CType(246, Byte), Integer))
+        DataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.ControlText
+        DataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
+        Me.dgvBorrowerList.DefaultCellStyle = DataGridViewCellStyle2
+        Me.dgvBorrowerList.Location = New System.Drawing.Point(23, 105)
         Me.dgvBorrowerList.Name = "dgvBorrowerList"
         Me.dgvBorrowerList.ReadOnly = True
         Me.dgvBorrowerList.RowHeadersVisible = False
         Me.dgvBorrowerList.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
-        Me.dgvBorrowerList.Size = New System.Drawing.Size(1389, 371)
+        Me.dgvBorrowerList.Size = New System.Drawing.Size(1419, 400)
         Me.dgvBorrowerList.TabIndex = 22
+        '
+        'btnDelete
+        '
+        Me.btnDelete.Location = New System.Drawing.Point(100, 538)
+        Me.btnDelete.Name = "btnDelete"
+        Me.btnDelete.Size = New System.Drawing.Size(89, 36)
+        Me.btnDelete.TabIndex = 23
+        Me.btnDelete.Text = "Delete"
+        Me.btnDelete.UseVisualStyleBackColor = True
         '
         'bID
         '
@@ -121,6 +140,7 @@ Partial Class frmBorrowerList
         Me.studentNo.HeaderText = "Student No."
         Me.studentNo.Name = "studentNo"
         Me.studentNo.ReadOnly = True
+        Me.studentNo.Visible = False
         '
         'borrowerName
         '
@@ -164,6 +184,7 @@ Partial Class frmBorrowerList
         Me.Remaining.HeaderText = "Remaining"
         Me.Remaining.Name = "Remaining"
         Me.Remaining.ReadOnly = True
+        Me.Remaining.Visible = False
         '
         'Status
         '
@@ -178,6 +199,7 @@ Partial Class frmBorrowerList
         Me.TeacherName.HeaderText = "Teacher Name"
         Me.TeacherName.Name = "TeacherName"
         Me.TeacherName.ReadOnly = True
+        Me.TeacherName.Visible = False
         '
         'CourseCode
         '
@@ -244,23 +266,15 @@ Partial Class frmBorrowerList
         Me.RemarksItem.Name = "RemarksItem"
         Me.RemarksItem.ReadOnly = True
         '
-        'btnDelete
-        '
-        Me.btnDelete.Location = New System.Drawing.Point(148, 533)
-        Me.btnDelete.Name = "btnDelete"
-        Me.btnDelete.Size = New System.Drawing.Size(75, 23)
-        Me.btnDelete.TabIndex = 23
-        Me.btnDelete.Text = "Delete"
-        Me.btnDelete.UseVisualStyleBackColor = True
-        '
         'frmBorrowerList
         '
-        Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
+        Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 14.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(1538, 829)
+        Me.ClientSize = New System.Drawing.Size(1538, 893)
         Me.Controls.Add(Me.btnDelete)
         Me.Controls.Add(Me.dgvBorrowerList)
         Me.Controls.Add(Me.Panel1)
+        Me.Font = New System.Drawing.Font("Arial", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Name = "frmBorrowerList"
         Me.Text = "frmBorrowerList"
         Me.WindowState = System.Windows.Forms.FormWindowState.Maximized
@@ -273,6 +287,7 @@ Partial Class frmBorrowerList
     Friend WithEvents Panel1 As Panel
     Friend WithEvents Label2 As Label
     Friend WithEvents dgvBorrowerList As System.Windows.Forms.DataGridView
+    Friend WithEvents btnDelete As System.Windows.Forms.Button
     Friend WithEvents bID As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents ItemID As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents studentNo As System.Windows.Forms.DataGridViewTextBoxColumn
@@ -293,5 +308,4 @@ Partial Class frmBorrowerList
     Friend WithEvents purpose As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents contact As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents RemarksItem As System.Windows.Forms.DataGridViewTextBoxColumn
-    Friend WithEvents btnDelete As System.Windows.Forms.Button
 End Class

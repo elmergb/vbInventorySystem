@@ -8,6 +8,20 @@
         cb_loader("SELECT * FROM vw_teacher", cbTeacher, "teacher_fullname", "tID")
         For Each col As DataGridViewColumn In dgvItemList.Columns
             col.SortMode = DataGridViewColumnSortMode.NotSortable
+            With dgvItemList
+                .EnableHeadersVisualStyles = False
+                .ColumnHeadersDefaultCellStyle.BackColor = Color.SteelBlue
+                .ColumnHeadersDefaultCellStyle.ForeColor = Color.White
+                .ColumnHeadersDefaultCellStyle.Font = New Font("Segoe UI", 10, FontStyle.Bold)
+                .ColumnHeadersHeight = 35
+                .RowTemplate.Height = 35
+                .AllowUserToAddRows = False
+                .RowHeadersVisible = False
+                .AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill
+                .CellBorderStyle = DataGridViewCellBorderStyle.Single
+                .GridColor = Color.LightGray
+                .BorderStyle = BorderStyle.None
+            End With
         Next
     End Sub
 
@@ -206,4 +220,7 @@
         End If
     End Sub
 
+    Private Sub Label1_Click(sender As System.Object, e As System.EventArgs) Handles Label1.Click
+
+    End Sub
 End Class

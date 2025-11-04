@@ -22,10 +22,11 @@ Partial Class frmDamageItemAction
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
+        Dim DataGridViewCellStyle3 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle4 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Me.Panel1 = New System.Windows.Forms.Panel()
         Me.Label2 = New System.Windows.Forms.Label()
         Me.dgvDamageAction = New System.Windows.Forms.DataGridView()
-        Me.btnUpdate = New System.Windows.Forms.Button()
         Me.BorrowerName = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.StudentNo = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.ItemName = New System.Windows.Forms.DataGridViewTextBoxColumn()
@@ -49,6 +50,7 @@ Partial Class frmDamageItemAction
         Me.borrowDateTime = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Contact = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Purpose = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.btnUpdate = New System.Windows.Forms.Button()
         Me.Panel1.SuspendLayout()
         CType(Me.dgvDamageAction, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
@@ -82,24 +84,32 @@ Partial Class frmDamageItemAction
         Me.dgvDamageAction.AllowUserToAddRows = False
         Me.dgvDamageAction.AllowUserToDeleteRows = False
         Me.dgvDamageAction.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill
+        Me.dgvDamageAction.BackgroundColor = System.Drawing.Color.White
+        DataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control
+        DataGridViewCellStyle3.Font = New System.Drawing.Font("Arial", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText
+        DataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight
+        DataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.dgvDamageAction.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle3
         Me.dgvDamageAction.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.dgvDamageAction.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.BorrowerName, Me.StudentNo, Me.ItemName, Me.ItemDescription, Me.QuantityDamaged, Me.ActionID, Me.ActionType, Me.Status, Me.AmountPaid, Me.Notes, Me.DateRequested, Me.DateCompleted, Me.DamageID, Me.DateReported, Me.DamageRemarks, Me.ReturnID, Me.bID, Me.QuantityReturned, Me.ReturnRemarks, Me.borrowQty, Me.borrowDateTime, Me.Contact, Me.Purpose})
-        Me.dgvDamageAction.Location = New System.Drawing.Point(12, 96)
+        DataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Window
+        DataGridViewCellStyle4.Font = New System.Drawing.Font("Arial Narrow", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.ControlText
+        DataGridViewCellStyle4.SelectionBackColor = System.Drawing.Color.FromArgb(CType(CType(190, Byte), Integer), CType(CType(214, Byte), Integer), CType(CType(246, Byte), Integer))
+        DataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
+        Me.dgvDamageAction.DefaultCellStyle = DataGridViewCellStyle4
+        Me.dgvDamageAction.Location = New System.Drawing.Point(25, 123)
         Me.dgvDamageAction.Name = "dgvDamageAction"
         Me.dgvDamageAction.ReadOnly = True
         Me.dgvDamageAction.RowHeadersVisible = False
         Me.dgvDamageAction.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
-        Me.dgvDamageAction.Size = New System.Drawing.Size(1325, 426)
+        Me.dgvDamageAction.Size = New System.Drawing.Size(1016, 445)
         Me.dgvDamageAction.TabIndex = 19
-        '
-        'btnUpdate
-        '
-        Me.btnUpdate.Location = New System.Drawing.Point(77, 537)
-        Me.btnUpdate.Name = "btnUpdate"
-        Me.btnUpdate.Size = New System.Drawing.Size(81, 36)
-        Me.btnUpdate.TabIndex = 20
-        Me.btnUpdate.Text = "Update"
-        Me.btnUpdate.UseVisualStyleBackColor = True
         '
         'BorrowerName
         '
@@ -273,6 +283,15 @@ Partial Class frmDamageItemAction
         Me.Purpose.Name = "Purpose"
         Me.Purpose.ReadOnly = True
         Me.Purpose.Visible = False
+        '
+        'btnUpdate
+        '
+        Me.btnUpdate.Location = New System.Drawing.Point(1057, 376)
+        Me.btnUpdate.Name = "btnUpdate"
+        Me.btnUpdate.Size = New System.Drawing.Size(81, 36)
+        Me.btnUpdate.TabIndex = 20
+        Me.btnUpdate.Text = "Update"
+        Me.btnUpdate.UseVisualStyleBackColor = True
         '
         'frmDamageItemAction
         '

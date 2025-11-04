@@ -43,28 +43,7 @@ Public Class Login
     End Sub
 
     Private Sub btnLogin_Click(sender As System.Object, e As System.EventArgs) Handles btnLogin.Click
-        'Dim cmd As Odbc.OdbcCommand
-
-        'Try
-        '    cmd = New Odbc.OdbcCommand("SELECT pword FROM tbluser WHERE username=? ", con)
-        '    cmd.Parameters.AddWithValue("?", Trim(txtUsername.Text))
-        '    Dim result As Object = cmd.ExecuteScalar()
-
-        '    If result Is Nothing Then
-        '        MsgBox("User not found!")
-        '    ElseIf String.Equals(txtPword.Text, result.ToString()) Then
-        '        MsgBox("Login sucessfull")
-        '        LoggedInUser = Trim(txtUsername.Text)
-        '        Homepage.Show()
-        '        Me.Hide()
-        '    Else
-        '        MsgBox("Incorrect Password!")
-        '    End If
-        'Catch ex As Exception
-        '        MsgBox(ex.Message.ToString)
-        '    Finally
-        '        GC.Collect()
-        '    End Try
+        Dim isvalid As Boolean = True
         Dim username As String = txtUsername.Text.Trim()
         Dim password As String = txtPword.Text.Trim()
 
@@ -94,6 +73,9 @@ Public Class Login
                         MessageBox.Show("Welcome " & role & "!", "Login", MessageBoxButtons.OK, MessageBoxIcon.Information)
                         Homepage.Show()
                         Me.Hide()
+                        isvalid = True
+
+                       
                         Return
                     End If
                 End If
@@ -104,6 +86,8 @@ Public Class Login
         Catch ex As Exception
             MessageBox.Show("An error occurred: " & ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
 
+        Finally
+  
         End Try
 
     End Sub
@@ -112,7 +96,4 @@ Public Class Login
 
     End Sub
 
-    Private Sub Label1_Click(sender As Object, e As EventArgs) Handles Label1.Click
-
-    End Sub
 End Class

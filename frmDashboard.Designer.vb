@@ -110,6 +110,7 @@ Partial Class frmDashboard
         Me.dgvDamageItem.AllowUserToResizeColumns = False
         Me.dgvDamageItem.AllowUserToResizeRows = False
         Me.dgvDamageItem.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill
+        Me.dgvDamageItem.BackgroundColor = System.Drawing.Color.White
         DataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
         DataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control
         DataGridViewCellStyle1.Font = New System.Drawing.Font("Arial", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
@@ -212,6 +213,7 @@ Partial Class frmDashboard
         DataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.White
         Me.frmDBdgvItem.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle2
         Me.frmDBdgvItem.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill
+        Me.frmDBdgvItem.BackgroundColor = System.Drawing.Color.White
         DataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
         DataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control
         DataGridViewCellStyle3.Font = New System.Drawing.Font("Arial", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
@@ -293,6 +295,7 @@ Partial Class frmDashboard
         DataGridViewCellStyle4.SelectionForeColor = System.Drawing.Color.White
         Me.frmDBdgvReturn.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle4
         Me.frmDBdgvReturn.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill
+        Me.frmDBdgvReturn.BackgroundColor = System.Drawing.Color.White
         DataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
         DataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.Control
         DataGridViewCellStyle5.Font = New System.Drawing.Font("Arial", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
@@ -362,6 +365,7 @@ Partial Class frmDashboard
         DataGridViewCellStyle6.SelectionForeColor = System.Drawing.Color.White
         Me.frmDBdgvBorrow.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle6
         Me.frmDBdgvBorrow.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill
+        Me.frmDBdgvBorrow.BackgroundColor = System.Drawing.Color.White
         DataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
         DataGridViewCellStyle7.BackColor = System.Drawing.SystemColors.Control
         DataGridViewCellStyle7.Font = New System.Drawing.Font("Arial", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))

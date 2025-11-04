@@ -38,12 +38,14 @@ Partial Class Login
         '
         'Label1
         '
+        Me.Label1.BackColor = System.Drawing.Color.Transparent
         Me.Label1.Font = New System.Drawing.Font("Century", 21.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label1.Location = New System.Drawing.Point(237, 45)
+        Me.Label1.Location = New System.Drawing.Point(281, 52)
         Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(315, 118)
+        Me.Label1.Size = New System.Drawing.Size(302, 79)
         Me.Label1.TabIndex = 5
         Me.Label1.Text = "Propery Inventory Management System"
+        Me.Label1.TextAlign = System.Drawing.ContentAlignment.TopCenter
         '
         'btnLogin
         '
@@ -136,8 +138,9 @@ Partial Class Login
         '
         'PictureBox1
         '
+        Me.PictureBox1.BackColor = System.Drawing.Color.Transparent
         Me.PictureBox1.Image = Global.main.My.Resources.Resources._380543768_699505935537282_871741826798799703_n_removebg_preview
-        Me.PictureBox1.Location = New System.Drawing.Point(0, -1)
+        Me.PictureBox1.Location = New System.Drawing.Point(84, 12)
         Me.PictureBox1.Name = "PictureBox1"
         Me.PictureBox1.Size = New System.Drawing.Size(182, 145)
         Me.PictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage

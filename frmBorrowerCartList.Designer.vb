@@ -22,8 +22,9 @@ Partial Class frmBorrowerCartList
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
-        Dim DataGridViewCellStyle3 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim DataGridViewCellStyle4 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle5 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle6 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.txtStudentNo = New System.Windows.Forms.TextBox()
         Me.Label2 = New System.Windows.Forms.Label()
@@ -66,14 +67,14 @@ Partial Class frmBorrowerCartList
         Me.Label1.Font = New System.Drawing.Font("Microsoft Tai Le", 18.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label1.Location = New System.Drawing.Point(0, 0)
         Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(1386, 41)
+        Me.Label1.Size = New System.Drawing.Size(1464, 62)
         Me.Label1.TabIndex = 1
         Me.Label1.Text = "  Borrowing"
         Me.Label1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
         '
         'txtStudentNo
         '
-        Me.txtStudentNo.Location = New System.Drawing.Point(112, 71)
+        Me.txtStudentNo.Location = New System.Drawing.Point(114, 83)
         Me.txtStudentNo.Name = "txtStudentNo"
         Me.txtStudentNo.Size = New System.Drawing.Size(155, 20)
         Me.txtStudentNo.TabIndex = 2
@@ -82,7 +83,7 @@ Partial Class frmBorrowerCartList
         '
         Me.Label2.AutoSize = True
         Me.Label2.Font = New System.Drawing.Font("Microsoft Tai Le", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label2.Location = New System.Drawing.Point(12, 71)
+        Me.Label2.Location = New System.Drawing.Point(14, 83)
         Me.Label2.Name = "Label2"
         Me.Label2.Size = New System.Drawing.Size(94, 19)
         Me.Label2.TabIndex = 3
@@ -92,7 +93,7 @@ Partial Class frmBorrowerCartList
         '
         Me.Label3.AutoSize = True
         Me.Label3.Font = New System.Drawing.Font("Microsoft Tai Le", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label3.Location = New System.Drawing.Point(12, 117)
+        Me.Label3.Location = New System.Drawing.Point(14, 129)
         Me.Label3.Name = "Label3"
         Me.Label3.Size = New System.Drawing.Size(83, 19)
         Me.Label3.TabIndex = 5
@@ -100,7 +101,7 @@ Partial Class frmBorrowerCartList
         '
         'txtfname
         '
-        Me.txtfname.Location = New System.Drawing.Point(112, 117)
+        Me.txtfname.Location = New System.Drawing.Point(114, 129)
         Me.txtfname.Name = "txtfname"
         Me.txtfname.ReadOnly = True
         Me.txtfname.Size = New System.Drawing.Size(155, 20)
@@ -110,7 +111,7 @@ Partial Class frmBorrowerCartList
         '
         Me.Label4.AutoSize = True
         Me.Label4.Font = New System.Drawing.Font("Microsoft Tai Le", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label4.Location = New System.Drawing.Point(12, 159)
+        Me.Label4.Location = New System.Drawing.Point(14, 171)
         Me.Label4.Name = "Label4"
         Me.Label4.Size = New System.Drawing.Size(100, 19)
         Me.Label4.TabIndex = 7
@@ -118,7 +119,7 @@ Partial Class frmBorrowerCartList
         '
         'txtmi
         '
-        Me.txtmi.Location = New System.Drawing.Point(112, 159)
+        Me.txtmi.Location = New System.Drawing.Point(114, 171)
         Me.txtmi.Name = "txtmi"
         Me.txtmi.ReadOnly = True
         Me.txtmi.Size = New System.Drawing.Size(155, 20)
@@ -128,7 +129,7 @@ Partial Class frmBorrowerCartList
         '
         Me.Label5.AutoSize = True
         Me.Label5.Font = New System.Drawing.Font("Microsoft Tai Le", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label5.Location = New System.Drawing.Point(12, 204)
+        Me.Label5.Location = New System.Drawing.Point(14, 216)
         Me.Label5.Name = "Label5"
         Me.Label5.Size = New System.Drawing.Size(82, 19)
         Me.Label5.TabIndex = 9
@@ -136,7 +137,7 @@ Partial Class frmBorrowerCartList
         '
         'txtlname
         '
-        Me.txtlname.Location = New System.Drawing.Point(112, 204)
+        Me.txtlname.Location = New System.Drawing.Point(114, 216)
         Me.txtlname.Name = "txtlname"
         Me.txtlname.ReadOnly = True
         Me.txtlname.Size = New System.Drawing.Size(155, 20)
@@ -146,7 +147,7 @@ Partial Class frmBorrowerCartList
         '
         Me.Label6.AutoSize = True
         Me.Label6.Font = New System.Drawing.Font("Microsoft Tai Le", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label6.Location = New System.Drawing.Point(310, 160)
+        Me.Label6.Location = New System.Drawing.Point(312, 172)
         Me.Label6.Name = "Label6"
         Me.Label6.Size = New System.Drawing.Size(79, 19)
         Me.Label6.TabIndex = 15
@@ -154,7 +155,7 @@ Partial Class frmBorrowerCartList
         '
         'txtYearLevel
         '
-        Me.txtYearLevel.Location = New System.Drawing.Point(410, 160)
+        Me.txtYearLevel.Location = New System.Drawing.Point(412, 172)
         Me.txtYearLevel.Name = "txtYearLevel"
         Me.txtYearLevel.ReadOnly = True
         Me.txtYearLevel.Size = New System.Drawing.Size(155, 20)
@@ -164,7 +165,7 @@ Partial Class frmBorrowerCartList
         '
         Me.Label7.AutoSize = True
         Me.Label7.Font = New System.Drawing.Font("Microsoft Tai Le", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label7.Location = New System.Drawing.Point(310, 117)
+        Me.Label7.Location = New System.Drawing.Point(312, 129)
         Me.Label7.Name = "Label7"
         Me.Label7.Size = New System.Drawing.Size(61, 19)
         Me.Label7.TabIndex = 13
@@ -172,7 +173,7 @@ Partial Class frmBorrowerCartList
         '
         'txtSection
         '
-        Me.txtSection.Location = New System.Drawing.Point(410, 117)
+        Me.txtSection.Location = New System.Drawing.Point(412, 129)
         Me.txtSection.Name = "txtSection"
         Me.txtSection.ReadOnly = True
         Me.txtSection.Size = New System.Drawing.Size(155, 20)
@@ -182,7 +183,7 @@ Partial Class frmBorrowerCartList
         '
         Me.Label8.AutoSize = True
         Me.Label8.Font = New System.Drawing.Font("Microsoft Tai Le", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label8.Location = New System.Drawing.Point(310, 71)
+        Me.Label8.Location = New System.Drawing.Point(312, 83)
         Me.Label8.Name = "Label8"
         Me.Label8.Size = New System.Drawing.Size(57, 19)
         Me.Label8.TabIndex = 11
@@ -190,7 +191,7 @@ Partial Class frmBorrowerCartList
         '
         'txtCourse
         '
-        Me.txtCourse.Location = New System.Drawing.Point(410, 71)
+        Me.txtCourse.Location = New System.Drawing.Point(412, 83)
         Me.txtCourse.Name = "txtCourse"
         Me.txtCourse.ReadOnly = True
         Me.txtCourse.Size = New System.Drawing.Size(155, 20)
@@ -200,7 +201,7 @@ Partial Class frmBorrowerCartList
         '
         Me.Label9.AutoSize = True
         Me.Label9.Font = New System.Drawing.Font("Microsoft Tai Le", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label9.Location = New System.Drawing.Point(621, 117)
+        Me.Label9.Location = New System.Drawing.Point(623, 129)
         Me.Label9.Name = "Label9"
         Me.Label9.Size = New System.Drawing.Size(44, 19)
         Me.Label9.TabIndex = 21
@@ -210,7 +211,7 @@ Partial Class frmBorrowerCartList
         '
         Me.Label10.AutoSize = True
         Me.Label10.Font = New System.Drawing.Font("Microsoft Tai Le", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label10.Location = New System.Drawing.Point(621, 72)
+        Me.Label10.Location = New System.Drawing.Point(623, 84)
         Me.Label10.Name = "Label10"
         Me.Label10.Size = New System.Drawing.Size(90, 19)
         Me.Label10.TabIndex = 19
@@ -218,7 +219,7 @@ Partial Class frmBorrowerCartList
         '
         'txtSchoolYear
         '
-        Me.txtSchoolYear.Location = New System.Drawing.Point(721, 72)
+        Me.txtSchoolYear.Location = New System.Drawing.Point(723, 84)
         Me.txtSchoolYear.Name = "txtSchoolYear"
         Me.txtSchoolYear.ReadOnly = True
         Me.txtSchoolYear.Size = New System.Drawing.Size(155, 20)
@@ -228,7 +229,7 @@ Partial Class frmBorrowerCartList
         '
         Me.Label11.AutoSize = True
         Me.Label11.Font = New System.Drawing.Font("Microsoft Tai Le", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label11.Location = New System.Drawing.Point(310, 205)
+        Me.Label11.Location = New System.Drawing.Point(312, 217)
         Me.Label11.Name = "Label11"
         Me.Label11.Size = New System.Drawing.Size(73, 19)
         Me.Label11.TabIndex = 17
@@ -238,7 +239,7 @@ Partial Class frmBorrowerCartList
         '
         Me.dtpTimeDate.CustomFormat = "yyyy-MM-dd hh:mm tt"
         Me.dtpTimeDate.Format = System.Windows.Forms.DateTimePickerFormat.Custom
-        Me.dtpTimeDate.Location = New System.Drawing.Point(721, 114)
+        Me.dtpTimeDate.Location = New System.Drawing.Point(723, 126)
         Me.dtpTimeDate.Name = "dtpTimeDate"
         Me.dtpTimeDate.Size = New System.Drawing.Size(155, 20)
         Me.dtpTimeDate.TabIndex = 23
@@ -246,7 +247,7 @@ Partial Class frmBorrowerCartList
         'cbTeacher
         '
         Me.cbTeacher.FormattingEnabled = True
-        Me.cbTeacher.Location = New System.Drawing.Point(721, 160)
+        Me.cbTeacher.Location = New System.Drawing.Point(723, 172)
         Me.cbTeacher.Name = "cbTeacher"
         Me.cbTeacher.Size = New System.Drawing.Size(155, 21)
         Me.cbTeacher.TabIndex = 25
@@ -255,7 +256,7 @@ Partial Class frmBorrowerCartList
         '
         Me.Label12.AutoSize = True
         Me.Label12.Font = New System.Drawing.Font("Microsoft Tai Le", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label12.Location = New System.Drawing.Point(621, 162)
+        Me.Label12.Location = New System.Drawing.Point(623, 174)
         Me.Label12.Name = "Label12"
         Me.Label12.Size = New System.Drawing.Size(64, 19)
         Me.Label12.TabIndex = 26
@@ -263,7 +264,7 @@ Partial Class frmBorrowerCartList
         '
         'txtSemester
         '
-        Me.txtSemester.Location = New System.Drawing.Point(410, 205)
+        Me.txtSemester.Location = New System.Drawing.Point(412, 217)
         Me.txtSemester.Name = "txtSemester"
         Me.txtSemester.ReadOnly = True
         Me.txtSemester.Size = New System.Drawing.Size(155, 20)
@@ -275,22 +276,31 @@ Partial Class frmBorrowerCartList
         Me.dgvItemList.AllowUserToDeleteRows = False
         Me.dgvItemList.AllowUserToResizeColumns = False
         Me.dgvItemList.AllowUserToResizeRows = False
-        DataGridViewCellStyle3.BackColor = System.Drawing.Color.White
-        DataGridViewCellStyle3.ForeColor = System.Drawing.Color.Black
-        Me.dgvItemList.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle3
+        DataGridViewCellStyle4.BackColor = System.Drawing.Color.White
+        DataGridViewCellStyle4.ForeColor = System.Drawing.Color.Black
+        Me.dgvItemList.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle4
         Me.dgvItemList.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill
+        Me.dgvItemList.BackgroundColor = System.Drawing.Color.White
         Me.dgvItemList.BorderStyle = System.Windows.Forms.BorderStyle.None
         Me.dgvItemList.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.[Single]
-        DataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Control
-        DataGridViewCellStyle4.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.WindowText
-        DataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight
-        DataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText
-        DataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.dgvItemList.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle4
+        DataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.Control
+        DataGridViewCellStyle5.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.WindowText
+        DataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight
+        DataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.dgvItemList.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle5
         Me.dgvItemList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.dgvItemList.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.Item, Me.NameOfItem, Me.ItemDescription, Me.Category, Me.ItemLocation, Me.Quantity})
+        DataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
+        DataGridViewCellStyle6.BackColor = System.Drawing.SystemColors.Window
+        DataGridViewCellStyle6.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle6.ForeColor = System.Drawing.SystemColors.ControlText
+        DataGridViewCellStyle6.SelectionBackColor = System.Drawing.Color.FromArgb(CType(CType(190, Byte), Integer), CType(CType(214, Byte), Integer), CType(CType(246, Byte), Integer))
+        DataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.ControlText
+        DataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
+        Me.dgvItemList.DefaultCellStyle = DataGridViewCellStyle6
         Me.dgvItemList.ImeMode = System.Windows.Forms.ImeMode.NoControl
         Me.dgvItemList.Location = New System.Drawing.Point(16, 271)
         Me.dgvItemList.Name = "dgvItemList"

@@ -22,9 +22,18 @@ Partial Class frmListItem
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
+        Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim DataGridViewCellStyle3 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim DataGridViewCellStyle4 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Me.dgvItemList = New System.Windows.Forms.DataGridView()
+        Me.btnAdd = New System.Windows.Forms.Button()
+        Me.btnEdit = New System.Windows.Forms.Button()
+        Me.txtSearch = New System.Windows.Forms.TextBox()
+        Me.Panel1 = New System.Windows.Forms.Panel()
+        Me.Label3 = New System.Windows.Forms.Label()
+        Me.btnDelete = New System.Windows.Forms.Button()
+        Me.Label2 = New System.Windows.Forms.Label()
         Me.Item = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.NameOfItem = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.ItemDesc = New System.Windows.Forms.DataGridViewTextBoxColumn()
@@ -34,13 +43,6 @@ Partial Class frmListItem
         Me.Status = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Remarks = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Damaged = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.btnAdd = New System.Windows.Forms.Button()
-        Me.btnEdit = New System.Windows.Forms.Button()
-        Me.txtSearch = New System.Windows.Forms.TextBox()
-        Me.Panel1 = New System.Windows.Forms.Panel()
-        Me.Label3 = New System.Windows.Forms.Label()
-        Me.btnDelete = New System.Windows.Forms.Button()
-        Me.Label2 = New System.Windows.Forms.Label()
         CType(Me.dgvItemList, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.Panel1.SuspendLayout()
         Me.SuspendLayout()
@@ -51,104 +53,55 @@ Partial Class frmListItem
         Me.dgvItemList.AllowUserToDeleteRows = False
         Me.dgvItemList.AllowUserToResizeColumns = False
         Me.dgvItemList.AllowUserToResizeRows = False
-        DataGridViewCellStyle3.BackColor = System.Drawing.Color.White
-        DataGridViewCellStyle3.ForeColor = System.Drawing.Color.Black
-        Me.dgvItemList.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle3
+        DataGridViewCellStyle1.BackColor = System.Drawing.Color.White
+        DataGridViewCellStyle1.ForeColor = System.Drawing.Color.Black
+        Me.dgvItemList.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle1
         Me.dgvItemList.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill
+        Me.dgvItemList.BackgroundColor = System.Drawing.SystemColors.ButtonHighlight
         Me.dgvItemList.BorderStyle = System.Windows.Forms.BorderStyle.None
         Me.dgvItemList.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.[Single]
-        DataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
+        DataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.InactiveCaption
+        DataGridViewCellStyle2.Font = New System.Drawing.Font("Arial", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText
+        DataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight
+        DataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.dgvItemList.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle2
+        Me.dgvItemList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
+        Me.dgvItemList.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.Item, Me.NameOfItem, Me.ItemDesc, Me.Category, Me.ItemLocation, Me.Quantity, Me.Status, Me.Remarks, Me.Damaged})
+        DataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
+        DataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Window
+        DataGridViewCellStyle3.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.ControlText
+        DataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.FromArgb(CType(CType(190, Byte), Integer), CType(CType(214, Byte), Integer), CType(CType(246, Byte), Integer))
+        DataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.ControlText
+        DataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
+        Me.dgvItemList.DefaultCellStyle = DataGridViewCellStyle3
+        Me.dgvItemList.ImeMode = System.Windows.Forms.ImeMode.NoControl
+        Me.dgvItemList.Location = New System.Drawing.Point(25, 123)
+        Me.dgvItemList.Name = "dgvItemList"
+        Me.dgvItemList.ReadOnly = True
+        DataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
         DataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Control
-        DataGridViewCellStyle4.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle4.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         DataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.WindowText
         DataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight
         DataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText
         DataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.dgvItemList.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle4
-        Me.dgvItemList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.dgvItemList.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.Item, Me.NameOfItem, Me.ItemDesc, Me.Category, Me.ItemLocation, Me.Quantity, Me.Status, Me.Remarks, Me.Damaged})
-        Me.dgvItemList.ImeMode = System.Windows.Forms.ImeMode.NoControl
-        Me.dgvItemList.Location = New System.Drawing.Point(21, 144)
-        Me.dgvItemList.Name = "dgvItemList"
-        Me.dgvItemList.ReadOnly = True
+        Me.dgvItemList.RowHeadersDefaultCellStyle = DataGridViewCellStyle4
         Me.dgvItemList.RowHeadersVisible = False
-        Me.dgvItemList.RowHeadersWidth = 50
+        Me.dgvItemList.RowHeadersWidth = 60
         Me.dgvItemList.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
-        Me.dgvItemList.Size = New System.Drawing.Size(1223, 603)
+        Me.dgvItemList.Size = New System.Drawing.Size(1016, 445)
         Me.dgvItemList.TabIndex = 0
-        '
-        'Item
-        '
-        Me.Item.DataPropertyName = "ItemID"
-        Me.Item.FillWeight = 60.0!
-        Me.Item.HeaderText = "Item ID"
-        Me.Item.Name = "Item"
-        Me.Item.ReadOnly = True
-        Me.Item.Visible = False
-        '
-        'NameOfItem
-        '
-        Me.NameOfItem.DataPropertyName = "Name"
-        Me.NameOfItem.HeaderText = "Name"
-        Me.NameOfItem.Name = "NameOfItem"
-        Me.NameOfItem.ReadOnly = True
-        '
-        'ItemDesc
-        '
-        Me.ItemDesc.DataPropertyName = "ItemDescription"
-        Me.ItemDesc.HeaderText = "ItemDescription"
-        Me.ItemDesc.Name = "ItemDesc"
-        Me.ItemDesc.ReadOnly = True
-        '
-        'Category
-        '
-        Me.Category.DataPropertyName = "ItemCategory"
-        Me.Category.HeaderText = "Category"
-        Me.Category.Name = "Category"
-        Me.Category.ReadOnly = True
-        '
-        'ItemLocation
-        '
-        Me.ItemLocation.DataPropertyName = "ItemLocation"
-        Me.ItemLocation.HeaderText = "Location"
-        Me.ItemLocation.Name = "ItemLocation"
-        Me.ItemLocation.ReadOnly = True
-        '
-        'Quantity
-        '
-        Me.Quantity.DataPropertyName = "Quantity"
-        Me.Quantity.HeaderText = "Quantity"
-        Me.Quantity.Name = "Quantity"
-        Me.Quantity.ReadOnly = True
-        '
-        'Status
-        '
-        Me.Status.DataPropertyName = "ItemStatus"
-        Me.Status.HeaderText = "Status"
-        Me.Status.Name = "Status"
-        Me.Status.ReadOnly = True
-        '
-        'Remarks
-        '
-        Me.Remarks.DataPropertyName = "ItemRemarks"
-        Me.Remarks.FillWeight = 150.0!
-        Me.Remarks.HeaderText = "Remarks"
-        Me.Remarks.Name = "Remarks"
-        Me.Remarks.ReadOnly = True
-        '
-        'Damaged
-        '
-        Me.Damaged.DataPropertyName = "ItemDamage"
-        Me.Damaged.HeaderText = "Quantity Damage"
-        Me.Damaged.Name = "Damaged"
-        Me.Damaged.ReadOnly = True
         '
         'btnAdd
         '
         Me.btnAdd.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnAdd.Location = New System.Drawing.Point(1263, 231)
+        Me.btnAdd.Location = New System.Drawing.Point(1289, 203)
         Me.btnAdd.Name = "btnAdd"
-        Me.btnAdd.Size = New System.Drawing.Size(153, 70)
+        Me.btnAdd.Size = New System.Drawing.Size(93, 48)
         Me.btnAdd.TabIndex = 1
         Me.btnAdd.Text = "Add"
         Me.btnAdd.UseVisualStyleBackColor = True
@@ -156,9 +109,9 @@ Partial Class frmListItem
         'btnEdit
         '
         Me.btnEdit.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnEdit.Location = New System.Drawing.Point(1263, 354)
+        Me.btnEdit.Location = New System.Drawing.Point(1289, 326)
         Me.btnEdit.Name = "btnEdit"
-        Me.btnEdit.Size = New System.Drawing.Size(153, 70)
+        Me.btnEdit.Size = New System.Drawing.Size(93, 48)
         Me.btnEdit.TabIndex = 2
         Me.btnEdit.Text = "Edit"
         Me.btnEdit.UseVisualStyleBackColor = True
@@ -167,7 +120,7 @@ Partial Class frmListItem
         '
         Me.txtSearch.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txtSearch.ForeColor = System.Drawing.SystemColors.GrayText
-        Me.txtSearch.Location = New System.Drawing.Point(788, 110)
+        Me.txtSearch.Location = New System.Drawing.Point(806, 78)
         Me.txtSearch.Multiline = True
         Me.txtSearch.Name = "txtSearch"
         Me.txtSearch.Size = New System.Drawing.Size(427, 28)
@@ -180,6 +133,7 @@ Partial Class frmListItem
         Me.Panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
         Me.Panel1.Controls.Add(Me.Label3)
         Me.Panel1.Dock = System.Windows.Forms.DockStyle.Top
+        Me.Panel1.Font = New System.Drawing.Font("Arial", 20.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Panel1.ForeColor = System.Drawing.SystemColors.ControlLightLight
         Me.Panel1.Location = New System.Drawing.Point(0, 0)
         Me.Panel1.Name = "Panel1"
@@ -203,9 +157,9 @@ Partial Class frmListItem
         'btnDelete
         '
         Me.btnDelete.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnDelete.Location = New System.Drawing.Point(1263, 477)
+        Me.btnDelete.Location = New System.Drawing.Point(1289, 449)
         Me.btnDelete.Name = "btnDelete"
-        Me.btnDelete.Size = New System.Drawing.Size(153, 70)
+        Me.btnDelete.Size = New System.Drawing.Size(93, 48)
         Me.btnDelete.TabIndex = 17
         Me.btnDelete.Text = "Delete"
         Me.btnDelete.UseVisualStyleBackColor = True
@@ -215,11 +169,84 @@ Partial Class frmListItem
         Me.Label2.AutoSize = True
         Me.Label2.BackColor = System.Drawing.Color.Transparent
         Me.Label2.Font = New System.Drawing.Font("Microsoft Tai Le", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label2.Location = New System.Drawing.Point(728, 114)
+        Me.Label2.Location = New System.Drawing.Point(746, 82)
         Me.Label2.Name = "Label2"
         Me.Label2.Size = New System.Drawing.Size(64, 21)
         Me.Label2.TabIndex = 18
         Me.Label2.Text = "Search: "
+        '
+        'Item
+        '
+        Me.Item.DataPropertyName = "ItemID"
+        Me.Item.FillWeight = 60.0!
+        Me.Item.HeaderText = "Item ID"
+        Me.Item.Name = "Item"
+        Me.Item.ReadOnly = True
+        Me.Item.Visible = False
+        '
+        'NameOfItem
+        '
+        Me.NameOfItem.DataPropertyName = "Name"
+        Me.NameOfItem.FillWeight = 40.0!
+        Me.NameOfItem.HeaderText = "Name"
+        Me.NameOfItem.Name = "NameOfItem"
+        Me.NameOfItem.ReadOnly = True
+        '
+        'ItemDesc
+        '
+        Me.ItemDesc.DataPropertyName = "ItemDescription"
+        Me.ItemDesc.HeaderText = "ItemDescription"
+        Me.ItemDesc.Name = "ItemDesc"
+        Me.ItemDesc.ReadOnly = True
+        '
+        'Category
+        '
+        Me.Category.DataPropertyName = "ItemCategory"
+        Me.Category.HeaderText = "Category"
+        Me.Category.Name = "Category"
+        Me.Category.ReadOnly = True
+        Me.Category.Visible = False
+        '
+        'ItemLocation
+        '
+        Me.ItemLocation.DataPropertyName = "ItemLocation"
+        Me.ItemLocation.HeaderText = "Location"
+        Me.ItemLocation.Name = "ItemLocation"
+        Me.ItemLocation.ReadOnly = True
+        Me.ItemLocation.Visible = False
+        '
+        'Quantity
+        '
+        Me.Quantity.DataPropertyName = "Quantity"
+        Me.Quantity.FillWeight = 30.0!
+        Me.Quantity.HeaderText = "Quantity"
+        Me.Quantity.Name = "Quantity"
+        Me.Quantity.ReadOnly = True
+        '
+        'Status
+        '
+        Me.Status.DataPropertyName = "ItemStatus"
+        Me.Status.HeaderText = "Status"
+        Me.Status.Name = "Status"
+        Me.Status.ReadOnly = True
+        Me.Status.Visible = False
+        '
+        'Remarks
+        '
+        Me.Remarks.DataPropertyName = "ItemRemarks"
+        Me.Remarks.FillWeight = 150.0!
+        Me.Remarks.HeaderText = "Remarks"
+        Me.Remarks.Name = "Remarks"
+        Me.Remarks.ReadOnly = True
+        Me.Remarks.Visible = False
+        '
+        'Damaged
+        '
+        Me.Damaged.DataPropertyName = "ItemDamage"
+        Me.Damaged.HeaderText = "Quantity Damage"
+        Me.Damaged.Name = "Damaged"
+        Me.Damaged.ReadOnly = True
+        Me.Damaged.Visible = False
         '
         'frmListItem
         '

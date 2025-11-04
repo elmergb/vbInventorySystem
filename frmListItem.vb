@@ -12,7 +12,22 @@ Public Class frmListItem
         For Each col As DataGridViewColumn In dgvItemList.Columns
             col.SortMode = DataGridViewColumnSortMode.NotSortable
         Next
-
+        '190, 214, 246
+        With dgvItemList
+            .EnableHeadersVisualStyles = False
+            .ColumnHeadersDefaultCellStyle.BackColor = Color.SteelBlue
+            .ColumnHeadersDefaultCellStyle.ForeColor = Color.White
+            .ColumnHeadersDefaultCellStyle.Font = New Font("Segoe UI", 10, FontStyle.Bold)
+            .ColumnHeadersHeight = 35
+            .RowTemplate.Height = 35
+            .AllowUserToAddRows = False
+            .RowHeadersVisible = False
+            .AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill
+            .CellBorderStyle = DataGridViewCellBorderStyle.Single
+            .GridColor = Color.LightGray
+            .BorderStyle = BorderStyle.None
+            .ForeColor = Color.Black
+        End With
     End Sub
 
     Private Sub btnAdd_Click(sender As Object, e As EventArgs) Handles btnAdd.Click

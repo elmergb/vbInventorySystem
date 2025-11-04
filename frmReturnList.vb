@@ -4,7 +4,20 @@
         Call vbConnection()
         Call data_loader("SELECT * FROM vw_borrowed_items", dgvReturn)
         cb_loader("SELECT * FROM tblitemlist", frmReturnEntry.cbItemListR, "ItemName", "ItemID")
-
+        With dgvReturn
+            .EnableHeadersVisualStyles = False
+            .ColumnHeadersDefaultCellStyle.BackColor = Color.SteelBlue
+            .ColumnHeadersDefaultCellStyle.ForeColor = Color.White
+            .ColumnHeadersDefaultCellStyle.Font = New Font("Segoe UI", 10, FontStyle.Bold)
+            .ColumnHeadersHeight = 35
+            .RowTemplate.Height = 35
+            .AllowUserToAddRows = False
+            .RowHeadersVisible = False
+            .AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill
+            .CellBorderStyle = DataGridViewCellBorderStyle.Single
+            .GridColor = Color.LightGray
+            .BorderStyle = BorderStyle.None
+        End With
     End Sub
 
 

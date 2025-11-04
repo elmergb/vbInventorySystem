@@ -3,8 +3,7 @@
 Public Class frmDashboard
     Private Sub frmDashboard_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         Call data_loader("SELECT StudentName, ItemName, QuantityBorrowed, DateBorrowed FROM vwborrowings ORDER BY DateBorrowed DESC LIMIT 5 ", frmDBdgvBorrow)
-        'Call data_loader("SELECT  ItemName,BorrowerName, QuantityBorrowed, QuantityReturned, DateReturned FROM vw_transaction ORDER BY DateReturned DESC LIMIT 5 ", frmDBdgvReturn)
-        Call data_loader("SELECT * FROM tblitemlist ORDER BY ItemID DESC LIMIT 5 ", frmDBdgvItem)
+        Call data_loader("SELECT ItemName, ItemDescription, ItemQuantity FROM tblitemlist ORDER BY ItemID DESC LIMIT 5 ", frmDBdgvItem)
         Call data_loader("SELECT Name, ItemDamage FROM vw_items WHERE ItemDamage > 0", dgvDamageItem)
         frmDBdgvBorrow.ClearSelection()
         frmDBdgvReturn.ClearSelection()
@@ -82,7 +81,67 @@ Public Class frmDashboard
         '    .LineDashStyle = ChartDashStyle.Dot
         'End With
         'Chart1.Series.Add(mostBorrowed)
+        With frmDBdgvBorrow
+            .EnableHeadersVisualStyles = False
+            .ColumnHeadersDefaultCellStyle.BackColor = Color.SteelBlue
+            .ColumnHeadersDefaultCellStyle.ForeColor = Color.White
+            .ColumnHeadersDefaultCellStyle.Font = New Font("Segoe UI", 10, FontStyle.Bold)
+            .ColumnHeadersHeight = 25
+            .RowTemplate.Height = 25
+            .AllowUserToAddRows = False
+            .RowHeadersVisible = False
+            .AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill
+            .CellBorderStyle = DataGridViewCellBorderStyle.Single
+            .GridColor = Color.LightGray
+            .BorderStyle = BorderStyle.None
+            .ForeColor = Color.Black
+        End With
+        With frmDBdgvReturn
+            .EnableHeadersVisualStyles = False
+            .ColumnHeadersDefaultCellStyle.BackColor = Color.SteelBlue
+            .ColumnHeadersDefaultCellStyle.ForeColor = Color.White
+            .ColumnHeadersDefaultCellStyle.Font = New Font("Segoe UI", 10, FontStyle.Bold)
+            .ColumnHeadersHeight = 25
+            .RowTemplate.Height = 25
+            .AllowUserToAddRows = False
+            .RowHeadersVisible = False
+            .AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill
+            .CellBorderStyle = DataGridViewCellBorderStyle.Single
+            .GridColor = Color.LightGray
+            .BorderStyle = BorderStyle.None
+            .ForeColor = Color.Black
+        End With
 
+        With frmDBdgvItem
+            .EnableHeadersVisualStyles = False
+            .ColumnHeadersDefaultCellStyle.BackColor = Color.SteelBlue
+            .ColumnHeadersDefaultCellStyle.ForeColor = Color.White
+            .ColumnHeadersDefaultCellStyle.Font = New Font("Segoe UI", 10, FontStyle.Bold)
+            .ColumnHeadersHeight = 25
+            .RowTemplate.Height = 25
+            .AllowUserToAddRows = False
+            .RowHeadersVisible = False
+            .AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill
+            .CellBorderStyle = DataGridViewCellBorderStyle.Single
+            .GridColor = Color.LightGray
+            .BorderStyle = BorderStyle.None
+            .ForeColor = Color.Black
+        End With
+        With dgvDamageItem
+            .EnableHeadersVisualStyles = False
+            .ColumnHeadersDefaultCellStyle.BackColor = Color.SteelBlue
+            .ColumnHeadersDefaultCellStyle.ForeColor = Color.White
+            .ColumnHeadersDefaultCellStyle.Font = New Font("Segoe UI", 10, FontStyle.Bold)
+            .ColumnHeadersHeight = 25
+            .RowTemplate.Height = 25
+            .AllowUserToAddRows = False
+            .RowHeadersVisible = False
+            .AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill
+            .CellBorderStyle = DataGridViewCellBorderStyle.Single
+            .GridColor = Color.LightGray
+            .BorderStyle = BorderStyle.None
+            .ForeColor = Color.Black
+        End With
 
     End Sub
 

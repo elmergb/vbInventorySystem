@@ -2,8 +2,13 @@
     Public Property ItemID As Integer = 0
     Private Sub frmAddItem_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         cbRemarks.Items.Clear()
-        cbRemarks.Items.Add("Good")
-        cbRemarks.Items.Add("Damage")
+        If ItemID = 0 Then
+            cbRemarks.Items.Add("Good")
+        Else
+            cbRemarks.Items.Add("Good")
+            cbRemarks.Items.Add("Damage")
+        End If
+
         cbLocation.Focus()
  
     End Sub

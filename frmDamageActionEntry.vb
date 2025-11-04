@@ -2,7 +2,7 @@
     Public Property actionID As Integer
     Private Sub frmDamageActionEntry_Load(sender As System.Object, e As System.EventArgs) Handles MyBase.Load
         vbConnection()
-        cbActionType.Items.AddRange({"Pay", "Replace", "Repair", "Penalty"})
+        cbActionType.Items.AddRange({"Paid", "Replaced"})
     End Sub
 
     Private Sub btnSave_Click(sender As System.Object, e As System.EventArgs) Handles btnSave.Click
@@ -22,7 +22,7 @@
             amountPaid = 0
         End If
 
-        ' ✅ 1. Get the ItemID connected to this ActionID
+                ' Get the ItemID connected to this ActionID
                 Dim getItemCmd As New Odbc.OdbcCommand(" SELECT d.ItemID, d.DamageID FROM tbldamaged d INNER JOIN tbldamage_action a ON d.DamageID = a.DamageID WHERE a.ActionID = ?", con)
                 getItemCmd.Parameters.AddWithValue("?", actionID)
 
@@ -37,7 +37,7 @@
                 End If
                 rdr.Close()
 
-                ' ✅ 2. Update the damage action as completed
+                ' Update the damage action as completed
                 Dim cmd As New Odbc.OdbcCommand(" Update(tbldamage_action)SET ActionType=?, Status=?, AmountPaid=?, Notes=?, DateCompleted=? WHERE ActionID=?", con)
 
                 With cmd.Parameters
@@ -51,7 +51,7 @@
 
                 cmd.ExecuteNonQuery()
 
-                ' ✅ 3. If the action is "Replace", restore the item to good stock
+                '  If the action is "Replace", restore the item to good stock
                 If actionType.ToLower() = "replace" Or actionType.ToLower() = "paid" Then
                     Dim updateStockCmd As New Odbc.OdbcCommand("Update(tblitemlist)SET ItemQuantity = ItemQuantity + ?  WHERE ItemID = ?", con)
                     updateStockCmd.Parameters.AddWithValue("?", qtyDamage)

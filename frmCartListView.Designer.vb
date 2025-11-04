@@ -61,9 +61,10 @@ Partial Class frmCartListView
         Me.lblSchoolYear.BackColor = System.Drawing.SystemColors.ActiveCaption
         Me.lblSchoolYear.Dock = System.Windows.Forms.DockStyle.Top
         Me.lblSchoolYear.Font = New System.Drawing.Font("Microsoft YaHei", 21.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblSchoolYear.ForeColor = System.Drawing.Color.White
         Me.lblSchoolYear.Location = New System.Drawing.Point(0, 0)
         Me.lblSchoolYear.Name = "lblSchoolYear"
-        Me.lblSchoolYear.Size = New System.Drawing.Size(611, 58)
+        Me.lblSchoolYear.Size = New System.Drawing.Size(611, 62)
         Me.lblSchoolYear.TabIndex = 46
         Me.lblSchoolYear.Text = "Cart"
         Me.lblSchoolYear.TextAlign = System.Drawing.ContentAlignment.MiddleCenter

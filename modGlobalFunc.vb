@@ -117,10 +117,11 @@ Module modGlobalFunc
         frm.MaximizeBox = False
     End Sub
 
-    Public Sub MsgLogout(ByVal message As String, frm As Form, login As Form)
+    Public Sub MsgLogout(ByVal message As String, login As Form, frm As Form)
         If MessageBox.Show(message, "Logout", MessageBoxButtons.YesNo, MessageBoxIcon.Information) = DialogResult.Yes Then
+            Login.Show()
             frm.Hide()
-            login.Show()
+
         End If
     End Sub
 

@@ -6,6 +6,20 @@
         For Each col As DataGridViewColumn In dgvUserList.Columns
             col.SortMode = DataGridViewColumnSortMode.NotSortable
         Next
+        With dgvUserList
+            .EnableHeadersVisualStyles = False
+            .ColumnHeadersDefaultCellStyle.BackColor = Color.SteelBlue
+            .ColumnHeadersDefaultCellStyle.ForeColor = Color.White
+            .ColumnHeadersDefaultCellStyle.Font = New Font("Segoe UI", 10, FontStyle.Bold)
+            .ColumnHeadersHeight = 35
+            .RowTemplate.Height = 35
+            .AllowUserToAddRows = False
+            .RowHeadersVisible = False
+            .AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill
+            .CellBorderStyle = DataGridViewCellBorderStyle.Single
+            .GridColor = Color.LightGray
+            .BorderStyle = BorderStyle.None
+        End With
     End Sub
 
     Private Sub btnAdd_Click(sender As System.Object, e As System.EventArgs) Handles btnAdd.Click

@@ -329,6 +329,8 @@
     <None Include="Resources\1564534_customer_man_user_account_profile_icon1.png" />
     <None Include="Resources\png_racbw.png" />
     <None Include="Resources\9055226_bxs_dashboard_icon.png" />
+    <None Include="Resources\Screenshot_2025-11-04_122252-removebg-preview %281%29.png" />
+    <None Include="Resources\Screenshot_2025-11-04_122252-removebg-preview.png" />
     <Content Include="StyleSheetLogin.css" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />

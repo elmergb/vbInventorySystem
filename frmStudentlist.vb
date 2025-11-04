@@ -1,9 +1,5 @@
 ﻿Public Class frmStudentlist
 
-    Private Sub MenuStrip1_ItemClicked(sender As System.Object, e As System.Windows.Forms.ToolStripItemClickedEventArgs)
-
-    End Sub
-
     Private Sub frmStudentlist_Load(sender As System.Object, e As System.EventArgs) Handles MyBase.Load
         Call data_loader("SELECT * FROM vw_user", dgvStudentList)
         'If e.RowIndex >= 0 Then
@@ -20,6 +16,21 @@
         '        frmAddItem.nupQuantity.Value = 0
         '    End If
         '    frmAddItem.cbRemarks.Text = dgvItemList.Rows(e.RowIndex).Cells("Remarks").Value.ToString()
+        With dgvStudentList
+            .EnableHeadersVisualStyles = False
+            .ColumnHeadersDefaultCellStyle.BackColor = Color.SteelBlue
+            .ColumnHeadersDefaultCellStyle.ForeColor = Color.White
+            .ColumnHeadersDefaultCellStyle.Font = New Font("Segoe UI", 10, FontStyle.Bold)
+            .ColumnHeadersHeight = 25
+            .RowTemplate.Height = 25
+            .AllowUserToAddRows = False
+            .RowHeadersVisible = False
+            .AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill
+            .CellBorderStyle = DataGridViewCellBorderStyle.Single
+            .GridColor = Color.LightGray
+            .BorderStyle = BorderStyle.None
+            .ForeColor = Color.Black
+        End With
     End Sub
 
     Private Sub dgvStudentList_CellClick(sender As Object, e As System.Windows.Forms.DataGridViewCellEventArgs) Handles dgvStudentList.CellClick
@@ -58,23 +69,47 @@
     Private Sub btnAdd_Click(sender As System.Object, e As System.EventArgs) Handles btnAdd.Click
         frmStudentCanBorrow.studentID = 0
         frmStudentCanBorrow.Show()
+
     End Sub
 
     Private Sub btnDelete_Click(sender As System.Object, e As System.EventArgs) Handles btnDelete.Click
-        Dim cmd As New Odbc.OdbcCommand
-        If Val(dgvStudentList.Tag) = 0 Then
-            MsgBox("Select a record")
-        ElseIf MsgBox("You want to Delete this record?", vbYesNo + vbInformation) = vbYes Then
-            Try
-                cmd = New Odbc.OdbcCommand("DELETE FROM tblstudentlist WHERE sID=" & Val(dgvStudentList.Tag), con)
-                cmd.ExecuteNonQuery()
-                MsgBox("Successfully deleted a record", vbInformation)
-                Call data_loader("SELECT * FROM vw_students", dgvStudentList)
-                dgvStudentList.Tag = 0
-            Catch ex As Exception
-
-            End Try
-
+        If dgvStudentList.CurrentRow Is Nothing Then
+            MsgBox("Please select a student to delete.", vbInformation)
+            Exit Sub
         End If
+
+
+        Dim row As DataGridViewRow = dgvStudentList.CurrentRow
+        Dim studNo As String = row.Cells("StudentNo").Value.ToString()
+        Dim role As String = row.Cells("Role").Value.ToString()
+
+
+        If role.Trim().ToLower() = "admin" Then
+            MsgBox("You cannot delete an Admin account.", vbExclamation)
+            Exit Sub
+        End If
+
+
+        If MsgBox("Are you sure you want to deactivate this account?", vbYesNo + vbQuestion) = vbYes Then
+            Try
+
+
+                Dim query As String = "UPDATE tblstudent SET isActive = 0 WHERE studNo = ?"
+                Using cmd As New Odbc.OdbcCommand(query, con)
+                    cmd.Parameters.AddWithValue("@studNo", studNo)
+                    cmd.ExecuteNonQuery()
+                End Using
+
+
+                MsgBox("Student has been deactivated successfully.", vbInformation)
+
+
+                Call data_loader("SELECT * FROM vw_students", dgvStudentList)
+
+            Catch ex As Exception
+                MsgBox("Error deactivating record: " & ex.Message, vbCritical)
+            End Try
+        End If
+
     End Sub
 End Class

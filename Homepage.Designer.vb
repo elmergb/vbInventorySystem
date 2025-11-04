@@ -25,10 +25,23 @@ Partial Class Homepage
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(Homepage))
         Me.ts = New System.Windows.Forms.ToolStrip()
         Me.ToolStripLabel1 = New System.Windows.Forms.ToolStripLabel()
+        Me.lblTsManage = New System.Windows.Forms.ToolStripLabel()
+        Me.lblTsTransaction = New System.Windows.Forms.ToolStripLabel()
+        Me.lblTsReports = New System.Windows.Forms.ToolStripLabel()
+        Me.ToolStripLabel2 = New System.Windows.Forms.ToolStripLabel()
+        Me.lblTsUser = New System.Windows.Forms.ToolStripLabel()
+        Me.ToolStripLabel4 = New System.Windows.Forms.ToolStripLabel()
+        Me.lblTsTime = New System.Windows.Forms.ToolStripLabel()
+        Me.pnlItem = New System.Windows.Forms.Panel()
+        Me.MenuStrip1 = New System.Windows.Forms.MenuStrip()
+        Me.msReturn = New System.Windows.Forms.ToolStripMenuItem()
+        Me.msDashboard = New System.Windows.Forms.ToolStripMenuItem()
+        Me.msItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.msBorrow = New System.Windows.Forms.ToolStripMenuItem()
+        Me.msStudent = New System.Windows.Forms.ToolStripMenuItem()
         Me.ToolStripDropDownButton1 = New System.Windows.Forms.ToolStripDropDownButton()
         Me.ltsLogout = New System.Windows.Forms.ToolStripMenuItem()
         Me.ltsExit = New System.Windows.Forms.ToolStripMenuItem()
-        Me.lblTsManage = New System.Windows.Forms.ToolStripLabel()
         Me.ToolStripDropDownButton2 = New System.Windows.Forms.ToolStripDropDownButton()
         Me.UIToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.DamageToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
@@ -40,25 +53,13 @@ Partial Class Homepage
         Me.UsersToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.StudentListToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ReturnToolStripMenuItem1 = New System.Windows.Forms.ToolStripMenuItem()
-        Me.lblTsTransaction = New System.Windows.Forms.ToolStripLabel()
         Me.ToolStripDropDownButton3 = New System.Windows.Forms.ToolStripDropDownButton()
         Me.BorrowItemToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ReturnItemToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.lblTsReports = New System.Windows.Forms.ToolStripLabel()
         Me.ToolStripDropDownButton4 = New System.Windows.Forms.ToolStripDropDownButton()
         Me.InventoryReportToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.BorrowHistoryToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.ToolStripLabel2 = New System.Windows.Forms.ToolStripLabel()
-        Me.lblTsUser = New System.Windows.Forms.ToolStripLabel()
-        Me.ToolStripLabel4 = New System.Windows.Forms.ToolStripLabel()
-        Me.lblTsTime = New System.Windows.Forms.ToolStripLabel()
-        Me.pnlItem = New System.Windows.Forms.Panel()
-        Me.MenuStrip1 = New System.Windows.Forms.MenuStrip()
-        Me.msDashboard = New System.Windows.Forms.ToolStripMenuItem()
-        Me.msItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.msBorrow = New System.Windows.Forms.ToolStripMenuItem()
-        Me.msReturn = New System.Windows.Forms.ToolStripMenuItem()
-        Me.msStudent = New System.Windows.Forms.ToolStripMenuItem()
+        Me.ToolStripLabel3 = New System.Windows.Forms.ToolStripLabel()
         Me.ts.SuspendLayout()
         Me.MenuStrip1.SuspendLayout()
         Me.SuspendLayout()
@@ -66,7 +67,7 @@ Partial Class Homepage
         'ts
         '
         Me.ts.GripStyle = System.Windows.Forms.ToolStripGripStyle.Hidden
-        Me.ts.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ToolStripLabel1, Me.ToolStripDropDownButton1, Me.lblTsManage, Me.ToolStripDropDownButton2, Me.lblTsTransaction, Me.ToolStripDropDownButton3, Me.lblTsReports, Me.ToolStripDropDownButton4, Me.ToolStripLabel2, Me.lblTsUser, Me.ToolStripLabel4, Me.lblTsTime})
+        Me.ts.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ToolStripLabel1, Me.ToolStripDropDownButton1, Me.lblTsManage, Me.ToolStripDropDownButton2, Me.lblTsTransaction, Me.ToolStripDropDownButton3, Me.lblTsReports, Me.ToolStripDropDownButton4, Me.lblTsUser, Me.ToolStripLabel4, Me.lblTsTime, Me.ToolStripLabel2, Me.ToolStripLabel3})
         Me.ts.Location = New System.Drawing.Point(0, 0)
         Me.ts.Name = "ts"
         Me.ts.Size = New System.Drawing.Size(1154, 25)
@@ -76,8 +77,109 @@ Partial Class Homepage
         'ToolStripLabel1
         '
         Me.ToolStripLabel1.Name = "ToolStripLabel1"
-        Me.ToolStripLabel1.Size = New System.Drawing.Size(38, 22)
-        Me.ToolStripLabel1.Text = "Menu"
+        Me.ToolStripLabel1.Size = New System.Drawing.Size(52, 22)
+        Me.ToolStripLabel1.Text = "Account"
+        '
+        'lblTsManage
+        '
+        Me.lblTsManage.Name = "lblTsManage"
+        Me.lblTsManage.Size = New System.Drawing.Size(50, 22)
+        Me.lblTsManage.Text = "Manage"
+        '
+        'lblTsTransaction
+        '
+        Me.lblTsTransaction.Name = "lblTsTransaction"
+        Me.lblTsTransaction.Size = New System.Drawing.Size(67, 22)
+        Me.lblTsTransaction.Text = "Transaction"
+        '
+        'lblTsReports
+        '
+        Me.lblTsReports.Name = "lblTsReports"
+        Me.lblTsReports.Size = New System.Drawing.Size(47, 22)
+        Me.lblTsReports.Text = "Reports"
+        '
+        'ToolStripLabel2
+        '
+        Me.ToolStripLabel2.Name = "ToolStripLabel2"
+        Me.ToolStripLabel2.Size = New System.Drawing.Size(65, 22)
+        Me.ToolStripLabel2.Text = "  Log in As:"
+        '
+        'lblTsUser
+        '
+        Me.lblTsUser.Name = "lblTsUser"
+        Me.lblTsUser.Size = New System.Drawing.Size(30, 22)
+        Me.lblTsUser.Text = "User"
+        '
+        'ToolStripLabel4
+        '
+        Me.ToolStripLabel4.Name = "ToolStripLabel4"
+        Me.ToolStripLabel4.Size = New System.Drawing.Size(42, 22)
+        Me.ToolStripLabel4.Text = "  Time:"
+        '
+        'lblTsTime
+        '
+        Me.lblTsTime.Name = "lblTsTime"
+        Me.lblTsTime.Size = New System.Drawing.Size(33, 22)
+        Me.lblTsTime.Text = "Time"
+        '
+        'pnlItem
+        '
+        Me.pnlItem.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.pnlItem.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.pnlItem.Location = New System.Drawing.Point(0, 102)
+        Me.pnlItem.Name = "pnlItem"
+        Me.pnlItem.Size = New System.Drawing.Size(1154, 571)
+        Me.pnlItem.TabIndex = 23
+        '
+        'MenuStrip1
+        '
+        Me.MenuStrip1.AutoSize = False
+        Me.MenuStrip1.GripStyle = System.Windows.Forms.ToolStripGripStyle.Visible
+        Me.MenuStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.msDashboard, Me.msItem, Me.msBorrow, Me.msReturn, Me.msStudent})
+        Me.MenuStrip1.Location = New System.Drawing.Point(0, 25)
+        Me.MenuStrip1.Name = "MenuStrip1"
+        Me.MenuStrip1.Size = New System.Drawing.Size(1154, 77)
+        Me.MenuStrip1.TabIndex = 7
+        Me.MenuStrip1.Text = "MenuStrip1"
+        '
+        'msReturn
+        '
+        Me.msReturn.Font = New System.Drawing.Font("Segoe UI", 14.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.msReturn.Name = "msReturn"
+        Me.msReturn.Size = New System.Drawing.Size(85, 73)
+        Me.msReturn.Text = "Return"
+        '
+        'msDashboard
+        '
+        Me.msDashboard.Font = New System.Drawing.Font("Segoe UI", 14.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.msDashboard.Image = Global.main.My.Resources.Resources._9055226_bxs_dashboard_icon
+        Me.msDashboard.Name = "msDashboard"
+        Me.msDashboard.Size = New System.Drawing.Size(137, 73)
+        Me.msDashboard.Text = "Dashboard"
+        '
+        'msItem
+        '
+        Me.msItem.Font = New System.Drawing.Font("Segoe UI", 14.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.msItem.Image = CType(resources.GetObject("msItem.Image"), System.Drawing.Image)
+        Me.msItem.Name = "msItem"
+        Me.msItem.Size = New System.Drawing.Size(88, 73)
+        Me.msItem.Text = "Items"
+        '
+        'msBorrow
+        '
+        Me.msBorrow.Font = New System.Drawing.Font("Segoe UI", 14.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.msBorrow.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None
+        Me.msBorrow.Name = "msBorrow"
+        Me.msBorrow.Size = New System.Drawing.Size(91, 73)
+        Me.msBorrow.Text = "Borrow"
+        '
+        'msStudent
+        '
+        Me.msStudent.Font = New System.Drawing.Font("Segoe UI", 14.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.msStudent.Image = Global.main.My.Resources.Resources._1564534_customer_man_user_account_profile_icon1
+        Me.msStudent.Name = "msStudent"
+        Me.msStudent.Size = New System.Drawing.Size(111, 73)
+        Me.msStudent.Text = "Student"
         '
         'ToolStripDropDownButton1
         '
@@ -92,20 +194,14 @@ Partial Class Homepage
         'ltsLogout
         '
         Me.ltsLogout.Name = "ltsLogout"
-        Me.ltsLogout.Size = New System.Drawing.Size(152, 22)
+        Me.ltsLogout.Size = New System.Drawing.Size(115, 22)
         Me.ltsLogout.Text = "Log out"
         '
         'ltsExit
         '
         Me.ltsExit.Name = "ltsExit"
-        Me.ltsExit.Size = New System.Drawing.Size(152, 22)
+        Me.ltsExit.Size = New System.Drawing.Size(115, 22)
         Me.ltsExit.Text = "Exit"
-        '
-        'lblTsManage
-        '
-        Me.lblTsManage.Name = "lblTsManage"
-        Me.lblTsManage.Size = New System.Drawing.Size(50, 22)
-        Me.lblTsManage.Text = "Manage"
         '
         'ToolStripDropDownButton2
         '
@@ -121,7 +217,7 @@ Partial Class Homepage
         '
         Me.UIToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.DamageToolStripMenuItem, Me.GoodToolStripMenuItem})
         Me.UIToolStripMenuItem.Name = "UIToolStripMenuItem"
-        Me.UIToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
+        Me.UIToolStripMenuItem.Size = New System.Drawing.Size(127, 22)
         Me.UIToolStripMenuItem.Text = "Items"
         '
         'DamageToolStripMenuItem
@@ -153,7 +249,7 @@ Partial Class Homepage
         '
         Me.BorrowesToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.BoroToolStripMenuItem})
         Me.BorrowesToolStripMenuItem.Name = "BorrowesToolStripMenuItem"
-        Me.BorrowesToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
+        Me.BorrowesToolStripMenuItem.Size = New System.Drawing.Size(127, 22)
         Me.BorrowesToolStripMenuItem.Text = "Borrowers"
         '
         'BoroToolStripMenuItem
@@ -166,26 +262,20 @@ Partial Class Homepage
         '
         Me.UsersToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.StudentListToolStripMenuItem})
         Me.UsersToolStripMenuItem.Name = "UsersToolStripMenuItem"
-        Me.UsersToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
+        Me.UsersToolStripMenuItem.Size = New System.Drawing.Size(127, 22)
         Me.UsersToolStripMenuItem.Text = "Users"
         '
         'StudentListToolStripMenuItem
         '
         Me.StudentListToolStripMenuItem.Name = "StudentListToolStripMenuItem"
-        Me.StudentListToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
+        Me.StudentListToolStripMenuItem.Size = New System.Drawing.Size(133, 22)
         Me.StudentListToolStripMenuItem.Text = "Student list"
         '
         'ReturnToolStripMenuItem1
         '
         Me.ReturnToolStripMenuItem1.Name = "ReturnToolStripMenuItem1"
-        Me.ReturnToolStripMenuItem1.Size = New System.Drawing.Size(152, 22)
+        Me.ReturnToolStripMenuItem1.Size = New System.Drawing.Size(127, 22)
         Me.ReturnToolStripMenuItem1.Text = "Return"
-        '
-        'lblTsTransaction
-        '
-        Me.lblTsTransaction.Name = "lblTsTransaction"
-        Me.lblTsTransaction.Size = New System.Drawing.Size(67, 22)
-        Me.lblTsTransaction.Text = "Transaction"
         '
         'ToolStripDropDownButton3
         '
@@ -209,12 +299,6 @@ Partial Class Homepage
         Me.ReturnItemToolStripMenuItem.Size = New System.Drawing.Size(139, 22)
         Me.ReturnItemToolStripMenuItem.Text = "Return Item"
         '
-        'lblTsReports
-        '
-        Me.lblTsReports.Name = "lblTsReports"
-        Me.lblTsReports.Size = New System.Drawing.Size(47, 22)
-        Me.lblTsReports.Text = "Reports"
-        '
         'ToolStripDropDownButton4
         '
         Me.ToolStripDropDownButton4.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
@@ -237,87 +321,10 @@ Partial Class Homepage
         Me.BorrowHistoryToolStripMenuItem.Size = New System.Drawing.Size(162, 22)
         Me.BorrowHistoryToolStripMenuItem.Text = "Borrow History"
         '
-        'ToolStripLabel2
+        'ToolStripLabel3
         '
-        Me.ToolStripLabel2.Name = "ToolStripLabel2"
-        Me.ToolStripLabel2.Size = New System.Drawing.Size(65, 22)
-        Me.ToolStripLabel2.Text = "  Log in As:"
-        '
-        'lblTsUser
-        '
-        Me.lblTsUser.Name = "lblTsUser"
-        Me.lblTsUser.Size = New System.Drawing.Size(30, 22)
-        Me.lblTsUser.Text = "User"
-        '
-        'ToolStripLabel4
-        '
-        Me.ToolStripLabel4.Name = "ToolStripLabel4"
-        Me.ToolStripLabel4.Size = New System.Drawing.Size(42, 22)
-        Me.ToolStripLabel4.Text = "  Time:"
-        '
-        'lblTsTime
-        '
-        Me.lblTsTime.Name = "lblTsTime"
-        Me.lblTsTime.Size = New System.Drawing.Size(33, 22)
-        Me.lblTsTime.Text = "Time"
-        '
-        'pnlItem
-        '
-        Me.pnlItem.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.pnlItem.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.pnlItem.Location = New System.Drawing.Point(0, 79)
-        Me.pnlItem.Name = "pnlItem"
-        Me.pnlItem.Size = New System.Drawing.Size(1154, 594)
-        Me.pnlItem.TabIndex = 23
-        '
-        'MenuStrip1
-        '
-        Me.MenuStrip1.AutoSize = False
-        Me.MenuStrip1.GripStyle = System.Windows.Forms.ToolStripGripStyle.Visible
-        Me.MenuStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.msDashboard, Me.msItem, Me.msBorrow, Me.msReturn, Me.msStudent})
-        Me.MenuStrip1.Location = New System.Drawing.Point(0, 25)
-        Me.MenuStrip1.Name = "MenuStrip1"
-        Me.MenuStrip1.Size = New System.Drawing.Size(1154, 54)
-        Me.MenuStrip1.TabIndex = 7
-        Me.MenuStrip1.Text = "MenuStrip1"
-        '
-        'msDashboard
-        '
-        Me.msDashboard.Font = New System.Drawing.Font("Segoe UI", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.msDashboard.Image = Global.main.My.Resources.Resources._9055226_bxs_dashboard_icon
-        Me.msDashboard.Name = "msDashboard"
-        Me.msDashboard.Size = New System.Drawing.Size(121, 50)
-        Me.msDashboard.Text = "Dashboard"
-        '
-        'msItem
-        '
-        Me.msItem.Font = New System.Drawing.Font("Segoe UI", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.msItem.Image = Global.main.My.Resources.Resources.inventory
-        Me.msItem.Name = "msItem"
-        Me.msItem.Size = New System.Drawing.Size(73, 50)
-        Me.msItem.Text = "Item"
-        '
-        'msBorrow
-        '
-        Me.msBorrow.Font = New System.Drawing.Font("Segoe UI", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.msBorrow.Name = "msBorrow"
-        Me.msBorrow.Size = New System.Drawing.Size(77, 50)
-        Me.msBorrow.Text = "Borrow"
-        '
-        'msReturn
-        '
-        Me.msReturn.Font = New System.Drawing.Font("Segoe UI", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.msReturn.Name = "msReturn"
-        Me.msReturn.Size = New System.Drawing.Size(73, 50)
-        Me.msReturn.Text = "Return"
-        '
-        'msStudent
-        '
-        Me.msStudent.Font = New System.Drawing.Font("Segoe UI", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.msStudent.Image = Global.main.My.Resources.Resources._1564534_customer_man_user_account_profile_icon1
-        Me.msStudent.Name = "msStudent"
-        Me.msStudent.Size = New System.Drawing.Size(98, 50)
-        Me.msStudent.Text = "Student"
+        Me.ToolStripLabel3.Name = "ToolStripLabel3"
+        Me.ToolStripLabel3.Size = New System.Drawing.Size(0, 22)
         '
         'Homepage
         '
@@ -376,4 +383,5 @@ Partial Class Homepage
     Friend WithEvents GoodToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents DamageAccountibilityToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents DamageItemToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents ToolStripLabel3 As System.Windows.Forms.ToolStripLabel
 End Class

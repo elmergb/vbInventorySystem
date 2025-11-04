@@ -7,6 +7,7 @@
         form.Dock = DockStyle.Fill
         pnlItem.Controls.Add(form)
         form.Show()
+        lblTsUser.Text = Login.txtUsername.Text + Login.txtPword.Text
 
         If Login.role = "Student" Then
             msStudent.Visible = False
@@ -74,7 +75,7 @@
     End Sub
 
     Private Sub lblTsUser_Click(sender As System.Object, e As System.EventArgs) Handles lblTsUser.Click
-        lblTsUser.Text = Login.txtUsername.Text + Login.txtPword.Text
+
     End Sub
 
     Private Sub StudentListToolStripMenuItem_Click(sender As System.Object, e As System.EventArgs) Handles StudentListToolStripMenuItem.Click
@@ -86,8 +87,11 @@
     End Sub
 
     Private Sub ltsLogout_Click(sender As System.Object, e As System.EventArgs) Handles ltsLogout.Click
-        MsgLogout("Do you want to Logut?", Me, Login)
-        Login.txtPword.Clear()
-        Login.txtUsername.Clear()
+        MsgLogout("Do you want to Logut?", Login, Me)
+
+    End Sub
+
+    Private Sub pnlItem_Paint(sender As System.Object, e As System.Windows.Forms.PaintEventArgs) Handles pnlItem.Paint
+
     End Sub
 End Class
