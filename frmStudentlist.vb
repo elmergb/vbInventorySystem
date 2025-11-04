@@ -16,6 +16,9 @@
         '        frmAddItem.nupQuantity.Value = 0
         '    End If
         '    frmAddItem.cbRemarks.Text = dgvItemList.Rows(e.RowIndex).Cells("Remarks").Value.ToString()
+        For Each col As DataGridViewColumn In dgvStudentList.Columns
+            col.SortMode = DataGridViewColumnSortMode.NotSortable
+        Next
         With dgvStudentList
             .EnableHeadersVisualStyles = False
             .ColumnHeadersDefaultCellStyle.BackColor = Color.SteelBlue
@@ -30,6 +33,8 @@
             .GridColor = Color.LightGray
             .BorderStyle = BorderStyle.None
             .ForeColor = Color.Black
+            .ColumnHeadersDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter
+            .DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter
         End With
     End Sub
 

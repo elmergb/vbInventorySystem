@@ -79,4 +79,35 @@ End If
 
     End Sub
 
+    Private Sub cbActionType_SelectedIndexChanged(sender As System.Object, e As System.EventArgs) Handles cbActionType.SelectedIndexChanged
+
+    End Sub
+    Private Sub Label4_Click(sender As System.Object, e As System.EventArgs) Handles Label4.Click
+
+    End Sub
+    Private Sub dtpDateTime_ValueChanged(sender As System.Object, e As System.EventArgs) Handles dtpDateTime.ValueChanged
+
+    End Sub
+    Private Sub Label7_Click(sender As System.Object, e As System.EventArgs) Handles Label7.Click
+
+    End Sub
+    Private Sub lblStudent_Click(sender As System.Object, e As System.EventArgs) Handles lblStudent.Click
+
+    End Sub
+
+    Private Sub txtAmount_GotFocus(sender As Object, e As System.EventArgs) Handles txtAmount.GotFocus
+        If txtAmount.Text = "If pay" Then
+            txtAmount.Text = ""
+            txtAmount.ForeColor = Color.Black
+        End If
+    End Sub
+
+    Private Sub txtAmount_LostFocus(sender As Object, e As System.EventArgs) Handles txtAmount.LostFocus
+        If txtAmount.Text = "" Then
+            txtAmount.Text = "If pay"
+            txtAmount.ForeColor = Color.Gray
+        End If
+    End Sub
+
+
 End Class

@@ -57,7 +57,7 @@ Partial Class frmListItem
         DataGridViewCellStyle1.ForeColor = System.Drawing.Color.Black
         Me.dgvItemList.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle1
         Me.dgvItemList.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill
-        Me.dgvItemList.BackgroundColor = System.Drawing.SystemColors.ButtonHighlight
+        Me.dgvItemList.BackgroundColor = System.Drawing.Color.White
         Me.dgvItemList.BorderStyle = System.Windows.Forms.BorderStyle.None
         Me.dgvItemList.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.[Single]
         DataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
@@ -65,7 +65,7 @@ Partial Class frmListItem
         DataGridViewCellStyle2.Font = New System.Drawing.Font("Arial", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         DataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText
         DataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight
-        DataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.Desktop
         DataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
         Me.dgvItemList.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle2
         Me.dgvItemList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
@@ -188,14 +188,14 @@ Partial Class frmListItem
         '
         Me.NameOfItem.DataPropertyName = "Name"
         Me.NameOfItem.FillWeight = 40.0!
-        Me.NameOfItem.HeaderText = "Name"
+        Me.NameOfItem.HeaderText = "Item"
         Me.NameOfItem.Name = "NameOfItem"
         Me.NameOfItem.ReadOnly = True
         '
         'ItemDesc
         '
         Me.ItemDesc.DataPropertyName = "ItemDescription"
-        Me.ItemDesc.HeaderText = "ItemDescription"
+        Me.ItemDesc.HeaderText = "Description"
         Me.ItemDesc.Name = "ItemDesc"
         Me.ItemDesc.ReadOnly = True
         '

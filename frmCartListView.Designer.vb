@@ -40,7 +40,8 @@ Partial Class frmCartListView
         '
         'btnDelete
         '
-        Me.btnDelete.Location = New System.Drawing.Point(399, 299)
+        Me.btnDelete.Font = New System.Drawing.Font("Arial", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnDelete.Location = New System.Drawing.Point(491, 291)
         Me.btnDelete.Name = "btnDelete"
         Me.btnDelete.Size = New System.Drawing.Size(91, 45)
         Me.btnDelete.TabIndex = 1
@@ -49,7 +50,8 @@ Partial Class frmCartListView
         '
         'btnEdit
         '
-        Me.btnEdit.Location = New System.Drawing.Point(302, 299)
+        Me.btnEdit.Font = New System.Drawing.Font("Arial", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnEdit.Location = New System.Drawing.Point(394, 291)
         Me.btnEdit.Name = "btnEdit"
         Me.btnEdit.Size = New System.Drawing.Size(91, 45)
         Me.btnEdit.TabIndex = 2
@@ -60,7 +62,7 @@ Partial Class frmCartListView
         '
         Me.lblSchoolYear.BackColor = System.Drawing.SystemColors.ActiveCaption
         Me.lblSchoolYear.Dock = System.Windows.Forms.DockStyle.Top
-        Me.lblSchoolYear.Font = New System.Drawing.Font("Microsoft YaHei", 21.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblSchoolYear.Font = New System.Drawing.Font("Arial", 20.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lblSchoolYear.ForeColor = System.Drawing.Color.White
         Me.lblSchoolYear.Location = New System.Drawing.Point(0, 0)
         Me.lblSchoolYear.Name = "lblSchoolYear"
@@ -71,6 +73,7 @@ Partial Class frmCartListView
         '
         'btnBack
         '
+        Me.btnBack.Font = New System.Drawing.Font("Arial", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btnBack.Location = New System.Drawing.Point(12, 12)
         Me.btnBack.Name = "btnBack"
         Me.btnBack.Size = New System.Drawing.Size(59, 35)

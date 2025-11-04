@@ -2,9 +2,10 @@
 
 Public Class frmDashboard
     Private Sub frmDashboard_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        Call data_loader("SELECT StudentName, ItemName, QuantityBorrowed, DateBorrowed FROM vwborrowings ORDER BY DateBorrowed DESC LIMIT 5 ", frmDBdgvBorrow)
+        Call data_loader("SELECT StudentName, ItemName, ItemDescription, QuantityBorrowed FROM vwborrowings ORDER BY DateBorrowed DESC LIMIT 5 ", frmDBdgvBorrow)
+        Call data_loader("SELECT StudentName, ItemName, ItemDescription, QuantityBorrowed, QuantityReturned FROM vw_returnlist ORDER BY DateTimeReturned DESC LIMIT 5 ", frmDBdgvReturn)
         Call data_loader("SELECT ItemName, ItemDescription, ItemQuantity FROM tblitemlist ORDER BY ItemID DESC LIMIT 5 ", frmDBdgvItem)
-        Call data_loader("SELECT Name, ItemDamage FROM vw_items WHERE ItemDamage > 0", dgvDamageItem)
+        Call data_loader("SELECT ItemName, ItemDescription, QuantityDamaged FROM vw_damage_details WHERE ActionStatus = 'Pending' > 0", dgvDamageItem)
         frmDBdgvBorrow.ClearSelection()
         frmDBdgvReturn.ClearSelection()
         frmDBdgvItem.ClearSelection()
@@ -95,6 +96,9 @@ Public Class frmDashboard
             .GridColor = Color.LightGray
             .BorderStyle = BorderStyle.None
             .ForeColor = Color.Black
+            .ColumnHeadersDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter
+            .DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter
+
         End With
         With frmDBdgvReturn
             .EnableHeadersVisualStyles = False
@@ -110,6 +114,8 @@ Public Class frmDashboard
             .GridColor = Color.LightGray
             .BorderStyle = BorderStyle.None
             .ForeColor = Color.Black
+            .ColumnHeadersDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter
+            .DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter
         End With
 
         With frmDBdgvItem
@@ -126,6 +132,8 @@ Public Class frmDashboard
             .GridColor = Color.LightGray
             .BorderStyle = BorderStyle.None
             .ForeColor = Color.Black
+            .ColumnHeadersDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter
+            .DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter
         End With
         With dgvDamageItem
             .EnableHeadersVisualStyles = False
@@ -141,6 +149,8 @@ Public Class frmDashboard
             .GridColor = Color.LightGray
             .BorderStyle = BorderStyle.None
             .ForeColor = Color.Black
+            .ColumnHeadersDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter
+            .DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter
         End With
 
     End Sub
@@ -192,7 +202,11 @@ Public Class frmDashboard
         End If
     End Sub
 
-    Private Sub frmDBdgvBorrow_CellContentClick(sender As System.Object, e As System.Windows.Forms.DataGridViewCellEventArgs) Handles frmDBdgvBorrow.CellContentClick
+    Private Sub Panel5_Paint(sender As System.Object, e As System.Windows.Forms.PaintEventArgs) Handles Panel5.Paint
+
+    End Sub
+
+    Private Sub Label2_Click(sender As System.Object, e As System.EventArgs) Handles Label2.Click
 
     End Sub
 End Class

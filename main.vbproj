@@ -115,12 +115,6 @@
     <Compile Include="frmDamageActionEntry.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmDamageItem.Designer.vb">
-      <DependentUpon>frmDamageItem.vb</DependentUpon>
-    </Compile>
-    <Compile Include="frmDamageItem.vb">
-      <SubType>Form</SubType>
-    </Compile>
     <Compile Include="frmDamageItemAction.Designer.vb">
       <DependentUpon>frmDamageItemAction.vb</DependentUpon>
     </Compile>
@@ -173,6 +167,18 @@
       <DependentUpon>frmStudentlist.vb</DependentUpon>
     </Compile>
     <Compile Include="frmStudentlist.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmTeacherDE.Designer.vb">
+      <DependentUpon>frmTeacherDE.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmTeacherDE.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmTeacherlist.Designer.vb">
+      <DependentUpon>frmTeacherlist.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmTeacherlist.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="frmUserAdd.Designer.vb">
@@ -237,9 +243,6 @@
     <EmbeddedResource Include="frmDamageActionEntry.resx">
       <DependentUpon>frmDamageActionEntry.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmDamageItem.resx">
-      <DependentUpon>frmDamageItem.vb</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="frmDamageItemAction.resx">
       <DependentUpon>frmDamageItemAction.vb</DependentUpon>
     </EmbeddedResource>
@@ -266,6 +269,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmStudentlist.resx">
       <DependentUpon>frmStudentlist.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmTeacherDE.resx">
+      <DependentUpon>frmTeacherDE.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmTeacherlist.resx">
+      <DependentUpon>frmTeacherlist.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmUserAdd.resx">
       <DependentUpon>frmUserAdd.vb</DependentUpon>

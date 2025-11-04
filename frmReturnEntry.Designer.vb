@@ -140,6 +140,7 @@ Partial Class frmReturnEntry
         '
         'nupQuantityR
         '
+        Me.nupQuantityR.Font = New System.Drawing.Font("Arial", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.nupQuantityR.Location = New System.Drawing.Point(89, 158)
         Me.nupQuantityR.Margin = New System.Windows.Forms.Padding(4, 3, 4, 3)
         Me.nupQuantityR.Name = "nupQuantityR"
@@ -158,11 +159,12 @@ Partial Class frmReturnEntry
         '
         'cbReturnRemarks
         '
+        Me.cbReturnRemarks.Font = New System.Drawing.Font("Arial", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.cbReturnRemarks.FormattingEnabled = True
         Me.cbReturnRemarks.Location = New System.Drawing.Point(386, 77)
         Me.cbReturnRemarks.Margin = New System.Windows.Forms.Padding(4, 3, 4, 3)
         Me.cbReturnRemarks.Name = "cbReturnRemarks"
-        Me.cbReturnRemarks.Size = New System.Drawing.Size(187, 27)
+        Me.cbReturnRemarks.Size = New System.Drawing.Size(187, 26)
         Me.cbReturnRemarks.TabIndex = 31
         '
         'Label8
@@ -171,14 +173,14 @@ Partial Class frmReturnEntry
         Me.Label8.BackColor = System.Drawing.SystemColors.ActiveCaption
         Me.Label8.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
         Me.Label8.Dock = System.Windows.Forms.DockStyle.Top
-        Me.Label8.Font = New System.Drawing.Font("Microsoft YaHei", 18.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label8.Font = New System.Drawing.Font("Arial", 20.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label8.ForeColor = System.Drawing.Color.White
         Me.Label8.Location = New System.Drawing.Point(0, 0)
         Me.Label8.Name = "Label8"
         Me.Label8.Size = New System.Drawing.Size(661, 55)
         Me.Label8.TabIndex = 33
-        Me.Label8.Text = "          Return Entry"
-        Me.Label8.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
+        Me.Label8.Text = "Return Entry"
+        Me.Label8.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
         '
         'Button1
         '
@@ -192,11 +194,12 @@ Partial Class frmReturnEntry
         '
         'cbItemListR
         '
+        Me.cbItemListR.Font = New System.Drawing.Font("Arial", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.cbItemListR.FormattingEnabled = True
         Me.cbItemListR.Location = New System.Drawing.Point(58, 33)
         Me.cbItemListR.Margin = New System.Windows.Forms.Padding(4, 3, 4, 3)
         Me.cbItemListR.Name = "cbItemListR"
-        Me.cbItemListR.Size = New System.Drawing.Size(185, 27)
+        Me.cbItemListR.Size = New System.Drawing.Size(185, 26)
         Me.cbItemListR.TabIndex = 25
         '
         'Label4

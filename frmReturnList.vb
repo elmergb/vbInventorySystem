@@ -17,6 +17,8 @@
             .CellBorderStyle = DataGridViewCellBorderStyle.Single
             .GridColor = Color.LightGray
             .BorderStyle = BorderStyle.None
+            .ColumnHeadersDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter
+            .DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter
         End With
     End Sub
 

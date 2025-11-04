@@ -44,7 +44,7 @@ Module modGlobalFunc
         Dim cmd As Odbc.OdbcCommand
         Dim total As Integer = 0
         Try
-            cmd = New Odbc.OdbcCommand("SELECT COUNT(BorrowID) FROM tblborrow", con)
+            cmd = New Odbc.OdbcCommand("SELECT COUNT(BorrowID) FROM vw_borrowed_items WHERE Status = 'Borrowed'", con)
             total = CInt(cmd.ExecuteScalar)
         Catch ex As Exception
             MsgBox(ex.Message.ToString)
@@ -56,7 +56,7 @@ Module modGlobalFunc
         Dim cmd As Odbc.OdbcCommand
         Dim total As Integer = 0
         Try
-            cmd = New Odbc.OdbcCommand("SELECT COUNT(ReturnID) FROM tblreturn", con)
+            cmd = New Odbc.OdbcCommand("SELECT COUNT(ReturnID) FROM vw_returnlist WHERE ReturnStatus = 'Returned' OR ReturnStatus = 'Partially Returned'", con)
             total = CInt(cmd.ExecuteScalar)
         Catch ex As Exception
             MsgBox(ex.Message.ToString)
@@ -67,7 +67,7 @@ Module modGlobalFunc
         Dim cmd As Odbc.OdbcCommand
         Dim total As Integer = 0
         Try
-            cmd = New Odbc.OdbcCommand("SELECT COUNT(ReturnID) FROM tblreturn WHERE Lower(Remarks) = 'Damage' OR Lower(Remarks) = 'Critical'  ", con)
+            cmd = New Odbc.OdbcCommand("SELECT COUNT(ActionID) FROM tbldamage_action WHERE Status = 'Pending' ", con)
             total = CInt(cmd.ExecuteScalar)
         Catch ex As Exception
             MsgBox(ex.Message.ToString)

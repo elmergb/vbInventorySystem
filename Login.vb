@@ -71,11 +71,12 @@ Public Class Login
                     If String.Equals(password, dbPassword, StringComparison.Ordinal) Then
                         role = roleVal
                         MessageBox.Show("Welcome " & role & "!", "Login", MessageBoxButtons.OK, MessageBoxIcon.Information)
-                        Homepage.Show()
-                        Me.Hide()
-                        isvalid = True
 
-                       
+
+                        isvalid = True
+  
+                        Me.Hide()
+                        Homepage.Show()
                         Return
                     End If
                 End If
@@ -87,7 +88,7 @@ Public Class Login
             MessageBox.Show("An error occurred: " & ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
 
         Finally
-  
+       
         End Try
 
     End Sub

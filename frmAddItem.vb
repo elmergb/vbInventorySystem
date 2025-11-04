@@ -10,7 +10,7 @@
         End If
 
         cbLocation.Focus()
- 
+        DisableForm(Me)
     End Sub
 
     Private Sub btnSave_Click(sender As Object, e As EventArgs) Handles btnSave.Click

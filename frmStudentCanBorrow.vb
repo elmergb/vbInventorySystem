@@ -28,7 +28,7 @@
             Using trans = con.BeginTransaction()
                 Try
                     If studentID = 0 Then
-                        '                ' — Insert new student + user
+
 
                         ' Check duplicate studentNo
                         Using cmdCheck As New Odbc.OdbcCommand("SELECT COUNT(*) FROM tblstudentlist WHERE studentNo = ?", con, trans)

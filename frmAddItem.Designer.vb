@@ -48,8 +48,6 @@ Partial Class frmAddItem
         '
         'GroupBox1
         '
-        Me.GroupBox1.Controls.Add(Me.nupDamaged)
-        Me.GroupBox1.Controls.Add(Me.lblDamage)
         Me.GroupBox1.Controls.Add(Me.Label6)
         Me.GroupBox1.Controls.Add(Me.txtItemDesc)
         Me.GroupBox1.Controls.Add(Me.cbRemarks)
@@ -62,7 +60,7 @@ Partial Class frmAddItem
         Me.GroupBox1.Controls.Add(Me.Label1)
         Me.GroupBox1.Controls.Add(Me.cbCategory)
         Me.GroupBox1.Controls.Add(Me.txtNameOFItem)
-        Me.GroupBox1.Font = New System.Drawing.Font("Arial", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.GroupBox1.Font = New System.Drawing.Font("Arial", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.GroupBox1.Location = New System.Drawing.Point(12, 65)
         Me.GroupBox1.Name = "GroupBox1"
         Me.GroupBox1.Size = New System.Drawing.Size(590, 317)
@@ -72,19 +70,22 @@ Partial Class frmAddItem
         '
         'nupDamaged
         '
-        Me.nupDamaged.Location = New System.Drawing.Point(308, 204)
+        Me.nupDamaged.Font = New System.Drawing.Font("Arial", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.nupDamaged.Location = New System.Drawing.Point(242, 542)
         Me.nupDamaged.Name = "nupDamaged"
-        Me.nupDamaged.Size = New System.Drawing.Size(176, 20)
+        Me.nupDamaged.Size = New System.Drawing.Size(176, 26)
         Me.nupDamaged.TabIndex = 16
+        Me.nupDamaged.Visible = False
         '
         'lblDamage
         '
         Me.lblDamage.Font = New System.Drawing.Font("Arial", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblDamage.Location = New System.Drawing.Point(304, 174)
+        Me.lblDamage.Location = New System.Drawing.Point(238, 501)
         Me.lblDamage.Name = "lblDamage"
         Me.lblDamage.Size = New System.Drawing.Size(148, 28)
         Me.lblDamage.TabIndex = 15
         Me.lblDamage.Text = "Quantity Damage:"
+        Me.lblDamage.Visible = False
         '
         'Label6
         '
@@ -97,7 +98,7 @@ Partial Class frmAddItem
         '
         'txtItemDesc
         '
-        Me.txtItemDesc.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtItemDesc.Font = New System.Drawing.Font("Arial", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txtItemDesc.Location = New System.Drawing.Point(11, 137)
         Me.txtItemDesc.Multiline = True
         Me.txtItemDesc.Name = "txtItemDesc"
@@ -106,11 +107,12 @@ Partial Class frmAddItem
         '
         'cbRemarks
         '
+        Me.cbRemarks.Font = New System.Drawing.Font("Arial", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.cbRemarks.FormattingEnabled = True
         Me.cbRemarks.Items.AddRange(New Object() {"PB101", "Bar", "Bakery"})
         Me.cbRemarks.Location = New System.Drawing.Point(308, 59)
         Me.cbRemarks.Name = "cbRemarks"
-        Me.cbRemarks.Size = New System.Drawing.Size(223, 22)
+        Me.cbRemarks.Size = New System.Drawing.Size(223, 26)
         Me.cbRemarks.TabIndex = 12
         '
         'Label5
@@ -124,9 +126,10 @@ Partial Class frmAddItem
         '
         'nupQuantity
         '
+        Me.nupQuantity.Font = New System.Drawing.Font("Arial", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.nupQuantity.Location = New System.Drawing.Point(308, 137)
         Me.nupQuantity.Name = "nupQuantity"
-        Me.nupQuantity.Size = New System.Drawing.Size(176, 20)
+        Me.nupQuantity.Size = New System.Drawing.Size(176, 26)
         Me.nupQuantity.TabIndex = 10
         '
         'Label4
@@ -140,11 +143,12 @@ Partial Class frmAddItem
         '
         'cbLocation
         '
+        Me.cbLocation.Font = New System.Drawing.Font("Arial", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.cbLocation.FormattingEnabled = True
         Me.cbLocation.Items.AddRange(New Object() {"PB101", "Bar", "Bakery"})
         Me.cbLocation.Location = New System.Drawing.Point(6, 272)
         Me.cbLocation.Name = "cbLocation"
-        Me.cbLocation.Size = New System.Drawing.Size(223, 22)
+        Me.cbLocation.Size = New System.Drawing.Size(223, 26)
         Me.cbLocation.TabIndex = 8
         '
         'Label3
@@ -176,16 +180,17 @@ Partial Class frmAddItem
         '
         'cbCategory
         '
+        Me.cbCategory.Font = New System.Drawing.Font("Arial", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.cbCategory.FormattingEnabled = True
         Me.cbCategory.Items.AddRange(New Object() {"Kitchen", "Baking", "Liquor"})
         Me.cbCategory.Location = New System.Drawing.Point(6, 203)
         Me.cbCategory.Name = "cbCategory"
-        Me.cbCategory.Size = New System.Drawing.Size(223, 22)
+        Me.cbCategory.Size = New System.Drawing.Size(223, 26)
         Me.cbCategory.TabIndex = 2
         '
         'txtNameOFItem
         '
-        Me.txtNameOFItem.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtNameOFItem.Font = New System.Drawing.Font("Arial", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txtNameOFItem.Location = New System.Drawing.Point(10, 59)
         Me.txtNameOFItem.Multiline = True
         Me.txtNameOFItem.Name = "txtNameOFItem"
@@ -195,7 +200,7 @@ Partial Class frmAddItem
         'btnSave
         '
         Me.btnSave.Font = New System.Drawing.Font("Arial", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnSave.Location = New System.Drawing.Point(62, 388)
+        Me.btnSave.Location = New System.Drawing.Point(32, 388)
         Me.btnSave.Name = "btnSave"
         Me.btnSave.Size = New System.Drawing.Size(84, 44)
         Me.btnSave.TabIndex = 3
@@ -205,7 +210,7 @@ Partial Class frmAddItem
         'Button2
         '
         Me.Button2.Font = New System.Drawing.Font("Arial", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Button2.Location = New System.Drawing.Point(162, 388)
+        Me.Button2.Location = New System.Drawing.Point(132, 388)
         Me.Button2.Name = "Button2"
         Me.Button2.Size = New System.Drawing.Size(84, 44)
         Me.Button2.TabIndex = 4
@@ -226,26 +231,30 @@ Partial Class frmAddItem
         '
         Me.lblSchoolYear.BackColor = System.Drawing.SystemColors.ActiveCaption
         Me.lblSchoolYear.Dock = System.Windows.Forms.DockStyle.Top
-        Me.lblSchoolYear.Font = New System.Drawing.Font("Microsoft YaHei", 21.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblSchoolYear.Font = New System.Drawing.Font("Arial", 20.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lblSchoolYear.ForeColor = System.Drawing.Color.White
         Me.lblSchoolYear.Location = New System.Drawing.Point(0, 0)
         Me.lblSchoolYear.Name = "lblSchoolYear"
         Me.lblSchoolYear.Size = New System.Drawing.Size(623, 62)
         Me.lblSchoolYear.TabIndex = 47
-        Me.lblSchoolYear.Text = "ITEMS"
-        Me.lblSchoolYear.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
+        Me.lblSchoolYear.Text = "Items"
+        Me.lblSchoolYear.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
+        Me.lblSchoolYear.Visible = False
         '
         'frmAddItem
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(623, 470)
+        Me.ClientSize = New System.Drawing.Size(623, 454)
+        Me.Controls.Add(Me.nupDamaged)
+        Me.Controls.Add(Me.lblDamage)
         Me.Controls.Add(Me.lblSchoolYear)
         Me.Controls.Add(Me.Button3)
         Me.Controls.Add(Me.Button2)
         Me.Controls.Add(Me.GroupBox1)
         Me.Controls.Add(Me.btnSave)
         Me.Name = "frmAddItem"
+        Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "frmAddEquipment"
         Me.GroupBox1.ResumeLayout(False)
         Me.GroupBox1.PerformLayout()

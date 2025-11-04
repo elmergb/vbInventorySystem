@@ -23,6 +23,7 @@
                 .BorderStyle = BorderStyle.None
             End With
         Next
+
     End Sub
 
     Private Sub dgvItemList_CellClick(sender As Object, e As System.Windows.Forms.DataGridViewCellEventArgs) Handles dgvItemList.CellClick
@@ -112,6 +113,7 @@
     End Sub
 
     Private Sub btnBorrow_Click(sender As System.Object, e As System.EventArgs) Handles btnBorrow.Click
+        frmBorrow.nupQuantity.Value = 0
         If txtStudentNo.Text.Trim() = " " Or txtStudentNo.Text.Trim() = "" Then
             MsgBox("Insert Student No. First")
             Exit Sub

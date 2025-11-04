@@ -34,7 +34,7 @@ Partial Class frmUserAdd
         Me.Label5 = New System.Windows.Forms.Label()
         Me.BackgroundWorker1 = New System.ComponentModel.BackgroundWorker()
         Me.txtfname = New System.Windows.Forms.TextBox()
-        Me.Label6 = New System.Windows.Forms.Label()
+        Me.Label7 = New System.Windows.Forms.Label()
         Me.SuspendLayout()
         '
         'Label1
@@ -42,16 +42,16 @@ Partial Class frmUserAdd
         Me.Label1.BackColor = System.Drawing.Color.Transparent
         Me.Label1.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label1.ForeColor = System.Drawing.Color.Black
-        Me.Label1.Location = New System.Drawing.Point(19, 77)
+        Me.Label1.Location = New System.Drawing.Point(36, 97)
         Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(100, 25)
+        Me.Label1.Size = New System.Drawing.Size(89, 25)
         Me.Label1.TabIndex = 0
         Me.Label1.Text = "First Name:"
         '
         'btnSave
         '
         Me.btnSave.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnSave.Location = New System.Drawing.Point(409, 165)
+        Me.btnSave.Location = New System.Drawing.Point(382, 167)
         Me.btnSave.Name = "btnSave"
         Me.btnSave.Size = New System.Drawing.Size(87, 46)
         Me.btnSave.TabIndex = 1
@@ -61,7 +61,7 @@ Partial Class frmUserAdd
         'txtmi
         '
         Me.txtmi.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtmi.Location = New System.Drawing.Point(125, 128)
+        Me.txtmi.Location = New System.Drawing.Point(131, 148)
         Me.txtmi.Name = "txtmi"
         Me.txtmi.Size = New System.Drawing.Size(186, 26)
         Me.txtmi.TabIndex = 4
@@ -71,7 +71,7 @@ Partial Class frmUserAdd
         Me.Label2.BackColor = System.Drawing.Color.Transparent
         Me.Label2.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label2.ForeColor = System.Drawing.Color.Black
-        Me.Label2.Location = New System.Drawing.Point(19, 130)
+        Me.Label2.Location = New System.Drawing.Point(25, 150)
         Me.Label2.Name = "Label2"
         Me.Label2.Size = New System.Drawing.Size(117, 25)
         Me.Label2.TabIndex = 3
@@ -80,7 +80,7 @@ Partial Class frmUserAdd
         'txtlname
         '
         Me.txtlname.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtlname.Location = New System.Drawing.Point(125, 176)
+        Me.txtlname.Location = New System.Drawing.Point(131, 196)
         Me.txtlname.Name = "txtlname"
         Me.txtlname.Size = New System.Drawing.Size(186, 26)
         Me.txtlname.TabIndex = 6
@@ -90,16 +90,16 @@ Partial Class frmUserAdd
         Me.Label3.BackColor = System.Drawing.Color.Transparent
         Me.Label3.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label3.ForeColor = System.Drawing.Color.Black
-        Me.Label3.Location = New System.Drawing.Point(19, 177)
+        Me.Label3.Location = New System.Drawing.Point(36, 197)
         Me.Label3.Name = "Label3"
-        Me.Label3.Size = New System.Drawing.Size(100, 25)
+        Me.Label3.Size = New System.Drawing.Size(91, 25)
         Me.Label3.TabIndex = 5
         Me.Label3.Text = "Last Name:"
         '
         'txtusername
         '
         Me.txtusername.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtusername.Location = New System.Drawing.Point(125, 226)
+        Me.txtusername.Location = New System.Drawing.Point(131, 246)
         Me.txtusername.Name = "txtusername"
         Me.txtusername.Size = New System.Drawing.Size(186, 26)
         Me.txtusername.TabIndex = 8
@@ -109,16 +109,16 @@ Partial Class frmUserAdd
         Me.Label4.BackColor = System.Drawing.Color.Transparent
         Me.Label4.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label4.ForeColor = System.Drawing.Color.Black
-        Me.Label4.Location = New System.Drawing.Point(19, 228)
+        Me.Label4.Location = New System.Drawing.Point(36, 247)
         Me.Label4.Name = "Label4"
-        Me.Label4.Size = New System.Drawing.Size(100, 25)
+        Me.Label4.Size = New System.Drawing.Size(91, 25)
         Me.Label4.TabIndex = 7
         Me.Label4.Text = "Username:"
         '
         'txtpword
         '
         Me.txtpword.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtpword.Location = New System.Drawing.Point(125, 281)
+        Me.txtpword.Location = New System.Drawing.Point(131, 301)
         Me.txtpword.Multiline = True
         Me.txtpword.Name = "txtpword"
         Me.txtpword.Size = New System.Drawing.Size(186, 26)
@@ -129,38 +129,40 @@ Partial Class frmUserAdd
         Me.Label5.BackColor = System.Drawing.Color.Transparent
         Me.Label5.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label5.ForeColor = System.Drawing.Color.Black
-        Me.Label5.Location = New System.Drawing.Point(19, 279)
+        Me.Label5.Location = New System.Drawing.Point(36, 301)
         Me.Label5.Name = "Label5"
-        Me.Label5.Size = New System.Drawing.Size(100, 25)
+        Me.Label5.Size = New System.Drawing.Size(91, 25)
         Me.Label5.TabIndex = 9
         Me.Label5.Text = "Password:"
         '
         'txtfname
         '
         Me.txtfname.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtfname.Location = New System.Drawing.Point(125, 76)
+        Me.txtfname.Location = New System.Drawing.Point(131, 96)
         Me.txtfname.Name = "txtfname"
         Me.txtfname.Size = New System.Drawing.Size(186, 26)
         Me.txtfname.TabIndex = 2
         '
-        'Label6
+        'Label7
         '
-        Me.Label6.AutoSize = True
-        Me.Label6.Font = New System.Drawing.Font("Arial", 14.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label6.ForeColor = System.Drawing.Color.White
-        Me.Label6.Location = New System.Drawing.Point(12, 11)
-        Me.Label6.Name = "Label6"
-        Me.Label6.Size = New System.Drawing.Size(129, 22)
-        Me.Label6.TabIndex = 11
-        Me.Label6.Text = "Registration:"
+        Me.Label7.BackColor = System.Drawing.SystemColors.ActiveCaption
+        Me.Label7.Dock = System.Windows.Forms.DockStyle.Top
+        Me.Label7.Font = New System.Drawing.Font("Arial", 20.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label7.ForeColor = System.Drawing.Color.White
+        Me.Label7.Location = New System.Drawing.Point(0, 0)
+        Me.Label7.Name = "Label7"
+        Me.Label7.Size = New System.Drawing.Size(519, 69)
+        Me.Label7.TabIndex = 12
+        Me.Label7.Text = "Student List"
+        Me.Label7.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
         '
         'frmUserAdd
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 14.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.BackColor = System.Drawing.SystemColors.ControlDarkDark
-        Me.ClientSize = New System.Drawing.Size(519, 592)
-        Me.Controls.Add(Me.Label6)
+        Me.BackColor = System.Drawing.SystemColors.Control
+        Me.ClientSize = New System.Drawing.Size(519, 401)
+        Me.Controls.Add(Me.Label7)
         Me.Controls.Add(Me.txtfname)
         Me.Controls.Add(Me.txtpword)
         Me.Controls.Add(Me.Label5)
@@ -174,7 +176,6 @@ Partial Class frmUserAdd
         Me.Controls.Add(Me.Label1)
         Me.Font = New System.Drawing.Font("Arial", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Name = "frmUserAdd"
-        Me.Padding = New System.Windows.Forms.Padding(20)
         Me.Text = "frmUserAdd"
         Me.ResumeLayout(False)
         Me.PerformLayout()
@@ -192,5 +193,5 @@ Partial Class frmUserAdd
     Friend WithEvents Label5 As System.Windows.Forms.Label
     Friend WithEvents BackgroundWorker1 As System.ComponentModel.BackgroundWorker
     Friend WithEvents txtfname As TextBox
-    Friend WithEvents Label6 As Label
+    Friend WithEvents Label7 As System.Windows.Forms.Label
 End Class

@@ -7,7 +7,7 @@
         form.Dock = DockStyle.Fill
         pnlItem.Controls.Add(form)
         form.Show()
-        lblTsUser.Text = Login.txtUsername.Text + Login.txtPword.Text
+
 
         If Login.role = "Student" Then
             msStudent.Visible = False
@@ -19,7 +19,8 @@
         Call vbConnection()
         DisableForm(Me)
         LoadForm(New frmDashboard())
-        lblTsUser.Text = Login.txtUsername.Text + " " + Login.txtPword.Text
+        lblUser.Text = Login.txtUsername.Text
+        Timer1.Start()
     End Sub
 
     Private Sub btnDashBoard_Click_1(sender As System.Object, e As System.EventArgs)
@@ -70,11 +71,8 @@
         LoadForm(New frmDamageItemAction())
     End Sub
 
-    Private Sub DamageItemToolStripMenuItem_Click(sender As System.Object, e As System.EventArgs) Handles DamageItemToolStripMenuItem.Click
-        LoadForm(New frmDamageItem())
-    End Sub
 
-    Private Sub lblTsUser_Click(sender As System.Object, e As System.EventArgs) Handles lblTsUser.Click
+    Private Sub lblTsUser_Click(sender As System.Object, e As System.EventArgs)
 
     End Sub
 
@@ -82,16 +80,36 @@
         LoadForm(New frmStudentlist())
     End Sub
 
-    Private Sub ltsExit_Click(sender As System.Object, e As System.EventArgs) Handles ltsExit.Click
-        MsgExit("Do you want to exit?", Me, Me, Me)
+    Private Sub ltsExit_Click(sender As System.Object, e As System.EventArgs)
+
     End Sub
 
     Private Sub ltsLogout_Click(sender As System.Object, e As System.EventArgs) Handles ltsLogout.Click
-        MsgLogout("Do you want to Logut?", Login, Me)
+ 
+        MsgExit("Do you want to Logout?", Me, Me, Me)
 
     End Sub
 
     Private Sub pnlItem_Paint(sender As System.Object, e As System.Windows.Forms.PaintEventArgs) Handles pnlItem.Paint
+
+    End Sub
+
+    Private Sub TeacherToolStripMenuItem_Click(sender As System.Object, e As System.EventArgs) Handles TeacherToolStripMenuItem.Click
+        LoadForm(New frmTeacherlist())
+
+    End Sub
+
+
+
+    Private Sub Timer1_Tick(sender As System.Object, e As System.EventArgs) Handles Timer1.Tick
+        lblTime.Text = DateTime.Now.ToString("MMMM dd, yyyy hh:mm:ss tt")
+    End Sub
+
+    Private Sub ToolStripLabel2_Click(sender As System.Object, e As System.EventArgs) Handles ToolStripLabel2.Click
+
+    End Sub
+
+    Private Sub lblUser_Click(sender As System.Object, e As System.EventArgs) Handles lblUser.Click
 
     End Sub
 End Class
