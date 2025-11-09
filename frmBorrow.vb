@@ -24,8 +24,7 @@
       ' … inside your btnSave_Click in frmBorrow …
         Try
             If IsEditMode Then
-                ' === EDIT (UPDATE) existing cart item ===
-                Dim updateCmd As New Odbc.OdbcCommand("UPDATE tblcartlist SET QuantityBorrowed = ?, Contact = ?, Purpose = ? WHERE CartID = ?", con)
+      Dim updateCmd As New Odbc.OdbcCommand("UPDATE tblcartlist SET QuantityBorrowed = ?, Contact = ?, Purpose = ? WHERE tempID = ?", con)
                 With updateCmd.Parameters
                     .AddWithValue("?", CInt(nupQuantity.Value))
                     .AddWithValue("?", txtContact.Text.Trim())

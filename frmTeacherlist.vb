@@ -18,7 +18,9 @@
             .ColumnHeadersDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter
             .DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter
         End With
-
+        For Each col As DataGridViewColumn In dgvTeacherList.Columns
+            col.SortMode = DataGridViewColumnSortMode.NotSortable
+        Next
         Call data_loader("SELECT * FROM tblteacher WHERE status = 'Active'", dgvTeacherList)
     End Sub
 

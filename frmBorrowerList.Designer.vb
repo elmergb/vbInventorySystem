@@ -22,8 +22,8 @@ Partial Class frmBorrowerList
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
-        Dim DataGridViewCellStyle3 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle4 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle7 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle8 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Me.Panel1 = New System.Windows.Forms.Panel()
         Me.Label2 = New System.Windows.Forms.Label()
         Me.dgvBorrowerList = New System.Windows.Forms.DataGridView()
@@ -47,7 +47,8 @@ Partial Class frmBorrowerList
         Me.purpose = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.contact = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.RemarksItem = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.btnDelete = New System.Windows.Forms.Button()
+        Me.txtSearch = New System.Windows.Forms.TextBox()
+        Me.Label13 = New System.Windows.Forms.Label()
         Me.Panel1.SuspendLayout()
         CType(Me.dgvBorrowerList, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
@@ -60,7 +61,7 @@ Partial Class frmBorrowerList
         Me.Panel1.Font = New System.Drawing.Font("Arial", 20.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Panel1.Location = New System.Drawing.Point(0, 0)
         Me.Panel1.Name = "Panel1"
-        Me.Panel1.Size = New System.Drawing.Size(1538, 67)
+        Me.Panel1.Size = New System.Drawing.Size(1538, 75)
         Me.Panel1.TabIndex = 16
         '
         'Label2
@@ -72,7 +73,7 @@ Partial Class frmBorrowerList
         Me.Label2.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
         Me.Label2.Location = New System.Drawing.Point(12, 19)
         Me.Label2.Name = "Label2"
-        Me.Label2.Size = New System.Drawing.Size(195, 32)
+        Me.Label2.Size = New System.Drawing.Size(238, 40)
         Me.Label2.TabIndex = 7
         Me.Label2.Text = "Borrower List"
         Me.Label2.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
@@ -81,32 +82,34 @@ Partial Class frmBorrowerList
         '
         Me.dgvBorrowerList.AllowUserToAddRows = False
         Me.dgvBorrowerList.AllowUserToDeleteRows = False
+        Me.dgvBorrowerList.AllowUserToResizeColumns = False
+        Me.dgvBorrowerList.AllowUserToResizeRows = False
         Me.dgvBorrowerList.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill
         Me.dgvBorrowerList.BackgroundColor = System.Drawing.Color.White
-        DataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
-        DataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control
-        DataGridViewCellStyle3.Font = New System.Drawing.Font("Arial", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText
-        DataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.FromArgb(CType(CType(190, Byte), Integer), CType(CType(214, Byte), Integer), CType(CType(246, Byte), Integer))
-        DataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.Desktop
-        DataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.dgvBorrowerList.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle3
+        DataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
+        DataGridViewCellStyle7.BackColor = System.Drawing.SystemColors.Control
+        DataGridViewCellStyle7.Font = New System.Drawing.Font("Arial", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle7.ForeColor = System.Drawing.SystemColors.WindowText
+        DataGridViewCellStyle7.SelectionBackColor = System.Drawing.Color.FromArgb(CType(CType(190, Byte), Integer), CType(CType(214, Byte), Integer), CType(CType(246, Byte), Integer))
+        DataGridViewCellStyle7.SelectionForeColor = System.Drawing.SystemColors.Desktop
+        DataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.dgvBorrowerList.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle7
         Me.dgvBorrowerList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.dgvBorrowerList.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.bID, Me.ItemID, Me.studentNo, Me.borrowerName, Me.ItemName, Me.ItemDesc, Me.qtyBorrowed, Me.qtyReturned, Me.Remaining, Me.Status, Me.TeacherName, Me.CourseCode, Me.YearLevel, Me.Sections, Me.Semester, Me.dateborrowed, Me.SchoolYear, Me.purpose, Me.contact, Me.RemarksItem})
-        DataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
-        DataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Window
-        DataGridViewCellStyle4.Font = New System.Drawing.Font("Arial", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.ControlText
-        DataGridViewCellStyle4.SelectionBackColor = System.Drawing.Color.FromArgb(CType(CType(190, Byte), Integer), CType(CType(214, Byte), Integer), CType(CType(246, Byte), Integer))
-        DataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.ControlText
-        DataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
-        Me.dgvBorrowerList.DefaultCellStyle = DataGridViewCellStyle4
-        Me.dgvBorrowerList.Location = New System.Drawing.Point(23, 105)
+        DataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
+        DataGridViewCellStyle8.BackColor = System.Drawing.SystemColors.Window
+        DataGridViewCellStyle8.Font = New System.Drawing.Font("Arial", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle8.ForeColor = System.Drawing.SystemColors.ControlText
+        DataGridViewCellStyle8.SelectionBackColor = System.Drawing.Color.FromArgb(CType(CType(190, Byte), Integer), CType(CType(214, Byte), Integer), CType(CType(246, Byte), Integer))
+        DataGridViewCellStyle8.SelectionForeColor = System.Drawing.SystemColors.ControlText
+        DataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
+        Me.dgvBorrowerList.DefaultCellStyle = DataGridViewCellStyle8
+        Me.dgvBorrowerList.Location = New System.Drawing.Point(19, 175)
         Me.dgvBorrowerList.Name = "dgvBorrowerList"
         Me.dgvBorrowerList.ReadOnly = True
         Me.dgvBorrowerList.RowHeadersVisible = False
         Me.dgvBorrowerList.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
-        Me.dgvBorrowerList.Size = New System.Drawing.Size(1419, 400)
+        Me.dgvBorrowerList.Size = New System.Drawing.Size(1497, 400)
         Me.dgvBorrowerList.TabIndex = 22
         '
         'bID
@@ -258,21 +261,32 @@ Partial Class frmBorrowerList
         Me.RemarksItem.Name = "RemarksItem"
         Me.RemarksItem.ReadOnly = True
         '
-        'btnDelete
+        'txtSearch
         '
-        Me.btnDelete.Location = New System.Drawing.Point(100, 538)
-        Me.btnDelete.Name = "btnDelete"
-        Me.btnDelete.Size = New System.Drawing.Size(89, 36)
-        Me.btnDelete.TabIndex = 23
-        Me.btnDelete.Text = "Delete"
-        Me.btnDelete.UseVisualStyleBackColor = True
+        Me.txtSearch.Font = New System.Drawing.Font("Arial", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtSearch.Location = New System.Drawing.Point(970, 133)
+        Me.txtSearch.Name = "txtSearch"
+        Me.txtSearch.Size = New System.Drawing.Size(485, 25)
+        Me.txtSearch.TabIndex = 23
+        '
+        'Label13
+        '
+        Me.Label13.AutoSize = True
+        Me.Label13.Font = New System.Drawing.Font("Arial", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label13.Location = New System.Drawing.Point(779, 131)
+        Me.Label13.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
+        Me.Label13.Name = "Label13"
+        Me.Label13.Size = New System.Drawing.Size(229, 24)
+        Me.Label13.TabIndex = 34
+        Me.Label13.Text = "Search Borrower/ Item:"
         '
         'frmBorrowerList
         '
-        Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 14.0!)
+        Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 16.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(1538, 893)
-        Me.Controls.Add(Me.btnDelete)
+        Me.Controls.Add(Me.Label13)
+        Me.Controls.Add(Me.txtSearch)
         Me.Controls.Add(Me.dgvBorrowerList)
         Me.Controls.Add(Me.Panel1)
         Me.Font = New System.Drawing.Font("Arial", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
@@ -283,12 +297,12 @@ Partial Class frmBorrowerList
         Me.Panel1.PerformLayout()
         CType(Me.dgvBorrowerList, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
+        Me.PerformLayout()
 
     End Sub
     Friend WithEvents Panel1 As Panel
     Friend WithEvents Label2 As Label
     Friend WithEvents dgvBorrowerList As System.Windows.Forms.DataGridView
-    Friend WithEvents btnDelete As System.Windows.Forms.Button
     Friend WithEvents bID As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents ItemID As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents studentNo As System.Windows.Forms.DataGridViewTextBoxColumn
@@ -309,4 +323,6 @@ Partial Class frmBorrowerList
     Friend WithEvents purpose As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents contact As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents RemarksItem As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents txtSearch As System.Windows.Forms.TextBox
+    Friend WithEvents Label13 As System.Windows.Forms.Label
 End Class

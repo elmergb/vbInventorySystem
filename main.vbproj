@@ -49,6 +49,8 @@
     <OptionInfer>On</OptionInfer>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Microsoft.ReportViewer.Common, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+    <Reference Include="Microsoft.ReportViewer.WinForms, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Deployment" />
@@ -85,16 +87,16 @@
     <Compile Include="frmAddItem.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmBorrow.Designer.vb">
-      <DependentUpon>frmBorrow.vb</DependentUpon>
+    <Compile Include="frmBorrowDE.Designer.vb">
+      <DependentUpon>frmBorrowDE.vb</DependentUpon>
     </Compile>
-    <Compile Include="frmBorrow.vb">
+    <Compile Include="frmBorrowDE.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmBorrowerCartList.Designer.vb">
-      <DependentUpon>frmBorrowerCartList.vb</DependentUpon>
+    <Compile Include="frmBorrowingDE.Designer.vb">
+      <DependentUpon>frmBorrowingDE.vb</DependentUpon>
     </Compile>
-    <Compile Include="frmBorrowerCartList.vb">
+    <Compile Include="frmBorrowingDE.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="frmBorrowerList.Designer.vb">
@@ -115,10 +117,10 @@
     <Compile Include="frmDamageActionEntry.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmDamageItemAction.Designer.vb">
-      <DependentUpon>frmDamageItemAction.vb</DependentUpon>
+    <Compile Include="frmDamageItemAY.Designer.vb">
+      <DependentUpon>frmDamageItemAY.vb</DependentUpon>
     </Compile>
-    <Compile Include="frmDamageItemAction.vb">
+    <Compile Include="frmDamageItemAY.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="frmDashboard.Designer.vb">
@@ -131,6 +133,20 @@
       <DependentUpon>frmGoodItem.vb</DependentUpon>
     </Compile>
     <Compile Include="frmGoodItem.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmInventory.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>frmInventory.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="frmInventory.vb">
+      <DependentUpon>frmInventory.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="frmInventoryrpt.Designer.vb">
+      <DependentUpon>frmInventoryrpt.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmInventoryrpt.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="frmListItem.Designer.vb">
@@ -157,10 +173,10 @@
     <Compile Include="frmReturnSub.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmStudentCanBorrow.Designer.vb">
-      <DependentUpon>frmStudentCanBorrow.vb</DependentUpon>
+    <Compile Include="frmStudentDE.Designer.vb">
+      <DependentUpon>frmStudentDE.vb</DependentUpon>
     </Compile>
-    <Compile Include="frmStudentCanBorrow.vb">
+    <Compile Include="frmStudentDE.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="frmStudentlist.Designer.vb">
@@ -181,6 +197,12 @@
     <Compile Include="frmTeacherlist.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="frmTransactrpt.Designer.vb">
+      <DependentUpon>frmTransactrpt.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmTransactrpt.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="frmUserAdd.Designer.vb">
       <DependentUpon>frmUserAdd.vb</DependentUpon>
     </Compile>
@@ -199,10 +221,10 @@
     <Compile Include="Homepage.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Login.Designer.vb">
-      <DependentUpon>Login.vb</DependentUpon>
+    <Compile Include="frmLogin.Designer.vb">
+      <DependentUpon>frmLogin.vb</DependentUpon>
     </Compile>
-    <Compile Include="Login.vb">
+    <Compile Include="frmLogin.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="modCon.vb" />
@@ -223,16 +245,24 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <Compile Include="transactdt.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>transactdt.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="transactdt.vb">
+      <DependentUpon>transactdt.xsd</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="frmAddItem.resx">
       <DependentUpon>frmAddItem.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmBorrow.resx">
-      <DependentUpon>frmBorrow.vb</DependentUpon>
+    <EmbeddedResource Include="frmBorrowDE.resx">
+      <DependentUpon>frmBorrowDE.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmBorrowerCartList.resx">
-      <DependentUpon>frmBorrowerCartList.vb</DependentUpon>
+    <EmbeddedResource Include="frmBorrowingDE.resx">
+      <DependentUpon>frmBorrowingDE.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmBorrowerList.resx">
       <DependentUpon>frmBorrowerList.vb</DependentUpon>
@@ -243,14 +273,17 @@
     <EmbeddedResource Include="frmDamageActionEntry.resx">
       <DependentUpon>frmDamageActionEntry.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmDamageItemAction.resx">
-      <DependentUpon>frmDamageItemAction.vb</DependentUpon>
+    <EmbeddedResource Include="frmDamageItemAY.resx">
+      <DependentUpon>frmDamageItemAY.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmDashboard.resx">
       <DependentUpon>frmDashboard.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmGoodItem.resx">
       <DependentUpon>frmGoodItem.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmInventoryrpt.resx">
+      <DependentUpon>frmInventoryrpt.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmListItem.resx">
       <DependentUpon>frmListItem.vb</DependentUpon>
@@ -264,8 +297,8 @@
     <EmbeddedResource Include="frmReturnSub.resx">
       <DependentUpon>frmReturnSub.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmStudentCanBorrow.resx">
-      <DependentUpon>frmStudentCanBorrow.vb</DependentUpon>
+    <EmbeddedResource Include="frmStudentDE.resx">
+      <DependentUpon>frmStudentDE.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmStudentlist.resx">
       <DependentUpon>frmStudentlist.vb</DependentUpon>
@@ -276,6 +309,9 @@
     <EmbeddedResource Include="frmTeacherlist.resx">
       <DependentUpon>frmTeacherlist.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="frmTransactrpt.resx">
+      <DependentUpon>frmTransactrpt.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmUserAdd.resx">
       <DependentUpon>frmUserAdd.vb</DependentUpon>
     </EmbeddedResource>
@@ -285,8 +321,9 @@
     <EmbeddedResource Include="Homepage.resx">
       <DependentUpon>Homepage.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Login.resx">
-      <DependentUpon>Login.vb</DependentUpon>
+    <EmbeddedResource Include="Inventoryrpt.rdlc" />
+    <EmbeddedResource Include="frmLogin.resx">
+      <DependentUpon>frmLogin.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="My Project\Resources.resx">
       <Generator>VbMyResourcesResXFileCodeGenerator</Generator>
@@ -295,8 +332,12 @@
       <LastGenOutput>Resources.Designer.vb</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="Report3.rdlc" />
+    <Content Include="Transactrpt.rdlc">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
   <ItemGroup>
+    <None Include="app.config" />
     <None Include="dsMod.xsc">
       <DependentUpon>dsMod.xsd</DependentUpon>
     </None>
@@ -308,6 +349,17 @@
     <None Include="dsMod.xss">
       <DependentUpon>dsMod.xsd</DependentUpon>
     </None>
+    <None Include="frmInventory.xsc">
+      <DependentUpon>frmInventory.xsd</DependentUpon>
+    </None>
+    <None Include="frmInventory.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>frmInventory.Designer.vb</LastGenOutput>
+    </None>
+    <None Include="frmInventory.xss">
+      <DependentUpon>frmInventory.xsd</DependentUpon>
+    </None>
     <None Include="My Project\Application.myapp">
       <Generator>MyApplicationCodeGenerator</Generator>
       <LastGenOutput>Application.Designer.vb</LastGenOutput>
@@ -316,6 +368,17 @@
       <Generator>SettingsSingleFileGenerator</Generator>
       <CustomToolNamespace>My</CustomToolNamespace>
       <LastGenOutput>Settings.Designer.vb</LastGenOutput>
+    </None>
+    <None Include="transactdt.xsc">
+      <DependentUpon>transactdt.xsd</DependentUpon>
+    </None>
+    <None Include="transactdt.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>transactdt.Designer.vb</LastGenOutput>
+    </None>
+    <None Include="transactdt.xss">
+      <DependentUpon>transactdt.xsd</DependentUpon>
     </None>
   </ItemGroup>
   <ItemGroup>
@@ -340,7 +403,23 @@
     <None Include="Resources\9055226_bxs_dashboard_icon.png" />
     <None Include="Resources\Screenshot_2025-11-04_122252-removebg-preview %281%29.png" />
     <None Include="Resources\Screenshot_2025-11-04_122252-removebg-preview.png" />
-    <Content Include="StyleSheetLogin.css" />
+    <None Include="Resources\delete.png" />
+    <None Include="Resources\diskette.png" />
+    <None Include="Resources\add.png" />
+    <None Include="Resources\editing.png" />
+    <None Include="Resources\profile1.png" />
+    <None Include="Resources\report.png" />
+    <None Include="Resources\book.png" />
+    <None Include="Resources\return.png" />
+    <None Include="Resources\diskette1.png" />
+    <None Include="Resources\return1.png" />
+    <None Include="Resources\add1.png" />
+    <None Include="Resources\editing1.png" />
+    <None Include="Resources\editing2.png" />
+    <None Include="Resources\previous.png" />
+    <None Include="Resources\shopping-cart_8585635 %281%29.png" />
+    <None Include="Resources\reload_6952948 %281%29.png" />
+    <None Include="Resources\326554_cancel_icon.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

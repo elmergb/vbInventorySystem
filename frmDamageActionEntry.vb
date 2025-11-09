@@ -14,15 +14,12 @@
         Dim qtyDamage As Integer = CInt(lblQtyDamage.Text)
         Dim itemID As Integer
                 Dim damageID As Integer
-        ' Debug check
-        MsgBox("Action ID: " & actionID)
+       
 
-        ' Safely convert text to number
         If Not Double.TryParse(txtAmount.Text, amountPaid) Then
             amountPaid = 0
         End If
 
-                ' Get the ItemID connected to this ActionID
                 Dim getItemCmd As New Odbc.OdbcCommand(" SELECT d.ItemID, d.DamageID FROM tbldamaged d INNER JOIN tbldamage_action a ON d.DamageID = a.DamageID WHERE a.ActionID = ?", con)
                 getItemCmd.Parameters.AddWithValue("?", actionID)
 
@@ -52,7 +49,7 @@
                 cmd.ExecuteNonQuery()
 
                 '  If the action is "Replace", restore the item to good stock
-                If actionType.ToLower() = "replace" Or actionType.ToLower() = "paid" Then
+                If actionType = "Replace" Or actionType = "Pay" Then
                     Dim updateStockCmd As New Odbc.OdbcCommand("Update(tblitemlist)SET ItemQuantity = ItemQuantity + ?  WHERE ItemID = ?", con)
                     updateStockCmd.Parameters.AddWithValue("?", qtyDamage)
                     updateStockCmd.Parameters.AddWithValue("?", itemID)

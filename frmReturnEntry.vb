@@ -1,6 +1,7 @@
 ﻿Public Class frmReturnEntry
     Public Property returnID As Integer = 0
     Public Property BorrowID As Integer
+   Public Event ReturnCompleted As EventHandler
     Property ItemID As Integer
 
 
@@ -34,7 +35,6 @@
             Dim rr = cmd.ExecuteScalar()
             If rr IsNot Nothing AndAlso Not IsDBNull(rr) Then returnedTotal = CInt(rr)
 
-            MsgBox("BorrowID value: " & BorrowID)
 
             ' validation
             If returnedTotal + qtyReturningNow > borrowedQty Then
@@ -50,7 +50,7 @@
             cmd.Parameters.AddWithValue("?", itemID)
             Dim currentQty As Integer = CInt(cmd.ExecuteScalar())
 
-            ' insert to tblreturn
+
             cmd = New Odbc.OdbcCommand("INSERT INTO tblreturn (bID, QuantityReturned, DateTimeReturned, Remarks) VALUES (?, ?, ?, ?)", con)
             cmd.Parameters.AddWithValue("?", CInt(BorrowID))
             cmd.Parameters.AddWithValue("?", qtyReturningNow)
@@ -58,19 +58,19 @@
             cmd.Parameters.AddWithValue("?", Remarks)
             cmd.ExecuteNonQuery()
 
-            ' retrieve the new returnID
+
             cmd = New Odbc.OdbcCommand("SELECT MAX(ReturnID) FROM tblreturn WHERE bID = ?", con)
             cmd.Parameters.AddWithValue("?", BorrowID)
             returnID = CInt(cmd.ExecuteScalar())
 
-            ' Handle(damage)
+
             If Remarks = "Damage" Then
                 Dim choice As MsgBoxResult
                 choice = MsgBox("There are " & qtyReturningNow & " damaged item(s)." & vbCrLf &
                                 "Does the student want to PAY (Yes) or REPLACE (No)?",
                                 vbYesNoCancel + vbQuestion, "Damage Detected")
 
-                ' Insert into tbldamaged first
+
                 cmd = New Odbc.OdbcCommand("INSERT INTO tbldamaged (ItemID, QuantityDamaged, DateReported, DamageRemarks, ReturnID, Status) VALUES (?, ?, NOW(), ?, ?, 'Pending')", con)
                 cmd.Parameters.AddWithValue("?", itemID)
                 cmd.Parameters.AddWithValue("?", qtyReturningNow)
@@ -78,12 +78,12 @@
                 cmd.Parameters.AddWithValue("?", returnID)
                 cmd.ExecuteNonQuery()
 
-                ' Get last DamageID
+
                 cmd = New Odbc.OdbcCommand("SELECT MAX(DamageID) FROM tbldamaged", con)
                 Dim damageID As Integer = CInt(cmd.ExecuteScalar())
 
                 If choice = vbYes Then
-                    ' Student chose PAY
+
                     cmd = New Odbc.OdbcCommand("INSERT INTO tbldamage_action (DamageID, ActionType, Status) VALUES (?, 'Pay', 'Pending')", con)
                     cmd.Parameters.AddWithValue("?", damageID)
                     cmd.ExecuteNonQuery()
@@ -91,7 +91,7 @@
                     MsgBox("Marked as pending payment.", vbInformation)
 
                 ElseIf choice = vbNo Then
-                    ' Student chose REPLACE
+
                     cmd = New Odbc.OdbcCommand("INSERT INTO tbldamage_action (DamageID, ActionType, Status) VALUES (?, 'Replace', 'Pending')", con)
                     cmd.Parameters.AddWithValue("?", damageID)
                     cmd.ExecuteNonQuery()
@@ -111,7 +111,7 @@
 
             MsgBox("Return recorded successfully.", vbInformation)
             Call data_loader("SELECT * FROM vw_borrowed_items", frmReturnList.dgvReturn)
-
+            RaiseEvent ReturnCompleted(Me, EventArgs.Empty)
             Me.Close()
         Catch ex As Exception
             MsgBox("Error: " & ex.Message, vbCritical)
@@ -127,4 +127,7 @@
         e.Handled = True
     End Sub
 
+    Private Sub dtpBorrowedR_ValueChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles dtpBorrowedR.ValueChanged
+
+    End Sub
 End Class

@@ -28,6 +28,7 @@ Public Class frmListItem
             .BorderStyle = BorderStyle.None
             .ForeColor = Color.Black
         End With
+        DisableForm(frmAddItem)
     End Sub
 
     Private Sub btnAdd_Click(sender As Object, e As EventArgs) Handles btnAdd.Click
@@ -35,11 +36,19 @@ Public Class frmListItem
         dgvItemList.Tag = 0
         frmAddItem.nupDamaged.Visible = False
         frmAddItem.lblDamage.Visible = False
-        frmAddItem.ShowDialog()
+
         frmAddItem.ItemID = 0
-        'If Val(dgvItemList.Tag) = 0 Then
-        '    MsgBox("Select a record ")
-        'End If
+        AddHandler frmAddItem.ItemAdded, AddressOf OnItemAdded
+
+        frmAddItem.ShowDialog()
+
+
+        frmAddItem.ItemID = 0
+
+    End Sub
+    Private Sub OnItemAdded(ByVal sender As Object, ByVal e As EventArgs)
+        ' Reload the DataGridView immediately
+        data_loader("SELECT * FROM vw_items", dgvItemList)
     End Sub
 
     Private Sub dgvItemList_CellClick(sender As Object, e As DataGridViewCellEventArgs) Handles dgvItemList.CellClick
@@ -52,7 +61,7 @@ Public Class frmListItem
             frmAddItem.cbLocation.Text = dgvItemList.Rows(e.RowIndex).Cells("ItemLocation").Value.ToString()
             frmAddItem.cbRemarks.Text = dgvItemList.Rows(e.RowIndex).Cells("Remarks").Value.ToString()
 
-            ' ✅ Quantity
+
             Dim qty As Object = dgvItemList.Rows(e.RowIndex).Cells("Quantity").Value
             If qty IsNot Nothing AndAlso Not IsDBNull(qty) AndAlso IsNumeric(qty) Then
                 frmAddItem.nupQuantity.Value = CInt(qty)
@@ -60,7 +69,7 @@ Public Class frmListItem
                 frmAddItem.nupQuantity.Value = 0
             End If
 
-            ' ✅ Damaged (if you have a separate control, e.g., nupDamaged)
+
             Dim qtydamage As Object = dgvItemList.Rows(e.RowIndex).Cells("Damaged").Value
             If qtydamage IsNot Nothing AndAlso Not IsDBNull(qtydamage) AndAlso IsNumeric(qtydamage) Then
                 frmAddItem.nupDamaged.Value = CInt(qtydamage)
@@ -75,8 +84,8 @@ Public Class frmListItem
         If (dgvItemList.Tag) = 0 Then
             MsgBox("Select an item to borrow!", vbInformation, "Select Item")
         Else
-            frmBorrow.SelectedItemID = Val(dgvItemList.Tag)
-            frmBorrow.ShowDialog()
+            frmBorrowDE.SelectedItemID = Val(dgvItemList.Tag)
+            frmBorrowDE.ShowDialog()
         End If
 
     End Sub
@@ -119,19 +128,13 @@ Public Class frmListItem
     End Sub
 
     Private Sub EToolStripMenuItem_Click(sender As Object, e As EventArgs)
-        MsgExit("Are you sure you want to exit?", Login, Homepage, Me)
+        MsgExit("Are you sure you want to exit?", frmLogin, Homepage, Me)
 
     End Sub
     Private Sub txtSearch_TextChanged(sender As Object, e As EventArgs) Handles txtSearch.TextChanged
         SearchItems(txtSearch.Text, dgvItemList)
     End Sub
 
-    Private Sub txtSearch_GotFocus(sender As Object, e As EventArgs) Handles txtSearch.GotFocus
-        If txtSearch.Text = "Search Item" Then
-            txtSearch.Text = ""
-            txtSearch.ForeColor = Color.Black
-        End If
-    End Sub
 
     Private Sub dgvItemList_CellContentClick(sender As System.Object, e As System.Windows.Forms.DataGridViewCellEventArgs) Handles dgvItemList.CellContentClick
 

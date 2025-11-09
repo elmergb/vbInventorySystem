@@ -24,8 +24,6 @@ Partial Class frmGoodItem
     Private Sub InitializeComponent()
         Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle3 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle4 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Me.dgvItemList = New System.Windows.Forms.DataGridView()
         Me.Item = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.NameOfItem = New System.Windows.Forms.DataGridViewTextBoxColumn()
@@ -48,12 +46,13 @@ Partial Class frmGoodItem
         DataGridViewCellStyle1.BackColor = System.Drawing.Color.White
         DataGridViewCellStyle1.ForeColor = System.Drawing.Color.Black
         Me.dgvItemList.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle1
+        Me.dgvItemList.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill
         Me.dgvItemList.BackgroundColor = System.Drawing.Color.White
         Me.dgvItemList.BorderStyle = System.Windows.Forms.BorderStyle.None
         Me.dgvItemList.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.[Single]
-        DataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
         DataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Control
-        DataGridViewCellStyle2.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle2.Font = New System.Drawing.Font("Arial", 10.2!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         DataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText
         DataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight
         DataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText
@@ -61,30 +60,15 @@ Partial Class frmGoodItem
         Me.dgvItemList.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle2
         Me.dgvItemList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.dgvItemList.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.Item, Me.NameOfItem, Me.ItemDesc, Me.Category, Me.ItemLocation, Me.Quantity, Me.Status, Me.Remarks, Me.Damaged})
-        DataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Window
-        DataGridViewCellStyle3.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.ControlText
-        DataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight
-        DataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText
-        DataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
-        Me.dgvItemList.DefaultCellStyle = DataGridViewCellStyle3
         Me.dgvItemList.ImeMode = System.Windows.Forms.ImeMode.NoControl
-        Me.dgvItemList.Location = New System.Drawing.Point(25, 123)
+        Me.dgvItemList.Location = New System.Drawing.Point(29, 151)
+        Me.dgvItemList.Margin = New System.Windows.Forms.Padding(4)
         Me.dgvItemList.Name = "dgvItemList"
         Me.dgvItemList.ReadOnly = True
-        DataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Control
-        DataGridViewCellStyle4.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.WindowText
-        DataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight
-        DataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText
-        DataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.dgvItemList.RowHeadersDefaultCellStyle = DataGridViewCellStyle4
         Me.dgvItemList.RowHeadersVisible = False
         Me.dgvItemList.RowHeadersWidth = 50
         Me.dgvItemList.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
-        Me.dgvItemList.Size = New System.Drawing.Size(1016, 445)
+        Me.dgvItemList.Size = New System.Drawing.Size(1186, 548)
         Me.dgvItemList.TabIndex = 1
         '
         'Item
@@ -102,15 +86,13 @@ Partial Class frmGoodItem
         Me.NameOfItem.HeaderText = "Name"
         Me.NameOfItem.Name = "NameOfItem"
         Me.NameOfItem.ReadOnly = True
-        Me.NameOfItem.Width = 144
         '
         'ItemDesc
         '
         Me.ItemDesc.DataPropertyName = "ItemDescription"
-        Me.ItemDesc.HeaderText = "ItemDescription"
+        Me.ItemDesc.HeaderText = "Description"
         Me.ItemDesc.Name = "ItemDesc"
         Me.ItemDesc.ReadOnly = True
-        Me.ItemDesc.Width = 144
         '
         'Category
         '
@@ -118,7 +100,6 @@ Partial Class frmGoodItem
         Me.Category.HeaderText = "Category"
         Me.Category.Name = "Category"
         Me.Category.ReadOnly = True
-        Me.Category.Width = 143
         '
         'ItemLocation
         '
@@ -126,7 +107,6 @@ Partial Class frmGoodItem
         Me.ItemLocation.HeaderText = "Location"
         Me.ItemLocation.Name = "ItemLocation"
         Me.ItemLocation.ReadOnly = True
-        Me.ItemLocation.Width = 144
         '
         'Quantity
         '
@@ -134,7 +114,6 @@ Partial Class frmGoodItem
         Me.Quantity.HeaderText = "Quantity"
         Me.Quantity.Name = "Quantity"
         Me.Quantity.ReadOnly = True
-        Me.Quantity.Width = 144
         '
         'Status
         '
@@ -142,7 +121,6 @@ Partial Class frmGoodItem
         Me.Status.HeaderText = "Status"
         Me.Status.Name = "Status"
         Me.Status.ReadOnly = True
-        Me.Status.Width = 144
         '
         'Remarks
         '
@@ -151,7 +129,6 @@ Partial Class frmGoodItem
         Me.Remarks.HeaderText = "Remarks"
         Me.Remarks.Name = "Remarks"
         Me.Remarks.ReadOnly = True
-        Me.Remarks.Width = 215
         '
         'Damaged
         '
@@ -160,14 +137,15 @@ Partial Class frmGoodItem
         Me.Damaged.Name = "Damaged"
         Me.Damaged.ReadOnly = True
         Me.Damaged.Visible = False
-        Me.Damaged.Width = 144
         '
         'frmGoodItem
         '
-        Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
+        Me.AutoScaleDimensions = New System.Drawing.SizeF(7.0!, 16.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(1382, 621)
+        Me.ClientSize = New System.Drawing.Size(1613, 764)
         Me.Controls.Add(Me.dgvItemList)
+        Me.Font = New System.Drawing.Font("Arial", 7.8!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Margin = New System.Windows.Forms.Padding(4)
         Me.Name = "frmGoodItem"
         Me.Text = "frmGoodItem"
         CType(Me.dgvItemList, System.ComponentModel.ISupportInitialize).EndInit()

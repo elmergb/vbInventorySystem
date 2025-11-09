@@ -76,22 +76,37 @@ Module modGlobalFunc
     End Function
 
     Public Sub listLoader()
-        Dim cmd As Odbc.OdbcCommand
-        frmCartListView.lvCart.Items.Clear()
+        Try
+            Dim query As String = "SELECT tempID, ItemName, ItemDescription, QuantityBorrowed, Purpose, Contact, Remarks FROM vw_cartlist"
+            Dim cmd As New Odbc.OdbcCommand(query, con)
 
-        cmd = New Odbc.OdbcCommand("SELECT ItemName, ItemDescription, QuantityBorrowed FROM vw_cartlist", con)
-        Dim result As Odbc.OdbcDataReader = cmd.ExecuteReader()
+            frmCartListView.lvCart.Items.Clear()
+            Dim result As Odbc.OdbcDataReader = cmd.ExecuteReader()
 
-        While result.Read()
-            Dim itemName As String = result("ItemName").ToString
-            Dim qty As Integer = CInt(result("QuantityBorrowed"))
-            Dim itemDesc As String = result("ItemDescription").ToString
-            Dim listItem As New ListViewItem(itemName)
-            listItem.SubItems.Add(itemDesc)
-            listItem.SubItems.Add(qty)
-            frmCartListView.lvCart.Items.Add(listItem)
-        End While
-        result.Close()
+            While result.Read()
+                Dim cartID As Integer = CInt(result("tempID"))
+                Dim itemName As String = result("ItemName").ToString()
+                Dim itemDesc As String = result("ItemDescription").ToString()
+                Dim qty As Integer = CInt(result("QuantityBorrowed"))
+                Dim purpose As String = result("Purpose").ToString()
+                Dim contact As String = result("Contact").ToString()
+                Dim remarks As String = result("Remarks").ToString()
+
+                Dim listItem As New ListViewItem(itemName)
+                listItem.SubItems.Add(itemDesc)
+                listItem.SubItems.Add(qty.ToString())
+                listItem.SubItems.Add(purpose)
+                listItem.SubItems.Add(contact)
+                listItem.SubItems.Add(remarks)
+                listItem.Tag = cartID
+
+                frmCartListView.lvCart.Items.Add(listItem)
+            End While
+
+            result.Close()
+        Catch ex As Exception
+            MessageBox.Show("Error loading list: " & ex.Message)
+        End Try
     End Sub
     Public Sub ClearAllText(ByVal parent As Control)
         For Each ctrl As Control In parent.Controls
@@ -111,7 +126,7 @@ Module modGlobalFunc
 
     Public Sub DisableForm(ByVal frm As Form)
         frm.FormBorderStyle = FormBorderStyle.None
-        frm.ControlBox = False
+        'frm.ControlBox = False
         frm.Text = ""          ' Removes title text
         frm.MinimizeBox = False
         frm.MaximizeBox = False
@@ -190,13 +205,13 @@ Module modGlobalFunc
                 Dim c As String = reader("cCode").ToString
                 Dim s As String = reader("section").ToString
                 Dim yearLevel As String = reader("yDesc").ToString
-                frmBorrow.txtBorrowerName.Text = fullName.Trim()
-                frmBorrow.txtCourse.Text = course.Trim
-                frmBorrow.txtSection.Text = section.Trim
-                frmBorrow.txtSchoolYear.Text = yearLevel.Trim
+                frmBorrowDE.txtBorrowerName.Text = fullName.Trim()
+                frmBorrowDE.txtCourse.Text = course.Trim
+                frmBorrowDE.txtSection.Text = section.Trim
+                frmBorrowDE.txtSchoolYear.Text = yearLevel.Trim
             Else
                 MsgBox("Student No not found!", vbExclamation)
-                frmBorrow.txtBorrowerName.Clear()
+                frmBorrowDE.txtBorrowerName.Clear()
             End If
 
             reader.Close()

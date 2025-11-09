@@ -23,7 +23,14 @@
                 .BorderStyle = BorderStyle.None
             End With
         Next
+        Try
+            Dim cmd As New Odbc.OdbcCommand("DELETE FROM tblcartlist", con)
+            cmd.ExecuteNonQuery()
+        Catch ex As Exception
+            MsgBox("Error clearing cart: " & ex.Message)
+        End Try
 
+        frmCartListView.lvCart.Clear()
     End Sub
 
     Private Sub dgvItemList_CellClick(sender As Object, e As System.Windows.Forms.DataGridViewCellEventArgs) Handles dgvItemList.CellClick

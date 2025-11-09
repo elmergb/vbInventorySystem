@@ -46,9 +46,10 @@ Partial Class frmDamageActionEntry
         '
         Me.Label1.AutoSize = True
         Me.Label1.Font = New System.Drawing.Font("Arial", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label1.Location = New System.Drawing.Point(16, 99)
+        Me.Label1.Location = New System.Drawing.Point(21, 122)
+        Me.Label1.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(123, 19)
+        Me.Label1.Size = New System.Drawing.Size(150, 24)
         Me.Label1.TabIndex = 0
         Me.Label1.Text = "Student Name:"
         '
@@ -56,17 +57,19 @@ Partial Class frmDamageActionEntry
         '
         Me.cbActionType.Font = New System.Drawing.Font("Arial", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.cbActionType.FormattingEnabled = True
-        Me.cbActionType.Location = New System.Drawing.Point(439, 128)
+        Me.cbActionType.Location = New System.Drawing.Point(585, 158)
+        Me.cbActionType.Margin = New System.Windows.Forms.Padding(4)
         Me.cbActionType.Name = "cbActionType"
-        Me.cbActionType.Size = New System.Drawing.Size(200, 23)
+        Me.cbActionType.Size = New System.Drawing.Size(265, 25)
         Me.cbActionType.TabIndex = 1
         '
         'txtAmount
         '
         Me.txtAmount.Font = New System.Drawing.Font("Arial", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtAmount.Location = New System.Drawing.Point(439, 171)
+        Me.txtAmount.Location = New System.Drawing.Point(585, 210)
+        Me.txtAmount.Margin = New System.Windows.Forms.Padding(4)
         Me.txtAmount.Name = "txtAmount"
-        Me.txtAmount.Size = New System.Drawing.Size(200, 21)
+        Me.txtAmount.Size = New System.Drawing.Size(265, 25)
         Me.txtAmount.TabIndex = 2
         Me.txtAmount.Text = "If pay"
         '
@@ -74,9 +77,10 @@ Partial Class frmDamageActionEntry
         '
         Me.Label2.AutoSize = True
         Me.Label2.Font = New System.Drawing.Font("Arial", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label2.Location = New System.Drawing.Point(16, 138)
+        Me.Label2.Location = New System.Drawing.Point(21, 170)
+        Me.Label2.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label2.Name = "Label2"
-        Me.Label2.Size = New System.Drawing.Size(101, 19)
+        Me.Label2.Size = New System.Drawing.Size(123, 24)
         Me.Label2.TabIndex = 3
         Me.Label2.Text = "Student No:"
         '
@@ -84,9 +88,10 @@ Partial Class frmDamageActionEntry
         '
         Me.Label3.AutoSize = True
         Me.Label3.Font = New System.Drawing.Font("Arial", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label3.Location = New System.Drawing.Point(17, 173)
+        Me.Label3.Location = New System.Drawing.Point(23, 213)
+        Me.Label3.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label3.Name = "Label3"
-        Me.Label3.Size = New System.Drawing.Size(95, 19)
+        Me.Label3.Size = New System.Drawing.Size(116, 24)
         Me.Label3.TabIndex = 4
         Me.Label3.Text = "Item Name:"
         '
@@ -94,9 +99,10 @@ Partial Class frmDamageActionEntry
         '
         Me.Label4.AutoSize = True
         Me.Label4.Font = New System.Drawing.Font("Arial", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label4.Location = New System.Drawing.Point(335, 128)
+        Me.Label4.Location = New System.Drawing.Point(447, 158)
+        Me.Label4.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label4.Name = "Label4"
-        Me.Label4.Size = New System.Drawing.Size(64, 19)
+        Me.Label4.Size = New System.Drawing.Size(77, 24)
         Me.Label4.TabIndex = 5
         Me.Label4.Text = "Action:"
         '
@@ -104,27 +110,30 @@ Partial Class frmDamageActionEntry
         '
         Me.Label5.AutoSize = True
         Me.Label5.Font = New System.Drawing.Font("Arial", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label5.Location = New System.Drawing.Point(334, 169)
+        Me.Label5.Location = New System.Drawing.Point(445, 208)
+        Me.Label5.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label5.Name = "Label5"
-        Me.Label5.Size = New System.Drawing.Size(75, 19)
+        Me.Label5.Size = New System.Drawing.Size(90, 24)
         Me.Label5.TabIndex = 6
         Me.Label5.Text = "Amount:"
         '
         'txtRemarks
         '
         Me.txtRemarks.Font = New System.Drawing.Font("Arial", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtRemarks.Location = New System.Drawing.Point(439, 208)
+        Me.txtRemarks.Location = New System.Drawing.Point(585, 256)
+        Me.txtRemarks.Margin = New System.Windows.Forms.Padding(4)
         Me.txtRemarks.Name = "txtRemarks"
-        Me.txtRemarks.Size = New System.Drawing.Size(200, 21)
+        Me.txtRemarks.Size = New System.Drawing.Size(265, 25)
         Me.txtRemarks.TabIndex = 7
         '
         'Label6
         '
         Me.Label6.AutoSize = True
         Me.Label6.Font = New System.Drawing.Font("Arial", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label6.Location = New System.Drawing.Point(334, 207)
+        Me.Label6.Location = New System.Drawing.Point(445, 255)
+        Me.Label6.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label6.Name = "Label6"
-        Me.Label6.Size = New System.Drawing.Size(83, 19)
+        Me.Label6.Size = New System.Drawing.Size(100, 24)
         Me.Label6.TabIndex = 8
         Me.Label6.Text = "Remarks:"
         '
@@ -132,38 +141,45 @@ Partial Class frmDamageActionEntry
         '
         Me.dtpDateTime.CustomFormat = "yyyy-MM-dd HH:mm:ss"
         Me.dtpDateTime.Font = New System.Drawing.Font("Arial", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.dtpDateTime.Location = New System.Drawing.Point(439, 101)
+        Me.dtpDateTime.Location = New System.Drawing.Point(585, 124)
+        Me.dtpDateTime.Margin = New System.Windows.Forms.Padding(4)
         Me.dtpDateTime.Name = "dtpDateTime"
-        Me.dtpDateTime.Size = New System.Drawing.Size(200, 21)
+        Me.dtpDateTime.Size = New System.Drawing.Size(265, 25)
         Me.dtpDateTime.TabIndex = 9
         '
         'Label7
         '
         Me.Label7.AutoSize = True
         Me.Label7.Font = New System.Drawing.Font("Arial", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label7.Location = New System.Drawing.Point(334, 100)
+        Me.Label7.Location = New System.Drawing.Point(445, 123)
+        Me.Label7.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label7.Name = "Label7"
-        Me.Label7.Size = New System.Drawing.Size(95, 19)
+        Me.Label7.Size = New System.Drawing.Size(118, 24)
         Me.Label7.TabIndex = 10
         Me.Label7.Text = "Date/Time: "
         '
         'btnSave
         '
         Me.btnSave.Font = New System.Drawing.Font("Arial", 11.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnSave.Location = New System.Drawing.Point(516, 257)
+        Me.btnSave.Image = Global.main.My.Resources.Resources.diskette
+        Me.btnSave.Location = New System.Drawing.Point(688, 316)
+        Me.btnSave.Margin = New System.Windows.Forms.Padding(4)
         Me.btnSave.Name = "btnSave"
-        Me.btnSave.Size = New System.Drawing.Size(89, 55)
+        Me.btnSave.Size = New System.Drawing.Size(119, 68)
         Me.btnSave.TabIndex = 11
         Me.btnSave.Text = "Save"
+        Me.btnSave.TextAlign = System.Drawing.ContentAlignment.MiddleRight
+        Me.btnSave.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText
         Me.btnSave.UseVisualStyleBackColor = True
         '
         'lblStudent
         '
         Me.lblStudent.AutoSize = True
         Me.lblStudent.Font = New System.Drawing.Font("Arial", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblStudent.Location = New System.Drawing.Point(145, 100)
+        Me.lblStudent.Location = New System.Drawing.Point(171, 123)
+        Me.lblStudent.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.lblStudent.Name = "lblStudent"
-        Me.lblStudent.Size = New System.Drawing.Size(101, 17)
+        Me.lblStudent.Size = New System.Drawing.Size(130, 22)
         Me.lblStudent.TabIndex = 12
         Me.lblStudent.Text = "Student Name"
         '
@@ -171,9 +187,10 @@ Partial Class frmDamageActionEntry
         '
         Me.lblStudentNo.AutoSize = True
         Me.lblStudentNo.Font = New System.Drawing.Font("Arial", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblStudentNo.Location = New System.Drawing.Point(123, 140)
+        Me.lblStudentNo.Location = New System.Drawing.Point(142, 172)
+        Me.lblStudentNo.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.lblStudentNo.Name = "lblStudentNo"
-        Me.lblStudentNo.Size = New System.Drawing.Size(80, 17)
+        Me.lblStudentNo.Size = New System.Drawing.Size(104, 22)
         Me.lblStudentNo.TabIndex = 13
         Me.lblStudentNo.Text = "Student No"
         '
@@ -181,9 +198,10 @@ Partial Class frmDamageActionEntry
         '
         Me.lblItemName.AutoSize = True
         Me.lblItemName.Font = New System.Drawing.Font("Arial", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblItemName.Location = New System.Drawing.Point(124, 175)
+        Me.lblItemName.Location = New System.Drawing.Point(143, 215)
+        Me.lblItemName.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.lblItemName.Name = "lblItemName"
-        Me.lblItemName.Size = New System.Drawing.Size(79, 17)
+        Me.lblItemName.Size = New System.Drawing.Size(103, 22)
         Me.lblItemName.TabIndex = 14
         Me.lblItemName.Text = "Item Name"
         '
@@ -191,9 +209,10 @@ Partial Class frmDamageActionEntry
         '
         Me.Label8.AutoSize = True
         Me.Label8.Font = New System.Drawing.Font("Arial", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label8.Location = New System.Drawing.Point(17, 201)
+        Me.Label8.Location = New System.Drawing.Point(23, 247)
+        Me.Label8.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label8.Name = "Label8"
-        Me.Label8.Size = New System.Drawing.Size(146, 19)
+        Me.Label8.Size = New System.Drawing.Size(180, 24)
         Me.Label8.TabIndex = 15
         Me.Label8.Text = "Quantity Damage:"
         '
@@ -201,9 +220,10 @@ Partial Class frmDamageActionEntry
         '
         Me.lblqtyDamage.AutoSize = True
         Me.lblqtyDamage.Font = New System.Drawing.Font("Arial", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblqtyDamage.Location = New System.Drawing.Point(191, 207)
+        Me.lblqtyDamage.Location = New System.Drawing.Point(211, 249)
+        Me.lblqtyDamage.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.lblqtyDamage.Name = "lblqtyDamage"
-        Me.lblqtyDamage.Size = New System.Drawing.Size(27, 17)
+        Me.lblqtyDamage.Size = New System.Drawing.Size(35, 22)
         Me.lblqtyDamage.TabIndex = 16
         Me.lblqtyDamage.Text = "qty"
         '
@@ -214,17 +234,18 @@ Partial Class frmDamageActionEntry
         Me.lblSchoolYear.Font = New System.Drawing.Font("Arial", 20.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lblSchoolYear.ForeColor = System.Drawing.Color.White
         Me.lblSchoolYear.Location = New System.Drawing.Point(0, 0)
+        Me.lblSchoolYear.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.lblSchoolYear.Name = "lblSchoolYear"
-        Me.lblSchoolYear.Size = New System.Drawing.Size(663, 62)
+        Me.lblSchoolYear.Size = New System.Drawing.Size(884, 76)
         Me.lblSchoolYear.TabIndex = 48
         Me.lblSchoolYear.Text = "Damaged Item"
         Me.lblSchoolYear.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
         '
         'frmDamageActionEntry
         '
-        Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
+        Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 16.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(663, 317)
+        Me.ClientSize = New System.Drawing.Size(884, 390)
         Me.Controls.Add(Me.lblSchoolYear)
         Me.Controls.Add(Me.lblqtyDamage)
         Me.Controls.Add(Me.Label8)
@@ -243,6 +264,7 @@ Partial Class frmDamageActionEntry
         Me.Controls.Add(Me.txtAmount)
         Me.Controls.Add(Me.cbActionType)
         Me.Controls.Add(Me.Label1)
+        Me.Margin = New System.Windows.Forms.Padding(4)
         Me.Name = "frmDamageActionEntry"
         Me.Text = "frmDamageActionEntry"
         Me.ResumeLayout(False)

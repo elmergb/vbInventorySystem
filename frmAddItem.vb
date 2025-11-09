@@ -1,5 +1,6 @@
 ﻿Public Class frmAddItem
     Public Property ItemID As Integer = 0
+    Public Event ItemAdded As EventHandler
     Private Sub frmAddItem_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         cbRemarks.Items.Clear()
         If ItemID = 0 Then
@@ -10,7 +11,7 @@
         End If
 
         cbLocation.Focus()
-        DisableForm(Me)
+
     End Sub
 
     Private Sub btnSave_Click(sender As Object, e As EventArgs) Handles btnSave.Click
@@ -28,7 +29,7 @@
             ' --- ADD NEW ITEM ---
             Try
                 If qty <= 0 Then
-                    MsgBox("Nakalimutan mo mag lagay ng item")
+                    MsgBox("Insert valid amount")
                     Return
                 End If
                 cmd = New Odbc.OdbcCommand("SELECT ItemID, ItemQuantity FROM tblitemlist WHERE TRIM(ItemName)=? AND TRIM(ItemDescription)=? AND TRIM(ItemLocation)=?", con)
@@ -77,7 +78,7 @@
                 If MsgBox("Do you want to add more items?", vbYesNo + vbQuestion) = vbNo Then
                     Me.Close()
                 End If
-
+                RaiseEvent ItemAdded(Me, EventArgs.Empty)
                 ClearAllText(Me)
                 data_loader("SELECT * FROM tblitemlist", frmListItem.dgvItemList)
 
@@ -88,7 +89,6 @@
             End Try
 
         Else
-            ' --- EDIT EXISTING ITEM ---
             Dim damagedQty As Integer = CInt(nupDamaged.Value)
             If qty <= -1 Then
                 MsgBox("Nakalimutan mo mag lagay ng item")
@@ -97,7 +97,6 @@
 
 
             Try
-                ' Determine remarks automatically based on quantities
                 If damagedQty > qty Then
                     Remarks = "Partial Damage"
                 ElseIf damagedQty > 0 Then
@@ -129,29 +128,48 @@
 
                 If countDamaged > 0 Then
                     ' Update existing record
-                    cmd = New Odbc.OdbcCommand("UPDATE tbldamaged SET QuantityDamaged=?, DateReported=NOW(), Remarks=? WHERE ItemID=?", con)
+                    cmd = New Odbc.OdbcCommand("UPDATE tbldamaged SET QuantityDamaged=?, DateReported=NOW(), DamageRemarks=? WHERE ItemID=?", con)
                     cmd.Parameters.AddWithValue("?", damagedQty)
                     cmd.Parameters.AddWithValue("?", Remarks)
                     cmd.Parameters.AddWithValue("?", ItemID)
                 Else
                     ' Insert new damaged record
-                    cmd = New Odbc.OdbcCommand("INSERT INTO tbldamaged (ItemID, QuantityDamaged, DateReported, Remarks) VALUES (?, ?, NOW(), ?)", con)
+                    cmd = New Odbc.OdbcCommand("INSERT INTO tbldamaged (ItemID, QuantityDamaged, DateReported, DamageRemarks) VALUES (?, ?, NOW(), ?)", con)
                     cmd.Parameters.AddWithValue("?", ItemID)
                     cmd.Parameters.AddWithValue("?", damagedQty)
                     cmd.Parameters.AddWithValue("?", Remarks)
                 End If
 
                 cmd.ExecuteNonQuery()
+                Call data_loader("SELECT * FROM vw_items", frmListItem.dgvItemList)
 
                 ClearAllText(Me)
 
+                RaiseEvent ItemAdded(Me, EventArgs.Empty)
+                Me.Close()
             Catch ex As Exception
                 MsgBox(ex.Message.ToString)
             Finally
+                RaiseEvent ItemAdded(Me, EventArgs.Empty)
                 GC.Collect()
             End Try
         End If
 
     End Sub
 
+    Private Sub btnExit_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnExit.Click
+        Me.Close()
+    End Sub
+
+ 
+  
+    Private Sub btnCancel_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnCancel.Click
+        If MsgBox("Are you sure to cancel this record?", vbYesNo + vbQuestion, "cancellatio") = vbYes Then
+            txtItemDesc.Clear()
+            txtNameOFItem.Clear()
+            cbCategory.SelectedValue = -1
+            cbRemarks.SelectedValue = -1
+            cbLocation.SelectedValue = -1
+        End If
+    End Sub
 End Class

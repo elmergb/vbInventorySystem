@@ -2,6 +2,8 @@
 
     Private Sub frmStudentlist_Load(sender As System.Object, e As System.EventArgs) Handles MyBase.Load
         Call data_loader("SELECT * FROM vw_user", dgvStudentList)
+   
+        LoadStudents()
         'If e.RowIndex >= 0 Then
         '    dgvItemList.Tag = dgvItemList.Rows(e.RowIndex).Cells("Item").Value
 
@@ -36,45 +38,79 @@
             .ColumnHeadersDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter
             .DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter
         End With
+        DisableForm(frmStudentDE)
     End Sub
 
-    Private Sub dgvStudentList_CellClick(sender As Object, e As System.Windows.Forms.DataGridViewCellEventArgs) Handles dgvStudentList.CellClick
+    Private Sub LoadStudents(Optional ByVal search As String = "")
+        Dim query As String = "SELECT * FROM vw_user"
+
+        ' If there is a search term, add WHERE filter
+        If search <> "" Then
+            query &= " WHERE studentNo LIKE '%" & search & "%' " &
+                     "OR fname LIKE '%" & search & "%' " &
+                     "OR lname LIKE '%" & search & "%' " &
+                     "OR cCode LIKE '%" & search & "%' " &
+                     "OR section LIKE '%" & search & "%' " &
+                     "OR yDesc LIKE '%" & search & "%'"
+        End If
+
+        Dim da As New Odbc.OdbcDataAdapter(query, con)
+        Dim dt As New DataTable
+        da.Fill(dt)
+        dgvStudentList.DataSource = dt
+    End Sub
+
+    Private Sub dgvStudentList_CellClick(ByVal sender As Object, ByVal e As System.Windows.Forms.DataGridViewCellEventArgs) Handles dgvStudentList.CellClick
         'If e.RowIndex >= 0 Then
         '    dgvStudentList.Tag = dgvStudentList.Item(0, e.RowIndex).Value
         '    frmStudentCanBorrow()
         'End If
 
         If e.RowIndex >= 0 Then
-            dgvStudentList.Tag = dgvStudentList.Rows(e.RowIndex).Cells("sID").Value
-            frmStudentCanBorrow.txtStudentNumber.Text = dgvStudentList.Rows(e.RowIndex).Cells("StudentNo").Value.ToString()
-            frmStudentCanBorrow.txtfname.Text = dgvStudentList.Rows(e.RowIndex).Cells("fname").Value.ToString()
-            frmStudentCanBorrow.txtmi.Text = dgvStudentList.Rows(e.RowIndex).Cells("mi").Value.ToString()
-            frmStudentCanBorrow.txtlname.Text = dgvStudentList.Rows(e.RowIndex).Cells("lname").Value.ToString()
-            frmStudentCanBorrow.cbCourses.SelectedValue = dgvStudentList.Rows(e.RowIndex).Cells("course").Value.ToString()
-            frmStudentCanBorrow.txtSection.Text = dgvStudentList.Rows(e.RowIndex).Cells("section").Value.ToString()
-            frmStudentCanBorrow.cbYear.SelectedValue = dgvStudentList.Rows(e.RowIndex).Cells("yDesc").Value.ToString()
-            frmStudentCanBorrow.cbRole.SelectedValue = dgvStudentList.Rows(e.RowIndex).Cells("Role").Value.ToString()
-            frmStudentCanBorrow.txtuname.Text = dgvStudentList.Rows(e.RowIndex).Cells("UserName").Value.ToString()
-            frmStudentCanBorrow.txtPword.Text = dgvStudentList.Rows(e.RowIndex).Cells("pword").Value.ToString()
-            frmStudentCanBorrow.ckbisActive.Checked = CBool(dgvStudentList.Rows(e.RowIndex).Cells("isActive").Value)
+            dgvStudentList.Tag = dgvStudentList.Rows(e.RowIndex).Cells("sIDs").Value
+            frmStudentDE.txtStudentNumber.Text = dgvStudentList.Rows(e.RowIndex).Cells("StudentNo").Value.ToString()
+            frmStudentDE.txtfname.Text = dgvStudentList.Rows(e.RowIndex).Cells("fname").Value.ToString()
+            frmStudentDE.txtmi.Text = dgvStudentList.Rows(e.RowIndex).Cells("mi").Value.ToString()
+            frmStudentDE.txtlname.Text = dgvStudentList.Rows(e.RowIndex).Cells("lname").Value.ToString()
+            frmStudentDE.cbCourses.SelectedValue = dgvStudentList.Rows(e.RowIndex).Cells("course").Value.ToString()
+            frmStudentDE.txtSection.Text = dgvStudentList.Rows(e.RowIndex).Cells("section").Value.ToString()
+            frmStudentDE.cbYear.SelectedValue = dgvStudentList.Rows(e.RowIndex).Cells("yDesc").Value.ToString()
+            frmStudentDE.cbRole.SelectedValue = dgvStudentList.Rows(e.RowIndex).Cells("Role").Value.ToString()
+            frmStudentDE.txtuname.Text = dgvStudentList.Rows(e.RowIndex).Cells("UserName").Value.ToString()
+            frmStudentDE.txtPword.Text = dgvStudentList.Rows(e.RowIndex).Cells("pword").Value.ToString()
+            frmStudentDE.ckbisActive.Checked = CBool(dgvStudentList.Rows(e.RowIndex).Cells("isActive").Value)
 
         End If
+
     End Sub
 
 
-    Private Sub btnEdit_Click(sender As System.Object, e As System.EventArgs) Handles btnEdit.Click
+    Private Sub btnEdit_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnEdit.Click
         If Val(dgvStudentList.Tag) = 0 Then
             MsgBox("Select a record to Edit!")
         Else
-            frmStudentCanBorrow.studentID = Val(dgvStudentList.Tag)
-            frmStudentCanBorrow.Show()
+            frmStudentDE.studentID = Val(dgvStudentList.Tag)
+            frmStudentDE.lbltext.Text = "Edit"
+            frmStudentDE.lbltext.Location = New Point(220, 18)
+            frmStudentDE.Show()
         End If
     End Sub
 
-    Private Sub btnAdd_Click(sender As System.Object, e As System.EventArgs) Handles btnAdd.Click
-        frmStudentCanBorrow.studentID = 0
-        frmStudentCanBorrow.Show()
-
+    Private Sub btnAdd_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnAdd.Click
+        frmStudentDE.studentID = 0
+        frmStudentDE.Show()
+        With frmStudentDE
+            .txtfname.Clear()
+            .txtlname.Clear()
+            .txtmi.Clear()
+            .txtPword.Clear()
+            .txtSection.Clear()
+            .txtStudentNumber.Clear()
+            .txtuname.Clear()
+            .cbCourses.SelectedValue = -1
+            .cbRole.SelectedValue = -1
+            .cbYear.SelectedValue = -1
+        End With
     End Sub
 
     Private Sub btnDelete_Click(sender As System.Object, e As System.EventArgs) Handles btnDelete.Click
@@ -83,38 +119,46 @@
             Exit Sub
         End If
 
-
         Dim row As DataGridViewRow = dgvStudentList.CurrentRow
-        Dim studNo As String = row.Cells("StudentNo").Value.ToString()
-        Dim role As String = row.Cells("Role").Value.ToString()
+        Dim sID As Integer = CInt(row.Cells("sIDs").Value)
+        Dim role As String = row.Cells("Role").Value.ToString().Trim().ToLower()
 
-
-        If role.Trim().ToLower() = "admin" Then
-            MsgBox("You cannot delete an Admin account.", vbExclamation)
+        If role = "admin" Then
+            MsgBox("You cannot delete an Admin account.", vbExclamation, "Action Denied")
             Exit Sub
         End If
 
-
-        If MsgBox("Are you sure you want to deactivate this account?", vbYesNo + vbQuestion) = vbYes Then
+        If MsgBox("Are you sure you want to delete this user?", vbYesNo + vbQuestion, "Confirm Delete") = vbYes Then
             Try
+                Dim query As String = "DELETE FROM tbluser WHERE sID = ?"
 
-
-                Dim query As String = "UPDATE tblstudent SET isActive = 0 WHERE studNo = ?"
                 Using cmd As New Odbc.OdbcCommand(query, con)
-                    cmd.Parameters.AddWithValue("@studNo", studNo)
+                    cmd.Parameters.AddWithValue("?", sID)
                     cmd.ExecuteNonQuery()
                 End Using
 
-
-                MsgBox("Student has been deactivated successfully.", vbInformation)
-
-
-                Call data_loader("SELECT * FROM vw_students", dgvStudentList)
+                MsgBox("User deleted successfully.", vbInformation)
+                Call data_loader("SELECT * FROM vw_user", dgvStudentList)
+                LoadStudents()
 
             Catch ex As Exception
-                MsgBox("Error deactivating record: " & ex.Message, vbCritical)
+                MsgBox("Error deleting record: " & ex.Message, vbCritical)
             End Try
         End If
+
+
+    End Sub
+
+    Private Sub txtSearch_TextChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles txtSearch.TextChanged
+        LoadStudents(txtSearch.Text.Trim())
+
+    End Sub
+
+    Private Sub Label1_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Label1.Click
+
+    End Sub
+
+    Private Sub dgvStudentList_CellContentClick(sender As System.Object, e As System.Windows.Forms.DataGridViewCellEventArgs) Handles dgvStudentList.CellContentClick
 
     End Sub
 End Class

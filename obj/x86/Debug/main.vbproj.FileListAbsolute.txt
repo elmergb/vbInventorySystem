@@ -13,8 +13,6 @@ C:\Users\edwar\Documents\Visual Studio 2010\Projects\main\main\bin\Debug\main.ex
 C:\Users\edwar\Documents\Visual Studio 2010\Projects\main\main\bin\Debug\main.pdb
 C:\Users\edwar\Documents\Visual Studio 2010\Projects\main\main\bin\Debug\main.xml
 C:\Users\edwar\Documents\Visual Studio 2010\Projects\main\main\obj\x86\Debug\main.frmAddItem.resources
-C:\Users\edwar\Documents\Visual Studio 2010\Projects\main\main\obj\x86\Debug\main.frmBorrow.resources
-C:\Users\edwar\Documents\Visual Studio 2010\Projects\main\main\obj\x86\Debug\main.frmBorrowerCartList.resources
 C:\Users\edwar\Documents\Visual Studio 2010\Projects\main\main\obj\x86\Debug\main.frmBorrowerList.resources
 C:\Users\edwar\Documents\Visual Studio 2010\Projects\main\main\obj\x86\Debug\main.frmCartListView.resources
 C:\Users\edwar\Documents\Visual Studio 2010\Projects\main\main\obj\x86\Debug\main.frmDashboard.resources
@@ -24,19 +22,130 @@ C:\Users\edwar\Documents\Visual Studio 2010\Projects\main\main\obj\x86\Debug\mai
 C:\Users\edwar\Documents\Visual Studio 2010\Projects\main\main\obj\x86\Debug\main.frmUserAdd.resources
 C:\Users\edwar\Documents\Visual Studio 2010\Projects\main\main\obj\x86\Debug\main.frmUserList.resources
 C:\Users\edwar\Documents\Visual Studio 2010\Projects\main\main\obj\x86\Debug\main.Homepage.resources
-C:\Users\edwar\Documents\Visual Studio 2010\Projects\main\main\obj\x86\Debug\main.Login.resources
 C:\Users\edwar\Documents\Visual Studio 2010\Projects\main\main\obj\x86\Debug\main.Resources.resources
 C:\Users\edwar\Documents\Visual Studio 2010\Projects\main\main\obj\x86\Debug\main.vbproj.GenerateResource.cache
 C:\Users\edwar\Documents\Visual Studio 2010\Projects\main\main\obj\x86\Debug\main.exe
 C:\Users\edwar\Documents\Visual Studio 2010\Projects\main\main\obj\x86\Debug\main.xml
 C:\Users\edwar\Documents\Visual Studio 2010\Projects\main\main\obj\x86\Debug\main.pdb
-C:\Users\edwar\Documents\Visual Studio 2010\Projects\main\main\obj\x86\Debug\main.frmStudentCanBorrow.resources
 C:\Users\edwar\Documents\Visual Studio 2010\Projects\main\main\obj\x86\Debug\main.frmStudentlist.resources
 C:\Users\edwar\Documents\Visual Studio 2010\Projects\main\main\obj\x86\Debug\RdlCompile.cache
 C:\Users\edwar\Documents\Visual Studio 2010\Projects\main\main\obj\x86\Debug\RdlCompile.compiled
 C:\Users\edwar\Documents\Visual Studio 2010\Projects\main\main\obj\x86\Debug\main.frmReturnSub.resources
 C:\Users\edwar\Documents\Visual Studio 2010\Projects\main\main\obj\x86\Debug\main.frmGoodItem.resources
-C:\Users\edwar\Documents\Visual Studio 2010\Projects\main\main\obj\x86\Debug\main.frmDamageItemAction.resources
 C:\Users\edwar\Documents\Visual Studio 2010\Projects\main\main\obj\x86\Debug\main.frmDamageActionEntry.resources
 C:\Users\edwar\Documents\Visual Studio 2010\Projects\main\main\obj\x86\Debug\main.frmTeacherDE.resources
 C:\Users\edwar\Documents\Visual Studio 2010\Projects\main\main\obj\x86\Debug\main.frmTeacherlist.resources
+C:\Users\Erica Joy Restum\Documents\Visual Studio 2010\Projects\main\main\obj\x86\Debug\main.exe
+C:\Users\Erica Joy Restum\Documents\Visual Studio 2010\Projects\main\main\obj\x86\Debug\main.xml
+C:\Users\Erica Joy Restum\Documents\Visual Studio 2010\Projects\main\main\obj\x86\Debug\main.pdb
+C:\Users\Erica Joy Restum\Documents\Visual Studio 2010\Projects\main\main\bin\Debug\main.exe
+C:\Users\Erica Joy Restum\Documents\Visual Studio 2010\Projects\main\main\bin\Debug\main.pdb
+C:\Users\Erica Joy Restum\Documents\Visual Studio 2010\Projects\main\main\bin\Debug\main.xml
+C:\Users\Erica Joy Restum\Documents\Visual Studio 2010\Projects\main\main\obj\x86\Debug\main.frmAddItem.resources
+C:\Users\Erica Joy Restum\Documents\Visual Studio 2010\Projects\main\main\obj\x86\Debug\main.frmBorrowerList.resources
+C:\Users\Erica Joy Restum\Documents\Visual Studio 2010\Projects\main\main\obj\x86\Debug\main.frmCartListView.resources
+C:\Users\Erica Joy Restum\Documents\Visual Studio 2010\Projects\main\main\obj\x86\Debug\main.frmDamageActionEntry.resources
+C:\Users\Erica Joy Restum\Documents\Visual Studio 2010\Projects\main\main\obj\x86\Debug\main.frmDashboard.resources
+C:\Users\Erica Joy Restum\Documents\Visual Studio 2010\Projects\main\main\obj\x86\Debug\main.frmGoodItem.resources
+C:\Users\Erica Joy Restum\Documents\Visual Studio 2010\Projects\main\main\obj\x86\Debug\main.frmListItem.resources
+C:\Users\Erica Joy Restum\Documents\Visual Studio 2010\Projects\main\main\obj\x86\Debug\main.frmReturnEntry.resources
+C:\Users\Erica Joy Restum\Documents\Visual Studio 2010\Projects\main\main\obj\x86\Debug\main.frmReturnList.resources
+C:\Users\Erica Joy Restum\Documents\Visual Studio 2010\Projects\main\main\obj\x86\Debug\main.frmReturnSub.resources
+C:\Users\Erica Joy Restum\Documents\Visual Studio 2010\Projects\main\main\obj\x86\Debug\main.frmStudentlist.resources
+C:\Users\Erica Joy Restum\Documents\Visual Studio 2010\Projects\main\main\obj\x86\Debug\main.frmTeacherDE.resources
+C:\Users\Erica Joy Restum\Documents\Visual Studio 2010\Projects\main\main\obj\x86\Debug\main.frmTeacherlist.resources
+C:\Users\Erica Joy Restum\Documents\Visual Studio 2010\Projects\main\main\obj\x86\Debug\main.frmUserAdd.resources
+C:\Users\Erica Joy Restum\Documents\Visual Studio 2010\Projects\main\main\obj\x86\Debug\main.frmUserList.resources
+C:\Users\Erica Joy Restum\Documents\Visual Studio 2010\Projects\main\main\obj\x86\Debug\main.Homepage.resources
+C:\Users\Erica Joy Restum\Documents\Visual Studio 2010\Projects\main\main\obj\x86\Debug\main.Resources.resources
+C:\Users\Erica Joy Restum\Documents\Visual Studio 2010\Projects\main\main\obj\x86\Debug\main.vbproj.GenerateResource.Cache
+C:\Users\Erica Joy Restum\Documents\Visual Studio 2010\Projects\main\main\obj\x86\Debug\RdlCompile.cache
+C:\Users\Erica Joy Restum\Documents\Visual Studio 2010\Projects\main\main\obj\x86\Debug\RdlCompile.compiled
+C:\Users\Erica Joy Restum\Documents\Visual Studio 2010\Projects\main\main\bin\Debug\main.exe.config
+C:\Users\Erica Joy Restum\Documents\Visual Studio 2010\Projects\main\main\obj\x86\Debug\main.vbprojResolveAssemblyReference.cache
+C:\Users\Erica Joy Restum\Documents\Visual Studio 2010\Projects\main\main\obj\x86\Debug\main.frmInventoryrpt.resources
+C:\Users\Erica Joy Restum\Documents\Visual Studio 2010\Projects\main\main\obj\x86\Debug\main.frmTransactrpt.resources
+C:\Users\Erica Joy Restum\Documents\Visual Studio 2010\Projects\main\main\obj\x86\Debug\main.frmBorrowDE.resources
+C:\Users\Erica Joy Restum\Documents\Visual Studio 2010\Projects\main\main\obj\x86\Debug\main.frmBorrowingDE.resources
+C:\Users\Erica Joy Restum\Documents\Visual Studio 2010\Projects\main\main\obj\x86\Debug\main.frmDamageItemAY.resources
+C:\Users\Erica Joy Restum\Documents\Visual Studio 2010\Projects\main\main\obj\x86\Debug\main.frmLogin.resources
+C:\Users\Erica Joy Restum\Documents\Visual Studio 2010\Projects\main\main\bin\Debug\Transactrpt.rdlc
+C:\Users\Erica Joy Restum\Documents\Visual Studio 2010\Projects\main\main\obj\x86\Debug\main.frmStudentDE.resources
+D:\main\main\bin\Debug\main.exe.config
+D:\main\main\obj\x86\Debug\main.exe
+D:\main\main\obj\x86\Debug\main.xml
+D:\main\main\obj\x86\Debug\main.pdb
+D:\main\main\obj\x86\Debug\main.vbprojResolveAssemblyReference.cache
+D:\main\main\obj\x86\Debug\main.frmAddItem.resources
+D:\main\main\obj\x86\Debug\main.frmBorrowDE.resources
+D:\main\main\obj\x86\Debug\main.frmBorrowingDE.resources
+D:\main\main\obj\x86\Debug\main.frmBorrowerList.resources
+D:\main\main\obj\x86\Debug\main.frmCartListView.resources
+D:\main\main\obj\x86\Debug\main.frmDamageActionEntry.resources
+D:\main\main\obj\x86\Debug\main.frmDamageItemAY.resources
+D:\main\main\obj\x86\Debug\main.frmDashboard.resources
+D:\main\main\obj\x86\Debug\main.frmGoodItem.resources
+D:\main\main\obj\x86\Debug\main.frmInventoryrpt.resources
+D:\main\main\obj\x86\Debug\main.frmListItem.resources
+D:\main\main\obj\x86\Debug\main.frmReturnEntry.resources
+D:\main\main\obj\x86\Debug\main.frmReturnList.resources
+D:\main\main\obj\x86\Debug\main.frmReturnSub.resources
+D:\main\main\obj\x86\Debug\main.frmStudentDE.resources
+D:\main\main\obj\x86\Debug\main.frmStudentlist.resources
+D:\main\main\obj\x86\Debug\main.frmTeacherDE.resources
+D:\main\main\obj\x86\Debug\main.frmTeacherlist.resources
+D:\main\main\obj\x86\Debug\main.frmTransactrpt.resources
+D:\main\main\obj\x86\Debug\main.frmUserAdd.resources
+D:\main\main\obj\x86\Debug\main.frmUserList.resources
+D:\main\main\obj\x86\Debug\main.Homepage.resources
+D:\main\main\obj\x86\Debug\main.frmLogin.resources
+D:\main\main\obj\x86\Debug\main.Resources.resources
+D:\main\main\obj\x86\Debug\main.vbproj.GenerateResource.Cache
+D:\main\main\obj\x86\Debug\RdlCompile.cache
+D:\main\main\obj\x86\Debug\RdlCompile.compiled
+G:\main\main\bin\Debug\main.exe.config
+G:\main\main\obj\x86\Debug\main.exe
+G:\main\main\obj\x86\Debug\main.xml
+G:\main\main\obj\x86\Debug\main.pdb
+G:\main\main\bin\Debug\Transactrpt.rdlc
+G:\main\main\bin\Debug\main.exe
+G:\main\main\bin\Debug\main.pdb
+G:\main\main\bin\Debug\main.xml
+G:\main\main\obj\x86\Debug\main.vbprojResolveAssemblyReference.cache
+G:\main\main\obj\x86\Debug\main.frmAddItem.resources
+G:\main\main\obj\x86\Debug\main.frmBorrowDE.resources
+G:\main\main\obj\x86\Debug\main.frmBorrowingDE.resources
+G:\main\main\obj\x86\Debug\main.frmBorrowerList.resources
+G:\main\main\obj\x86\Debug\main.frmCartListView.resources
+G:\main\main\obj\x86\Debug\main.frmDamageActionEntry.resources
+G:\main\main\obj\x86\Debug\main.frmDamageItemAY.resources
+G:\main\main\obj\x86\Debug\main.frmDashboard.resources
+G:\main\main\obj\x86\Debug\main.frmGoodItem.resources
+G:\main\main\obj\x86\Debug\main.frmInventoryrpt.resources
+G:\main\main\obj\x86\Debug\main.frmListItem.resources
+G:\main\main\obj\x86\Debug\main.frmReturnEntry.resources
+G:\main\main\obj\x86\Debug\main.frmReturnList.resources
+G:\main\main\obj\x86\Debug\main.frmReturnSub.resources
+G:\main\main\obj\x86\Debug\main.frmStudentDE.resources
+G:\main\main\obj\x86\Debug\main.frmStudentlist.resources
+G:\main\main\obj\x86\Debug\main.frmTeacherDE.resources
+G:\main\main\obj\x86\Debug\main.frmTeacherlist.resources
+G:\main\main\obj\x86\Debug\main.frmTransactrpt.resources
+G:\main\main\obj\x86\Debug\main.frmUserAdd.resources
+G:\main\main\obj\x86\Debug\main.frmUserList.resources
+G:\main\main\obj\x86\Debug\main.Homepage.resources
+G:\main\main\obj\x86\Debug\main.frmLogin.resources
+G:\main\main\obj\x86\Debug\main.Resources.resources
+G:\main\main\obj\x86\Debug\main.vbproj.GenerateResource.Cache
+G:\main\main\obj\x86\Debug\RdlCompile.cache
+G:\main\main\obj\x86\Debug\RdlCompile.compiled
+C:\Users\edwar\Documents\Visual Studio 2010\Projects\main\main\bin\Debug\main.exe.config
+C:\Users\edwar\Documents\Visual Studio 2010\Projects\main\main\bin\Debug\Transactrpt.rdlc
+C:\Users\edwar\Documents\Visual Studio 2010\Projects\main\main\obj\x86\Debug\main.vbprojResolveAssemblyReference.cache
+C:\Users\edwar\Documents\Visual Studio 2010\Projects\main\main\obj\x86\Debug\main.frmBorrowDE.resources
+C:\Users\edwar\Documents\Visual Studio 2010\Projects\main\main\obj\x86\Debug\main.frmBorrowingDE.resources
+C:\Users\edwar\Documents\Visual Studio 2010\Projects\main\main\obj\x86\Debug\main.frmDamageItemAY.resources
+C:\Users\edwar\Documents\Visual Studio 2010\Projects\main\main\obj\x86\Debug\main.frmInventoryrpt.resources
+C:\Users\edwar\Documents\Visual Studio 2010\Projects\main\main\obj\x86\Debug\main.frmStudentDE.resources
+C:\Users\edwar\Documents\Visual Studio 2010\Projects\main\main\obj\x86\Debug\main.frmTransactrpt.resources
+C:\Users\edwar\Documents\Visual Studio 2010\Projects\main\main\obj\x86\Debug\main.frmLogin.resources

@@ -76,6 +76,6 @@
     End Sub
 
     Private Sub EToolStripMenuItem_Click(sender As Object, e As EventArgs) 
-        MsgExit("Are you sure you want to exit?", Login, Homepage, Me)
+        MsgExit("Are you sure you want to exit?", frmLogin, Homepage, Me)
     End Sub
 End Class

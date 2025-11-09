@@ -30,11 +30,11 @@ Partial Class frmUserList
         Me.Column3 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Column4 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Column5 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.btnAdd = New System.Windows.Forms.Button()
-        Me.btnEdit = New System.Windows.Forms.Button()
-        Me.btnDelete = New System.Windows.Forms.Button()
         Me.Panel1 = New System.Windows.Forms.Panel()
         Me.Label2 = New System.Windows.Forms.Label()
+        Me.btnDelete = New System.Windows.Forms.Button()
+        Me.btnEdit = New System.Windows.Forms.Button()
+        Me.btnAdd = New System.Windows.Forms.Button()
         CType(Me.dgvUserList, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.Panel1.SuspendLayout()
         Me.SuspendLayout()
@@ -49,7 +49,7 @@ Partial Class frmUserList
         Me.dgvUserList.BackgroundColor = System.Drawing.Color.Gainsboro
         DataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
         DataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control
-        DataGridViewCellStyle1.Font = New System.Drawing.Font("Arial", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle1.Font = New System.Drawing.Font("Arial", 10.2!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         DataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText
         DataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight
         DataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText
@@ -59,12 +59,13 @@ Partial Class frmUserList
         Me.dgvUserList.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.Column6, Me.Column1, Me.Column2, Me.Column3, Me.Column4, Me.Column5})
         Me.dgvUserList.EnableHeadersVisualStyles = False
         Me.dgvUserList.GridColor = System.Drawing.Color.Gainsboro
-        Me.dgvUserList.Location = New System.Drawing.Point(21, 103)
+        Me.dgvUserList.Location = New System.Drawing.Point(24, 127)
+        Me.dgvUserList.Margin = New System.Windows.Forms.Padding(4)
         Me.dgvUserList.Name = "dgvUserList"
         Me.dgvUserList.ReadOnly = True
         Me.dgvUserList.RowHeadersVisible = False
         Me.dgvUserList.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
-        Me.dgvUserList.Size = New System.Drawing.Size(886, 573)
+        Me.dgvUserList.Size = New System.Drawing.Size(1495, 583)
         Me.dgvUserList.TabIndex = 0
         '
         'Column6
@@ -114,36 +115,6 @@ Partial Class frmUserList
         Me.Column5.ReadOnly = True
         Me.Column5.Visible = False
         '
-        'btnAdd
-        '
-        Me.btnAdd.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnAdd.Location = New System.Drawing.Point(1057, 235)
-        Me.btnAdd.Name = "btnAdd"
-        Me.btnAdd.Size = New System.Drawing.Size(87, 43)
-        Me.btnAdd.TabIndex = 1
-        Me.btnAdd.Text = "Add"
-        Me.btnAdd.UseVisualStyleBackColor = True
-        '
-        'btnEdit
-        '
-        Me.btnEdit.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnEdit.Location = New System.Drawing.Point(1057, 297)
-        Me.btnEdit.Name = "btnEdit"
-        Me.btnEdit.Size = New System.Drawing.Size(87, 43)
-        Me.btnEdit.TabIndex = 2
-        Me.btnEdit.Text = "Edit"
-        Me.btnEdit.UseVisualStyleBackColor = True
-        '
-        'btnDelete
-        '
-        Me.btnDelete.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnDelete.Location = New System.Drawing.Point(1057, 357)
-        Me.btnDelete.Name = "btnDelete"
-        Me.btnDelete.Size = New System.Drawing.Size(87, 43)
-        Me.btnDelete.TabIndex = 3
-        Me.btnDelete.Text = "Delete"
-        Me.btnDelete.UseVisualStyleBackColor = True
-        '
         'Panel1
         '
         Me.Panel1.BackColor = System.Drawing.SystemColors.ActiveCaption
@@ -152,8 +123,9 @@ Partial Class frmUserList
         Me.Panel1.Dock = System.Windows.Forms.DockStyle.Top
         Me.Panel1.ForeColor = System.Drawing.SystemColors.ControlLightLight
         Me.Panel1.Location = New System.Drawing.Point(0, 0)
+        Me.Panel1.Margin = New System.Windows.Forms.Padding(4)
         Me.Panel1.Name = "Panel1"
-        Me.Panel1.Size = New System.Drawing.Size(1335, 62)
+        Me.Panel1.Size = New System.Drawing.Size(1558, 76)
         Me.Panel1.TabIndex = 17
         '
         'Label2
@@ -163,23 +135,68 @@ Partial Class frmUserList
         Me.Label2.Font = New System.Drawing.Font("Arial", 20.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label2.ForeColor = System.Drawing.SystemColors.ButtonHighlight
         Me.Label2.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.Label2.Location = New System.Drawing.Point(-18, 12)
+        Me.Label2.Location = New System.Drawing.Point(16, 18)
+        Me.Label2.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label2.Name = "Label2"
-        Me.Label2.Size = New System.Drawing.Size(173, 32)
+        Me.Label2.Size = New System.Drawing.Size(163, 40)
         Me.Label2.TabIndex = 8
-        Me.Label2.Text = "     User List"
+        Me.Label2.Text = "User List"
         Me.Label2.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
+        '
+        'btnDelete
+        '
+        Me.btnDelete.Font = New System.Drawing.Font("Arial", 10.2!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnDelete.Image = Global.main.My.Resources.Resources.delete
+        Me.btnDelete.Location = New System.Drawing.Point(315, 742)
+        Me.btnDelete.Margin = New System.Windows.Forms.Padding(0)
+        Me.btnDelete.Name = "btnDelete"
+        Me.btnDelete.Size = New System.Drawing.Size(102, 53)
+        Me.btnDelete.TabIndex = 3
+        Me.btnDelete.Text = "Delete"
+        Me.btnDelete.TextAlign = System.Drawing.ContentAlignment.MiddleRight
+        Me.btnDelete.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText
+        Me.btnDelete.UseVisualStyleBackColor = True
+        '
+        'btnEdit
+        '
+        Me.btnEdit.Font = New System.Drawing.Font("Arial", 10.2!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnEdit.Image = Global.main.My.Resources.Resources.editing
+        Me.btnEdit.Location = New System.Drawing.Point(188, 742)
+        Me.btnEdit.Margin = New System.Windows.Forms.Padding(4)
+        Me.btnEdit.Name = "btnEdit"
+        Me.btnEdit.Size = New System.Drawing.Size(102, 53)
+        Me.btnEdit.TabIndex = 2
+        Me.btnEdit.Text = "Edit"
+        Me.btnEdit.TextAlign = System.Drawing.ContentAlignment.MiddleRight
+        Me.btnEdit.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText
+        Me.btnEdit.UseVisualStyleBackColor = True
+        '
+        'btnAdd
+        '
+        Me.btnAdd.Font = New System.Drawing.Font("Arial", 10.2!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnAdd.Image = Global.main.My.Resources.Resources.add
+        Me.btnAdd.ImageAlign = System.Drawing.ContentAlignment.MiddleRight
+        Me.btnAdd.Location = New System.Drawing.Point(60, 742)
+        Me.btnAdd.Margin = New System.Windows.Forms.Padding(0)
+        Me.btnAdd.Name = "btnAdd"
+        Me.btnAdd.Size = New System.Drawing.Size(102, 53)
+        Me.btnAdd.TabIndex = 1
+        Me.btnAdd.Text = "Add"
+        Me.btnAdd.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText
+        Me.btnAdd.UseVisualStyleBackColor = True
         '
         'frmUserList
         '
-        Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
+        Me.AutoScaleDimensions = New System.Drawing.SizeF(7.0!, 16.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(1335, 688)
+        Me.ClientSize = New System.Drawing.Size(1558, 847)
         Me.Controls.Add(Me.Panel1)
         Me.Controls.Add(Me.btnDelete)
         Me.Controls.Add(Me.btnEdit)
         Me.Controls.Add(Me.btnAdd)
         Me.Controls.Add(Me.dgvUserList)
+        Me.Font = New System.Drawing.Font("Arial", 7.8!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Margin = New System.Windows.Forms.Padding(4)
         Me.Name = "frmUserList"
         Me.Text = "frmUserList"
         Me.WindowState = System.Windows.Forms.FormWindowState.Maximized

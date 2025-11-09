@@ -1,5 +1,9 @@
 ﻿Public Class frmBorrowerList
 
+    Property SchemaSerializationMode As SchemaSerializationMode
+
+    Property DataSetName As String
+
     Private Sub frmBorrowerList_Load(sender As System.Object, e As System.EventArgs) Handles MyBase.Load
 
         Call vbConnection()
@@ -9,7 +13,6 @@
         'For Each col As DataGridViewColumn In dgvBorrowerList.Columns
         '    colNames &= col.Index & " - " & col.Name & vbCrLf
         'Next
-        'MsgBox(colNames, MsgBoxStyle.Information, "Column Arrangement")
         With dgvBorrowerList
             .EnableHeadersVisualStyles = False
             .ColumnHeadersDefaultCellStyle.BackColor = Color.SteelBlue
@@ -23,7 +26,15 @@
             .CellBorderStyle = DataGridViewCellBorderStyle.Single
             .GridColor = Color.LightGray
             .BorderStyle = BorderStyle.None
+            .ForeColor = Color.Black
+
+            .AllowUserToResizeColumns = False
+            .AllowUserToResizeRows = False
         End With
+
+        For Each col As DataGridViewColumn In dgvBorrowerList.Columns
+            col.SortMode = DataGridViewColumnSortMode.NotSortable
+        Next
     End Sub
 
     Private Sub dgvBorrowerList_CellClick(sender As Object, e As System.Windows.Forms.DataGridViewCellEventArgs)
@@ -32,33 +43,33 @@
             dgvBorrowerList.Tag = dgvBorrowerList.Rows(e.RowIndex).Cells("bID").Value
 
             ' Transfer values from the DataGridView to frmBorrow controls
-            frmBorrow.cbItemList.Text = dgvBorrowerList.Rows(e.RowIndex).Cells("ItemName").Value.ToString()
-            frmBorrow.txtItemDesc.Text = dgvBorrowerList.Rows(e.RowIndex).Cells("ItemDesc").Value.ToString()
-            frmBorrow.txtBorrowerName.Text = dgvBorrowerList.Rows(e.RowIndex).Cells("BorrowerName").Value.ToString()
+            frmBorrowDE.cbItemList.Text = dgvBorrowerList.Rows(e.RowIndex).Cells("ItemName").Value.ToString()
+            frmBorrowDE.txtItemDesc.Text = dgvBorrowerList.Rows(e.RowIndex).Cells("ItemDesc").Value.ToString()
+            frmBorrowDE.txtBorrowerName.Text = dgvBorrowerList.Rows(e.RowIndex).Cells("BorrowerName").Value.ToString()
 
             ' Handle Quantity (convert safely to integer)
             Dim qty As Object = dgvBorrowerList.Rows(e.RowIndex).Cells("qtyBorrowed").Value
             If qty IsNot Nothing AndAlso Not IsDBNull(qty) Then
-                frmBorrow.nupQuantity.Value = CInt(qty)
+                frmBorrowDE.nupQuantity.Value = CInt(qty)
             Else
-                frmBorrow.nupQuantity.Value = 0
+                frmBorrowDE.nupQuantity.Value = 0
             End If
 
-            frmBorrow.txtContact.Text = dgvBorrowerList.Rows(e.RowIndex).Cells("contact").Value.ToString()
-            frmBorrow.txtPurpose.Text = dgvBorrowerList.Rows(e.RowIndex).Cells("purpose").Value.ToString()
+            frmBorrowDE.txtContact.Text = dgvBorrowerList.Rows(e.RowIndex).Cells("contact").Value.ToString()
+            frmBorrowDE.txtPurpose.Text = dgvBorrowerList.Rows(e.RowIndex).Cells("purpose").Value.ToString()
 
             ' Handle Date safely
             Dim dateBorrowed As Object = dgvBorrowerList.Rows(e.RowIndex).Cells("dateborrowed").Value
             If dateBorrowed IsNot Nothing AndAlso Not IsDBNull(dateBorrowed) Then
-                frmBorrow.dtpBorrowed.Value = CDate(dateBorrowed)
+                frmBorrowDE.dtpBorrowed.Value = CDate(dateBorrowed)
             End If
 
-            frmBorrow.cbBorrowRemarks.Text = dgvBorrowerList.Rows(e.RowIndex).Cells("remarks").Value.ToString()
+            frmBorrowDE.cbBorrowRemarks.Text = dgvBorrowerList.Rows(e.RowIndex).Cells("remarks").Value.ToString()
         End If
 
     End Sub
 
-    Private Sub btnDelete_Click(sender As System.Object, e As System.EventArgs) Handles btnDelete.Click
+    Private Sub btnDelete_Click(ByVal sender As System.Object, ByVal e As System.EventArgs)
         'Dim cmd As Odbc.OdbcCommand
         'If dgvBorrowerList.Tag = 0 Then
         '    MsgBox("Please select a record to delete.", MsgBoxStyle.Exclamation)
@@ -81,5 +92,33 @@
         '        MsgBox("Error: " & ex.Message, MsgBoxStyle.Critical)
         '    End Try
         'End If
+    End Sub
+
+    Private Sub txtSearch_TextChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles txtSearch.TextChanged
+        Try
+            Dim searchText As String = txtSearch.Text.Trim()
+
+            Dim query As String = "SELECT * FROM vw_borrowed_items WHERE Status <> 'Returned'"
+
+            If searchText <> "" Then
+                query &= " AND (StudentName LIKE ? OR ItemName LIKE ?)"
+            End If
+
+            Using cmd As New Odbc.OdbcCommand(query, con)
+                If searchText <> "" Then
+                    cmd.Parameters.AddWithValue("?", "%" & searchText & "%")
+                    cmd.Parameters.AddWithValue("?", "%" & searchText & "%")
+                End If
+
+                Dim da As New Odbc.OdbcDataAdapter(cmd)
+                Dim dt As New DataTable
+                da.Fill(dt)
+
+                dgvBorrowerList.DataSource = dt
+            End Using
+
+        Catch ex As Exception
+            MsgBox("Error while searching: " & ex.Message, vbCritical, "Search Error")
+        End Try
     End Sub
 End Class

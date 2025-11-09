@@ -8,18 +8,14 @@
         pnlItem.Controls.Add(form)
         form.Show()
 
-
-        If Login.role = "Student" Then
-            msStudent.Visible = False
-            msDashboard.Visible = False
-        End If
     End Sub
 
-    Private Sub Homepage_Load(sender As System.Object, e As System.EventArgs) Handles MyBase.Load
+    Private Sub Homepage_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
         Call vbConnection()
         DisableForm(Me)
         LoadForm(New frmDashboard())
-        lblUser.Text = Login.txtUsername.Text
+
+        lblUser.Text = frmLogin.txtUsername.Text
         Timer1.Start()
     End Sub
 
@@ -40,6 +36,7 @@
     End Sub
 
     Private Sub DashboardToolStripMenuItem_Click(sender As System.Object, e As System.EventArgs) Handles msDashboard.Click
+
         LoadForm(New frmDashboard())
     End Sub
 
@@ -48,7 +45,7 @@
     End Sub
 
     Private Sub BorrowedToolStripMenuItem_Click(sender As System.Object, e As System.EventArgs) Handles msBorrow.Click
-        LoadForm(New frmBorrowerCartList())
+        LoadForm(New frmBorrowingDE())
     End Sub
 
     Private Sub ReturnToolStripMenuItem1_Click(sender As System.Object, e As System.EventArgs) Handles msReturn.Click
@@ -63,12 +60,12 @@
 
     End Sub
 
-    Private Sub GoodToolStripMenuItem_Click(sender As System.Object, e As System.EventArgs) Handles GoodToolStripMenuItem.Click
+    Private Sub GoodToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs)
         LoadForm(New frmGoodItem())
     End Sub
 
     Private Sub DamageAccountibilityToolStripMenuItem_Click(sender As System.Object, e As System.EventArgs) Handles DamageAccountibilityToolStripMenuItem.Click
-        LoadForm(New frmDamageItemAction())
+        LoadForm(New frmDamageItemAY())
     End Sub
 
 
@@ -84,8 +81,8 @@
 
     End Sub
 
-    Private Sub ltsLogout_Click(sender As System.Object, e As System.EventArgs) Handles ltsLogout.Click
- 
+    Private Sub ltsLogout_Click(ByVal sender As System.Object, ByVal e As System.EventArgs)
+
         MsgExit("Do you want to Logout?", Me, Me, Me)
 
     End Sub
@@ -102,7 +99,7 @@
 
 
     Private Sub Timer1_Tick(sender As System.Object, e As System.EventArgs) Handles Timer1.Tick
-        lblTime.Text = DateTime.Now.ToString("MMMM dd, yyyy hh:mm:ss tt")
+        lblTime.Text = DateTime.Now.ToString("MMMM dd, yyyy hh:mm")
     End Sub
 
     Private Sub ToolStripLabel2_Click(sender As System.Object, e As System.EventArgs) Handles ToolStripLabel2.Click
@@ -110,6 +107,29 @@
     End Sub
 
     Private Sub lblUser_Click(sender As System.Object, e As System.EventArgs) Handles lblUser.Click
+
+    End Sub
+
+    Private Sub InventoryReportToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles InventoryReportToolStripMenuItem.Click
+        LoadForm(New frmInventoryrpt)
+    End Sub
+
+    Private Sub TransactionRepotToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles TransactionRepotToolStripMenuItem.Click
+        LoadForm(New frmTransactrpt())
+    End Sub
+
+    Private Sub ltsLogout_Click_1(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles ltsLogout.Click
+        If MsgBox("Are you sure to Logout?", vbYesNo + vbQuestion) = vbYes Then
+            Me.Close()
+        End If
+
+    End Sub
+
+    Private Sub lblTime_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles lblTime.Click
+
+    End Sub
+
+    Private Sub ToolStripDropDownButton1_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles ToolStripDropDownButton1.Click
 
     End Sub
 End Class
