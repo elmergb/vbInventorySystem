@@ -50,6 +50,7 @@
     End Sub
 
     Private Sub btnEdit_Click(ByVal sender As Object, ByVal e As EventArgs) Handles btnEdit.Click
+        Dim cmd As Odbc.OdbcCommand
         If lvCart.SelectedItems.Count = 0 Then
             MsgBox("Please select an item to edit.", MsgBoxStyle.Exclamation)
             Exit Sub

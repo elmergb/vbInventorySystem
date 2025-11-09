@@ -23,7 +23,7 @@
     End Sub
 
     Private Sub btnSave_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnSave.Click
-
+        Dim cmd As Odbc.OdbcCommand
         Dim contact As String = txtContact.Text.Trim()
         If Not System.Text.RegularExpressions.Regex.IsMatch(contact, "^\d{11}$") Then
             MessageBox.Show("Contact number must be exactly 11 digits.", "Invalid Contact", MessageBoxButtons.OK, MessageBoxIcon.Warning)
@@ -33,14 +33,52 @@
         Try
             If IsEditMode Then
 
-                Dim updateCmd As New Odbc.OdbcCommand("UPDATE tblcartlist SET QuantityBorrowed = ?, Contact = ?, Purpose = ? WHERE tempID = ?", con)
-                With updateCmd.Parameters
-                    .AddWithValue("?", CInt(nupQuantity.Value))
+                Dim getOldQtyCmd As New Odbc.OdbcCommand("SELECT QuantityBorrowed, ItemID FROM tblcartlist WHERE tempID = ?", con)
+                getOldQtyCmd.Parameters.AddWithValue("?", CartID)
+
+                Dim rdr As Odbc.OdbcDataReader = getOldQtyCmd.ExecuteReader()
+                Dim oldQty As Integer = 0
+                Dim itemID As Integer = 0
+                If rdr.Read() Then
+                    oldQty = Convert.ToInt32(rdr("QuantityBorrowed"))
+                    itemID = Convert.ToInt32(rdr("ItemID"))
+                End If
+                rdr.Close()
+
+                Dim newQty As Integer = CInt(nupQuantity.Value)
+                Dim diff As Integer = newQty - oldQty
+
+                '
+                If diff <> 0 Then
+
+                    If diff > 0 Then
+                        Dim checkQtyCmd As New Odbc.OdbcCommand("SELECT ItemQuantity FROM tblitemlist WHERE ItemID = ?", con)
+                        checkQtyCmd.Parameters.AddWithValue("?", itemID)
+                        Dim availableQty As Integer = Convert.ToInt32(checkQtyCmd.ExecuteScalar())
+
+                        If availableQty < diff Then
+                            MsgBox("Not enough stock available to increase quantity.", vbExclamation)
+                            Exit Sub
+                        End If
+                    End If
+
+                    ' Update stock based on difference
+                    Dim updateStockCmd As New Odbc.OdbcCommand("UPDATE tblitemlist SET ItemQuantity = ItemQuantity - ? WHERE ItemID = ?", con)
+                    updateStockCmd.Parameters.AddWithValue("?", diff)
+                    updateStockCmd.Parameters.AddWithValue("?", itemID)
+                    updateStockCmd.ExecuteNonQuery()
+                End If
+
+                ' 🔹 3. Update the cart itself
+                Dim updateCartCmd As New Odbc.OdbcCommand("UPDATE tblcartlist SET QuantityBorrowed = ?, Contact = ?, Purpose = ? WHERE tempID = ?", con)
+                With updateCartCmd.Parameters
+                    .AddWithValue("?", newQty)
                     .AddWithValue("?", txtContact.Text.Trim())
                     .AddWithValue("?", txtPurpose.Text.Trim())
                     .AddWithValue("?", CartID)
                 End With
-                updateCmd.ExecuteNonQuery()
+                updateCartCmd.ExecuteNonQuery()
+
                 MsgBox("Cart item updated successfully!", vbInformation)
                 Me.Close()
 
@@ -143,9 +181,13 @@
                         .AddWithValue("?", settingID)
                         .AddWithValue("?", yID)
                     End With
-
                     insertCmd.ExecuteNonQuery()
-                    'new ad this line
+
+
+                    cmd = New Odbc.OdbcCommand("UPDATE tblitemlist SET ItemQuantity = ItemQuantity - ? WHERE ItemID = ?", con)
+                    cmd.Parameters.AddWithValue("?", CInt(nupQuantity.Value))
+                    cmd.Parameters.AddWithValue("?", cbItemList.SelectedValue)
+                    cmd.ExecuteNonQuery()
                    
 
                     MsgBox("Item added to cart successfully!", vbInformation)

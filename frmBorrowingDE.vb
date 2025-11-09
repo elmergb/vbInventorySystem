@@ -181,8 +181,6 @@
     End Sub
 
     Private Sub btnSave_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnSave.Click
-        Dim cmd As Odbc.OdbcCommand
-
         If String.IsNullOrWhiteSpace(txtStudentNo.Text) Then
             MsgBox("Please select a student before saving.", vbExclamation)
             Exit Sub
@@ -218,11 +216,7 @@
                         .AddWithValue("@yID", reader("yID"))
                         insertCmd.ExecuteNonQuery()
                     End With
-                    cmd = New Odbc.OdbcCommand("UPDATE tblitemlist SET ItemQuantity = ItemQuantity - ? WHERE ItemID = ?", con, transaction)
-                    cmd.Parameters.AddWithValue("?", reader("QuantityBorrowed"))
-                    cmd.Parameters.AddWithValue("?", reader("ItemID"))
-                    cmd.ExecuteNonQuery()
-
+             
                 End While
             Else
                 MsgBox("No records found. The table is empty.", MsgBoxStyle.Information)
@@ -277,9 +271,6 @@
         frmCartListView.ShowDialog()
     End Sub
 
-    Private Sub txtStudentNo_Leave(ByVal sender As Object, ByVal e As System.EventArgs) Handles txtStudentNo.Leave
-       
-    End Sub
 
     Private Sub btnReferesh_Click(ByVal sender As System.Object, ByVal e As System.EventArgs)
         Call data_loader("SELECT ItemID, Name, ItemDescription, ItemCategory, ItemLocation, Quantity FROM vw_Items", dgvItemList)
