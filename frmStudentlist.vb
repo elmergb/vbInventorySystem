@@ -44,7 +44,6 @@
     Private Sub LoadStudents(Optional ByVal search As String = "")
         Dim query As String = "SELECT * FROM vw_user"
 
-        ' If there is a search term, add WHERE filter
         If search <> "" Then
             query &= " WHERE studentNo LIKE '%" & search & "%' " &
                      "OR fname LIKE '%" & search & "%' " &

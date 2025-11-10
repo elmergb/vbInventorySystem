@@ -25,99 +25,96 @@
                 .BorderStyle = BorderStyle.None
             End With
         Next
+
+        'new 
+
         Try
-            Dim cmd As New Odbc.OdbcCommand("DELETE FROM tblcartlist", con)
-            cmd.ExecuteNonQuery()
+            ' Check if there are items in the cart
+            Dim cmdCheck As New Odbc.OdbcCommand("SELECT COUNT(*) FROM tblcartlist", con)
+            Dim cartCount As Integer = CInt(cmdCheck.ExecuteScalar())
+
+            If cartCount > 0 Then
+                ' Ask user
+                If MsgBox("You still have items in your cart. Do you want to borrow them now?",
+                          vbYesNo + vbQuestion, "Warning") = vbYes Then
+
+                    ' ✅ Begin transaction
+                    Dim transaction As Odbc.OdbcTransaction = con.BeginTransaction()
+
+                    Try
+                        ' Select all cart items
+                        Dim cmdSelect As New Odbc.OdbcCommand("SELECT * FROM tblcartlist", con, transaction)
+                        Dim reader As Odbc.OdbcDataReader = cmdSelect.ExecuteReader()
+
+                       While reader.Read()
+                            Dim insertCmd As New Odbc.OdbcCommand("INSERT INTO tblborrowing (ItemID, borrowQty, borrowDateTime, sID, tID, semester, settingID, remarks, Contact, Purpose, yID) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)", con, transaction)
+                            With insertCmd.Parameters
+                                .AddWithValue("@ItemID", reader("ItemID"))
+                                .AddWithValue("@borrowQty", reader("QuantityBorrowed"))
+                                .AddWithValue("@borrowDateTime", reader("borrowDateTime"))
+                                .AddWithValue("@sID", reader("sID"))
+                                .AddWithValue("@tID", reader("tID"))
+                                .AddWithValue("@semester", "semester")
+                                .AddWithValue("@settingID", reader("settingID"))
+                                .AddWithValue("@remarks", reader("Remarks"))
+                                .AddWithValue("@Contact", reader("Contact"))
+                                .AddWithValue("@Purpose", reader("Purpose"))
+                                .AddWithValue("@yID", reader("yID"))
+                                insertCmd.ExecuteNonQuery()
+                            End With
+                        End While
+                        reader.Close()
+
+                        ' ✅ Delete cart items after borrowing (same transaction)
+                        Dim cmdDelete As New Odbc.OdbcCommand("DELETE FROM tblcartlist", con, transaction)
+                        cmdDelete.ExecuteNonQuery()
+
+                        transaction.Commit()
+                        MsgBox("All items borrowed successfully!", vbInformation)
+
+                    Catch exTrans As Exception
+                        transaction.Rollback()
+                        MsgBox("Error borrowing items: " & exTrans.Message, vbCritical)
+                    End Try
+
+                Else
+                    ' User clicked NO → Restore quantities and clear cart
+                    Dim transaction As Odbc.OdbcTransaction = con.BeginTransaction()
+                    Try
+                        Dim cmdSelect As New Odbc.OdbcCommand("SELECT ItemID, QuantityBorrowed FROM tblcartlist", con, transaction)
+                        Dim reader As Odbc.OdbcDataReader = cmdSelect.ExecuteReader()
+
+                        While reader.Read()
+                            Dim updateCmd As New Odbc.OdbcCommand("Update(tblitemlist) SET ItemQuantity = ItemQuantity + ?   WHERE ItemID = ?", con, transaction)
+                            updateCmd.Parameters.AddWithValue("?", reader("QuantityBorrowed"))
+                            updateCmd.Parameters.AddWithValue("?", reader("ItemID"))
+                            updateCmd.ExecuteNonQuery()
+                        End While
+                        reader.Close()
+
+                        ' ✅ Delete cart after restoring quantities
+                        Dim cmdDelete As New Odbc.OdbcCommand("DELETE FROM tblcartlist", con, transaction)
+                        cmdDelete.ExecuteNonQuery()
+
+                        transaction.Commit()
+                        MsgBox("Cart cleared and quantities restored.", vbInformation)
+
+                    Catch exRest As Exception
+                        transaction.Rollback()
+                        MsgBox("Error clearing cart: " & exRest.Message)
+                    End Try
+                End If
+            End If
+
         Catch ex As Exception
-            MsgBox("Error clearing cart: " & ex.Message)
+            MsgBox("Error: " & ex.Message)
         End Try
 
         frmCartListView.lvCart.Clear()
 
-        'Try
-        '    ' Check if cart has items
-        '    Dim checkCartCmd As New Odbc.OdbcCommand("SELECT COUNT(*) FROM tblcartlist", con)
-        '    Dim cartCount As Integer = CInt(checkCartCmd.ExecuteScalar())
-
-        '    If cartCount > 0 Then
-        '        Dim result = MessageBox.Show("You have items in your cart. Do you want to borrow them now?",
-        '                                     "Pending Cart", MessageBoxButtons.YesNo, MessageBoxIcon.Question)
-
-        '        If result = DialogResult.Yes Then
-        '            BorrowAllItems()
-        '        Else
-        '            RestoreQuantitiesAndClearCart()
-        '            MsgBox("Cart cleared and item quantities restored.", vbInformation, "Cart Reset")
-        '        End If
-        '    End If
-        'Catch ex As Exception
-        '    MsgBox("Error checking cart: " & ex.Message)
-        'End Try
+       
     End Sub
-    'Private Sub BorrowAllItems()
-    '    Dim transaction As Odbc.OdbcTransaction = con.BeginTransaction()
-    '    Try
-    '        Dim cmdSelect As New Odbc.OdbcCommand("SELECT * FROM tblcartlist", con, transaction)
-    '        Dim reader As Odbc.OdbcDataReader = cmdSelect.ExecuteReader()
-
-    '        While reader.Read()
-    '            Dim insertCmd As New Odbc.OdbcCommand("INSERT INTO tblborrowing (ItemID, borrowQty, borrowDateTime, sID, tID, semester, settingID, remarks, Contact, Purpose, yID)  VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)", con, transaction)
-
-    '            With insertCmd.Parameters
-    '                .AddWithValue("@ItemID", reader("ItemID"))
-    '                .AddWithValue("@borrowQty", reader("QuantityBorrowed"))
-    '                .AddWithValue("@borrowDateTime", reader("borrowDateTime"))
-    '                .AddWithValue("@sID", reader("sID"))
-    '                .AddWithValue("@tID", reader("tID"))
-    '                .AddWithValue("@semester", reader("semester"))
-    '                .AddWithValue("@settingID", reader("settingID"))
-    '                .AddWithValue("@remarks", reader("Remarks"))
-    '                .AddWithValue("@Contact", reader("Contact"))
-    '                .AddWithValue("@Purpose", reader("Purpose"))
-    '                .AddWithValue("@yID", reader("yID"))
-    '            End With
-
-    '            insertCmd.ExecuteNonQuery()
-    '        End While
-    '        reader.Close()
-
-    '        Dim clearCmd As New Odbc.OdbcCommand("DELETE FROM tblcartlist", con, transaction)
-    '        clearCmd.ExecuteNonQuery()
-
-    '        transaction.Commit()
-    '        MsgBox("All items successfully borrowed.", vbInformation, "Success")
-
-    '    Catch ex As Exception
-    '        transaction.Rollback()
-    '        MsgBox("Error borrowing items: " & ex.Message, vbCritical)
-    '    End Try
-    'End Sub
-    'Private Sub RestoreQuantitiesAndClearCart()
-    '    Dim transaction As Odbc.OdbcTransaction = con.BeginTransaction()
-    '    Try
-    '        Dim selectCmd As New Odbc.OdbcCommand("SELECT ItemID, QuantityBorrowed FROM tblcartlist", con, transaction)
-    '        Dim reader As Odbc.OdbcDataReader = selectCmd.ExecuteReader()
-
-    '        While reader.Read()
-    '            Dim itemID As Integer = CInt(reader("ItemID"))
-    '            Dim qtyBorrowed As Integer = CInt(reader("QuantityBorrowed"))
-
-    '            Dim updateCmd As New Odbc.OdbcCommand("UPDATE(tblitemlist) SET Quantity = Quantity + ?    WHERE ItemID = ?", con, transaction)
-    '            updateCmd.Parameters.AddWithValue("?", qtyBorrowed)
-    '            updateCmd.Parameters.AddWithValue("?", itemID)
-    '            updateCmd.ExecuteNonQuery()
-    '        End While
-    '        reader.Close()
-
-    '        Dim clearCmd As New Odbc.OdbcCommand("DELETE FROM tblcartlist", con, transaction)
-    '        clearCmd.ExecuteNonQuery()
-
-    '        transaction.Commit()
-    '    Catch ex As Exception
-    '        transaction.Rollback()
-    '        MsgBox("Error restoring quantities: " & ex.Message, vbCritical)
-    '    End Try
-    'End Sub
+  
 
     Private Sub dgvItemList_CellClick(ByVal sender As Object, ByVal e As System.Windows.Forms.DataGridViewCellEventArgs) Handles dgvItemList.CellClick
         'medyo confusing pa 
