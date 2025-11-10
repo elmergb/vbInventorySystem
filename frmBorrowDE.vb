@@ -62,14 +62,12 @@
                         End If
                     End If
 
-                    ' Update stock based on difference
                     Dim updateStockCmd As New Odbc.OdbcCommand("UPDATE tblitemlist SET ItemQuantity = ItemQuantity - ? WHERE ItemID = ?", con)
                     updateStockCmd.Parameters.AddWithValue("?", diff)
                     updateStockCmd.Parameters.AddWithValue("?", itemID)
                     updateStockCmd.ExecuteNonQuery()
                 End If
 
-                ' 🔹 3. Update the cart itself
                 Dim updateCartCmd As New Odbc.OdbcCommand("UPDATE tblcartlist SET QuantityBorrowed = ?, Contact = ?, Purpose = ? WHERE tempID = ?", con)
                 With updateCartCmd.Parameters
                     .AddWithValue("?", newQty)
@@ -230,4 +228,7 @@
     End Sub
 
 
+    Private Sub txtContact_TextChanged(sender As System.Object, e As System.EventArgs) Handles txtContact.TextChanged
+
+    End Sub
 End Class

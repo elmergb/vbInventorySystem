@@ -28,6 +28,7 @@
     End Sub
 
     Private Sub btnDelete_Click(ByVal sender As Object, ByVal e As EventArgs) Handles btnDelete.Click
+        Dim cmd As Odbc.OdbcCommand
         If lvCart.SelectedItems.Count = 0 Then
             MsgBox("Please select an item to delete.", MsgBoxStyle.Exclamation)
             Exit Sub
@@ -38,7 +39,7 @@
 
         If MessageBox.Show("Are you sure you want to delete this cart item?", "Confirm Delete", MessageBoxButtons.YesNo, MessageBoxIcon.Question) = DialogResult.Yes Then
             Try
-                Dim cmd As New Odbc.OdbcCommand("DELETE FROM tblcartlist WHERE tempID = ?", con)
+                cmd = New Odbc.OdbcCommand("DELETE FROM tblcartlist WHERE tempID = ?", con)
                 cmd.Parameters.AddWithValue("?", cartID)
                 cmd.ExecuteNonQuery()
                 MsgBox("Item removed from cart successfully!", MsgBoxStyle.Information)
@@ -47,6 +48,8 @@
                 MsgBox("Error deleting cart item: " & ex.Message, MsgBoxStyle.Critical)
             End Try
         End If
+
+        cmd = New Odbc.OdbcCommand("UPDATE tblitemlist ItemQuantity= ?")
     End Sub
 
     Private Sub btnEdit_Click(ByVal sender As Object, ByVal e As EventArgs) Handles btnEdit.Click

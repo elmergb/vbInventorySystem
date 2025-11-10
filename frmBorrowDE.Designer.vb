@@ -89,7 +89,7 @@ Partial Class frmBorrowDE
         Me.txtPurpose.Font = New System.Drawing.Font("Arial", 10.2!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txtPurpose.Location = New System.Drawing.Point(334, 98)
         Me.txtPurpose.Name = "txtPurpose"
-        Me.txtPurpose.Size = New System.Drawing.Size(202, 27)
+        Me.txtPurpose.Size = New System.Drawing.Size(202, 23)
         Me.txtPurpose.TabIndex = 12
         '
         'Label3
@@ -106,7 +106,7 @@ Partial Class frmBorrowDE
         '
         Me.txtBorrowerName.Location = New System.Drawing.Point(243, 559)
         Me.txtBorrowerName.Name = "txtBorrowerName"
-        Me.txtBorrowerName.Size = New System.Drawing.Size(202, 23)
+        Me.txtBorrowerName.Size = New System.Drawing.Size(202, 20)
         Me.txtBorrowerName.TabIndex = 11
         Me.txtBorrowerName.Visible = False
         '
@@ -115,7 +115,7 @@ Partial Class frmBorrowDE
         Me.nupQuantity.Font = New System.Drawing.Font("Arial", 10.2!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.nupQuantity.Location = New System.Drawing.Point(54, 234)
         Me.nupQuantity.Name = "nupQuantity"
-        Me.nupQuantity.Size = New System.Drawing.Size(187, 27)
+        Me.nupQuantity.Size = New System.Drawing.Size(187, 23)
         Me.nupQuantity.TabIndex = 1
         '
         'Label4
@@ -141,7 +141,7 @@ Partial Class frmBorrowDE
         Me.txtContact.Font = New System.Drawing.Font("Arial", 10.2!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txtContact.Location = New System.Drawing.Point(335, 163)
         Me.txtContact.Name = "txtContact"
-        Me.txtContact.Size = New System.Drawing.Size(202, 27)
+        Me.txtContact.Size = New System.Drawing.Size(202, 23)
         Me.txtContact.TabIndex = 0
         '
         'Label7
@@ -160,7 +160,7 @@ Partial Class frmBorrowDE
         Me.cbBorrowRemarks.FormattingEnabled = True
         Me.cbBorrowRemarks.Location = New System.Drawing.Point(336, 233)
         Me.cbBorrowRemarks.Name = "cbBorrowRemarks"
-        Me.cbBorrowRemarks.Size = New System.Drawing.Size(201, 27)
+        Me.cbBorrowRemarks.Size = New System.Drawing.Size(201, 24)
         Me.cbBorrowRemarks.TabIndex = 20
         '
         'Label6
@@ -179,7 +179,7 @@ Partial Class frmBorrowDE
         Me.dtpBorrowed.Format = System.Windows.Forms.DateTimePickerFormat.Custom
         Me.dtpBorrowed.Location = New System.Drawing.Point(355, 471)
         Me.dtpBorrowed.Name = "dtpBorrowed"
-        Me.dtpBorrowed.Size = New System.Drawing.Size(192, 23)
+        Me.dtpBorrowed.Size = New System.Drawing.Size(192, 20)
         Me.dtpBorrowed.TabIndex = 15
         Me.dtpBorrowed.Visible = False
         '
@@ -198,7 +198,7 @@ Partial Class frmBorrowDE
         Me.txtItemDesc.Font = New System.Drawing.Font("Arial", 10.2!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txtItemDesc.Location = New System.Drawing.Point(53, 163)
         Me.txtItemDesc.Name = "txtItemDesc"
-        Me.txtItemDesc.Size = New System.Drawing.Size(188, 27)
+        Me.txtItemDesc.Size = New System.Drawing.Size(188, 23)
         Me.txtItemDesc.TabIndex = 22
         '
         'cbItemList
@@ -224,7 +224,7 @@ Partial Class frmBorrowDE
         '
         Me.txtStudentNo.Location = New System.Drawing.Point(54, 446)
         Me.txtStudentNo.Name = "txtStudentNo"
-        Me.txtStudentNo.Size = New System.Drawing.Size(202, 23)
+        Me.txtStudentNo.Size = New System.Drawing.Size(202, 20)
         Me.txtStudentNo.TabIndex = 25
         Me.txtStudentNo.Visible = False
         '
@@ -242,7 +242,7 @@ Partial Class frmBorrowDE
         '
         Me.txtSemester.Location = New System.Drawing.Point(408, 559)
         Me.txtSemester.Name = "txtSemester"
-        Me.txtSemester.Size = New System.Drawing.Size(202, 23)
+        Me.txtSemester.Size = New System.Drawing.Size(202, 20)
         Me.txtSemester.TabIndex = 27
         Me.txtSemester.Visible = False
         '
@@ -250,7 +250,7 @@ Partial Class frmBorrowDE
         '
         Me.txtYearLevel.Location = New System.Drawing.Point(406, 531)
         Me.txtYearLevel.Name = "txtYearLevel"
-        Me.txtYearLevel.Size = New System.Drawing.Size(202, 23)
+        Me.txtYearLevel.Size = New System.Drawing.Size(202, 20)
         Me.txtYearLevel.TabIndex = 28
         Me.txtYearLevel.Visible = False
         '
@@ -258,7 +258,7 @@ Partial Class frmBorrowDE
         '
         Me.txtSchoolYear.Location = New System.Drawing.Point(55, 572)
         Me.txtSchoolYear.Name = "txtSchoolYear"
-        Me.txtSchoolYear.Size = New System.Drawing.Size(200, 23)
+        Me.txtSchoolYear.Size = New System.Drawing.Size(200, 20)
         Me.txtSchoolYear.TabIndex = 29
         Me.txtSchoolYear.Visible = False
         '
@@ -266,7 +266,7 @@ Partial Class frmBorrowDE
         '
         Me.txtTeacher.Location = New System.Drawing.Point(408, 502)
         Me.txtTeacher.Name = "txtTeacher"
-        Me.txtTeacher.Size = New System.Drawing.Size(200, 23)
+        Me.txtTeacher.Size = New System.Drawing.Size(200, 20)
         Me.txtTeacher.TabIndex = 30
         Me.txtTeacher.Visible = False
         '
@@ -274,7 +274,7 @@ Partial Class frmBorrowDE
         '
         Me.txtCourse.Location = New System.Drawing.Point(57, 474)
         Me.txtCourse.Name = "txtCourse"
-        Me.txtCourse.Size = New System.Drawing.Size(200, 23)
+        Me.txtCourse.Size = New System.Drawing.Size(200, 20)
         Me.txtCourse.TabIndex = 31
         Me.txtCourse.Visible = False
         '
@@ -282,7 +282,7 @@ Partial Class frmBorrowDE
         '
         Me.txtSection.Location = New System.Drawing.Point(57, 502)
         Me.txtSection.Name = "txtSection"
-        Me.txtSection.Size = New System.Drawing.Size(200, 23)
+        Me.txtSection.Size = New System.Drawing.Size(200, 20)
         Me.txtSection.TabIndex = 32
         Me.txtSection.Visible = False
         '
@@ -301,7 +301,7 @@ Partial Class frmBorrowDE
         '
         'frmBorrowDE
         '
-        Me.AutoScaleDimensions = New System.Drawing.SizeF(9.0!, 16.0!)
+        Me.AutoScaleDimensions = New System.Drawing.SizeF(7.0!, 14.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(574, 358)
         Me.ControlBox = False

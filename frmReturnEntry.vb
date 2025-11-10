@@ -28,7 +28,7 @@
             Dim br = cmd.ExecuteScalar()
             If br IsNot Nothing AndAlso Not IsDBNull(br) Then borrowedQty = CInt(br)
 
-            ' get already returned total for this bID
+
             Dim returnedTotal As Integer = 0
             cmd = New Odbc.OdbcCommand("SELECT IFNULL(SUM(QuantityReturned), 0) FROM tblreturn WHERE bID = ?", con)
             cmd.Parameters.AddWithValue("?", BorrowID)
@@ -36,7 +36,7 @@
             If rr IsNot Nothing AndAlso Not IsDBNull(rr) Then returnedTotal = CInt(rr)
 
 
-            ' validation
+
             If returnedTotal + qtyReturningNow > borrowedQty Then
                 MsgBox("Returned quantity exceeds total borrowed amount.", vbExclamation)
                 Exit Sub

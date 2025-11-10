@@ -26,11 +26,8 @@ Public Class frmStudentDE
         Dim ylevel As String = cbYear.SelectedValue.ToString()
         Dim username As String = txtuname.Text.Trim()
         Dim course As String = cbCourses.SelectedValue.ToString()
-
         Dim plainPassword As String = txtPword.Text.Trim()
         Dim hashedEntered As String = HashPassword(plainPassword)
-
-
 
         If String.IsNullOrEmpty(studentNo) OrElse
            String.IsNullOrEmpty(fname) OrElse
@@ -41,7 +38,6 @@ Public Class frmStudentDE
         End If
 
         Try
-
 
             Using trans = con.BeginTransaction()
                 Try

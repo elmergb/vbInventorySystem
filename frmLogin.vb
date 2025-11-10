@@ -110,14 +110,6 @@ Public Class frmLogin
 
     End Sub
 
-    Private Sub PictureBox2_Click(ByVal sender As Object, ByVal e As EventArgs) Handles PictureBox2.Click
-
-    End Sub
-
-    Private Sub txtPword_TextChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles txtPword.TextChanged
-
-    End Sub
-
     Private Sub ckbShowPword_CheckedChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles ckbShowPword.CheckedChanged
         If txtPword.Text <> "Password" Then
             If ckbShowPword.Checked Then
