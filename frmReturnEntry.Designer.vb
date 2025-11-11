@@ -22,7 +22,6 @@ Partial Class frmReturnEntry
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
-        Me.dtpBorrowedR = New System.Windows.Forms.DateTimePicker()
         Me.Label7 = New System.Windows.Forms.Label()
         Me.Label6 = New System.Windows.Forms.Label()
         Me.Label5 = New System.Windows.Forms.Label()
@@ -59,24 +58,12 @@ Partial Class frmReturnEntry
         Me.lblItemDesc = New System.Windows.Forms.Label()
         Me.Label17 = New System.Windows.Forms.Label()
         Me.btnReturnLog = New System.Windows.Forms.Button()
+        Me.dtpBorrowedR = New System.Windows.Forms.DateTimePicker()
         CType(Me.nupQuantityR, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.GroupBox1.SuspendLayout()
         Me.GroupBox2.SuspendLayout()
         Me.GroupBox3.SuspendLayout()
         Me.SuspendLayout()
-        '
-        'dtpBorrowedR
-        '
-        Me.dtpBorrowedR.CustomFormat = "MM/dd/yyyy hh:mm tt"
-        Me.dtpBorrowedR.Enabled = False
-        Me.dtpBorrowedR.Font = New System.Drawing.Font("Arial", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.dtpBorrowedR.Format = System.Windows.Forms.DateTimePickerFormat.Custom
-        Me.dtpBorrowedR.Location = New System.Drawing.Point(421, 39)
-        Me.dtpBorrowedR.Margin = New System.Windows.Forms.Padding(4, 3, 4, 3)
-        Me.dtpBorrowedR.Name = "dtpBorrowedR"
-        Me.dtpBorrowedR.Size = New System.Drawing.Size(187, 26)
-        Me.dtpBorrowedR.TabIndex = 28
-        Me.dtpBorrowedR.Value = New Date(2025, 11, 4, 8, 26, 0, 0)
         '
         'Label7
         '
@@ -144,7 +131,7 @@ Partial Class frmReturnEntry
         Me.nupQuantityR.Location = New System.Drawing.Point(89, 158)
         Me.nupQuantityR.Margin = New System.Windows.Forms.Padding(4, 3, 4, 3)
         Me.nupQuantityR.Name = "nupQuantityR"
-        Me.nupQuantityR.Size = New System.Drawing.Size(160, 30)
+        Me.nupQuantityR.Size = New System.Drawing.Size(160, 26)
         Me.nupQuantityR.TabIndex = 17
         '
         'cbReturnRemarks
@@ -154,7 +141,7 @@ Partial Class frmReturnEntry
         Me.cbReturnRemarks.Location = New System.Drawing.Point(399, 77)
         Me.cbReturnRemarks.Margin = New System.Windows.Forms.Padding(4, 3, 4, 3)
         Me.cbReturnRemarks.Name = "cbReturnRemarks"
-        Me.cbReturnRemarks.Size = New System.Drawing.Size(187, 31)
+        Me.cbReturnRemarks.Size = New System.Drawing.Size(187, 26)
         Me.cbReturnRemarks.TabIndex = 31
         '
         'Label8
@@ -189,7 +176,7 @@ Partial Class frmReturnEntry
         Me.cbItemListR.Location = New System.Drawing.Point(58, 33)
         Me.cbItemListR.Margin = New System.Windows.Forms.Padding(4, 3, 4, 3)
         Me.cbItemListR.Name = "cbItemListR"
-        Me.cbItemListR.Size = New System.Drawing.Size(185, 31)
+        Me.cbItemListR.Size = New System.Drawing.Size(185, 26)
         Me.cbItemListR.TabIndex = 25
         '
         'Label4
@@ -289,7 +276,7 @@ Partial Class frmReturnEntry
         Me.lblStudentNo.Location = New System.Drawing.Point(108, 31)
         Me.lblStudentNo.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.lblStudentNo.Name = "lblStudentNo"
-        Me.lblStudentNo.Size = New System.Drawing.Size(110, 25)
+        Me.lblStudentNo.Size = New System.Drawing.Size(90, 20)
         Me.lblStudentNo.TabIndex = 53
         Me.lblStudentNo.Text = "Student No"
         '
@@ -300,7 +287,7 @@ Partial Class frmReturnEntry
         Me.lblBorrowerName.Location = New System.Drawing.Point(75, 60)
         Me.lblBorrowerName.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.lblBorrowerName.Name = "lblBorrowerName"
-        Me.lblBorrowerName.Size = New System.Drawing.Size(90, 25)
+        Me.lblBorrowerName.Size = New System.Drawing.Size(73, 20)
         Me.lblBorrowerName.TabIndex = 54
         Me.lblBorrowerName.Text = "Borrower"
         '
@@ -332,7 +319,7 @@ Partial Class frmReturnEntry
         Me.lblYearLevel.Location = New System.Drawing.Point(92, 135)
         Me.lblYearLevel.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.lblYearLevel.Name = "lblYearLevel"
-        Me.lblYearLevel.Size = New System.Drawing.Size(105, 25)
+        Me.lblYearLevel.Size = New System.Drawing.Size(84, 20)
         Me.lblYearLevel.TabIndex = 57
         Me.lblYearLevel.Text = "Year Level"
         '
@@ -343,7 +330,7 @@ Partial Class frmReturnEntry
         Me.lblCourse.Location = New System.Drawing.Point(73, 110)
         Me.lblCourse.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.lblCourse.Name = "lblCourse"
-        Me.lblCourse.Size = New System.Drawing.Size(76, 25)
+        Me.lblCourse.Size = New System.Drawing.Size(60, 20)
         Me.lblCourse.TabIndex = 56
         Me.lblCourse.Text = "Course"
         '
@@ -354,7 +341,7 @@ Partial Class frmReturnEntry
         Me.lblSection.Location = New System.Drawing.Point(73, 85)
         Me.lblSection.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.lblSection.Name = "lblSection"
-        Me.lblSection.Size = New System.Drawing.Size(78, 25)
+        Me.lblSection.Size = New System.Drawing.Size(63, 20)
         Me.lblSection.TabIndex = 55
         Me.lblSection.Text = "Section"
         '
@@ -384,7 +371,7 @@ Partial Class frmReturnEntry
         Me.lblSchoolYear.Location = New System.Drawing.Point(134, 112)
         Me.lblSchoolYear.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.lblSchoolYear.Name = "lblSchoolYear"
-        Me.lblSchoolYear.Size = New System.Drawing.Size(119, 25)
+        Me.lblSchoolYear.Size = New System.Drawing.Size(96, 20)
         Me.lblSchoolYear.TabIndex = 61
         Me.lblSchoolYear.Text = "School Year"
         '
@@ -395,7 +382,7 @@ Partial Class frmReturnEntry
         Me.lblSemester.Location = New System.Drawing.Point(134, 87)
         Me.lblSemester.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.lblSemester.Name = "lblSemester"
-        Me.lblSemester.Size = New System.Drawing.Size(96, 25)
+        Me.lblSemester.Size = New System.Drawing.Size(78, 20)
         Me.lblSemester.TabIndex = 60
         Me.lblSemester.Text = "Semester"
         '
@@ -406,7 +393,7 @@ Partial Class frmReturnEntry
         Me.lblContact.Location = New System.Drawing.Point(134, 62)
         Me.lblContact.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.lblContact.Name = "lblContact"
-        Me.lblContact.Size = New System.Drawing.Size(80, 25)
+        Me.lblContact.Size = New System.Drawing.Size(65, 20)
         Me.lblContact.TabIndex = 59
         Me.lblContact.Text = "Contact"
         '
@@ -417,7 +404,7 @@ Partial Class frmReturnEntry
         Me.lblteacher.Location = New System.Drawing.Point(134, 37)
         Me.lblteacher.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.lblteacher.Name = "lblteacher"
-        Me.lblteacher.Size = New System.Drawing.Size(85, 25)
+        Me.lblteacher.Size = New System.Drawing.Size(67, 20)
         Me.lblteacher.TabIndex = 58
         Me.lblteacher.Text = "Teacher"
         '
@@ -451,7 +438,7 @@ Partial Class frmReturnEntry
         Me.lblPurpose.Location = New System.Drawing.Point(92, 117)
         Me.lblPurpose.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.lblPurpose.Name = "lblPurpose"
-        Me.lblPurpose.Size = New System.Drawing.Size(85, 25)
+        Me.lblPurpose.Size = New System.Drawing.Size(68, 20)
         Me.lblPurpose.TabIndex = 63
         Me.lblPurpose.Text = "Purpose"
         '
@@ -462,7 +449,7 @@ Partial Class frmReturnEntry
         Me.lblItemDesc.Location = New System.Drawing.Point(108, 80)
         Me.lblItemDesc.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.lblItemDesc.Name = "lblItemDesc"
-        Me.lblItemDesc.Size = New System.Drawing.Size(151, 25)
+        Me.lblItemDesc.Size = New System.Drawing.Size(125, 20)
         Me.lblItemDesc.TabIndex = 62
         Me.lblItemDesc.Text = "Item Description"
         '
@@ -490,9 +477,19 @@ Partial Class frmReturnEntry
         Me.btnReturnLog.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText
         Me.btnReturnLog.UseVisualStyleBackColor = True
         '
+        'dtpBorrowedR
+        '
+        Me.dtpBorrowedR.CustomFormat = """MM/dd/yyyy hh:mm tt"""
+        Me.dtpBorrowedR.Font = New System.Drawing.Font("Arial", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.dtpBorrowedR.Format = System.Windows.Forms.DateTimePickerFormat.Custom
+        Me.dtpBorrowedR.Location = New System.Drawing.Point(399, 41)
+        Me.dtpBorrowedR.Name = "dtpBorrowedR"
+        Me.dtpBorrowedR.Size = New System.Drawing.Size(222, 25)
+        Me.dtpBorrowedR.TabIndex = 64
+        '
         'frmReturnEntry
         '
-        Me.AutoScaleDimensions = New System.Drawing.SizeF(9.0!, 16.0!)
+        Me.AutoScaleDimensions = New System.Drawing.SizeF(7.0!, 14.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(765, 587)
         Me.Controls.Add(Me.GroupBox3)
@@ -516,7 +513,6 @@ Partial Class frmReturnEntry
         Me.ResumeLayout(False)
 
     End Sub
-    Friend WithEvents dtpBorrowedR As System.Windows.Forms.DateTimePicker
     Friend WithEvents Label7 As System.Windows.Forms.Label
     Friend WithEvents Label6 As System.Windows.Forms.Label
     Friend WithEvents Label5 As System.Windows.Forms.Label
@@ -553,4 +549,5 @@ Partial Class frmReturnEntry
     Friend WithEvents lblPurpose As System.Windows.Forms.Label
     Friend WithEvents lblItemDesc As System.Windows.Forms.Label
     Friend WithEvents Label17 As System.Windows.Forms.Label
+    Friend WithEvents dtpBorrowedR As System.Windows.Forms.DateTimePicker
 End Class

@@ -337,6 +337,7 @@
 
                                 ' 1) Insert into tblborrowing
                                 Using insertBorrow As New Odbc.OdbcCommand("INSERT INTO tblborrowing (ItemID, borrowQty, borrowDateTime, sID, tID, semester, settingID, remarks, Contact, Purpose, yID) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)", con, trans)
+
                                     insertBorrow.Parameters.AddWithValue("?", itemID)
                                     insertBorrow.Parameters.AddWithValue("?", qty)
                                     insertBorrow.Parameters.AddWithValue("?", reader("borrowDateTime"))
@@ -364,10 +365,9 @@
                                     End Using
                                 End Using
 
-                                ' If reservedUnits.Count < qty then something wrong — but proceed with whatever exists
+                                ' 3) Fallback: if no reserved serials, grab available ones
                                 If reservedUnits.Count = 0 Then
-                                    ' fallback: try to select available units now (should be rare)
-                                    Dim sqlSerials As String = "SELECT UnitID, SerialNo FROM tblitemunits WHERE ItemID = ? AND ItemStatus = 'Available' ORDER BY CAST(SUBSTRING_INDEX(SerialNo, '-', -1) AS UNSIGNED) ASC LIMIT " & qty.ToString() & " FOR UPDATE"
+                                    Dim sqlSerials As String = "SELECT UnitID, SerialNo FROM(tblitemunits) WHERE ItemID = ? AND ItemStatus = 'Available' ORDER BY CAST(SUBSTRING_INDEX(SerialNo, '-', -1) AS UNSIGNED) ASC LIMIT " & qty.ToString() & " FOR UPDATE"
                                     Using cmdSerials As New Odbc.OdbcCommand(sqlSerials, con, trans)
                                         cmdSerials.Parameters.AddWithValue("?", itemID)
                                         Using rdrS As Odbc.OdbcDataReader = cmdSerials.ExecuteReader()
@@ -378,10 +378,12 @@
                                     End Using
                                 End If
 
-                                ' 3) Move reserved -> borrowed
-                                For Each t In reservedUnits
-                                    Dim unitId As Integer = t.Item1
-                                    Dim sNo As String = t.Item2
+                                ' 4) Move reserved -> borrowed
+                            For Each t In reservedUnits
+                                Dim unitId As Integer = t.Item1
+                                Dim sNo As String = t.Item2
+
+                                    ' Record borrowed unit
                                     Using insBorrowedUnit As New Odbc.OdbcCommand("INSERT INTO tblborrowedunits (bID, UnitID, SerialNo) VALUES (?, ?, ?)", con, trans)
                                         insBorrowedUnit.Parameters.AddWithValue("?", borrowID)
                                         insBorrowedUnit.Parameters.AddWithValue("?", unitId)
@@ -389,13 +391,15 @@
                                         insBorrowedUnit.ExecuteNonQuery()
                                     End Using
 
-                                    Using updateUnit As New Odbc.OdbcCommand("UPDATE tblitemunits SET ItemStatus='Borrowed' WHERE UnitID = ?", con, trans)
+                                    ' Update the unit’s status AND set bID
+                                    Using updateUnit As New Odbc.OdbcCommand("UPDATE tblitemunits SET ItemStatus = 'Borrowed', bID = ? WHERE UnitID = ?", con, trans)
+                                        updateUnit.Parameters.AddWithValue("?", borrowID)
                                         updateUnit.Parameters.AddWithValue("?", unitId)
                                         updateUnit.ExecuteNonQuery()
                                     End Using
-                                Next
+                            Next
 
-                                ' 4) Delete reserved rows for this cart
+                                ' 5) Delete reserved serials for this cart
                                 Using delCartSerials As New Odbc.OdbcCommand("DELETE FROM tblcartserials WHERE CartID = ?", con, trans)
                                     delCartSerials.Parameters.AddWithValue("?", cartID)
                                     delCartSerials.ExecuteNonQuery()
@@ -405,19 +409,19 @@
                     End Using
                 End Using
 
-                ' 5) Finally delete all cart rows (we already moved serials)
-                Using delCart As New Odbc.OdbcCommand("DELETE FROM tblcartlist", con, trans)
-                    delCart.ExecuteNonQuery()
+                ' 6) Clear cart
+            Using delCart As New Odbc.OdbcCommand("DELETE FROM tblcartlist", con, trans)
+                delCart.ExecuteNonQuery()
                 End Using
 
-                trans.Commit()
-                MsgBox("Borrowing finalized successfully!", vbInformation)
-            Catch ex As Exception
-                trans.Rollback()
-                MsgBox("Error finalizing borrow: " & ex.Message, vbCritical)
+            trans.Commit()
+            MsgBox("Borrowing finalized successfully!", vbInformation)
+
+        Catch ex As Exception
+            trans.Rollback()
+            MsgBox("Error finalizing borrow: " & ex.Message, vbCritical)
             End Try
         End Using
-
         ' Refresh UI and clear fields
         txtStudentNo.Clear()
         txtYearLevel.Clear()
