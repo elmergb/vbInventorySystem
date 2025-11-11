@@ -59,18 +59,18 @@ Public Class frmLogin
     End Sub
 
     Private Sub btnLogin_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnLogin.Click
-        Dim isvalid As Boolean = True
         Dim username As String = txtUsername.Text.Trim()
         Dim password As String = txtPword.Text.Trim()
         Dim hashedEntered As String = HashPassword(password)
+
         If String.IsNullOrEmpty(username) OrElse String.IsNullOrEmpty(password) Then
             MessageBox.Show("Please enter both username and password.", "Login Error", MessageBoxButtons.OK, MessageBoxIcon.Warning)
             Return
         End If
 
         Try
-
-            Dim cmd As New Odbc.OdbcCommand("SELECT pword, Role, isActive FROM vw_user WHERE BINARY username = ?", con)
+            ' ✅ Get user info directly from vw_user
+            Dim cmd As New Odbc.OdbcCommand("SELECT UserID, pword, Role, isActive, username FROM vw_user WHERE BINARY username = ?", con)
             cmd.Parameters.AddWithValue("?", username)
 
             Using rdr As Odbc.OdbcDataReader = cmd.ExecuteReader()
@@ -78,19 +78,28 @@ Public Class frmLogin
                     Dim dbPassword As String = rdr("pword").ToString()
                     Dim roleVal As String = rdr("Role").ToString()
                     Dim isActive As Boolean = Convert.ToBoolean(rdr("isActive"))
+                    Dim userID As Integer = Convert.ToInt32(rdr("UserID"))
 
                     If Not isActive Then
                         MessageBox.Show("Account is inactive. Please contact administrator.", "Login Error", MessageBoxButtons.OK, MessageBoxIcon.Warning)
                         Return
                     End If
 
+                    If String.Equals(hashedEntered, dbPassword, StringComparison.Ordinal) OrElse String.Equals(password, dbPassword, StringComparison.Ordinal) Then
+                        ' Save to global variables
+                        CurrentUserID = userID
+                        CurrentUsername = username
+                        CurrentRole = roleVal
 
-                    If String.Equals(hashedEntered, dbPassword, StringComparison.Ordinal) Or String.Equals(password, dbPassword, StringComparison.Ordinal) Then
-                        role = roleVal
-                        MessageBox.Show("Welcome " & txtUsername.Text & "!", "Login", MessageBoxButtons.OK, MessageBoxIcon.Information)
+                        Dim cmdLog As New Odbc.OdbcCommand("INSERT INTO tblloginhistory (UserID, LoginTime) VALUES (?, NOW())", con)
+                        cmdLog.Parameters.AddWithValue("?", userID)
+                        cmdLog.ExecuteNonQuery()
 
 
-                        isvalid = True
+                        Dim cmdGetID As New Odbc.OdbcCommand("SELECT LAST_INSERT_ID()", con)
+                        CurrentLogID = Convert.ToInt32(cmdGetID.ExecuteScalar())
+
+                        MessageBox.Show("Welcome " & username & "!", "Login Successful", MessageBoxButtons.OK, MessageBoxIcon.Information)
 
                         Me.Hide()
                         Homepage.Show()
@@ -103,11 +112,19 @@ Public Class frmLogin
 
         Catch ex As Exception
             MessageBox.Show("An error occurred: " & ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
-
-        Finally
-
         End Try
+    End Sub
+    Private Sub LogLoginAttempt(ByVal userID As Integer, ByVal username As String, ByVal status As String)
+        Try
+            Dim logCmd As New Odbc.OdbcCommand("INSERT INTO tblloginhistory (UserID, Username, Status, LoginTime) VALUES (?, ?, ?, NOW())", con)
+            logCmd.Parameters.AddWithValue("?", userID)
+            logCmd.Parameters.AddWithValue("?", username)
+            logCmd.Parameters.AddWithValue("?", status)
+            logCmd.ExecuteNonQuery()
+        Catch ex As Exception
 
+            Console.WriteLine("Login log error: " & ex.Message)
+        End Try
     End Sub
 
     Private Sub ckbShowPword_CheckedChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles ckbShowPword.CheckedChanged

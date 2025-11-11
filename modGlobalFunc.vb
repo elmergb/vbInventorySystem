@@ -74,7 +74,10 @@ Module modGlobalFunc
         End Try
         Return total
     End Function
-
+    Public CurrentUserID As Integer = 0
+    Public CurrentUsername As String = ""
+    Public CurrentRole As String = ""
+    Public CurrentLogID As Integer = 0
     Public Sub listLoader()
         frmCartListView.lvCart.Items.Clear()
 

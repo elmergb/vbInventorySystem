@@ -25,7 +25,7 @@
     Private Sub btnSave_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnSave.Click
         Dim contact As String = txtContact.Text.Trim()
 
-        ' Validate contact number
+
         If Not System.Text.RegularExpressions.Regex.IsMatch(contact, "^\d{11}$") Then
             MessageBox.Show("Contact number must be exactly 11 digits.", "Invalid Contact", MessageBoxButtons.OK, MessageBoxIcon.Warning)
             txtContact.Focus()
@@ -34,8 +34,7 @@
 
         Try
             If IsEditMode Then
-                ' --- Edit existing cart item ---
-                ' We'll update quantity and handle reserved units accordingly
+               
                 Dim getOldQtyCmd As New Odbc.OdbcCommand("SELECT QuantityBorrowed, ItemID FROM tblcartlist WHERE tempID = ?", con)
                 getOldQtyCmd.Parameters.AddWithValue("?", CartID)
 
@@ -51,13 +50,12 @@
                 Dim newQty As Integer = CInt(nupQuantity.Value)
                 Dim diff As Integer = newQty - oldQty
 
-                ' Begin transaction to adjust stock and reservations atomically
+
                 Using trans As Odbc.OdbcTransaction = con.BeginTransaction()
                     Try
                         If diff <> 0 Then
                             If diff > 0 Then
-                                ' Need to reserve additional units
-                                ' Check itemlist stock first
+                                
                                 Using checkQtyCmd As New Odbc.OdbcCommand("SELECT ItemQuantity FROM tblitemlist WHERE ItemID = ?", con, trans)
                                     checkQtyCmd.Parameters.AddWithValue("?", itemID)
                                     Dim availableQty As Integer = Convert.ToInt32(checkQtyCmd.ExecuteScalar())
@@ -68,7 +66,6 @@
                                     End If
                                 End Using
 
-                                ' Reserve `diff` additional units (SELECT ... FOR UPDATE, LIMIT diff)
                                 Dim sqlReserve As String = "SELECT UnitID, SerialNo FROM tblitemunits " &
                                                            "WHERE ItemID = ? AND ItemStatus = 'Available' " &
                                                            "ORDER BY UnitID ASC LIMIT " & diff.ToString() & " FOR UPDATE"
@@ -87,7 +84,7 @@
                                         Exit Sub
                                     End If
 
-                                    ' Insert reserves into tblcartserials and mark units Reserved
+
                                     For Each t In listReserve
                                         Using insCmd As New Odbc.OdbcCommand("INSERT INTO tblcartserials (CartID, UnitID, SerialNo) VALUES (?, ?, ?)", con, trans)
                                             insCmd.Parameters.AddWithValue("?", CartID)
@@ -102,7 +99,7 @@
                                     Next
                                 End Using
 
-                                ' Decrease itemlist quantity
+
                                 Using updList As New Odbc.OdbcCommand("UPDATE tblitemlist SET ItemQuantity = ItemQuantity - ? WHERE ItemID = ?", con, trans)
                                     updList.Parameters.AddWithValue("?", diff)
                                     updList.Parameters.AddWithValue("?", itemID)
@@ -110,9 +107,9 @@
                                 End Using
 
                             Else
-                                ' diff < 0 → release some reserved units back to Available
+
                                 Dim toRelease As Integer = Math.Abs(diff)
-                                ' select the last reserved units for this cart (so we remove newest ones)
+
                                 Using cmdGetReserved As New Odbc.OdbcCommand("SELECT CartSerialID, UnitID FROM tblcartserials WHERE CartID = ? ORDER BY CartSerialID DESC LIMIT " & toRelease.ToString(), con, trans)
                                     cmdGetReserved.Parameters.AddWithValue("?", CartID)
                                     Dim releaseList As New List(Of Integer)
@@ -122,14 +119,14 @@
                                         End While
                                     End Using
 
-                                    ' Delete those cartserials rows
+
                                     Using delCmd As New Odbc.OdbcCommand("DELETE FROM tblcartserials WHERE CartID = ? AND UnitID = ?", con, trans)
                                         For Each uid In releaseList
                                             delCmd.Parameters.Clear()
                                             delCmd.Parameters.AddWithValue("?", CartID)
                                             delCmd.Parameters.AddWithValue("?", uid)
                                             delCmd.ExecuteNonQuery()
-                                            ' mark unit available
+
                                             Using updUnit As New Odbc.OdbcCommand("UPDATE tblitemunits SET ItemStatus='Available' WHERE UnitID = ?", con, trans)
                                                 updUnit.Parameters.AddWithValue("?", uid)
                                                 updUnit.ExecuteNonQuery()
@@ -138,7 +135,7 @@
                                     End Using
                                 End Using
 
-                                ' Restore itemlist quantity
+
                                 Using updList As New Odbc.OdbcCommand("UPDATE tblitemlist SET ItemQuantity = ItemQuantity + ? WHERE ItemID = ?", con, trans)
                                     updList.Parameters.AddWithValue("?", toRelease)
                                     updList.Parameters.AddWithValue("?", itemID)
@@ -147,7 +144,7 @@
                             End If
                         End If
 
-                        ' Update cart row (quantity/contact/purpose)
+
                         Using updateCartCmd As New Odbc.OdbcCommand("UPDATE tblcartlist SET QuantityBorrowed = ?, Contact = ?, Purpose = ? WHERE tempID = ?", con, trans)
                             updateCartCmd.Parameters.AddWithValue("?", newQty)
                             updateCartCmd.Parameters.AddWithValue("?", txtContact.Text.Trim())
@@ -166,7 +163,7 @@
                 End Using
 
             Else
-                ' --- Add new cart item ---
+
                 Dim availableQty As Integer = 0
                 Using totalQtyCmd As New Odbc.OdbcCommand("SELECT ItemQuantity FROM tblitemlist WHERE ItemID = ?", con)
                     totalQtyCmd.Parameters.AddWithValue("?", CInt(cbItemList.SelectedValue))
@@ -174,7 +171,7 @@
                     If availQtyObj IsNot Nothing Then availableQty = CInt(availQtyObj)
                 End Using
 
-                ' Validation
+
                 If nupQuantity.Value = 0 Then
                     MsgBox("Invalid quantity", vbExclamation)
                     Exit Sub
@@ -188,7 +185,7 @@
                     Exit Sub
                 End If
 
-                ' Get student info
+
                 Dim sID As Integer = -1, yID As Integer = -1, cID As Integer = -1
                 Using studentCmd As New Odbc.OdbcCommand("SELECT sID, yID, cID FROM tblstudentlist WHERE TRIM(studentNo) = ?", con)
                     studentCmd.Parameters.AddWithValue("?", Trim(txtStudentNo.Text))
@@ -204,7 +201,6 @@
                     End Using
                 End Using
 
-                ' Get teacher ID
                 Dim tID As Integer = -1
                 Using teacherCmd As New Odbc.OdbcCommand("SELECT tID FROM vw_teacher WHERE TRIM(teacher_fullname) = ?", con)
                     teacherCmd.Parameters.AddWithValue("?", Trim(txtTeacher.Text))
@@ -217,7 +213,7 @@
                     End If
                 End Using
 
-                ' Get setting ID
+
                 Dim settingID As Integer = -1
                 Using settingCmd As New Odbc.OdbcCommand("SELECT settingID FROM tblsettings ORDER BY settingID ASC LIMIT 1", con)
                     Dim resultS = settingCmd.ExecuteScalar()
@@ -229,7 +225,7 @@
                     End If
                 End Using
 
-                ' Get item ID and available quantity (again)
+
                 Dim itemID As Integer = -1
                 Dim availQty2 As Integer = 0
                 Using itemCmd As New Odbc.OdbcCommand("SELECT ItemID, ItemQuantity FROM tblitemlist WHERE ItemName = ?", con)
@@ -249,12 +245,12 @@
                     Exit Sub
                 End If
 
-                ' Insert into cart and reserve serials in a transaction
+
                 Using trans As Odbc.OdbcTransaction = con.BeginTransaction()
                     Try
                         Dim borrowQty As Integer = CInt(nupQuantity.Value)
 
-                        ' 1) Insert cart row
+
                         Using insertCmd As New Odbc.OdbcCommand("INSERT INTO tblcartlist (ItemID, BorrowerName, QuantityBorrowed, Contact, Purpose, borrowDateTime, Remarks, sID, tID, settingID, yID) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)", con, trans)
                             insertCmd.Parameters.AddWithValue("?", itemID)
                             insertCmd.Parameters.AddWithValue("?", txtBorrowerName.Text)
@@ -270,10 +266,10 @@
                             insertCmd.ExecuteNonQuery()
                         End Using
 
-                        ' get cartID
+
                         Dim cartID As Integer = Convert.ToInt32(New Odbc.OdbcCommand("SELECT LAST_INSERT_ID()", con, trans).ExecuteScalar())
 
-                        ' 2) Select available serials and reserve them (LIMIT cannot be parameterized -> concat)
+
                         Dim sqlSerial As String = "SELECT UnitID, SerialNo FROM tblitemunits " &
                                                   "WHERE ItemID = ? AND ItemStatus = 'Available' " &
                                                   "ORDER BY UnitID ASC LIMIT " & borrowQty.ToString() & " FOR UPDATE"
@@ -292,7 +288,7 @@
                                 Exit Sub
                             End If
 
-                            ' 3) Insert into tblcartserials and mark units Reserved
+
                             For Each t In reservedSerials
                                 Using insCartSerial As New Odbc.OdbcCommand("INSERT INTO tblcartserials (CartID, UnitID, SerialNo) VALUES (?, ?, ?)", con, trans)
                                     insCartSerial.Parameters.AddWithValue("?", cartID)
@@ -308,7 +304,7 @@
                             Next
                         End Using
 
-                        ' 4) Decrease itemlist quantity
+
                         Using updList As New Odbc.OdbcCommand("UPDATE tblitemlist SET ItemQuantity = ItemQuantity - ? WHERE ItemID = ?", con, trans)
                             updList.Parameters.AddWithValue("?", borrowQty)
                             updList.Parameters.AddWithValue("?", itemID)
@@ -318,8 +314,7 @@
                         trans.Commit()
                         MsgBox("Item added to cart and serials reserved successfully!", vbInformation)
 
-                        ' Refresh UI
-                        
+
                     Catch exTrans As Exception
                         trans.Rollback()
                         MsgBox("Error reserving serials / adding to cart: " & exTrans.Message, vbCritical)

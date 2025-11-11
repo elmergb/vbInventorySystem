@@ -31,7 +31,7 @@
         Dim row As DataGridViewRow = dgvDamageAction.CurrentRow
         Dim frm As New frmDamageActionEntry()
 
-        ' Pass values from the selected row to the form
+
         frm.actionID = Val(row.Cells("ActionID").Value)
         frm.lblStudent.Text = row.Cells("BorrowerName").Value.ToString()
         frm.lblItemName.Text = row.Cells("ItemName").Value.ToString()
@@ -41,7 +41,7 @@
         frm.txtAmount.Text = row.Cells("AmountPaid").Value.ToString()
         frm.txtRemarks.Text = row.Cells("Notes").Value.ToString()
 
-        ' Handle date properly
+
         If Not IsDBNull(row.Cells("DateCompleted").Value) Then
             frm.dtpDateTime.Value = CDate(row.Cells("DateCompleted").Value)
         End If

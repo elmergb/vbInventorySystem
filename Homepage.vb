@@ -119,8 +119,19 @@
     End Sub
 
     Private Sub ltsLogout_Click_1(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles ltsLogout.Click
-        If MsgBox("Are you sure to Logout?", vbYesNo + vbQuestion) = vbYes Then
-            Me.Close()
+        If MsgBox("Are you sure you want to logout?", vbYesNo + vbQuestion) = vbYes Then
+            Try
+                If CurrentLogID > 0 Then
+                    Dim cmd As New Odbc.OdbcCommand("UPDATE tblloginhistory SET LogoutTime = NOW() WHERE LogID = ?", con)
+                    cmd.Parameters.AddWithValue("?", CurrentLogID)
+                    cmd.ExecuteNonQuery()
+                End If
+
+                MsgBox("Logged out successfully.", vbInformation)
+                Application.Restart() ' Restarts the app cleanly
+            Catch ex As Exception
+                MsgBox("Logout error: " & ex.Message, vbCritical)
+            End Try
         End If
 
     End Sub
