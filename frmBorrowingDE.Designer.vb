@@ -75,29 +75,26 @@ Partial Class frmBorrowingDE
         Me.Label1.Font = New System.Drawing.Font("Arial", 20.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label1.ForeColor = System.Drawing.Color.White
         Me.Label1.Location = New System.Drawing.Point(0, 0)
-        Me.Label1.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(1914, 76)
+        Me.Label1.Size = New System.Drawing.Size(1436, 62)
         Me.Label1.TabIndex = 1
         Me.Label1.Text = "  Borrowing"
         Me.Label1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
         '
         'txtStudentNo
         '
-        Me.txtStudentNo.Location = New System.Drawing.Point(152, 102)
-        Me.txtStudentNo.Margin = New System.Windows.Forms.Padding(4)
+        Me.txtStudentNo.Location = New System.Drawing.Point(114, 83)
         Me.txtStudentNo.Name = "txtStudentNo"
-        Me.txtStudentNo.Size = New System.Drawing.Size(134, 22)
+        Me.txtStudentNo.Size = New System.Drawing.Size(102, 20)
         Me.txtStudentNo.TabIndex = 2
         '
         'Label2
         '
         Me.Label2.AutoSize = True
         Me.Label2.Font = New System.Drawing.Font("Microsoft Tai Le", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label2.Location = New System.Drawing.Point(19, 102)
-        Me.Label2.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
+        Me.Label2.Location = New System.Drawing.Point(14, 83)
         Me.Label2.Name = "Label2"
-        Me.Label2.Size = New System.Drawing.Size(118, 23)
+        Me.Label2.Size = New System.Drawing.Size(94, 19)
         Me.Label2.TabIndex = 3
         Me.Label2.Text = "Student No. :"
         '
@@ -105,130 +102,117 @@ Partial Class frmBorrowingDE
         '
         Me.Label3.AutoSize = True
         Me.Label3.Font = New System.Drawing.Font("Microsoft Tai Le", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label3.Location = New System.Drawing.Point(19, 139)
-        Me.Label3.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
+        Me.Label3.Location = New System.Drawing.Point(14, 113)
         Me.Label3.Name = "Label3"
-        Me.Label3.Size = New System.Drawing.Size(104, 23)
+        Me.Label3.Size = New System.Drawing.Size(83, 19)
         Me.Label3.TabIndex = 5
         Me.Label3.Text = "First Name:"
         '
         'txtfname
         '
-        Me.txtfname.Location = New System.Drawing.Point(152, 139)
-        Me.txtfname.Margin = New System.Windows.Forms.Padding(4)
+        Me.txtfname.Location = New System.Drawing.Point(114, 113)
         Me.txtfname.Name = "txtfname"
         Me.txtfname.ReadOnly = True
-        Me.txtfname.Size = New System.Drawing.Size(205, 22)
+        Me.txtfname.Size = New System.Drawing.Size(155, 20)
         Me.txtfname.TabIndex = 4
         '
         'Label4
         '
         Me.Label4.AutoSize = True
         Me.Label4.Font = New System.Drawing.Font("Microsoft Tai Le", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label4.Location = New System.Drawing.Point(19, 173)
-        Me.Label4.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
+        Me.Label4.Location = New System.Drawing.Point(14, 141)
         Me.Label4.Name = "Label4"
-        Me.Label4.Size = New System.Drawing.Size(125, 23)
+        Me.Label4.Size = New System.Drawing.Size(100, 19)
         Me.Label4.TabIndex = 7
         Me.Label4.Text = "Middle Initial:"
         '
         'txtmi
         '
-        Me.txtmi.Location = New System.Drawing.Point(152, 173)
-        Me.txtmi.Margin = New System.Windows.Forms.Padding(4)
+        Me.txtmi.Location = New System.Drawing.Point(114, 141)
         Me.txtmi.Name = "txtmi"
         Me.txtmi.ReadOnly = True
-        Me.txtmi.Size = New System.Drawing.Size(205, 22)
+        Me.txtmi.Size = New System.Drawing.Size(155, 20)
         Me.txtmi.TabIndex = 6
         '
         'Label5
         '
         Me.Label5.AutoSize = True
         Me.Label5.Font = New System.Drawing.Font("Microsoft Tai Le", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label5.Location = New System.Drawing.Point(19, 210)
-        Me.Label5.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
+        Me.Label5.Location = New System.Drawing.Point(14, 171)
         Me.Label5.Name = "Label5"
-        Me.Label5.Size = New System.Drawing.Size(102, 23)
+        Me.Label5.Size = New System.Drawing.Size(82, 19)
         Me.Label5.TabIndex = 9
         Me.Label5.Text = "Last Name:"
         '
         'txtlname
         '
-        Me.txtlname.Location = New System.Drawing.Point(152, 210)
-        Me.txtlname.Margin = New System.Windows.Forms.Padding(4)
+        Me.txtlname.Location = New System.Drawing.Point(114, 171)
         Me.txtlname.Name = "txtlname"
         Me.txtlname.ReadOnly = True
-        Me.txtlname.Size = New System.Drawing.Size(205, 22)
+        Me.txtlname.Size = New System.Drawing.Size(155, 20)
         Me.txtlname.TabIndex = 8
         '
         'Label6
         '
         Me.Label6.AutoSize = True
         Me.Label6.Font = New System.Drawing.Font("Microsoft Tai Le", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label6.Location = New System.Drawing.Point(416, 175)
-        Me.Label6.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
+        Me.Label6.Location = New System.Drawing.Point(312, 142)
         Me.Label6.Name = "Label6"
-        Me.Label6.Size = New System.Drawing.Size(100, 23)
+        Me.Label6.Size = New System.Drawing.Size(79, 19)
         Me.Label6.TabIndex = 15
         Me.Label6.Text = "Year Level:"
         '
         'txtYearLevel
         '
-        Me.txtYearLevel.Location = New System.Drawing.Point(549, 175)
-        Me.txtYearLevel.Margin = New System.Windows.Forms.Padding(4)
+        Me.txtYearLevel.Location = New System.Drawing.Point(412, 142)
         Me.txtYearLevel.Name = "txtYearLevel"
         Me.txtYearLevel.ReadOnly = True
-        Me.txtYearLevel.Size = New System.Drawing.Size(205, 22)
+        Me.txtYearLevel.Size = New System.Drawing.Size(155, 20)
         Me.txtYearLevel.TabIndex = 14
         '
         'Label7
         '
         Me.Label7.AutoSize = True
         Me.Label7.Font = New System.Drawing.Font("Microsoft Tai Le", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label7.Location = New System.Drawing.Point(416, 139)
-        Me.Label7.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
+        Me.Label7.Location = New System.Drawing.Point(312, 113)
         Me.Label7.Name = "Label7"
-        Me.Label7.Size = New System.Drawing.Size(76, 23)
+        Me.Label7.Size = New System.Drawing.Size(61, 19)
         Me.Label7.TabIndex = 13
         Me.Label7.Text = "Section:"
         '
         'txtSection
         '
-        Me.txtSection.Location = New System.Drawing.Point(549, 139)
-        Me.txtSection.Margin = New System.Windows.Forms.Padding(4)
+        Me.txtSection.Location = New System.Drawing.Point(412, 113)
         Me.txtSection.Name = "txtSection"
         Me.txtSection.ReadOnly = True
-        Me.txtSection.Size = New System.Drawing.Size(205, 22)
+        Me.txtSection.Size = New System.Drawing.Size(155, 20)
         Me.txtSection.TabIndex = 12
         '
         'Label8
         '
         Me.Label8.AutoSize = True
         Me.Label8.Font = New System.Drawing.Font("Microsoft Tai Le", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label8.Location = New System.Drawing.Point(416, 102)
-        Me.Label8.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
+        Me.Label8.Location = New System.Drawing.Point(312, 83)
         Me.Label8.Name = "Label8"
-        Me.Label8.Size = New System.Drawing.Size(73, 23)
+        Me.Label8.Size = New System.Drawing.Size(57, 19)
         Me.Label8.TabIndex = 11
         Me.Label8.Text = "Course:"
         '
         'txtCourse
         '
-        Me.txtCourse.Location = New System.Drawing.Point(549, 102)
-        Me.txtCourse.Margin = New System.Windows.Forms.Padding(4)
+        Me.txtCourse.Location = New System.Drawing.Point(412, 83)
         Me.txtCourse.Name = "txtCourse"
         Me.txtCourse.ReadOnly = True
-        Me.txtCourse.Size = New System.Drawing.Size(205, 22)
+        Me.txtCourse.Size = New System.Drawing.Size(155, 20)
         Me.txtCourse.TabIndex = 10
         '
         'Label9
         '
         Me.Label9.AutoSize = True
         Me.Label9.Font = New System.Drawing.Font("Microsoft Tai Le", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label9.Location = New System.Drawing.Point(831, 139)
-        Me.Label9.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
+        Me.Label9.Location = New System.Drawing.Point(623, 113)
         Me.Label9.Name = "Label9"
-        Me.Label9.Size = New System.Drawing.Size(53, 23)
+        Me.Label9.Size = New System.Drawing.Size(44, 19)
         Me.Label9.TabIndex = 21
         Me.Label9.Text = "Date:"
         '
@@ -236,30 +220,27 @@ Partial Class frmBorrowingDE
         '
         Me.Label10.AutoSize = True
         Me.Label10.Font = New System.Drawing.Font("Microsoft Tai Le", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label10.Location = New System.Drawing.Point(831, 103)
-        Me.Label10.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
+        Me.Label10.Location = New System.Drawing.Point(623, 84)
         Me.Label10.Name = "Label10"
-        Me.Label10.Size = New System.Drawing.Size(114, 23)
+        Me.Label10.Size = New System.Drawing.Size(90, 19)
         Me.Label10.TabIndex = 19
         Me.Label10.Text = "School Year:"
         '
         'txtSchoolYear
         '
-        Me.txtSchoolYear.Location = New System.Drawing.Point(964, 103)
-        Me.txtSchoolYear.Margin = New System.Windows.Forms.Padding(4)
+        Me.txtSchoolYear.Location = New System.Drawing.Point(723, 84)
         Me.txtSchoolYear.Name = "txtSchoolYear"
         Me.txtSchoolYear.ReadOnly = True
-        Me.txtSchoolYear.Size = New System.Drawing.Size(205, 22)
+        Me.txtSchoolYear.Size = New System.Drawing.Size(155, 20)
         Me.txtSchoolYear.TabIndex = 18
         '
         'Label11
         '
         Me.Label11.AutoSize = True
         Me.Label11.Font = New System.Drawing.Font("Microsoft Tai Le", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label11.Location = New System.Drawing.Point(416, 211)
-        Me.Label11.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
+        Me.Label11.Location = New System.Drawing.Point(312, 171)
         Me.Label11.Name = "Label11"
-        Me.Label11.Size = New System.Drawing.Size(91, 23)
+        Me.Label11.Size = New System.Drawing.Size(73, 19)
         Me.Label11.TabIndex = 17
         Me.Label11.Text = "Semester:"
         '
@@ -267,40 +248,36 @@ Partial Class frmBorrowingDE
         '
         Me.dtpTimeDate.CustomFormat = "yyyy-MM-dd hh:mm tt"
         Me.dtpTimeDate.Format = System.Windows.Forms.DateTimePickerFormat.Custom
-        Me.dtpTimeDate.Location = New System.Drawing.Point(964, 135)
-        Me.dtpTimeDate.Margin = New System.Windows.Forms.Padding(4)
+        Me.dtpTimeDate.Location = New System.Drawing.Point(723, 110)
         Me.dtpTimeDate.Name = "dtpTimeDate"
-        Me.dtpTimeDate.Size = New System.Drawing.Size(205, 22)
+        Me.dtpTimeDate.Size = New System.Drawing.Size(155, 20)
         Me.dtpTimeDate.TabIndex = 23
         '
         'cbTeacher
         '
         Me.cbTeacher.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
         Me.cbTeacher.FormattingEnabled = True
-        Me.cbTeacher.Location = New System.Drawing.Point(964, 175)
-        Me.cbTeacher.Margin = New System.Windows.Forms.Padding(4)
+        Me.cbTeacher.Location = New System.Drawing.Point(723, 142)
         Me.cbTeacher.Name = "cbTeacher"
-        Me.cbTeacher.Size = New System.Drawing.Size(205, 24)
+        Me.cbTeacher.Size = New System.Drawing.Size(155, 21)
         Me.cbTeacher.TabIndex = 25
         '
         'Label12
         '
         Me.Label12.AutoSize = True
         Me.Label12.Font = New System.Drawing.Font("Microsoft Tai Le", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label12.Location = New System.Drawing.Point(831, 177)
-        Me.Label12.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
+        Me.Label12.Location = New System.Drawing.Point(623, 144)
         Me.Label12.Name = "Label12"
-        Me.Label12.Size = New System.Drawing.Size(81, 23)
+        Me.Label12.Size = New System.Drawing.Size(64, 19)
         Me.Label12.TabIndex = 26
         Me.Label12.Text = "Teacher:"
         '
         'txtSemester
         '
-        Me.txtSemester.Location = New System.Drawing.Point(549, 211)
-        Me.txtSemester.Margin = New System.Windows.Forms.Padding(4)
+        Me.txtSemester.Location = New System.Drawing.Point(412, 171)
         Me.txtSemester.Name = "txtSemester"
         Me.txtSemester.ReadOnly = True
-        Me.txtSemester.Size = New System.Drawing.Size(205, 22)
+        Me.txtSemester.Size = New System.Drawing.Size(155, 20)
         Me.txtSemester.TabIndex = 27
         '
         'dgvItemList
@@ -335,8 +312,7 @@ Partial Class frmBorrowingDE
         DataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
         Me.dgvItemList.DefaultCellStyle = DataGridViewCellStyle3
         Me.dgvItemList.ImeMode = System.Windows.Forms.ImeMode.NoControl
-        Me.dgvItemList.Location = New System.Drawing.Point(24, 253)
-        Me.dgvItemList.Margin = New System.Windows.Forms.Padding(4)
+        Me.dgvItemList.Location = New System.Drawing.Point(18, 206)
         Me.dgvItemList.Name = "dgvItemList"
         Me.dgvItemList.ReadOnly = True
         DataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
@@ -350,7 +326,7 @@ Partial Class frmBorrowingDE
         Me.dgvItemList.RowHeadersVisible = False
         Me.dgvItemList.RowHeadersWidth = 50
         Me.dgvItemList.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
-        Me.dgvItemList.Size = New System.Drawing.Size(1877, 598)
+        Me.dgvItemList.Size = New System.Drawing.Size(1408, 486)
         Me.dgvItemList.TabIndex = 28
         '
         'Item
@@ -399,19 +375,19 @@ Partial Class frmBorrowingDE
         '
         'txtSearch
         '
-        Me.txtSearch.Location = New System.Drawing.Point(1323, 128)
+        Me.txtSearch.Location = New System.Drawing.Point(992, 104)
+        Me.txtSearch.Margin = New System.Windows.Forms.Padding(2)
         Me.txtSearch.Name = "txtSearch"
-        Me.txtSearch.Size = New System.Drawing.Size(229, 22)
+        Me.txtSearch.Size = New System.Drawing.Size(173, 20)
         Me.txtSearch.TabIndex = 32
         '
         'Label13
         '
         Me.Label13.AutoSize = True
         Me.Label13.Font = New System.Drawing.Font("Microsoft Tai Le", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label13.Location = New System.Drawing.Point(1319, 102)
-        Me.Label13.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
+        Me.Label13.Location = New System.Drawing.Point(989, 83)
         Me.Label13.Name = "Label13"
-        Me.Label13.Size = New System.Drawing.Size(71, 23)
+        Me.Label13.Size = New System.Drawing.Size(56, 19)
         Me.Label13.TabIndex = 33
         Me.Label13.Text = "Search:"
         '
@@ -419,19 +395,19 @@ Partial Class frmBorrowingDE
         '
         Me.cbSort.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
         Me.cbSort.FormattingEnabled = True
-        Me.cbSort.Location = New System.Drawing.Point(1566, 128)
+        Me.cbSort.Location = New System.Drawing.Point(1174, 104)
+        Me.cbSort.Margin = New System.Windows.Forms.Padding(2)
         Me.cbSort.Name = "cbSort"
-        Me.cbSort.Size = New System.Drawing.Size(199, 24)
+        Me.cbSort.Size = New System.Drawing.Size(150, 21)
         Me.cbSort.TabIndex = 34
         '
         'Label14
         '
         Me.Label14.AutoSize = True
         Me.Label14.Font = New System.Drawing.Font("Microsoft Tai Le", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label14.Location = New System.Drawing.Point(1562, 102)
-        Me.Label14.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
+        Me.Label14.Location = New System.Drawing.Point(1172, 83)
         Me.Label14.Name = "Label14"
-        Me.Label14.Size = New System.Drawing.Size(86, 23)
+        Me.Label14.Size = New System.Drawing.Size(68, 19)
         Me.Label14.TabIndex = 35
         Me.Label14.Text = "Sarch by:"
         '
@@ -439,12 +415,11 @@ Partial Class frmBorrowingDE
         '
         Me.btnCart.Font = New System.Drawing.Font("Arial", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btnCart.Image = CType(resources.GetObject("btnCart.Image"), System.Drawing.Image)
-        Me.btnCart.Location = New System.Drawing.Point(1609, 173)
-        Me.btnCart.Margin = New System.Windows.Forms.Padding(4)
+        Me.btnCart.Location = New System.Drawing.Point(1207, 141)
         Me.btnCart.Name = "btnCart"
-        Me.btnCart.Size = New System.Drawing.Size(135, 52)
+        Me.btnCart.Size = New System.Drawing.Size(117, 42)
         Me.btnCart.TabIndex = 31
-        Me.btnCart.Text = "Cart"
+        Me.btnCart.Text = "Borrowed"
         Me.btnCart.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText
         Me.btnCart.UseVisualStyleBackColor = True
         '
@@ -452,10 +427,9 @@ Partial Class frmBorrowingDE
         '
         Me.btnSave.Font = New System.Drawing.Font("Arial", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btnSave.Image = CType(resources.GetObject("btnSave.Image"), System.Drawing.Image)
-        Me.btnSave.Location = New System.Drawing.Point(1466, 173)
-        Me.btnSave.Margin = New System.Windows.Forms.Padding(4)
+        Me.btnSave.Location = New System.Drawing.Point(1100, 141)
         Me.btnSave.Name = "btnSave"
-        Me.btnSave.Size = New System.Drawing.Size(135, 52)
+        Me.btnSave.Size = New System.Drawing.Size(101, 42)
         Me.btnSave.TabIndex = 30
         Me.btnSave.Text = "Save"
         Me.btnSave.TextAlign = System.Drawing.ContentAlignment.MiddleRight
@@ -466,10 +440,9 @@ Partial Class frmBorrowingDE
         '
         Me.btnBorrow.Font = New System.Drawing.Font("Arial", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btnBorrow.Image = CType(resources.GetObject("btnBorrow.Image"), System.Drawing.Image)
-        Me.btnBorrow.Location = New System.Drawing.Point(1323, 173)
-        Me.btnBorrow.Margin = New System.Windows.Forms.Padding(4)
+        Me.btnBorrow.Location = New System.Drawing.Point(992, 141)
         Me.btnBorrow.Name = "btnBorrow"
-        Me.btnBorrow.Size = New System.Drawing.Size(135, 52)
+        Me.btnBorrow.Size = New System.Drawing.Size(101, 42)
         Me.btnBorrow.TabIndex = 29
         Me.btnBorrow.Text = "Borrow"
         Me.btnBorrow.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText
@@ -477,18 +450,19 @@ Partial Class frmBorrowingDE
         '
         'btnViewStudent
         '
-        Me.btnViewStudent.Location = New System.Drawing.Point(293, 102)
+        Me.btnViewStudent.Location = New System.Drawing.Point(220, 83)
+        Me.btnViewStudent.Margin = New System.Windows.Forms.Padding(2)
         Me.btnViewStudent.Name = "btnViewStudent"
-        Me.btnViewStudent.Size = New System.Drawing.Size(70, 23)
+        Me.btnViewStudent.Size = New System.Drawing.Size(52, 19)
         Me.btnViewStudent.TabIndex = 37
         Me.btnViewStudent.Text = "View Student"
         Me.btnViewStudent.UseVisualStyleBackColor = True
         '
         'frmBorrowingDE
         '
-        Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 16.0!)
+        Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(1914, 937)
+        Me.ClientSize = New System.Drawing.Size(1436, 761)
         Me.Controls.Add(Me.btnViewStudent)
         Me.Controls.Add(Me.Label14)
         Me.Controls.Add(Me.cbSort)
@@ -521,7 +495,6 @@ Partial Class frmBorrowingDE
         Me.Controls.Add(Me.Label2)
         Me.Controls.Add(Me.txtStudentNo)
         Me.Controls.Add(Me.Label1)
-        Me.Margin = New System.Windows.Forms.Padding(4)
         Me.Name = "frmBorrowingDE"
         Me.Text = "frmBorrowerCartList"
         CType(Me.dgvItemList, System.ComponentModel.ISupportInitialize).EndInit()

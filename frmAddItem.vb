@@ -17,97 +17,109 @@
     Private Sub btnSave_Click(sender As Object, e As EventArgs) Handles btnSave.Click
         Dim cmd As Odbc.OdbcCommand
         Dim qty As Integer = CInt(nupQuantity.Value)
-
         Dim Remarks As String = Trim(cbRemarks.Text)
 
-        If ValidateAllTextboxes(Me) = False Then
+        ' --- Validation ---
+        If ValidateAllTextboxes(Me) = False Then Return
+        If qty <= 0 Then
+            MsgBox("Insert a valid quantity", MsgBoxStyle.Exclamation)
             Return
         End If
 
+        Try
+            ' --- Check if item already exists by Name + Description + Location ---
+            cmd = New Odbc.OdbcCommand("SELECT ItemID, ItemQuantity FROM tblitemlist WHERE TRIM(ItemName)=? AND TRIM(ItemDescription)=? AND TRIM(ItemLocation)=?", con)
+            cmd.Parameters.AddWithValue("?", Trim(txtNameOFItem.Text))
+            cmd.Parameters.AddWithValue("?", Trim(txtItemDesc.Text))
+            cmd.Parameters.AddWithValue("?", Trim(cbLocation.Text))
+            Dim reader As Odbc.OdbcDataReader = cmd.ExecuteReader()
+            Dim existingItemID As Integer = 0
+            Dim existingQty As Integer = 0
 
-        If ItemID = 0 Then
-            ' --- ADD NEW ITEM ---
-            Try
-                If qty <= 0 Then
-                    MsgBox("Insert valid amount")
-                    Return
-                End If
-                cmd = New Odbc.OdbcCommand("SELECT ItemID, ItemQuantity FROM tblitemlist WHERE TRIM(ItemName)=? AND TRIM(ItemDescription)=? AND TRIM(ItemLocation)=?", con)
+            If reader.Read() Then
+                existingItemID = Convert.ToInt32(reader("ItemID"))
+                existingQty = Convert.ToInt32(reader("ItemQuantity"))
+            End If
+            reader.Close()
+
+            ' --- NEW ITEM ---
+            If ItemID = 0 AndAlso existingItemID = 0 Then
+                ' Insert into tblitemlist
+                cmd = New Odbc.OdbcCommand("INSERT INTO tblitemlist (ItemName, ItemDescription, ItemCategory, ItemLocation, ItemQuantity, ItemRemarks) VALUES (?,?,?,?,?,?)", con)
                 With cmd.Parameters
                     .AddWithValue("?", Trim(txtNameOFItem.Text))
                     .AddWithValue("?", Trim(txtItemDesc.Text))
+                    .AddWithValue("?", Trim(cbCategory.Text))
                     .AddWithValue("?", Trim(cbLocation.Text))
+                    .AddWithValue("?", qty)
+                    .AddWithValue("?", Remarks)
                 End With
+                cmd.ExecuteNonQuery()
 
-                Dim reader As Odbc.OdbcDataReader = cmd.ExecuteReader()
-                Dim existingItemID As Integer = 0
-                Dim existingQty As Integer = 0
+                ' Get new ItemID
+                cmd = New Odbc.OdbcCommand("SELECT LAST_INSERT_ID()", con)
+                Dim itemID As Integer = Convert.ToInt32(cmd.ExecuteScalar())
 
-                If reader.Read() Then
-                    existingItemID = CInt(reader("ItemID"))
-                    existingQty = CInt(reader("ItemQuantity"))
-                End If
-                reader.Close()
-
-                If existingItemID > 0 Then
-                    ' Item already exists → update quantity
-                    Dim newQty As Integer = existingQty + qty
-                    cmd = New Odbc.OdbcCommand("UPDATE tblitemlist SET ItemQuantity=?, ItemRemarks=? WHERE ItemID=?", con)
-                    With cmd.Parameters
-                        .AddWithValue("?", newQty)
-                        .AddWithValue("?", Trim(cbRemarks.Text))
-                        .AddWithValue("?", existingItemID)
-                    End With
+                ' *** Insert units for new item ***
+                For i As Integer = 1 To qty
+                    Dim serialNo As String = txtNameOFItem.Text.Substring(0, Math.Min(4, txtNameOFItem.Text.Length)).ToUpper() & "-" & i.ToString("D3")
+                    cmd = New Odbc.OdbcCommand("INSERT INTO tblitemunits (ItemID, SerialNo, ItemStatus, Remarks) VALUES (?,?,?,?)", con)
+                    cmd.Parameters.AddWithValue("?", itemID)
+                    cmd.Parameters.AddWithValue("?", serialNo)
+                    cmd.Parameters.AddWithValue("?", "Available")
+                    cmd.Parameters.AddWithValue("?", Remarks)
                     cmd.ExecuteNonQuery()
-                    MsgBox("Item already exists, quantity updated successfully!", MsgBoxStyle.Information, "Updated")
-                Else
-                    ' Insert new item
-                    cmd = New Odbc.OdbcCommand("INSERT INTO tblitemlist (ItemName, ItemDescription, ItemCategory, ItemLocation, ItemQuantity, ItemRemarks) VALUES (?,?,?,?,?,?)", con)
-                    With cmd.Parameters
-                        .AddWithValue("?", Trim(txtNameOFItem.Text))
-                        .AddWithValue("?", Trim(txtItemDesc.Text))
-                        .AddWithValue("?", Trim(cbCategory.Text))
-                        .AddWithValue("?", Trim(cbLocation.Text))
-                        .AddWithValue("?", qty)
-                        .AddWithValue("?", Trim(cbRemarks.Text))
-                    End With
+                Next
+
+                MsgBox("Item added successfully!", MsgBoxStyle.Information, "Success")
+
+                ' --- EXISTING ITEM MERGE (same description/location) ---
+            ElseIf existingItemID > 0 AndAlso ItemID = 0 Then
+                Dim newQty As Integer = existingQty + qty
+
+                ' Update tblitemlist
+                cmd = New Odbc.OdbcCommand("UPDATE tblitemlist SET ItemQuantity=?, ItemRemarks=? WHERE ItemID=?", con)
+                cmd.Parameters.AddWithValue("?", newQty)
+                cmd.Parameters.AddWithValue("?", Remarks)
+                cmd.Parameters.AddWithValue("?", existingItemID)
+                cmd.ExecuteNonQuery()
+
+                ' *** Handle units for merge (avoid duplicate serials) ***
+                ' 1. Find current max serial number for this item
+                Dim cmdMax As New Odbc.OdbcCommand("SELECT MAX(CAST(SUBSTRING(SerialNo, 6) AS UNSIGNED)) FROM tblitemunits WHERE ItemID = ?", con)
+                cmdMax.Parameters.AddWithValue("?", existingItemID)
+                Dim maxSerialObj As Object = cmdMax.ExecuteScalar()
+                Dim startSerial As Integer = If(IsDBNull(maxSerialObj), 0, Convert.ToInt32(maxSerialObj))
+
+                ' 2. Add missing units starting from maxSerial + 1
+                For i As Integer = startSerial + 1 To newQty
+                    Dim serialNo As String = txtNameOFItem.Text.Substring(0, Math.Min(4, txtNameOFItem.Text.Length)).ToUpper() & "-" & i.ToString("D3")
+                    cmd = New Odbc.OdbcCommand("INSERT INTO tblitemunits (ItemID, SerialNo, ItemStatus, Remarks) VALUES (?,?,?,?)", con)
+                    cmd.Parameters.AddWithValue("?", existingItemID)
+                    cmd.Parameters.AddWithValue("?", serialNo)
+                    cmd.Parameters.AddWithValue("?", "Available")
+                    cmd.Parameters.AddWithValue("?", Remarks)
                     cmd.ExecuteNonQuery()
-                    MsgBox("Item saved successfully!", MsgBoxStyle.Information, "Success")
+                Next
+
+                ' 3. Remove extra units if newQty < current total units
+                Dim cmdCheck As New Odbc.OdbcCommand("SELECT COUNT(*) FROM tblitemunits WHERE ItemID = ?", con)
+                cmdCheck.Parameters.AddWithValue("?", existingItemID)
+                Dim currentUnits As Integer = Convert.ToInt32(cmdCheck.ExecuteScalar())
+                If newQty < currentUnits Then
+                    Dim unitsToRemove As Integer = currentUnits - newQty
+                    cmd = New Odbc.OdbcCommand("DELETE FROM tblitemunits WHERE ItemID = ? AND ItemStatus = 'Available' ORDER BY SerialNo DESC LIMIT ?", con)
+                    cmd.Parameters.AddWithValue("?", existingItemID)
+                    cmd.Parameters.AddWithValue("?", unitsToRemove)
+                    cmd.ExecuteNonQuery()
                 End If
 
-                If MsgBox("Do you want to add more items?", vbYesNo + vbQuestion) = vbNo Then
-                    Me.Close()
-                End If
-                RaiseEvent ItemAdded(Me, EventArgs.Empty)
-                ClearAllText(Me)
-                data_loader("SELECT * FROM tblitemlist", frmListItem.dgvItemList)
+                MsgBox("Item quantity merged successfully!", MsgBoxStyle.Information, "Updated")
 
-            Catch ex As Exception
-                MsgBox(ex.Message.ToString)
-            Finally
-                GC.Collect()
-            End Try
-
-        Else
-            Dim damagedQty As Integer = CInt(nupDamaged.Value)
-            If qty <= -1 Then
-                MsgBox("Nakalimutan mo mag lagay ng item")
-                Return
-            End If
-
-
-            Try
-                If damagedQty > qty Then
-                    Remarks = "Partial Damage"
-                ElseIf damagedQty > 0 Then
-                    Remarks = "Damaged"
-                Else
-                    Remarks = "Good"
-                End If
-
-                ' --- UPDATE ITEM RECORD ---
-                cmd = New Odbc.OdbcCommand("Update(tblitemlist) SET ItemName=?, ItemDescription=?, ItemCategory=?, ItemLocation=?, ItemQuantity=?, ItemRemarks=? WHERE ItemID=?", con)
-
+                ' --- EDITING EXISTING ITEM ---
+            ElseIf ItemID > 0 Then
+                ' Update tblitemlist
+                cmd = New Odbc.OdbcCommand("UPDATE tblitemlist SET ItemName=?, ItemDescription=?, ItemCategory=?, ItemLocation=?, ItemQuantity=?, ItemRemarks=? WHERE ItemID=?", con)
                 With cmd.Parameters
                     .AddWithValue("?", Trim(txtNameOFItem.Text))
                     .AddWithValue("?", Trim(txtItemDesc.Text))
@@ -117,43 +129,73 @@
                     .AddWithValue("?", Remarks)
                     .AddWithValue("?", ItemID)
                 End With
-
                 cmd.ExecuteNonQuery()
 
-                MsgBox("Item updated successfully!", MsgBoxStyle.Information, "Success")
-
-                cmd = New Odbc.OdbcCommand("SELECT COUNT(*) FROM tbldamaged WHERE ItemID = ?", con)
-                cmd.Parameters.AddWithValue("?", ItemID)
-                Dim countDamaged As Integer = Convert.ToInt32(cmd.ExecuteScalar())
-
-                If countDamaged > 0 Then
-                    ' Update existing record
-                    cmd = New Odbc.OdbcCommand("UPDATE tbldamaged SET QuantityDamaged=?, DateReported=NOW(), DamageRemarks=? WHERE ItemID=?", con)
-                    cmd.Parameters.AddWithValue("?", damagedQty)
-                    cmd.Parameters.AddWithValue("?", Remarks)
+                ' Handle damaged items
+                Dim damagedQty As Integer = CInt(nupDamaged.Value)
+                If damagedQty > 0 Then
+                    Dim damageRemarks As String = If(damagedQty = qty, "Damaged", "Partial Damage")
+                    cmd = New Odbc.OdbcCommand("SELECT COUNT(*) FROM tbldamaged WHERE ItemID = ?", con)
                     cmd.Parameters.AddWithValue("?", ItemID)
-                Else
-                    ' Insert new damaged record
-                    cmd = New Odbc.OdbcCommand("INSERT INTO tbldamaged (ItemID, QuantityDamaged, DateReported, DamageRemarks) VALUES (?, ?, NOW(), ?)", con)
-                    cmd.Parameters.AddWithValue("?", ItemID)
-                    cmd.Parameters.AddWithValue("?", damagedQty)
-                    cmd.Parameters.AddWithValue("?", Remarks)
+                    Dim countDamaged As Integer = Convert.ToInt32(cmd.ExecuteScalar())
+                    If countDamaged > 0 Then
+                        cmd = New Odbc.OdbcCommand("UPDATE tbldamaged SET QuantityDamaged=?, DateReported=NOW(), DamageRemarks=? WHERE ItemID=?", con)
+                        cmd.Parameters.AddWithValue("?", damagedQty)
+                        cmd.Parameters.AddWithValue("?", damageRemarks)
+                        cmd.Parameters.AddWithValue("?", ItemID)
+                        cmd.ExecuteNonQuery()
+                    Else
+                        cmd = New Odbc.OdbcCommand("INSERT INTO tbldamaged (ItemID, QuantityDamaged, DateReported, DamageRemarks) VALUES (?, ?, NOW(), ?)", con)
+                        cmd.Parameters.AddWithValue("?", ItemID)
+                        cmd.Parameters.AddWithValue("?", damagedQty)
+                        cmd.Parameters.AddWithValue("?", damageRemarks)
+                        cmd.ExecuteNonQuery()
+                    End If
                 End If
 
-                cmd.ExecuteNonQuery()
-                Call data_loader("SELECT * FROM vw_items", frmListItem.dgvItemList)
+                ' *** Update tblitemunits for edits ***
+                ' 1. Find current max serial
+                Dim cmdMaxEdit As New Odbc.OdbcCommand("SELECT MAX(CAST(SUBSTRING(SerialNo, 6) AS UNSIGNED)) FROM tblitemunits WHERE ItemID = ?", con)
+                cmdMaxEdit.Parameters.AddWithValue("?", ItemID)
+                Dim maxSerialEdit As Object = cmdMaxEdit.ExecuteScalar()
+                Dim startSerialEdit As Integer = If(IsDBNull(maxSerialEdit), 0, Convert.ToInt32(maxSerialEdit))
 
-                ClearAllText(Me)
+                ' 2. Add units if qty > current
+                cmd = New Odbc.OdbcCommand("SELECT COUNT(*) FROM tblitemunits WHERE ItemID = ?", con)
+                cmd.Parameters.AddWithValue("?", ItemID)
+                Dim currentUnitsEdit As Integer = Convert.ToInt32(cmd.ExecuteScalar())
 
-                RaiseEvent ItemAdded(Me, EventArgs.Empty)
-                Me.Close()
-            Catch ex As Exception
-                MsgBox(ex.Message.ToString)
-            Finally
-                RaiseEvent ItemAdded(Me, EventArgs.Empty)
-                GC.Collect()
-            End Try
-        End If
+                If qty > currentUnitsEdit Then
+                    For i As Integer = startSerialEdit + 1 To qty
+                        Dim serialNo As String = txtNameOFItem.Text.Substring(0, Math.Min(4, txtNameOFItem.Text.Length)).ToUpper() & "-" & i.ToString("D3")
+                        cmd = New Odbc.OdbcCommand("INSERT INTO tblitemunits (ItemID, SerialNo, ItemStatus, Remarks) VALUES (?,?,?,?)", con)
+                        cmd.Parameters.AddWithValue("?", ItemID)
+                        cmd.Parameters.AddWithValue("?", serialNo)
+                        cmd.Parameters.AddWithValue("?", "Available")
+                        cmd.Parameters.AddWithValue("?", Remarks)
+                        cmd.ExecuteNonQuery()
+                    Next
+                ElseIf qty < currentUnitsEdit Then
+                    Dim unitsToRemove As Integer = currentUnitsEdit - qty
+                    cmd = New Odbc.OdbcCommand("DELETE FROM tblitemunits WHERE ItemID = ? AND ItemStatus = 'Available' ORDER BY SerialNo DESC LIMIT ?", con)
+                    cmd.Parameters.AddWithValue("?", ItemID)
+                    cmd.Parameters.AddWithValue("?", unitsToRemove)
+                    cmd.ExecuteNonQuery()
+                End If
+
+                MsgBox("Item updated successfully!", MsgBoxStyle.Information, "Success")
+            End If
+
+            ' --- Refresh grid and clear ---
+            Call data_loader("SELECT * FROM vw_item_summary", frmListItem.dgvItemList)
+            ClearAllText(Me)
+            RaiseEvent ItemAdded(Me, EventArgs.Empty)
+
+        Catch ex As Exception
+            MsgBox("Error: " & ex.Message, MsgBoxStyle.Critical)
+        Finally
+            GC.Collect()
+        End Try
 
     End Sub
 

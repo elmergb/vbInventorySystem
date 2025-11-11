@@ -38,15 +38,17 @@
                 If MsgBox("You still have items in your cart. Do you want to borrow them now?",
                           vbYesNo + vbQuestion, "Warning") = vbYes Then
 
-                    ' ✅ Begin transaction
+                    ' ✅ Borrow now
                     Dim transaction As Odbc.OdbcTransaction = con.BeginTransaction()
-
                     Try
                         ' Select all cart items
                         Dim cmdSelect As New Odbc.OdbcCommand("SELECT * FROM tblcartlist", con, transaction)
                         Dim reader As Odbc.OdbcDataReader = cmdSelect.ExecuteReader()
 
-                       While reader.Read()
+                        Dim cartIDs As New List(Of Integer) ' to update serials
+
+                        While reader.Read()
+                            ' Insert into borrowing table
                             Dim insertCmd As New Odbc.OdbcCommand("INSERT INTO tblborrowing (ItemID, borrowQty, borrowDateTime, sID, tID, semester, settingID, remarks, Contact, Purpose, yID) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)", con, transaction)
                             With insertCmd.Parameters
                                 .AddWithValue("@ItemID", reader("ItemID"))
@@ -54,7 +56,7 @@
                                 .AddWithValue("@borrowDateTime", reader("borrowDateTime"))
                                 .AddWithValue("@sID", reader("sID"))
                                 .AddWithValue("@tID", reader("tID"))
-                                .AddWithValue("@semester", "semester")
+                                .AddWithValue("@semester", txtSemester.Text)
                                 .AddWithValue("@settingID", reader("settingID"))
                                 .AddWithValue("@remarks", reader("Remarks"))
                                 .AddWithValue("@Contact", reader("Contact"))
@@ -62,15 +64,33 @@
                                 .AddWithValue("@yID", reader("yID"))
                                 insertCmd.ExecuteNonQuery()
                             End With
+
+                            cartIDs.Add(CInt(reader("tempID")))
                         End While
                         reader.Close()
 
-                        ' ✅ Delete cart items after borrowing (same transaction)
+                        ' ✅ Update reserved units to Borrowed
+                        For Each cartID In cartIDs
+                            Using cmdUpdateUnits As New Odbc.OdbcCommand("UPDATE tblitemunits SET ItemStatus='Borrowed' WHERE UnitID IN (SELECT UnitID FROM tblcartserials WHERE CartID=?)", con, transaction)
+                                cmdUpdateUnits.Parameters.AddWithValue("?", cartID)
+                                cmdUpdateUnits.ExecuteNonQuery()
+                            End Using
+                        Next
+
+                        ' Delete cartserials for these carts
+                        For Each cartID In cartIDs
+                            Using cmdDelSerials As New Odbc.OdbcCommand("DELETE FROM tblcartserials WHERE CartID=?", con, transaction)
+                                cmdDelSerials.Parameters.AddWithValue("?", cartID)
+                                cmdDelSerials.ExecuteNonQuery()
+                            End Using
+                        Next
+
+                        ' Delete cart rows
                         Dim cmdDelete As New Odbc.OdbcCommand("DELETE FROM tblcartlist", con, transaction)
                         cmdDelete.ExecuteNonQuery()
 
                         transaction.Commit()
-                        MsgBox("All items borrowed successfully!", vbInformation)
+                        MsgBox("All items borrowed successfully! Status updated to 'Borrowed'.", vbInformation)
 
                     Catch exTrans As Exception
                         transaction.Rollback()
@@ -81,23 +101,47 @@
                     ' User clicked NO → Restore quantities and clear cart
                     Dim transaction As Odbc.OdbcTransaction = con.BeginTransaction()
                     Try
-                        Dim cmdSelect As New Odbc.OdbcCommand("SELECT ItemID, QuantityBorrowed FROM tblcartlist", con, transaction)
+                        ' 1) Restore item quantities
+                        Dim cmdSelect As New Odbc.OdbcCommand("SELECT ItemID, QuantityBorrowed, tempID FROM tblcartlist", con, transaction)
                         Dim reader As Odbc.OdbcDataReader = cmdSelect.ExecuteReader()
 
+                        Dim cartIDs As New List(Of Integer)
+
                         While reader.Read()
-                            Dim updateCmd As New Odbc.OdbcCommand("Update(tblitemlist) SET ItemQuantity = ItemQuantity + ?   WHERE ItemID = ?", con, transaction)
-                            updateCmd.Parameters.AddWithValue("?", reader("QuantityBorrowed"))
-                            updateCmd.Parameters.AddWithValue("?", reader("ItemID"))
-                            updateCmd.ExecuteNonQuery()
+                            ' Restore quantity in tblitemlist
+                            Using updateCmd As New Odbc.OdbcCommand("UPDATE tblitemlist SET ItemQuantity = ItemQuantity + ? WHERE ItemID = ?", con, transaction)
+                                updateCmd.Parameters.AddWithValue("?", reader("QuantityBorrowed"))
+                                updateCmd.Parameters.AddWithValue("?", reader("ItemID"))
+                                updateCmd.ExecuteNonQuery()
+                            End Using
+
+                            ' Save cartID to release units later
+                            cartIDs.Add(CInt(reader("tempID")))
                         End While
                         reader.Close()
 
-                        ' ✅ Delete cart after restoring quantities
+                        ' 2) Release reserved units back to Available
+                        For Each cartID In cartIDs
+                            Using cmdUpdateUnits As New Odbc.OdbcCommand("UPDATE tblitemunits SET ItemStatus='Available' WHERE UnitID IN (SELECT UnitID FROM tblcartserials WHERE CartID=?)", con, transaction)
+                                cmdUpdateUnits.Parameters.AddWithValue("?", cartID)
+                                cmdUpdateUnits.ExecuteNonQuery()
+                            End Using
+                        Next
+
+                        ' 3) Delete cartserials for these carts
+                        For Each cartID In cartIDs
+                            Using cmdDelSerials As New Odbc.OdbcCommand("DELETE FROM tblcartserials WHERE CartID=?", con, transaction)
+                                cmdDelSerials.Parameters.AddWithValue("?", cartID)
+                                cmdDelSerials.ExecuteNonQuery()
+                            End Using
+                        Next
+
+                        ' 4) Delete cart rows
                         Dim cmdDelete As New Odbc.OdbcCommand("DELETE FROM tblcartlist", con, transaction)
                         cmdDelete.ExecuteNonQuery()
 
                         transaction.Commit()
-                        MsgBox("Cart cleared and quantities restored.", vbInformation)
+                        MsgBox("Cart cleared and quantities restored. All items are now available.", vbInformation)
 
                     Catch exRest As Exception
                         transaction.Rollback()
@@ -108,9 +152,11 @@
 
         Catch ex As Exception
             MsgBox("Error: " & ex.Message)
+        Finally
+            ' Refresh the item list view
+            Call data_loader("SELECT ItemID, Name, ItemDescription, ItemCategory, ItemLocation, Quantity FROM vw_Items", dgvItemList)
+            frmCartListView.lvCart.Clear()
         End Try
-
-        frmCartListView.lvCart.Clear()
 
        
     End Sub
@@ -240,25 +286,29 @@
     End Sub
 
     Private Sub btnBorrow_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnBorrow.Click
+        Try
+            frmBorrowDE.nupQuantity.Value = 0
+            If txtStudentNo.Text.Trim() = " " Or txtStudentNo.Text.Trim() = "" Then
+                MsgBox("Insert Student No. First")
+                Exit Sub
+            End If
+            If (dgvItemList.Tag) = 0 Then
+                MsgBox("Select an item to borrow!", vbInformation, "Select Item")
+            Else
+                frmBorrowDE.cbBorrowRemarks.Text = "Good"
+                frmBorrowDE.txtYearLevel.Text = txtYearLevel.Text
+                frmBorrowDE.txtSchoolYear.Text = txtSchoolYear.Text
+                frmBorrowDE.txtSemester.Text = txtSemester.Text
+                frmBorrowDE.txtTeacher.Text = cbTeacher.Text
+                frmBorrowDE.txtStudentNo.Text = txtStudentNo.Text
+                frmBorrowDE.SelectedItemID = Val(dgvItemList.Tag)
+                frmBorrowDE.ShowDialog()
+                Call data_loader("SELECT ItemID, Name, ItemDescription, ItemCategory, ItemLocation, Quantity FROM vw_Items", dgvItemList)
+            End If
 
-        frmBorrowDE.nupQuantity.Value = 0
-        If txtStudentNo.Text.Trim() = " " Or txtStudentNo.Text.Trim() = "" Then
-            MsgBox("Insert Student No. First")
-            Exit Sub
-        End If
-        If (dgvItemList.Tag) = 0 Then
-            MsgBox("Select an item to borrow!", vbInformation, "Select Item")
-        Else
-            frmBorrowDE.cbBorrowRemarks.Text = "Good"
-            frmBorrowDE.txtYearLevel.Text = txtYearLevel.Text
-            frmBorrowDE.txtSchoolYear.Text = txtSchoolYear.Text
-            frmBorrowDE.txtSemester.Text = txtSemester.Text
-            frmBorrowDE.txtTeacher.Text = cbTeacher.Text
-            frmBorrowDE.txtStudentNo.Text = txtStudentNo.Text
-            frmBorrowDE.SelectedItemID = Val(dgvItemList.Tag)
-            frmBorrowDE.ShowDialog()
-        End If
-
+        Catch ex As Exception
+            Call data_loader("SELECT ItemID, Name, ItemDescription, ItemCategory, ItemLocation, Quantity FROM vw_Items", dgvItemList)
+        End Try
     End Sub
 
     Private Sub btnSave_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnSave.Click
@@ -266,70 +316,124 @@
             MsgBox("Please select a student before saving.", vbExclamation)
             Exit Sub
         End If
+
         Dim cmdCheck As New Odbc.OdbcCommand("SELECT COUNT(*) FROM tblcartlist", con)
         Dim itemCount As Integer = CInt(cmdCheck.ExecuteScalar())
-
         If itemCount = 0 Then
             MsgBox("No items found in the cart to save.", vbExclamation)
             Exit Sub
         End If
-        Dim transaction As Odbc.OdbcTransaction = con.BeginTransaction()
-        Try
 
-            Dim cmdSelect As New Odbc.OdbcCommand("SELECT * FROM tblcartlist", con, transaction)
-            Dim reader As Odbc.OdbcDataReader = cmdSelect.ExecuteReader()
+        Using trans As Odbc.OdbcTransaction = con.BeginTransaction()
+            Try
+                ' Iterate through cart rows
+                Using cmdSelect As New Odbc.OdbcCommand("SELECT * FROM tblcartlist", con, trans)
+                    Using reader As Odbc.OdbcDataReader = cmdSelect.ExecuteReader()
+                        If reader.HasRows Then
+                            While reader.Read()
+                                Dim cartID As Integer = CInt(reader("tempID"))
+                                Dim itemID As Integer = CInt(reader("ItemID"))
+                                Dim qty As Integer = CInt(reader("QuantityBorrowed"))
 
-            If reader.HasRows Then
+                                ' 1) Insert into tblborrowing
+                                Using insertBorrow As New Odbc.OdbcCommand("INSERT INTO tblborrowing (ItemID, borrowQty, borrowDateTime, sID, tID, semester, settingID, remarks, Contact, Purpose, yID) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)", con, trans)
+                                    insertBorrow.Parameters.AddWithValue("?", itemID)
+                                    insertBorrow.Parameters.AddWithValue("?", qty)
+                                    insertBorrow.Parameters.AddWithValue("?", reader("borrowDateTime"))
+                                    insertBorrow.Parameters.AddWithValue("?", reader("sID"))
+                                    insertBorrow.Parameters.AddWithValue("?", reader("tID"))
+                                    insertBorrow.Parameters.AddWithValue("?", "semester")
+                                    insertBorrow.Parameters.AddWithValue("?", reader("settingID"))
+                                    insertBorrow.Parameters.AddWithValue("?", reader("Remarks"))
+                                    insertBorrow.Parameters.AddWithValue("?", reader("Contact"))
+                                    insertBorrow.Parameters.AddWithValue("?", reader("Purpose"))
+                                    insertBorrow.Parameters.AddWithValue("?", reader("yID"))
+                                    insertBorrow.ExecuteNonQuery()
+                                End Using
 
-                While reader.Read()
-                    Dim insertCmd As New Odbc.OdbcCommand("INSERT INTO tblborrowing (ItemID, borrowQty, borrowDateTime, sID, tID, semester, settingID, remarks, Contact, Purpose, yID) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)", con, transaction)
-                    With insertCmd.Parameters
-                        .AddWithValue("@ItemID", reader("ItemID"))
-                        .AddWithValue("@borrowQty", reader("QuantityBorrowed"))
-                        .AddWithValue("@borrowDateTime", reader("borrowDateTime"))
-                        .AddWithValue("@sID", reader("sID"))
-                        .AddWithValue("@tID", reader("tID"))
-                        .AddWithValue("@semester", "semester")
-                        .AddWithValue("@settingID", reader("settingID"))
-                        .AddWithValue("@remarks", reader("Remarks"))
-                        .AddWithValue("@Contact", reader("Contact"))
-                        .AddWithValue("@Purpose", reader("Purpose"))
-                        .AddWithValue("@yID", reader("yID"))
-                        insertCmd.ExecuteNonQuery()
-                    End With
-             
-                End While
-            Else
-                MsgBox("No records found. The table is empty.", MsgBoxStyle.Information)
-                Exit Sub
-            End If
-            reader.Close()
+                                Dim borrowID As Integer = Convert.ToInt32(New Odbc.OdbcCommand("SELECT LAST_INSERT_ID()", con, trans).ExecuteScalar())
 
-            Dim clearCmd As New Odbc.OdbcCommand("DELETE FROM tblcartlist", con, transaction)
-            clearCmd.ExecuteNonQuery()
+                                ' 2) Get reserved serials for this cart
+                                Dim reservedUnits As New List(Of Tuple(Of Integer, String))
+                                Using cmdGetSerials As New Odbc.OdbcCommand("SELECT UnitID, SerialNo FROM tblcartserials WHERE CartID = ? ORDER BY CartSerialID ASC", con, trans)
+                                    cmdGetSerials.Parameters.AddWithValue("?", cartID)
+                                    Using rdrS As Odbc.OdbcDataReader = cmdGetSerials.ExecuteReader()
+                                        While rdrS.Read()
+                                            reservedUnits.Add(Tuple.Create(CInt(rdrS("UnitID")), rdrS("SerialNo").ToString()))
+                                        End While
+                                    End Using
+                                End Using
 
-            transaction.Commit()
-            MessageBox.Show("Borrowing finalized successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information)
-         
-        Catch ex As Exception
-            transaction.Rollback()
-            MsgBox("Error occurred: " & ex.Message, vbCritical)
-        Finally
-            txtStudentNo.Clear()
-            txtYearLevel.Clear()
-            txtmi.Clear()
-            txtSchoolYear.Clear()
-            txtSemester.Clear()
-            txtSearch.Clear()
-            cbTeacher.SelectedValue = -1
-            txtfname.Clear()
-            txtlname.Clear()
-            txtCourse.Clear()
-            txtSection.Clear()
-            frmCartListView.lvCart.Clear()
-        End Try
+                                ' If reservedUnits.Count < qty then something wrong — but proceed with whatever exists
+                                If reservedUnits.Count = 0 Then
+                                    ' fallback: try to select available units now (should be rare)
+                                    Dim sqlSerials As String = "SELECT UnitID, SerialNo FROM tblitemunits WHERE ItemID = ? AND ItemStatus = 'Available' ORDER BY CAST(SUBSTRING_INDEX(SerialNo, '-', -1) AS UNSIGNED) ASC LIMIT " & qty.ToString() & " FOR UPDATE"
+                                    Using cmdSerials As New Odbc.OdbcCommand(sqlSerials, con, trans)
+                                        cmdSerials.Parameters.AddWithValue("?", itemID)
+                                        Using rdrS As Odbc.OdbcDataReader = cmdSerials.ExecuteReader()
+                                            While rdrS.Read()
+                                                reservedUnits.Add(Tuple.Create(CInt(rdrS("UnitID")), rdrS("SerialNo").ToString()))
+                                            End While
+                                        End Using
+                                    End Using
+                                End If
 
+                                ' 3) Move reserved -> borrowed
+                                For Each t In reservedUnits
+                                    Dim unitId As Integer = t.Item1
+                                    Dim sNo As String = t.Item2
+                                    Using insBorrowedUnit As New Odbc.OdbcCommand("INSERT INTO tblborrowedunits (bID, UnitID, SerialNo) VALUES (?, ?, ?)", con, trans)
+                                        insBorrowedUnit.Parameters.AddWithValue("?", borrowID)
+                                        insBorrowedUnit.Parameters.AddWithValue("?", unitId)
+                                        insBorrowedUnit.Parameters.AddWithValue("?", sNo)
+                                        insBorrowedUnit.ExecuteNonQuery()
+                                    End Using
+
+                                    Using updateUnit As New Odbc.OdbcCommand("UPDATE tblitemunits SET ItemStatus='Borrowed' WHERE UnitID = ?", con, trans)
+                                        updateUnit.Parameters.AddWithValue("?", unitId)
+                                        updateUnit.ExecuteNonQuery()
+                                    End Using
+                                Next
+
+                                ' 4) Delete reserved rows for this cart
+                                Using delCartSerials As New Odbc.OdbcCommand("DELETE FROM tblcartserials WHERE CartID = ?", con, trans)
+                                    delCartSerials.Parameters.AddWithValue("?", cartID)
+                                    delCartSerials.ExecuteNonQuery()
+                                End Using
+                            End While
+                        End If
+                    End Using
+                End Using
+
+                ' 5) Finally delete all cart rows (we already moved serials)
+                Using delCart As New Odbc.OdbcCommand("DELETE FROM tblcartlist", con, trans)
+                    delCart.ExecuteNonQuery()
+                End Using
+
+                trans.Commit()
+                MsgBox("Borrowing finalized successfully!", vbInformation)
+            Catch ex As Exception
+                trans.Rollback()
+                MsgBox("Error finalizing borrow: " & ex.Message, vbCritical)
+            End Try
+        End Using
+
+        ' Refresh UI and clear fields
+        txtStudentNo.Clear()
+        txtYearLevel.Clear()
+        txtmi.Clear()
+        txtSchoolYear.Clear()
+        txtSemester.Clear()
+        txtSearch.Clear()
+        cbTeacher.SelectedValue = -1
+        txtfname.Clear()
+        txtlname.Clear()
+        txtCourse.Clear()
+        txtSection.Clear()
+        frmCartListView.lvCart.Clear()
+        Call data_loader("SELECT ItemID, Name, ItemDescription, ItemCategory, ItemLocation, Quantity FROM vw_Items", dgvItemList)
     End Sub
+
     Private Sub OnItemAdded(ByVal sender As Object, ByVal e As EventArgs)
         Call data_loader("SELECT ItemID, Name, ItemDescription, ItemCategory, ItemLocation, Quantity FROM vw_Items", dgvItemList)
     End Sub
@@ -378,5 +482,9 @@
         If txtStudentNo.Text.Trim() <> "" Then
             GetBorrowerName(txtStudentNo.Text.Trim(), txtCourse.Text.Trim(), txtSection.Text.Trim(), txtSchoolYear.Text.Trim())
         End If
+    End Sub
+
+    Private Sub dgvItemList_CellContentClick(sender As System.Object, e As System.Windows.Forms.DataGridViewCellEventArgs) Handles dgvItemList.CellContentClick
+
     End Sub
 End Class

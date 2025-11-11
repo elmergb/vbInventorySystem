@@ -121,7 +121,7 @@ Public Class frmLogin
 
     End Sub
 
-    Private Sub CreateAccountToolStripMenuItem_Click(sender As System.Object, e As System.EventArgs) Handles CreateAccountToolStripMenuItem.Click
+    Private Sub CreateAccountToolStripMenuItem_Click(sender As System.Object, e As System.EventArgs)
         With frmStudentDE
             ClearAllText(frmStudentDE)
             .lblActive.Visible = False
@@ -129,5 +129,15 @@ Public Class frmLogin
             .ckbisActive.Visible = False
         End With
         frmStudentDE.ShowDialog()
+    End Sub
+
+    Private Sub PictureBox2_Click(sender As System.Object, e As System.EventArgs) Handles PictureBox2.Click
+
+    End Sub
+
+    Private Sub btnExit_Click(sender As System.Object, e As System.EventArgs) Handles btnExit.Click
+        If MsgBox("Are you sure to exit?", vbYesNo + vbQuestion, "Exit") = vbYes Then
+            Me.Close()
+        End If
     End Sub
 End Class

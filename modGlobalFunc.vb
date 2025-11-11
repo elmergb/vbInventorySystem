@@ -76,37 +76,39 @@ Module modGlobalFunc
     End Function
 
     Public Sub listLoader()
-        Try
-            Dim query As String = "SELECT tempID, ItemName, ItemDescription, QuantityBorrowed, Purpose, Contact, Remarks FROM vw_cartlist"
-            Dim cmd As New Odbc.OdbcCommand(query, con)
+        frmCartListView.lvCart.Items.Clear()
 
-            frmCartListView.lvCart.Items.Clear()
-            Dim result As Odbc.OdbcDataReader = cmd.ExecuteReader()
+        Dim sql As String = "SELECT c.tempID, i.ItemName, i.ItemDescription, c.QuantityBorrowed, c.Purpose, c.Contact,  c.Remarks FROM tblcartlist c INNER JOIN tblitemlist i ON c.ItemID = i.ItemID"
 
-            While result.Read()
-                Dim cartID As Integer = CInt(result("tempID"))
-                Dim itemName As String = result("ItemName").ToString()
-                Dim itemDesc As String = result("ItemDescription").ToString()
-                Dim qty As Integer = CInt(result("QuantityBorrowed"))
-                Dim purpose As String = result("Purpose").ToString()
-                Dim contact As String = result("Contact").ToString()
-                Dim remarks As String = result("Remarks").ToString()
+        Using cmd As New Odbc.OdbcCommand(sql, con)
+            Using rdr As Odbc.OdbcDataReader = cmd.ExecuteReader()
+                While rdr.Read()
+                    Dim lvi As New ListViewItem(rdr("ItemName").ToString())
+                    lvi.SubItems.Add(rdr("ItemDescription").ToString())
+                    lvi.SubItems.Add(rdr("QuantityBorrowed").ToString())
+                    lvi.SubItems.Add(rdr("Purpose").ToString())
+                    lvi.SubItems.Add(rdr("Contact").ToString())
+                    lvi.SubItems.Add(rdr("Remarks").ToString())
 
-                Dim listItem As New ListViewItem(itemName)
-                listItem.SubItems.Add(itemDesc)
-                listItem.SubItems.Add(qty.ToString())
-                listItem.SubItems.Add(purpose)
-                listItem.SubItems.Add(contact)
-                listItem.SubItems.Add(remarks)
-                listItem.Tag = cartID
+                    ' --- Fetch reserved serials (optional, last column) ---
+                    Dim serials As New List(Of String)
+                    Using cmdSerial As New Odbc.OdbcCommand("SELECT SerialNo FROM tblcartserials WHERE CartID = ?", con)
+                        cmdSerial.Parameters.AddWithValue("?", rdr("tempID"))
+                        Using rdrSerial As Odbc.OdbcDataReader = cmdSerial.ExecuteReader()
+                            While rdrSerial.Read()
+                                serials.Add(rdrSerial("SerialNo").ToString())
+                            End While
+                        End Using
+                    End Using
 
-                frmCartListView.lvCart.Items.Add(listItem)
-            End While
+                    ' Optional: keep serials in last column (for reference only)
+                    lvi.SubItems.Add(String.Join(", ", serials))
 
-            result.Close()
-        Catch ex As Exception
-            MessageBox.Show("Error loading list: " & ex.Message)
-        End Try
+                    lvi.Tag = rdr("tempID")
+                    frmCartListView.lvCart.Items.Add(lvi)
+                End While
+            End Using
+        End Using
     End Sub
     Public Sub ClearAllText(ByVal parent As Control)
         For Each ctrl As Control In parent.Controls

@@ -33,13 +33,9 @@ Partial Class frmLogin
         Me.Label3 = New System.Windows.Forms.Label()
         Me.PictureBox1 = New System.Windows.Forms.PictureBox()
         Me.PictureBox2 = New System.Windows.Forms.PictureBox()
-        Me.MenuStrip1 = New System.Windows.Forms.MenuStrip()
-        Me.AccountToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.CreateAccountToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.ExitToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.btnExit = New System.Windows.Forms.Button()
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.PictureBox2, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.MenuStrip1.SuspendLayout()
         Me.SuspendLayout()
         '
         'Label1
@@ -166,43 +162,26 @@ Partial Class frmLogin
         Me.PictureBox2.TabIndex = 3
         Me.PictureBox2.TabStop = False
         '
-        'MenuStrip1
+        'btnExit
         '
-        Me.MenuStrip1.BackColor = System.Drawing.Color.Transparent
-        Me.MenuStrip1.Dock = System.Windows.Forms.DockStyle.None
-        Me.MenuStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.AccountToolStripMenuItem})
-        Me.MenuStrip1.Location = New System.Drawing.Point(626, -2)
-        Me.MenuStrip1.Name = "MenuStrip1"
-        Me.MenuStrip1.Size = New System.Drawing.Size(88, 24)
-        Me.MenuStrip1.TabIndex = 42
-        Me.MenuStrip1.Text = "MenuStrip1"
-        '
-        'AccountToolStripMenuItem
-        '
-        Me.AccountToolStripMenuItem.BackColor = System.Drawing.Color.Transparent
-        Me.AccountToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.CreateAccountToolStripMenuItem, Me.ExitToolStripMenuItem})
-        Me.AccountToolStripMenuItem.Image = Global.main.My.Resources.Resources._1564534_customer_man_user_account_profile_icon1
-        Me.AccountToolStripMenuItem.Name = "AccountToolStripMenuItem"
-        Me.AccountToolStripMenuItem.Size = New System.Drawing.Size(80, 20)
-        Me.AccountToolStripMenuItem.Text = "Account"
-        '
-        'CreateAccountToolStripMenuItem
-        '
-        Me.CreateAccountToolStripMenuItem.Name = "CreateAccountToolStripMenuItem"
-        Me.CreateAccountToolStripMenuItem.Size = New System.Drawing.Size(156, 22)
-        Me.CreateAccountToolStripMenuItem.Text = "Create Account"
-        '
-        'ExitToolStripMenuItem
-        '
-        Me.ExitToolStripMenuItem.Name = "ExitToolStripMenuItem"
-        Me.ExitToolStripMenuItem.Size = New System.Drawing.Size(156, 22)
-        Me.ExitToolStripMenuItem.Text = "Exit"
+        Me.btnExit.BackColor = System.Drawing.Color.Maroon
+        Me.btnExit.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center
+        Me.btnExit.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnExit.ForeColor = System.Drawing.SystemColors.ButtonHighlight
+        Me.btnExit.Location = New System.Drawing.Point(333, 413)
+        Me.btnExit.Name = "btnExit"
+        Me.btnExit.Size = New System.Drawing.Size(116, 33)
+        Me.btnExit.TabIndex = 42
+        Me.btnExit.Text = "&Exit"
+        Me.btnExit.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage
+        Me.btnExit.UseVisualStyleBackColor = False
         '
         'frmLogin
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(708, 487)
+        Me.Controls.Add(Me.btnExit)
         Me.Controls.Add(Me.ckbShowPword)
         Me.Controls.Add(Me.Label1)
         Me.Controls.Add(Me.txtUsername)
@@ -214,15 +193,11 @@ Partial Class frmLogin
         Me.Controls.Add(Me.Label4)
         Me.Controls.Add(Me.btnLogin)
         Me.Controls.Add(Me.PictureBox2)
-        Me.Controls.Add(Me.MenuStrip1)
-        Me.MainMenuStrip = Me.MenuStrip1
         Me.Name = "frmLogin"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "Login"
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.PictureBox2, System.ComponentModel.ISupportInitialize).EndInit()
-        Me.MenuStrip1.ResumeLayout(False)
-        Me.MenuStrip1.PerformLayout()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -238,8 +213,5 @@ Partial Class frmLogin
     Friend WithEvents txtUsername As System.Windows.Forms.TextBox
     Friend WithEvents PictureBox1 As PictureBox
     Friend WithEvents ckbShowPword As System.Windows.Forms.CheckBox
-    Friend WithEvents MenuStrip1 As System.Windows.Forms.MenuStrip
-    Friend WithEvents AccountToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
-    Friend WithEvents CreateAccountToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
-    Friend WithEvents ExitToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents btnExit As System.Windows.Forms.Button
 End Class
