@@ -80,11 +80,13 @@
             End If
 
             ' --- UPDATE ITEM UNITS (SET AVAILABLE, REMOVE bID) ---
-            For Each uid As Integer In unitIDs
-                cmd = New Odbc.OdbcCommand("Update(tblitemunits)  SET ItemStatus = 'Available', bID = NULL  WHERE UnitID = ?", con)
-                cmd.Parameters.AddWithValue("?", uid)
-                cmd.ExecuteNonQuery()
-            Next
+            If Remarks <> "Damage" Then
+                For Each uid As Integer In unitIDs
+                    cmd = New Odbc.OdbcCommand("UPDATE tblitemunits SET ItemStatus = 'Available', bID = NULL WHERE UnitID = ?", con)
+                    cmd.Parameters.AddWithValue("?", uid)
+                    cmd.ExecuteNonQuery()
+                Next
+            End If
 
             ' --- DAMAGE HANDLING ---
             If Remarks = "Damage" Then
@@ -104,7 +106,18 @@
                 ' Get DamageID
                 cmd = New Odbc.OdbcCommand("SELECT MAX(DamageID) FROM tbldamaged", con)
                 Dim damageID As Integer = CInt(cmd.ExecuteScalar())
+                For Each uid As Integer In unitIDs
+                    ' 1. Link each damaged unit to this damage record
+                    Dim cmdLink As New Odbc.OdbcCommand("INSERT INTO tbldamaged_units (DamageID, UnitID) VALUES (?, ?)", con)
+                    cmdLink.Parameters.AddWithValue("?", damageID)
+                    cmdLink.Parameters.AddWithValue("?", uid)
+                    cmdLink.ExecuteNonQuery()
 
+                    ' 2. Mark the unit itself as Damaged
+                    Dim cmdUpdateUnit As New Odbc.OdbcCommand("UPDATE tblitemunits SET ItemStatus='Damaged', bID=NULL WHERE UnitID=?", con)
+                    cmdUpdateUnit.Parameters.AddWithValue("?", uid)
+                    cmdUpdateUnit.ExecuteNonQuery()
+                Next
                 ' Choose action (Pay or Replace)
                 If choice = vbYes Then
                     cmd = New Odbc.OdbcCommand("INSERT INTO tbldamage_action (DamageID, ActionType, Status) VALUES (?, 'Pay', 'Pending')", con)

@@ -6,21 +6,21 @@
     End Sub
 
     Private Sub btnSave_Click(sender As System.Object, e As System.EventArgs) Handles btnSave.Click
-       If actionID > 0 Then
-    Try
-        Dim actionType As String = cbActionType.Text.Trim()
-        Dim notes As String = txtRemarks.Text.Trim()
-        Dim amountPaid As Double
-        Dim qtyDamage As Integer = CInt(lblQtyDamage.Text)
-        Dim itemID As Integer
+        If actionID > 0 Then
+            Try
+                Dim actionType As String = cbActionType.Text.Trim()
+                Dim notes As String = txtRemarks.Text.Trim()
+                Dim amountPaid As Double
+                Dim qtyDamage As Integer = CInt(lblqtyDamage.Text)
+                Dim itemID As Integer
                 Dim damageID As Integer
-       
 
-        If Not Double.TryParse(txtAmount.Text, amountPaid) Then
-            amountPaid = 0
-        End If
+                If Not Double.TryParse(txtAmount.Text, amountPaid) Then
+                    amountPaid = 0
+                End If
 
-                Dim getItemCmd As New Odbc.OdbcCommand(" SELECT d.ItemID, d.DamageID FROM tbldamaged d INNER JOIN tbldamage_action a ON d.DamageID = a.DamageID WHERE a.ActionID = ?", con)
+                ' --- Get ItemID and DamageID linked to this Action ---
+                Dim getItemCmd As New Odbc.OdbcCommand("SELECT d.ItemID, d.DamageID FROM tbldamaged d INNER JOIN tbldamage_action a ON d.DamageID = a.DamageID  WHERE a.ActionID = ?", con)
                 getItemCmd.Parameters.AddWithValue("?", actionID)
 
                 Dim rdr As Odbc.OdbcDataReader = getItemCmd.ExecuteReader()
@@ -34,61 +34,76 @@
                 End If
                 rdr.Close()
 
-                ' Update the damage action as completed
-                Dim cmd As New Odbc.OdbcCommand(" Update(tbldamage_action)SET ActionType=?, Status=?, AmountPaid=?, Notes=?, DateCompleted=? WHERE ActionID=?", con)
-
+                ' --- Update damage action record ---
+                Dim cmd As New Odbc.OdbcCommand("Update(tbldamage_action) SET ActionType=?, Status='Completed', AmountPaid=?, Notes=?, DateCompleted=? WHERE ActionID=?", con)
                 With cmd.Parameters
                     .AddWithValue("?", actionType)
-                    .AddWithValue("?", "Completed")
                     .AddWithValue("?", amountPaid)
                     .AddWithValue("?", notes)
                     .AddWithValue("?", dtpDateTime.Value)
                     .AddWithValue("?", actionID)
                 End With
-
                 cmd.ExecuteNonQuery()
 
-                '  If the action is "Replace", restore the item to good stock
-                If actionType = "Replace" Or actionType = "Pay" Then
-                    Dim updateStockCmd As New Odbc.OdbcCommand("Update(tblitemlist)SET ItemQuantity = ItemQuantity + ?  WHERE ItemID = ?", con)
+                ' --- Update damage status ---
+                Dim updateDamageCmd As New Odbc.OdbcCommand("Update(tbldamaged) SET QuantityDamaged = QuantityDamaged - ?, Status = 'Resolved' WHERE DamageID = ?", con)
+                updateDamageCmd.Parameters.AddWithValue("?", qtyDamage)
+                updateDamageCmd.Parameters.AddWithValue("?", damageID)
+                updateDamageCmd.ExecuteNonQuery()
+
+                ' --- If action is Replace, create NEW serials ---
+                If actionType = "Replace" Then
+                    ' 1️⃣ Get Item Name for serial generation
+                    Dim itemName As String = ""
+                    Dim getNameCmd As New Odbc.OdbcCommand("SELECT ItemName FROM tblitemlist WHERE ItemID = ?", con)
+                    getNameCmd.Parameters.AddWithValue("?", itemID)
+                    Dim res = getNameCmd.ExecuteScalar()
+                    If res IsNot Nothing Then itemName = res.ToString()
+
+                    ' 2️⃣ Get highest existing serial number for this item
+                    Dim lastSerialCmd As New Odbc.OdbcCommand("SELECT SerialNo FROM tblitemunits WHERE ItemID = ? ORDER BY UnitID DESC LIMIT 1", con)
+                    lastSerialCmd.Parameters.AddWithValue("?", itemID)
+                    Dim lastSerial As String = TryCast(lastSerialCmd.ExecuteScalar(), String)
+                    Dim nextNumber As Integer = 1
+
+                    If Not String.IsNullOrEmpty(lastSerial) AndAlso lastSerial.Contains("-") Then
+                        Dim parts() As String = lastSerial.Split("-"c)
+                        Dim numPart As String = parts(parts.Length - 1)
+                        If IsNumeric(numPart) Then nextNumber = CInt(numPart) + 1
+                    End If
+
+                    ' 3️⃣ Insert new serials for replacements
+                    For i As Integer = 1 To qtyDamage
+                        Dim newSerial As String = itemName.Replace(" ", "").ToLower() & "-" & nextNumber.ToString("000")
+                        Dim insertSerialCmd As New Odbc.OdbcCommand(" INSERT INTO tblitemunits (ItemID, SerialNo, ItemStatus) VALUES (?, ?, 'Available')", con)
+                        insertSerialCmd.Parameters.AddWithValue("?", itemID)
+                        insertSerialCmd.Parameters.AddWithValue("?", newSerial)
+                        insertSerialCmd.ExecuteNonQuery()
+                        nextNumber += 1
+                    Next
+
+                    ' 4️⃣ Update main item stock quantity
+                    Dim updateStockCmd As New Odbc.OdbcCommand("Update(tblitemlist)  SET ItemQuantity = ItemQuantity + ? WHERE ItemID = ?", con)
                     updateStockCmd.Parameters.AddWithValue("?", qtyDamage)
                     updateStockCmd.Parameters.AddWithValue("?", itemID)
                     updateStockCmd.ExecuteNonQuery()
 
-                    Dim updateDamageCmd As New Odbc.OdbcCommand("Update(tbldamaged) SET QuantityDamaged = QuantityDamaged - ?, Status = 'Resolved' WHERE DamageID = ?", con)
-                    updateDamageCmd.Parameters.AddWithValue("?", qtyDamage)
-                    updateDamageCmd.Parameters.AddWithValue("?", damageID)
-                    updateDamageCmd.ExecuteNonQuery()
+                    MsgBox("Replacement completed — new serials generated and stock restored.", vbInformation)
 
-                    MsgBox("Replacement completed — stock restored successfully.", vbInformation)
-                ElseIf actionType.ToLower() = "pay" Then
-                    MsgBox("Payment completed — no stock adjustment made.", vbInformation)
+                ElseIf actionType = "Pay" Then
+                    ' --- For payment, mark resolved but do not adjust quantity ---
+                    MsgBox("Payment completed — damage resolved without stock increase.", vbInformation)
                 Else
-                    MsgBox("Action completed.", vbInformation)
+                    MsgBox("completed successfully.", vbInformation)
                 End If
 
-                Me.Close()
+            Me.Close()
 
-            Catch ex As Exception
-        MsgBox("Error: " & ex.Message, vbCritical)
+        Catch ex As Exception
+            MsgBox("Error: " & ex.Message, vbCritical)
             End Try
-End If
+        End If
 
-    End Sub
-
-    Private Sub cbActionType_SelectedIndexChanged(sender As System.Object, e As System.EventArgs) Handles cbActionType.SelectedIndexChanged
-
-    End Sub
-    Private Sub Label4_Click(sender As System.Object, e As System.EventArgs) Handles Label4.Click
-
-    End Sub
-    Private Sub dtpDateTime_ValueChanged(sender As System.Object, e As System.EventArgs) Handles dtpDateTime.ValueChanged
-
-    End Sub
-    Private Sub Label7_Click(sender As System.Object, e As System.EventArgs) Handles Label7.Click
-
-    End Sub
-    Private Sub lblStudent_Click(sender As System.Object, e As System.EventArgs) Handles lblStudent.Click
 
     End Sub
 
