@@ -38,11 +38,23 @@ Partial Class frmDashboard
         Me.Panel5 = New System.Windows.Forms.Panel()
         Me.Label6 = New System.Windows.Forms.Label()
         Me.Label2 = New System.Windows.Forms.Label()
+        Me.Panel2 = New System.Windows.Forms.Panel()
+        Me.Label1 = New System.Windows.Forms.Label()
+        Me.Label4 = New System.Windows.Forms.Label()
+        Me.Label5 = New System.Windows.Forms.Label()
+        Me.dgvRB = New System.Windows.Forms.DataGridView()
+        Me.dgvRR = New System.Windows.Forms.DataGridView()
+        Me.Label7 = New System.Windows.Forms.Label()
+        Me.dgvRA = New System.Windows.Forms.DataGridView()
         CType(Me.FileSystemWatcher1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.Panel1.SuspendLayout()
         Me.Panel3.SuspendLayout()
         Me.Panel6.SuspendLayout()
         Me.Panel5.SuspendLayout()
+        Me.Panel2.SuspendLayout()
+        CType(Me.dgvRB, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.dgvRR, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.dgvRA, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'Timer1
@@ -52,7 +64,7 @@ Partial Class frmDashboard
         '
         Me.lblTotalDamaged.AutoSize = True
         Me.lblTotalDamaged.Font = New System.Drawing.Font("Arial", 72.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblTotalDamaged.Location = New System.Drawing.Point(135, 111)
+        Me.lblTotalDamaged.Location = New System.Drawing.Point(80, 52)
         Me.lblTotalDamaged.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.lblTotalDamaged.Name = "lblTotalDamaged"
         Me.lblTotalDamaged.Size = New System.Drawing.Size(100, 111)
@@ -63,7 +75,7 @@ Partial Class frmDashboard
         '
         Me.lblItemTotal.AutoSize = True
         Me.lblItemTotal.Font = New System.Drawing.Font("Arial", 72.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblItemTotal.Location = New System.Drawing.Point(124, 111)
+        Me.lblItemTotal.Location = New System.Drawing.Point(70, 52)
         Me.lblItemTotal.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.lblItemTotal.Name = "lblItemTotal"
         Me.lblItemTotal.Size = New System.Drawing.Size(100, 111)
@@ -81,10 +93,10 @@ Partial Class frmDashboard
         Me.Panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
         Me.Panel1.Controls.Add(Me.lbl1)
         Me.Panel1.Controls.Add(Me.lblItemTotal)
-        Me.Panel1.Location = New System.Drawing.Point(139, 206)
+        Me.Panel1.Location = New System.Drawing.Point(980, 361)
         Me.Panel1.Margin = New System.Windows.Forms.Padding(4)
         Me.Panel1.Name = "Panel1"
-        Me.Panel1.Size = New System.Drawing.Size(369, 319)
+        Me.Panel1.Size = New System.Drawing.Size(260, 209)
         Me.Panel1.TabIndex = 15
         '
         'lbl1
@@ -93,7 +105,7 @@ Partial Class frmDashboard
         Me.lbl1.Font = New System.Drawing.Font("Arial", 18.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lbl1.ForeColor = System.Drawing.Color.Black
         Me.lbl1.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.lbl1.Location = New System.Drawing.Point(58, 0)
+        Me.lbl1.Location = New System.Drawing.Point(-6, 0)
         Me.lbl1.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.lbl1.Name = "lbl1"
         Me.lbl1.Padding = New System.Windows.Forms.Padding(6)
@@ -108,10 +120,10 @@ Partial Class frmDashboard
         Me.Panel3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
         Me.Panel3.Controls.Add(Me.Label12)
         Me.Panel3.Controls.Add(Me.lblTotalBorrowed)
-        Me.Panel3.Location = New System.Drawing.Point(954, 207)
+        Me.Panel3.Location = New System.Drawing.Point(1115, 109)
         Me.Panel3.Margin = New System.Windows.Forms.Padding(4)
         Me.Panel3.Name = "Panel3"
-        Me.Panel3.Size = New System.Drawing.Size(369, 319)
+        Me.Panel3.Size = New System.Drawing.Size(260, 209)
         Me.Panel3.TabIndex = 17
         '
         'Label12
@@ -120,7 +132,7 @@ Partial Class frmDashboard
         Me.Label12.Font = New System.Drawing.Font("Arial", 18.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label12.ForeColor = System.Drawing.SystemColors.ControlText
         Me.Label12.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.Label12.Location = New System.Drawing.Point(88, 0)
+        Me.Label12.Location = New System.Drawing.Point(0, -3)
         Me.Label12.Margin = New System.Windows.Forms.Padding(0)
         Me.Label12.Name = "Label12"
         Me.Label12.Padding = New System.Windows.Forms.Padding(8, 9, 8, 9)
@@ -133,7 +145,7 @@ Partial Class frmDashboard
         '
         Me.lblTotalBorrowed.AutoSize = True
         Me.lblTotalBorrowed.Font = New System.Drawing.Font("Arial", 72.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblTotalBorrowed.Location = New System.Drawing.Point(146, 110)
+        Me.lblTotalBorrowed.Location = New System.Drawing.Point(85, 51)
         Me.lblTotalBorrowed.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.lblTotalBorrowed.Name = "lblTotalBorrowed"
         Me.lblTotalBorrowed.Size = New System.Drawing.Size(100, 111)
@@ -146,10 +158,10 @@ Partial Class frmDashboard
         Me.Panel6.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
         Me.Panel6.Controls.Add(Me.lblTotalDamaged)
         Me.Panel6.Controls.Add(Me.Label3)
-        Me.Panel6.Location = New System.Drawing.Point(548, 206)
+        Me.Panel6.Location = New System.Drawing.Point(830, 109)
         Me.Panel6.Margin = New System.Windows.Forms.Padding(4)
         Me.Panel6.Name = "Panel6"
-        Me.Panel6.Size = New System.Drawing.Size(369, 319)
+        Me.Panel6.Size = New System.Drawing.Size(260, 209)
         Me.Panel6.TabIndex = 19
         '
         'Label3
@@ -158,11 +170,11 @@ Partial Class frmDashboard
         Me.Label3.Font = New System.Drawing.Font("Arial", 18.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label3.ForeColor = System.Drawing.SystemColors.ActiveCaptionText
         Me.Label3.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.Label3.Location = New System.Drawing.Point(38, -9)
+        Me.Label3.Location = New System.Drawing.Point(-6, -9)
         Me.Label3.Margin = New System.Windows.Forms.Padding(0)
         Me.Label3.Name = "Label3"
         Me.Label3.Padding = New System.Windows.Forms.Padding(8, 9, 8, 9)
-        Me.Label3.Size = New System.Drawing.Size(278, 69)
+        Me.Label3.Size = New System.Drawing.Size(229, 69)
         Me.Label3.TabIndex = 18
         Me.Label3.Text = "      Total Damage"
         Me.Label3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
@@ -175,7 +187,7 @@ Partial Class frmDashboard
         Me.Panel5.Location = New System.Drawing.Point(0, 0)
         Me.Panel5.Margin = New System.Windows.Forms.Padding(4)
         Me.Panel5.Name = "Panel5"
-        Me.Panel5.Size = New System.Drawing.Size(1323, 76)
+        Me.Panel5.Size = New System.Drawing.Size(1439, 76)
         Me.Panel5.TabIndex = 21
         '
         'Label6
@@ -200,8 +212,107 @@ Partial Class frmDashboard
         Me.Label2.Location = New System.Drawing.Point(0, 0)
         Me.Label2.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label2.Name = "Label2"
-        Me.Label2.Size = New System.Drawing.Size(1323, 848)
+        Me.Label2.Size = New System.Drawing.Size(1439, 865)
         Me.Label2.TabIndex = 22
+        '
+        'Panel2
+        '
+        Me.Panel2.Controls.Add(Me.dgvRA)
+        Me.Panel2.Controls.Add(Me.Label7)
+        Me.Panel2.Controls.Add(Me.dgvRR)
+        Me.Panel2.Controls.Add(Me.dgvRB)
+        Me.Panel2.Controls.Add(Me.Label5)
+        Me.Panel2.Controls.Add(Me.Label4)
+        Me.Panel2.Controls.Add(Me.Label1)
+        Me.Panel2.Location = New System.Drawing.Point(12, 109)
+        Me.Panel2.Name = "Panel2"
+        Me.Panel2.Size = New System.Drawing.Size(734, 744)
+        Me.Panel2.TabIndex = 23
+        '
+        'Label1
+        '
+        Me.Label1.AutoSize = True
+        Me.Label1.BackColor = System.Drawing.Color.Transparent
+        Me.Label1.Font = New System.Drawing.Font("Arial", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label1.Location = New System.Drawing.Point(3, 10)
+        Me.Label1.Name = "Label1"
+        Me.Label1.Size = New System.Drawing.Size(157, 19)
+        Me.Label1.TabIndex = 0
+        Me.Label1.Text = "Recent Transaction"
+        '
+        'Label4
+        '
+        Me.Label4.AutoSize = True
+        Me.Label4.BackColor = System.Drawing.Color.Transparent
+        Me.Label4.Font = New System.Drawing.Font("Arial", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label4.Location = New System.Drawing.Point(31, 53)
+        Me.Label4.Name = "Label4"
+        Me.Label4.Size = New System.Drawing.Size(118, 16)
+        Me.Label4.TabIndex = 1
+        Me.Label4.Text = "Recent Borrowed"
+        '
+        'Label5
+        '
+        Me.Label5.AutoSize = True
+        Me.Label5.BackColor = System.Drawing.Color.Transparent
+        Me.Label5.Font = New System.Drawing.Font("Arial", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label5.Location = New System.Drawing.Point(31, 247)
+        Me.Label5.Name = "Label5"
+        Me.Label5.Size = New System.Drawing.Size(114, 16)
+        Me.Label5.TabIndex = 2
+        Me.Label5.Text = "Recent Returned"
+        '
+        'dgvRB
+        '
+        Me.dgvRB.AllowUserToAddRows = False
+        Me.dgvRB.AllowUserToDeleteRows = False
+        Me.dgvRB.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill
+        Me.dgvRB.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
+        Me.dgvRB.Location = New System.Drawing.Point(34, 72)
+        Me.dgvRB.Name = "dgvRB"
+        Me.dgvRB.RowHeadersVisible = False
+        Me.dgvRB.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
+        Me.dgvRB.Size = New System.Drawing.Size(652, 159)
+        Me.dgvRB.TabIndex = 3
+        '
+        'dgvRR
+        '
+        Me.dgvRR.AllowUserToAddRows = False
+        Me.dgvRR.AllowUserToDeleteRows = False
+        Me.dgvRR.AllowUserToResizeColumns = False
+        Me.dgvRR.AllowUserToResizeRows = False
+        Me.dgvRR.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
+        Me.dgvRR.Location = New System.Drawing.Point(34, 266)
+        Me.dgvRR.Name = "dgvRR"
+        Me.dgvRR.RowHeadersVisible = False
+        Me.dgvRR.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
+        Me.dgvRR.Size = New System.Drawing.Size(652, 207)
+        Me.dgvRR.TabIndex = 4
+        '
+        'Label7
+        '
+        Me.Label7.AutoSize = True
+        Me.Label7.BackColor = System.Drawing.Color.Transparent
+        Me.Label7.Font = New System.Drawing.Font("Arial", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label7.Location = New System.Drawing.Point(31, 488)
+        Me.Label7.Name = "Label7"
+        Me.Label7.Size = New System.Drawing.Size(135, 16)
+        Me.Label7.TabIndex = 5
+        Me.Label7.Text = "Recent Added Items"
+        '
+        'dgvRA
+        '
+        Me.dgvRA.AllowUserToAddRows = False
+        Me.dgvRA.AllowUserToDeleteRows = False
+        Me.dgvRA.AllowUserToResizeColumns = False
+        Me.dgvRA.AllowUserToResizeRows = False
+        Me.dgvRA.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
+        Me.dgvRA.Location = New System.Drawing.Point(34, 507)
+        Me.dgvRA.Name = "dgvRA"
+        Me.dgvRA.RowHeadersVisible = False
+        Me.dgvRA.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
+        Me.dgvRA.Size = New System.Drawing.Size(652, 207)
+        Me.dgvRA.TabIndex = 6
         '
         'frmDashboard
         '
@@ -209,7 +320,8 @@ Partial Class frmDashboard
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.AutoScroll = True
         Me.BackColor = System.Drawing.SystemColors.ButtonFace
-        Me.ClientSize = New System.Drawing.Size(1252, 865)
+        Me.ClientSize = New System.Drawing.Size(1439, 865)
+        Me.Controls.Add(Me.Panel2)
         Me.Controls.Add(Me.Panel5)
         Me.Controls.Add(Me.Panel6)
         Me.Controls.Add(Me.Panel3)
@@ -229,6 +341,11 @@ Partial Class frmDashboard
         Me.Panel6.PerformLayout()
         Me.Panel5.ResumeLayout(False)
         Me.Panel5.PerformLayout()
+        Me.Panel2.ResumeLayout(False)
+        Me.Panel2.PerformLayout()
+        CType(Me.dgvRB, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.dgvRR, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.dgvRA, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
 
     End Sub
@@ -247,4 +364,12 @@ Partial Class frmDashboard
     Friend WithEvents Panel5 As Panel
     Friend WithEvents Label6 As Label
     Friend WithEvents Label2 As Label
+    Friend WithEvents Panel2 As System.Windows.Forms.Panel
+    Friend WithEvents Label1 As System.Windows.Forms.Label
+    Friend WithEvents dgvRA As System.Windows.Forms.DataGridView
+    Friend WithEvents Label7 As System.Windows.Forms.Label
+    Friend WithEvents dgvRR As System.Windows.Forms.DataGridView
+    Friend WithEvents dgvRB As System.Windows.Forms.DataGridView
+    Friend WithEvents Label5 As System.Windows.Forms.Label
+    Friend WithEvents Label4 As System.Windows.Forms.Label
 End Class

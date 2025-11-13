@@ -1,8 +1,15 @@
 ﻿Imports System.Security.Cryptography
 Imports System.Text
+Imports System.Threading
 Public Class frmLogin
     Public Shared LoggedInUser As String
     Public role As String
+    Private loginAttempts As Integer = 0
+    Private Const MaxAttempts As Integer = 3
+    Private lockUntil As DateTime = DateTime.MinValue
+    Private lockSecondsRemaining As Integer = 0
+
+
     Public Function HashPassword(password As String) As String
         Dim bytes As Byte() = Encoding.UTF8.GetBytes(password)
 
@@ -63,13 +70,20 @@ Public Class frmLogin
         Dim password As String = txtPword.Text.Trim()
         Dim hashedEntered As String = HashPassword(password)
 
+        If DateTime.Now < lockUntil Then
+            Dim waitTime As Integer = CInt((lockUntil - DateTime.Now).TotalSeconds)
+            MessageBox.Show("Too many attempts. Please wait {waitTime} seconds before trying again.", "Locked", MessageBoxButtons.OK, MessageBoxIcon.Warning)
+            Return
+        End If
+
         If String.IsNullOrEmpty(username) OrElse String.IsNullOrEmpty(password) Then
             MessageBox.Show("Please enter both username and password.", "Login Error", MessageBoxButtons.OK, MessageBoxIcon.Warning)
             Return
         End If
 
         Try
-            ' ✅ Get user info directly from vw_user
+
+            '
             Dim cmd As New Odbc.OdbcCommand("SELECT UserID, pword, Role, isActive, username FROM vw_user WHERE BINARY username = ?", con)
             cmd.Parameters.AddWithValue("?", username)
 
@@ -81,15 +95,21 @@ Public Class frmLogin
                     Dim userID As Integer = Convert.ToInt32(rdr("UserID"))
 
                     If Not isActive Then
-                        MessageBox.Show("Account is inactive. Please contact administrator.", "Login Error", MessageBoxButtons.OK, MessageBoxIcon.Warning)
+                        MessageBox.Show("Account is inactive. Please contact the administrator.", "Login Error", MessageBoxButtons.OK, MessageBoxIcon.Warning)
                         Return
                     End If
 
-                    If String.Equals(hashedEntered, dbPassword, StringComparison.Ordinal) OrElse String.Equals(password, dbPassword, StringComparison.Ordinal) Then
-                        ' Save to global variables
+                    If String.Equals(hashedEntered, dbPassword, StringComparison.Ordinal) OrElse
+                       String.Equals(password, dbPassword, StringComparison.Ordinal) Then
+
+                        loginAttempts = 0
+                        lockUntil = DateTime.MinValue
+
                         CurrentUserID = userID
                         CurrentUsername = username
                         CurrentRole = roleVal
+
+
 
                         Dim cmdLog As New Odbc.OdbcCommand("INSERT INTO tblloginhistory (UserID, LoginTime) VALUES (?, NOW())", con)
                         cmdLog.Parameters.AddWithValue("?", userID)
@@ -98,8 +118,14 @@ Public Class frmLogin
 
                         Dim cmdGetID As New Odbc.OdbcCommand("SELECT LAST_INSERT_ID()", con)
                         CurrentLogID = Convert.ToInt32(cmdGetID.ExecuteScalar())
-
+                        MessageBox.Show("Login OK — Role set to: " & CurrentRole)
                         MessageBox.Show("Welcome " & username & "!", "Login Successful", MessageBoxButtons.OK, MessageBoxIcon.Information)
+
+                        CurrentUserID = userID
+                        CurrentUsername = username
+                        CurrentRole = roleVal
+                        CurrentLogID = Convert.ToInt32(cmdGetID.ExecuteScalar())
+
 
                         Me.Hide()
                         Homepage.Show()
@@ -108,12 +134,35 @@ Public Class frmLogin
                 End If
             End Using
 
-            MessageBox.Show("Login failed. Check your credentials.", "Login Error", MessageBoxButtons.OK, MessageBoxIcon.Warning)
+            loginAttempts += 1
+
+            If loginAttempts >= MaxAttempts Then
+
+                MessageBox.Show("Too many failed attempts. Please wait 10 seconds before trying again.", "Locked", MessageBoxButtons.OK, MessageBoxIcon.Error)
+
+                lockUntil = DateTime.Now.AddSeconds(10)
+                loginAttempts = 0
+
+                txtUsername.Enabled = False
+                txtPword.Enabled = False
+                btnLogin.Enabled = False
+                txtPword.PasswordChar = ""
+                txtPword.Text = "Password"
+                txtUsername.Text = "Username"
+                lockSecondsRemaining = 10
+                tmrUnlock.Start()
+                Return
+
+            Else
+                MessageBox.Show("Login failed.", "Login Error", MessageBoxButtons.OK, MessageBoxIcon.Warning)
+            End If
 
         Catch ex As Exception
             MessageBox.Show("An error occurred: " & ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
         End Try
+
     End Sub
+
     Private Sub LogLoginAttempt(ByVal userID As Integer, ByVal username As String, ByVal status As String)
         Try
             Dim logCmd As New Odbc.OdbcCommand("INSERT INTO tblloginhistory (UserID, Username, Status, LoginTime) VALUES (?, ?, ?, NOW())", con)
@@ -155,6 +204,18 @@ Public Class frmLogin
     Private Sub btnExit_Click(sender As System.Object, e As System.EventArgs) Handles btnExit.Click
         If MsgBox("Are you sure to exit?", vbYesNo + vbQuestion, "Exit") = vbYes Then
             Me.Close()
+        End If
+    End Sub
+
+    Private Sub tmrUnlock_Tick(sender As System.Object, e As System.EventArgs) Handles tmrUnlock.Tick
+        If DateTime.Now >= lockUntil Then
+            tmrUnlock.Stop()
+
+            txtUsername.Enabled = True
+            txtPword.Enabled = True
+            btnLogin.Enabled = True
+
+            MessageBox.Show("You can now try logging in again.", "Unlocked", MessageBoxButtons.OK, MessageBoxIcon.Information)
         End If
     End Sub
 End Class

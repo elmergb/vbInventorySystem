@@ -1,11 +1,17 @@
 ﻿Imports System.Windows.Forms.DataVisualization.Charting
 
 Public Class frmDashboard
+
     Private Sub frmDashboard_Load(sender As Object, e As EventArgs) Handles MyBase.Load
 
         lblTotalBorrowed.Text = getTotalBorrowed()
         lblItemTotal.Text = getTotalItems()
         lblTotalDamaged.Text = getTotalDamaged().ToString
+
+        Call data_loader("SELECT BorrowerName, ItemName, ItemDescription, QuantityBorrowed, QuantityReturned, QuantityDamaged FROM vw_borrowed_item_status ORDER BY BorrowDateTime  DESC LIMIT 5", dgvRB)
+        Call data_loader("SELECT Name, ItemDescription, Quantity FROM vw_items ORDER BY ItemID  DESC LIMIT 5", dgvRR)
+
+
 
     End Sub
 
@@ -39,6 +45,18 @@ Public Class frmDashboard
     End Sub
 
     Private Sub Label12_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Label12.Click
+
+    End Sub
+
+    Private Sub Panel2_Paint(sender As System.Object, e As System.Windows.Forms.PaintEventArgs) Handles Panel2.Paint
+
+    End Sub
+
+    Private Sub dgvRR_CellContentClick(sender As System.Object, e As System.Windows.Forms.DataGridViewCellEventArgs) Handles dgvRR.CellContentClick
+
+    End Sub
+
+    Private Sub dgvRA_CellContentClick(sender As System.Object, e As System.Windows.Forms.DataGridViewCellEventArgs) Handles dgvRA.CellContentClick
 
     End Sub
 End Class

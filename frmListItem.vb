@@ -139,4 +139,16 @@ Public Class frmListItem
     Private Sub dgvItemList_CellContentClick(sender As System.Object, e As System.Windows.Forms.DataGridViewCellEventArgs) Handles dgvItemList.CellContentClick
 
     End Sub
+
+    Private Sub frmListItem_Shown(sender As Object, e As System.EventArgs) Handles Me.Shown
+        If CurrentRole.Trim().ToLower() = "student" Then
+            btnDelete.Visible = False
+            btnEdit.Visible = False
+            btnAdd.Location = New Point(1338, 623)
+        Else
+            btnDelete.Visible = True
+            btnEdit.Visible = True
+        End If
+    End Sub
+
 End Class

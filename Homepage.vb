@@ -17,6 +17,22 @@
 
         lblUser.Text = frmLogin.txtUsername.Text
         Timer1.Start()
+
+        If CurrentRole.Trim().ToLower() = "student" Then
+            frmStudentlist.btnDelete.Enabled = False
+            frmStudentlist.btnEdit.Visible = False
+        End If
+    End Sub
+    Private Sub Homepage_FormClosing(sender As Object, e As FormClosingEventArgs) Handles Me.FormClosing
+        Try
+            If Not isUserLoggingOut AndAlso CurrentLogID > 0 Then
+                Dim cmd As New Odbc.OdbcCommand("UPDATE tblloginhistory SET LogoutTime = NOW() WHERE LogID = ?", con)
+                cmd.Parameters.AddWithValue("?", CurrentLogID)
+                cmd.ExecuteNonQuery()
+            End If
+        Catch ex As Exception
+
+        End Try
     End Sub
 
     Private Sub btnDashBoard_Click_1(sender As System.Object, e As System.EventArgs)
@@ -117,6 +133,7 @@
     Private Sub TransactionRepotToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles TransactionRepotToolStripMenuItem.Click
         LoadForm(New frmTransactrpt())
     End Sub
+    Private isUserLoggingOut As Boolean = False
 
     Private Sub ltsLogout_Click_1(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles ltsLogout.Click
         If MsgBox("Are you sure you want to logout?", vbYesNo + vbQuestion) = vbYes Then
@@ -128,6 +145,10 @@
                 End If
 
                 MsgBox("Logged out successfully.", vbInformation)
+                CurrentUserID = 0
+                CurrentUsername = ""
+                CurrentRole = ""
+                CurrentLogID = 0
                 Application.Restart() ' Restarts the app cleanly
             Catch ex As Exception
                 MsgBox("Logout error: " & ex.Message, vbCritical)
@@ -143,4 +164,6 @@
     Private Sub ToolStripDropDownButton1_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles ToolStripDropDownButton1.Click
 
     End Sub
+
+ 
 End Class

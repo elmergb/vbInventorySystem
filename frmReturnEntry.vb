@@ -14,7 +14,8 @@
     End Sub
 
     Private Sub btnReturnLog_Click(sender As System.Object, e As System.EventArgs) Handles btnReturnLog.Click
-        Try
+
+       Try
             Dim BorrowID As Integer = Me.BorrowID
             Dim Remarks As String = Trim(cbReturnRemarks.Text)
             Dim cmd As Odbc.OdbcCommand
@@ -25,29 +26,27 @@
             Dim borrowedQty As Integer = 0
             cmd = New Odbc.OdbcCommand("SELECT IFNULL(SUM(borrowQty), 0) FROM tblborrowing WHERE bID = ?", con)
             cmd.Parameters.AddWithValue("?", BorrowID)
-            Dim br = cmd.ExecuteScalar()
-            If br IsNot Nothing AndAlso Not IsDBNull(br) Then borrowedQty = CInt(br)
+            borrowedQty = CInt(cmd.ExecuteScalar())
 
             ' --- GET TOTAL RETURNED SO FAR ---
             Dim returnedTotal As Integer = 0
             cmd = New Odbc.OdbcCommand("SELECT IFNULL(SUM(QuantityReturned), 0) FROM tblreturn WHERE bID = ?", con)
             cmd.Parameters.AddWithValue("?", BorrowID)
-            Dim rr = cmd.ExecuteScalar()
-            If rr IsNot Nothing AndAlso Not IsDBNull(rr) Then returnedTotal = CInt(rr)
+            returnedTotal = CInt(cmd.ExecuteScalar())
 
             ' --- VALIDATION ---
-            If returnedTotal + qtyReturningNow > borrowedQty Then
-                MsgBox("Returned quantity exceeds total borrowed amount.", vbExclamation)
-                Exit Sub
-            ElseIf qtyReturningNow <= 0 Then
+            If qtyReturningNow <= 0 Then
                 MsgBox("Please enter a valid return quantity.", vbExclamation)
+                Exit Sub
+            ElseIf returnedTotal + qtyReturningNow > borrowedQty Then
+                MsgBox("Returned quantity exceeds total borrowed amount.", vbExclamation)
                 Exit Sub
             End If
 
             ' --- GET ITEM ID ---
             Dim itemID As Integer = CInt(cbItemListR.SelectedValue)
 
-            ' --- INSERT RETURN RECORD ---
+            ' --- INSERT RETURN RECORD (ALWAYS record actual returned qty) ---
             cmd = New Odbc.OdbcCommand("INSERT INTO tblreturn (bID, QuantityReturned, DateTimeReturned, Remarks) VALUES (?, ?, NOW(), ?)", con)
             cmd.Parameters.AddWithValue("?", BorrowID)
             cmd.Parameters.AddWithValue("?", qtyReturningNow)
@@ -59,14 +58,14 @@
             cmd.Parameters.AddWithValue("?", BorrowID)
             returnID = CInt(cmd.ExecuteScalar())
 
-            ' --- GET SERIALS TIED TO THIS BORROW ID ---
+            ' --- GET SERIALS ---
             Dim returnedSerials As New List(Of String)
-            cmd = New Odbc.OdbcCommand("SELECT UnitID, SerialNo FROM(tblitemunits)  WHERE ItemID = ? AND bID = ? AND ItemStatus = 'Borrowed' ORDER BY UnitID ASC LIMIT ?", con)
+            Dim unitIDs As New List(Of Integer)
+            cmd = New Odbc.OdbcCommand("SELECT UnitID, SerialNo FROM tblitemunits WHERE ItemID = ? AND bID = ? AND ItemStatus = 'Borrowed' ORDER BY UnitID ASC LIMIT ?", con)
             cmd.Parameters.AddWithValue("?", itemID)
             cmd.Parameters.AddWithValue("?", BorrowID)
             cmd.Parameters.AddWithValue("?", qtyReturningNow)
 
-            Dim unitIDs As New List(Of Integer)
             Using rdr As Odbc.OdbcDataReader = cmd.ExecuteReader()
                 While rdr.Read()
                     returnedSerials.Add(rdr("SerialNo").ToString())
@@ -79,24 +78,30 @@
                 Exit Sub
             End If
 
-            ' --- UPDATE ITEM UNITS (SET AVAILABLE, REMOVE bID) ---
-            If Remarks <> "Damage" Then
-                For Each uid As Integer In unitIDs
-                    cmd = New Odbc.OdbcCommand("UPDATE tblitemunits SET ItemStatus = 'Available', bID = NULL WHERE UnitID = ?", con)
-                    cmd.Parameters.AddWithValue("?", uid)
-                    cmd.ExecuteNonQuery()
-                Next
-            End If
+            ' --- INSERT INTO tblreturn_units ---
+            For Each uid As Integer In unitIDs
+                Dim cmdReturnUnit As New Odbc.OdbcCommand("INSERT INTO tblreturn_units (ReturnID, UnitID) VALUES (?, ?)", con)
+                cmdReturnUnit.Parameters.AddWithValue("?", returnID)
+                cmdReturnUnit.Parameters.AddWithValue("?", uid)
+                cmdReturnUnit.ExecuteNonQuery()
+            Next
 
-            ' --- DAMAGE HANDLING ---
-            If Remarks = "Damage" Then
+            ' --- Handle Remarks ---
+            If String.Equals(Remarks, "Damage", StringComparison.OrdinalIgnoreCase) Then
                 Dim choice As MsgBoxResult
                 choice = MsgBox("There are " & qtyReturningNow & " damaged item(s)." & vbCrLf &
-                                "Does the student want to PAY (Yes) or REPLACE (No)?",
-                                vbYesNoCancel + vbQuestion, "Damage Detected")
+                                "Does the student want to PAY (Yes) or REPLACE (No)?", vbYesNoCancel + vbQuestion, "Damage Detected")
 
-                ' Record the damage report
-                cmd = New Odbc.OdbcCommand("INSERT INTO tbldamaged (ItemID, QuantityDamaged, DateReported, DamageRemarks, ReturnID, Status)   VALUES (?, ?, NOW(), ?, ?, 'Pending')", con)
+                If choice = vbCancel Then
+                    MsgBox("Damage return canceled.", vbInformation)
+                    Dim delRet As New Odbc.OdbcCommand("DELETE FROM tblreturn WHERE ReturnID = ?", con)
+                    delRet.Parameters.AddWithValue("?", returnID)
+                    delRet.ExecuteNonQuery()
+                    Exit Sub
+                End If
+
+                ' Insert tbldamaged
+                cmd = New Odbc.OdbcCommand("INSERT INTO tbldamaged (ItemID, QuantityDamaged, DateReported, DamageRemarks, ReturnID, Status) VALUES (?, ?, NOW(), ?, ?, 'Pending')", con)
                 cmd.Parameters.AddWithValue("?", itemID)
                 cmd.Parameters.AddWithValue("?", qtyReturningNow)
                 cmd.Parameters.AddWithValue("?", "Damaged")
@@ -106,38 +111,42 @@
                 ' Get DamageID
                 cmd = New Odbc.OdbcCommand("SELECT MAX(DamageID) FROM tbldamaged", con)
                 Dim damageID As Integer = CInt(cmd.ExecuteScalar())
+
+                ' Link damaged units
                 For Each uid As Integer In unitIDs
-                    ' 1. Link each damaged unit to this damage record
                     Dim cmdLink As New Odbc.OdbcCommand("INSERT INTO tbldamaged_units (DamageID, UnitID) VALUES (?, ?)", con)
                     cmdLink.Parameters.AddWithValue("?", damageID)
                     cmdLink.Parameters.AddWithValue("?", uid)
                     cmdLink.ExecuteNonQuery()
 
-                    ' 2. Mark the unit itself as Damaged
                     Dim cmdUpdateUnit As New Odbc.OdbcCommand("UPDATE tblitemunits SET ItemStatus='Damaged', bID=NULL WHERE UnitID=?", con)
                     cmdUpdateUnit.Parameters.AddWithValue("?", uid)
                     cmdUpdateUnit.ExecuteNonQuery()
                 Next
-                ' Choose action (Pay or Replace)
+
+                ' Action
                 If choice = vbYes Then
                     cmd = New Odbc.OdbcCommand("INSERT INTO tbldamage_action (DamageID, ActionType, Status) VALUES (?, 'Pay', 'Pending')", con)
                     cmd.Parameters.AddWithValue("?", damageID)
                     cmd.ExecuteNonQuery()
                     MsgBox("Marked as pending payment.", vbInformation)
-
                 ElseIf choice = vbNo Then
                     cmd = New Odbc.OdbcCommand("INSERT INTO tbldamage_action (DamageID, ActionType, Status) VALUES (?, 'Replace', 'Pending')", con)
                     cmd.Parameters.AddWithValue("?", damageID)
                     cmd.ExecuteNonQuery()
                     MsgBox("Marked as pending replacement.", vbInformation)
-
-                ElseIf choice = vbCancel Then
-                    MsgBox("Damage return canceled.", vbInformation)
-                    Exit Sub
                 End If
+
             Else
-                ' --- UPDATE ITEM STOCK ---
-                cmd = New Odbc.OdbcCommand("Update(tblitemlist) SET ItemQuantity = ItemQuantity + ?        WHERE ItemID = ?", con)
+                ' --- Normal (Good) return ---
+                For Each uid As Integer In unitIDs
+                    cmd = New Odbc.OdbcCommand("UPDATE tblitemunits SET ItemStatus = 'Available', bID = NULL WHERE UnitID = ?", con)
+                    cmd.Parameters.AddWithValue("?", uid)
+                    cmd.ExecuteNonQuery()
+                Next
+
+                ' --- Update stock count ---
+                cmd = New Odbc.OdbcCommand("UPDATE tblitemlist SET ItemQuantity = ItemQuantity + ? WHERE ItemID = ?", con)
                 cmd.Parameters.AddWithValue("?", qtyReturningNow)
                 cmd.Parameters.AddWithValue("?", itemID)
                 cmd.ExecuteNonQuery()
@@ -145,8 +154,7 @@
 
             ' --- SUCCESS MESSAGE ---
             MsgBox("Return recorded successfully!" & vbCrLf &
-                   "Returned Serials: " & String.Join(", ", returnedSerials),
-                   vbInformation)
+                   "Returned Serials: " & String.Join(", ", returnedSerials), vbInformation)
 
             ' --- REFRESH VIEW ---
             Call data_loader("SELECT * FROM vw_borrowed_items", frmReturnList.dgvReturn)
@@ -154,10 +162,11 @@
             Me.Close()
 
         Catch ex As Exception
-        MsgBox("Error: " & ex.Message, vbCritical)
+            MsgBox("Error: " & ex.Message, vbCritical)
         End Try
     End Sub
 
+ 
     Private Sub Button1_Click(sender As System.Object, e As System.EventArgs) Handles Button1.Click
         Me.Close()
     End Sub

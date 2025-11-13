@@ -93,7 +93,7 @@ Public Class frmStudentDE
                         '    End If
                         'End Using
 
-                        Using cmdStudentUpd As New Odbc.OdbcCommand("UPDATE tblstudentlist SET studentNo = ?, fname = ?, mi = ?, lname = ?, cID = ?, section = ?, yID = ? WHERE sID = ?", con, trans)
+                     Using cmdStudentUpd As New Odbc.OdbcCommand("UPDATE tblstudentlist SET studentNo = ?, fname = ?, mi = ?, lname = ?, cID = ?, section = ?, yID = ? WHERE sID = ?", con, trans)
                             cmdStudentUpd.Parameters.AddWithValue("?", studentNo)
                             cmdStudentUpd.Parameters.AddWithValue("?", fname)
                             cmdStudentUpd.Parameters.AddWithValue("?", mi)
@@ -105,24 +105,31 @@ Public Class frmStudentDE
                             cmdStudentUpd.ExecuteNonQuery()
                         End Using
 
+                        Dim oldHashedPassword As String = ""
+                        Using cmdCheck As New Odbc.OdbcCommand("SELECT pword FROM tbluser WHERE sID = ?", con, trans)
+                            cmdCheck.Parameters.AddWithValue("?", studentID)
+                            Dim result = cmdCheck.ExecuteScalar()
+                            If result IsNot Nothing Then
+                                oldHashedPassword = result.ToString()
+                            End If
+                        End Using
 
-                        Using cmdUserUpd As New Odbc.OdbcCommand("UPDATE tbluser SET username = ?, pword= ?, roleID = ?, isActive = ? WHERE sID = ?", con, trans)
+                        Dim newHashedPassword As String = HashPassword(plainPassword)
+
+                        If newHashedPassword = oldHashedPassword Then
+                            MessageBox.Show("New password cannot be the same as the old password.", "Password Change Error", MessageBoxButtons.OK, MessageBoxIcon.Warning)
+                            trans.Rollback()
+                            Exit Sub
+                        End If
+
+                        Using cmdUserUpd As New Odbc.OdbcCommand("UPDATE tbluser SET username = ?, pword = ?, roleID = ?, isActive = ? WHERE sID = ?", con, trans)
                             cmdUserUpd.Parameters.AddWithValue("?", username)
-                            cmdUserUpd.Parameters.AddWithValue("?", plainPassword)
+                            cmdUserUpd.Parameters.AddWithValue("?", newHashedPassword)
                             cmdUserUpd.Parameters.AddWithValue("?", cbRole.SelectedValue)
                             cmdUserUpd.Parameters.AddWithValue("?", If(ckbisActive.Checked, 1, 0))
                             cmdUserUpd.Parameters.AddWithValue("?", studentID)
                             cmdUserUpd.ExecuteNonQuery()
                         End Using
-
-                        Using cmdUserUpd2 As New Odbc.OdbcCommand("UPDATE tbluser SET username = ?, roleID = ?, isActive = ? WHERE sID = ?", con, trans)
-                            cmdUserUpd2.Parameters.AddWithValue("?", username)
-                            cmdUserUpd2.Parameters.AddWithValue("?", cbRole.SelectedValue)
-                            cmdUserUpd2.Parameters.AddWithValue("?", If(ckbisActive.Checked, 1, 0))
-                            cmdUserUpd2.Parameters.AddWithValue("?", studentID)
-                            cmdUserUpd2.ExecuteNonQuery()
-                        End Using
-
                     End If
                     trans.Commit()
                     MessageBox.Show("Successfully saved.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information)
@@ -155,13 +162,15 @@ Public Class frmStudentDE
         ckbShowPword.Checked = False
         DisableForm(Me)
 
-        If frmLogin.role = "Student" Then
-            cb_loader("SELECT roleID, Role FROM tbl_role WHERE Role <> 'Admin'", cbRole, "Role", "roleID")
-        ElseIf frmLogin.role = "Admin" Then
+        If frmLogin.role = "Admin" Then
             cb_loader("SELECT roleID, Role FROM tbl_role", cbRole, "Role", "roleID")
+        ElseIf frmLogin.role = "Teacher" Or frmLogin.role = "Student" Then
+            cb_loader("SELECT roleID, Role FROM tbl_role WHERE Role = 'Student'", cbRole, "Role", "roleID")
         Else
-            cb_loader("SELECT roleID, Role FROM tbl_role WHERE Role <> 'Admin'", cbRole, "Role", "roleID")
+            cb_loader("SELECT roleID, Role FROM tbl_role WHERE Role = 'Student'", cbRole, "Role", "roleID")
         End If
+
+
     End Sub
 
     Private Sub ckbShowPword_CheckedChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles ckbShowPword.CheckedChanged

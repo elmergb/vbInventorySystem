@@ -2,7 +2,7 @@
 
     Private Sub frmStudentlist_Load(sender As System.Object, e As System.EventArgs) Handles MyBase.Load
         Call data_loader("SELECT * FROM vw_user", dgvStudentList)
-   
+
         LoadStudents()
         'If e.RowIndex >= 0 Then
         '    dgvItemList.Tag = dgvItemList.Rows(e.RowIndex).Cells("Item").Value
@@ -88,6 +88,7 @@
         If Val(dgvStudentList.Tag) = 0 Then
             MsgBox("Select a record to Edit!")
         Else
+            frmStudentDE.txtPword.Clear()
             frmStudentDE.studentID = Val(dgvStudentList.Tag)
             frmStudentDE.lbltext.Text = "Edit"
             frmStudentDE.lbltext.Location = New Point(220, 18)
@@ -102,10 +103,13 @@
             .txtfname.Clear()
             .txtlname.Clear()
             .txtmi.Clear()
+            .lblActive.Visible = False
             .txtPword.Clear()
             .txtSection.Clear()
             .txtStudentNumber.Clear()
             .txtuname.Clear()
+            .ckbisActive.Checked = True
+            .ckbisActive.Visible = False
             .cbCourses.SelectedValue = -1
             .cbRole.SelectedValue = -1
             .cbYear.SelectedValue = -1
@@ -159,5 +163,16 @@
 
     Private Sub dgvStudentList_CellContentClick(sender As System.Object, e As System.Windows.Forms.DataGridViewCellEventArgs) Handles dgvStudentList.CellContentClick
 
+    End Sub
+
+    Private Sub frmStudentlist_Shown(sender As Object, e As System.EventArgs) Handles Me.Shown
+        If CurrentRole.Trim().ToLower() = "student" Then
+            btnDelete.Visible = False
+            btnEdit.Visible = False
+            btnAdd.Location = New Point(1338, 623)
+        Else
+            btnDelete.Visible = True
+            btnEdit.Visible = True
+        End If
     End Sub
 End Class

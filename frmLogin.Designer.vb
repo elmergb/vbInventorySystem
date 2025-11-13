@@ -22,6 +22,7 @@ Partial Class frmLogin
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
+        Me.components = New System.ComponentModel.Container()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.btnLogin = New System.Windows.Forms.Button()
         Me.Label6 = New System.Windows.Forms.Label()
@@ -34,6 +35,7 @@ Partial Class frmLogin
         Me.PictureBox1 = New System.Windows.Forms.PictureBox()
         Me.PictureBox2 = New System.Windows.Forms.PictureBox()
         Me.btnExit = New System.Windows.Forms.Button()
+        Me.tmrUnlock = New System.Windows.Forms.Timer(Me.components)
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.PictureBox2, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
@@ -176,6 +178,10 @@ Partial Class frmLogin
         Me.btnExit.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage
         Me.btnExit.UseVisualStyleBackColor = False
         '
+        'tmrUnlock
+        '
+        Me.tmrUnlock.Interval = 1000
+        '
         'frmLogin
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -214,4 +220,5 @@ Partial Class frmLogin
     Friend WithEvents PictureBox1 As PictureBox
     Friend WithEvents ckbShowPword As System.Windows.Forms.CheckBox
     Friend WithEvents btnExit As System.Windows.Forms.Button
+    Friend WithEvents tmrUnlock As System.Windows.Forms.Timer
 End Class

@@ -1,6 +1,10 @@
 ﻿Imports System.Data.Odbc
 
 Module modGlobalFunc
+    Public CurrentUserID As Integer = 0
+    Public CurrentUsername As String = ""
+    Public CurrentRole As String = ""
+    Public CurrentLogID As Integer = 0
     Public Function getallText() As List(Of String)
         Dim text As New List(Of String)
 
@@ -74,10 +78,7 @@ Module modGlobalFunc
         End Try
         Return total
     End Function
-    Public CurrentUserID As Integer = 0
-    Public CurrentUsername As String = ""
-    Public CurrentRole As String = ""
-    Public CurrentLogID As Integer = 0
+
     Public Sub listLoader()
         frmCartListView.lvCart.Items.Clear()
 
@@ -139,7 +140,7 @@ Module modGlobalFunc
 
     Public Sub MsgLogout(ByVal message As String, login As Form, frm As Form)
         If MessageBox.Show(message, "Logout", MessageBoxButtons.YesNo, MessageBoxIcon.Information) = DialogResult.Yes Then
-            Login.Show()
+            login.Show()
             frm.Hide()
 
         End If
